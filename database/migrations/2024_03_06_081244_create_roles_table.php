@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id')->constrained('users', 'users_id');
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')->references('id')->on('users');
             $table->string('role_desription');
             $table->timestamp('UPDATED_AT');
         });
