@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 0 16px;
+}
+.brand {
+    color: maroon;
+    font-weight: bold;
+    font-size: 24px;
+}
+.button1 {
+    padding: 4px 16px;
+    background-color: rgb(51, 22, 22);
+    color:white;
+}
+.search label {
+    font-size: 16px;
+}
+.search input{
+    margin-left: 15px;
+    padding: 8px 16px;
+    border: 1px solid rgb(221, 216, 216);
+    width: 60%;
+}
+.fb .cp .gmail, svg{
+    margin-right: 5px;
+}
+.nav-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 0.8em;  
+    padding: 15px 0;
+    border-bottom: 1px solid rgb(221, 216, 216);
+}
+.login-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.login-icon svg{
+    border-radius: 100%;
+    color: white;
+}
+.icon-circle {
+    padding: 10px;
+    background-color: #D81116;
+    border-radius: 100%;
+}
+.login-title {
+    text-align: center;
+    letter-spacing: 1.5px;
+}
+
+.contents {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+.contents .user-field input {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #efeff1;
+    border: gray;
+    padding: 6px 12px;
+}
+.modal-content {
+    width: 380px;
+}
+.login-as {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-submit input{
+    background-color: #D81116;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
