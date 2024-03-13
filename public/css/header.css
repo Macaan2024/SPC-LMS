@@ -5,37 +5,11 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
-    margin: 0 16px;
+    background-color: #f8f9fa;
 }
-.brand {
-    color: maroon;
-    font-weight: bold;
-    font-size: 24px;
-}
-.button1 {
-    padding: 4px 16px;
-    background-color: rgb(51, 22, 22);
-    color:white;
-}
-.search label {
-    font-size: 16px;
-}
-.search input{
-    margin-left: 15px;
-    padding: 8px 16px;
-    border: 1px solid rgb(221, 216, 216);
-    width: 60%;
-}
-.fb .cp .gmail, svg{
-    margin-right: 5px;
-}
-.nav-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    font-size: 0.8em;  
-    padding: 15px 0;
-    border-bottom: 1px solid rgb(221, 216, 216);
-}
+
+
+/* ------------------------------- LOGIN MODALITY */
 .login-icon {
     display: flex;
     justify-content: center;
@@ -83,3 +57,39 @@ body {
     border: none;
     width: 100%;
 }
+/* -------------------------------------------------------- MAIN CONTENT -------------------- */
+/* Display BOoks AREA  */
+    
+    .book-title {
+        font-size: 14px; /* Adjust the font size as needed */
+        text-align: center;
+        word-spacing: 0.05em; /* Adjust word spacing to your preference */
+        letter-spacing: 0.05em; /* Adjust letter spacing to your preference */
+        line-height: 1.5; /* Increase line height for better readability */
+        hyphens: auto; /* Enable automatic hyphenation to improve text layout */
+    }
+    .custom-row .col-2 img {
+        width: 100%;
+        height: auto;
+    }
+    .custom-row .img-fluid {
+        height: 100%; /* Ensure the image fills the entire height of its container */
+        width: auto; /* Maintain the aspect ratio */
+    }
+    .mid-container {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+       
+    }
+    .mid-content {
+        margin-top: 25px;
+        border-radius: 5px;
+    }
+    .main-container {
+        margin: 0;
+        padding: 0;
+    }
+    .book-image {
+        max-width: 90%; /* Adjust as needed */
+        max-height: 90%; /* Adjust as needed */
+    }
