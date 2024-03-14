@@ -6,19 +6,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/header.css">
 </head>
+
 <body>
-    
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <div class="brand d-flex align-items-center gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 36 36"><rect width="36" height="36" fill="none"/><path fill="#553788" d="M15 31c0 2.209-.791 4-3 4H5c-4 0-4-14 0-14h7c2.209 0 3 1.791 3 4z"/><path fill="#9266cc" d="M34 33h-1V23h1a1 1 0 1 0 0-2H10c-4 0-4 14 0 14h24a1 1 0 1 0 0-2"/><path fill="#ccd6dd" d="M34.172 33H11c-2 0-2-10 0-10h23.172c1.104 0 1.104 10 0 10"/><path fill="#99aab5" d="M11.5 25h23.35c-.135-1.175-.36-2-.678-2H11c-1.651 0-1.938 6.808-.863 9.188C9.745 29.229 10.199 25 11.5 25"/><path fill="#269" d="M12 8a4 4 0 0 1-4 4H4C0 12 0 1 4 1h4a4 4 0 0 1 4 4z"/><path fill="#55acee" d="M31 10h-1V3h1a1 1 0 1 0 0-2H7C3 1 3 12 7 12h24a1 1 0 1 0 0-2"/><path fill="#ccd6dd" d="M31.172 10H8c-2 0-2-7 0-7h23.172c1.104 0 1.104 7 0 7"/><path fill="#99aab5" d="M8 5h23.925c-.114-1.125-.364-2-.753-2H8C6.807 3 6.331 5.489 6.562 7.5C6.718 6.142 7.193 5 8 5"/><path fill="#f4900c" d="M20 17a4 4 0 0 1-4 4H6c-4 0-4-9 0-9h10a4 4 0 0 1 4 4z"/><path fill="#ffac33" d="M35 19h-1v-5h1a1 1 0 1 0 0-2H15c-4 0-4 9 0 9h20a1 1 0 1 0 0-2"/><path fill="#ccd6dd" d="M35.172 19H16c-2 0-2-5 0-5h19.172c1.104 0 1.104 5 0 5"/><path fill="#99aab5" d="M16 16h19.984c-.065-1.062-.334-2-.812-2H16c-1.274 0-1.733 2.027-1.383 3.5c.198-.839.657-1.5 1.383-1.5"/></svg>
         <a class="navbar-brand text-danger">SPC-LMS</a>
     </div>
-    <div class="search-box">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+    <div class="search-box d-flex">
+        <form class="d-flex gap-2 flex-grow-2" role="search" name="myForm" onsubmit="return searchs()" method="">
+            <input class="form-control" type="text" name="search" aria-label="Search">
+            <input type="submit" class="btn btn-outline-success" value="Search">
         </form>
+        <script src="/js/index.js"></script>
     </div>
     <div class="nav-icons d-flex align-items-center">
         <div class="d-flex gap-3 align-items-center"> <!-- Added gap-3 class -->
@@ -82,7 +83,7 @@
 
     <main>
         <section class="">
-            <div class="main-container">
+            <div class="main-container" id="contentTop">
                 <div class="row justify-content-center">
                     <div class="col-10">
                         <div class="mid-container row justify-content-center">
@@ -147,8 +148,130 @@
                 </div>
             </div>
         </section>
+        <!-- --------------------- SECTION SEARCH RESULT BOX BEOW -------------- -->
+        <section>
+            <div class="search-result-box container-fluid mt-3 p-0" id="search-box">
+                <div class="row justify-content-center align-items-center">
+                    <div class=" col-10 p-0">
+                        <label for="">Search Result</label>
+                        <table class="table" border="1" cellpadding="10" cellspacing="5" width="100%">
+                            <thead class="">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ISBN</th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Level</th>
+                                    <th>Edition</th>
+                                    <th>Publish Year</th>
+                                    <th>Quantity</th>
+                                    <th>Availability</th>
+                                    <th></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>13,259</td>
+                                    <td>978-3-16-14810-0</td>
+                                    <td>HTML and CSS</td>
+                                    <td>Shannon Montebon</td>
+                                    <td>Computer Science</td>
+                                    <td>College</td>
+                                    <td>1st-Edition</td>
+                                    <td>1978</td>
+                                    <td>Available</td>
+                                    <td>2</td>
+                                    <td><button>View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- ---------------------------- BOOK AREA BELOW ----------------- -->
+        <section>
+        <div class="container-fluid mt-3 p-0">
+            <div class="row justify-content-center">
+                <div class="col-10 bg-white p-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-between align-items-center">
+                            <div>
+                                <label class="level-level me-1" for="">Books</label>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <label for="" class="me-2">Book level :</label>
+                                </div>
+                                <div>
+                                    <select name="" id="" class="form-select">
+                                        <option value="">College</option>
+                                        <option value="">Senior HighSchool</option>
+                                        <option value="">Junior Highschool</option>
+                                        <option value="">Elementary</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid mt-5">
+                        <div class="row">
+                            <div class="col-12 p-0">
+                                <div class="d-block">
+                                    <label for="">Electronics</label>
+                                </div>
+                                <div class="image-container d-flex">
+                                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                                        <div class="col">
+                                            <div class="card h-100">
+                                            <img src="/images/topbooks/book1.png" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <small class="text-body-secondary">Last updated 3 mins ago</small>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card h-100">
+                                            <img src="..." class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <small class="text-body-secondary">Last updated 3 mins ago</small>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card h-100">
+                                            <img src="..." class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                            </div>
+                                            <div class="card-footer">
+                                                <small class="text-body-secondary">Last updated 3 mins ago</small>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     </main>
 </body>
 </html>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
