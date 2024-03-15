@@ -127,11 +127,13 @@ body {
     .level-label {
         white-space: nowrap;
     }
-    .flex-column {
-        flex-direction: column;
-    }
 
-    .image-container img {
-        width: 100px;
-        height: 150px;
+    /* ---------------------------------------------------------------------- BOOK LIST BELOW --------- */
+
+    .card-body small {
+        color: rgb(31, 189, 31);
+        font-weight: bold;
+    }
+    .col-2 img {
+        height: 12vmax;
     }

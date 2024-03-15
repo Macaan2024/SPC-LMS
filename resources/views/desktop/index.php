@@ -15,8 +15,8 @@
         <a class="navbar-brand text-danger">SPC-LMS</a>
     </div>
     <div class="search-box d-flex">
-        <form class="d-flex gap-2 flex-grow-2" role="search" name="myForm" onsubmit="return searchs()" method="">
-            <input class="form-control" type="text" name="search" aria-label="Search">
+        <form class="d-flex gap-2 " role="search" name="myForm" onsubmit="return searchs()" method="">
+            <input class="form-control" type="text" name="search" aria-label="Search" style="width:50vw;">
             <input type="submit" class="btn btn-outline-success" value="Search">
         </form>
         <script src="/js/index.js"></script>
@@ -27,7 +27,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 128 128"><rect width="128" height="128" fill="none"/><rect width="118.35" height="118.35" x="4.83" y="4.83" fill="#3d5a98" rx="6.53" ry="6.53"/><path fill="#fff" d="M86.48 123.17V77.34h15.38l2.3-17.86H86.48v-11.4c0-5.17 1.44-8.7 8.85-8.7h9.46v-16A126.56 126.56 0 0 0 91 22.7c-13.62 0-23 8.3-23 23.61v13.17H52.62v17.86H68v45.83z"/></svg>
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><g fill="none"><rect width="256" height="256" fill="#fff" rx="60"/><rect width="256" height="256" fill="#1d9bf0" rx="60"/><path fill="#fff" d="M199.572 91.411c.11 1.587.11 3.174.11 4.776c0 48.797-37.148 105.075-105.075 105.075v-.03A104.54 104.54 0 0 1 38 184.677c2.918.351 5.85.526 8.79.533a74.154 74.154 0 0 0 45.865-15.839a36.976 36.976 0 0 1-34.501-25.645a36.811 36.811 0 0 0 16.672-.636c-17.228-3.481-29.623-18.618-29.623-36.198v-.468a36.705 36.705 0 0 0 16.76 4.622c-16.226-10.845-21.228-32.432-11.43-49.31a104.814 104.814 0 0 0 76.111 38.582a36.95 36.95 0 0 1 10.683-35.283c14.874-13.982 38.267-13.265 52.249 1.601a74.105 74.105 0 0 0 23.451-8.965a37.061 37.061 0 0 1-16.234 20.424A73.446 73.446 0 0 0 218 72.282a75.023 75.023 0 0 1-18.428 19.13"/></g></svg>
             <a href="">
-                <button class="btn btn-danger">LOGIN</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">LOGIN</button>
             </a>
         </div>
     </div>
@@ -35,7 +35,35 @@
 </nav>
     <!-- ------------------------------------ LOGIN MODALITY HERE ------------------------------------------- -->
 
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
                 <div class="headmodal modal-header border-0">
@@ -47,8 +75,7 @@
                             <div class="login-icon  my-3">
                                 <div class="icon-circle">
                                     <svg class="" xmlns="http://www.w3.org/2000/svg" width="6em" height="5.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
-                                </div>
-                                
+                                </div> 
                             </div>
                             <h4 class="login-title my-4">LOGIN</h4>
                             <form>
@@ -77,7 +104,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- ----------------------------------------------------MAIN CONTENT ------------------------------ -->
 
@@ -85,7 +112,7 @@
         <section class="">
             <div class="main-container" id="contentTop">
                 <div class="row justify-content-center">
-                    <div class="col-10">
+                    <div class="col-8">
                         <div class="mid-container row justify-content-center">
                             <div class="mid-content bg-light col-12 p-3"> 
                                 <div class="row justify-content-between p-3 align-items-center">
@@ -118,28 +145,34 @@
                                 </div>
                                 <div class="row mt-0 custom-row px-3 font-size-1">
                                     <div class="book-title col-2 custom-col p-0">
-                                        <p>The New Art and Sciences of Teaching</p>
+                                        <p class="p-0 m-0">The New Art and Sciences of Teaching</p>
                                         <span>By Robert J. Marzano</span>
+                                        <p style="margin-top:5px;" class="text-body-tertiary">Total of Borrows : 18</p>
                                     </div>
                                     <div class="book-title col-2 custom-col p-0">
-                                        <p>Anatomy Coloring Book</p>
+                                        <p class="p-0 m-0">Anatomy Coloring Book</p>
                                         <span>By Joe Ziemian</span>
+                                        <p style="margin-top:5px;" class="text-body-tertiary">Total of Borrows : 15</p>
                                     </div>
                                     <div class="book-title col-2 custom-col p-0">
-                                        <p>Build the Life you Want</p>
+                                        <p class="p-0 m-0">Build the Life you Want</p>
                                         <span>By Arthur C. Brooks & Oprah Winfrey</span>
+                                        <p style="margin-top:5px;" class="text-body-tertiary">Total of Borrows : 13</p>
                                     </div>
                                     <div class="book-title col-2 custom-col p-0">
-                                        <p>The New Art and Science of Teaching Writing</p>
+                                        <p class="p-0 m-0">The New Art and Science of Teaching Writing</p>
                                         <span>By Katch Tuchman Glass & Robert J. Marzano</span>
+                                        <p style="margin-top:5px;" class="text-body-tertiary">Total of Borrows : 12</p>
                                     </div>
                                     <div class="book-title col-2 custom-col p-0">
-                                        <p>The Art and Science of Technical Anaylsis</p>
+                                        <p class="p-0 m-0">The Art and Science of Technical Anaylsis</p>
                                         <span>By Adam Grimes</span>
+                                        <p style="margin-top:5px;" class="text-body-tertiary">Total of Borrows : 10</p>
                                     </div>
                                     <div class="book-title col-2 custom-col p-0">
-                                        <p>Colour Art & Science</p>
+                                        <p class="p-0 m-0">Colour Art & Science</p>
                                         <span>By Trevor Lamb & Janine Borrian</span>
+                                        <p style="margin-top:5px;" class="text-body-tertiary">Total of Borrows : 8</p>
                                     </div>
                                 </div>
                             </div>
@@ -195,11 +228,11 @@
         <section>
         <div class="container-fluid mt-3 p-0">
             <div class="row justify-content-center">
-                <div class="col-10 bg-white p-4">
+                <div class="col-8 bg-white p-5">
                     <div class="row">
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <div>
-                                <label class="level-level me-1" for="">Books</label>
+                                <label class="level-level me-1" for=""><b>Books</b></label>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
@@ -216,53 +249,287 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ------------------------------------ ELECTRONICS BOOKS BELOW ------------------ -->
                     <div class="container-fluid mt-5">
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <div class="col-12 p-0">
                                 <div class="d-block">
-                                    <label for="">Electronics</label>
-                                </div>
-                                <div class="image-container d-flex">
-                                    <div class="row row-cols-1 row-cols-md-3 g-4">
-                                        <div class="col">
-                                            <div class="card h-100">
-                                            <img src="/images/topbooks/book1.png" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <small class="text-body-secondary">Last updated 3 mins ago</small>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <small class="text-body-secondary">Last updated 3 mins ago</small>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <small class="text-body-secondary">Last updated 3 mins ago</small>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <label for=""><b>Electronics Engineering</b></label>
+                                        <a href="">View All</a>
                                     </div>
                                 </div>
+                                <div class="row d-flex justify-content-center align-items-center mt-3">
+                                    <div class="col-2">
+                                        <img src="/images/electronics/book1.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electronics/book2.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electronics/book3.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electronics/book4.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electronics/book5.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electronics/book6.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ------------------------------------------- ELECTRICAL BOOKS BELOW ---------- -->
+                    <div class="container-fluid mt-5">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-12 p-0">
+                                <div class="d-block">
+                                    <div class="d-flex justify-content-between">
+                                        <label for=""><b>Electrical Engineering</b></label>
+                                        <a href="">View All</a>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-center align-items-center mt-3">
+                                    <div class="col-2">
+                                        <img src="/images/electrical/book1.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electrical/book2.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electrical/book3.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electrical/book4.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electrical/book5.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/electrical/book6.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ---------------------------------------- MECHANICAL ENGINEERING BELOW ----------------- -->
+                    <div class="container-fluid mt-5">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-12 p-0">
+                                <div class="d-block">
+                                    <div class="d-flex justify-content-between">
+                                        <label for=""><b>Mechanical Engineering</b></label>
+                                        <a href="">View All</a>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-center align-items-center mt-3">
+                                    <div class="col-2">
+                                        <img src="/images/mechanical eng/book1.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/mechanical eng/book2.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/mechanical eng/book3.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/mechanical eng/book4.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/mechanical eng/book5.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/mechanical eng/book6.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                        <!-- -------------------------------------- COMPUTER STUDIES BELOW -------------- -->
+                        <div class="container-fluid mt-5">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12 p-0">
+                                    <div class="d-block">
+                                        <div class="d-flex justify-content-between">
+                                            <label for=""><b>Bachelor of Science in Information Technology</b></label>
+                                            <a href="">View All</a>
+                                        </div>
+                                    </div>
+                                <div class="row d-flex justify-content-center align-items-center mt-3">
+                                    <div class="col-2">
+                                        <img src="/images/BSIT/book1.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/BSIT/book2.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/BSIT/book3.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/BSIT/book4.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/BSIT/book7.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/BSIT/book6.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                        <!-- -------------------------- CAS BOOKS ---------------------- -->
+                        <div class="container-fluid mt-5">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12 p-0">
+                                    <div class="d-block">
+                                        <div class="d-flex justify-content-between">
+                                            <label for=""><b>College Arts of Sciences</b></label>
+                                            <a href="">View All</a>
+                                        </div>
+                                    </div>
+                                <div class="row d-flex justify-content-center align-items-center mt-3">
+                                    <div class="col-2">
+                                        <img src="/images/CAS/book1.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/CAS/book2.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/CAS/book3.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/CAS/book4.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/CAS/book7.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <img src="/images/CAS/book6.png" class="card-img-top" alt="" >
+                                        <div class="card-body mt-1 text-center">
+                                            <p class="card-text p-0 m-0">The New Art and Science of Teaching Writing</p>
+                                            <small class="">Available</small>
+                                        </div>
+                                    </div>
+                                </div>      
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -272,6 +539,5 @@
     </main>
 </body>
 </html>
-
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
