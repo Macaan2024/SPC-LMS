@@ -1,0 +1,82 @@
+.dash-container {
+    transition: background-color 0.3s ease;
+}
+.dash-container:hover {
+    background-color: #d0d2d3;
+   
+}
+.side-dash-icon {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(116, 113, 113);
+}
+.side-dash-icon svg {
+    border: none;
+    box-shadow: none;
+}
+/* ----------- Book-icon BLOEW --- */
+.book-icon-container {
+    transition: background-color 0.3s ease; 
+}
+.book-icon-container:hover {
+    background-color:#d0d2d3;
+}
+.book-icon {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(116, 113, 113);
+}
+/* ---------- INVENTORY ICON BELOW --- */
+.inventory-icon-container {
+    transition: background-color 0.3s ease; 
+}
+.inventory-icon-container:hover {
+    background-color:#d0d2d3;
+}
+.inventory-icon {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(116, 113, 113);
+}
+/* ---------- ACCOUNTS ICON BEOW ------ */
+.account-icon-container {
+    transition: background-color 0.3s ease; 
+}
+.account-icon-container:hover {
+    background-color:#d0d2d3;
+}
+.account-icon {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(116, 113, 113);
+}
+/* ------------ USER ICON ---------  */
+.user-icon-container {
+    transition: background-color 0.3s ease; 
+}
+.user-icon-container:hover {
+    background-color:#d0d2d3;
+}
+.user-icon {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(116, 113, 113);
+}
+/* ------ TRANSACTION ICON ----- */
+.transaction-icon-container {
+    transition: background-color 0.3s ease; 
+}
+.transaction-icon-container:hover {
+    background-color:#d0d2d3;
+}
+.transaction-icon {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    color: rgb(116, 113, 113);
+}

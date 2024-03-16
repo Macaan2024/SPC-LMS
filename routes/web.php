@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/header', function () {
-    return view('desktop/layout/header');
+    return view('desktop/layout/navhead');
 });
