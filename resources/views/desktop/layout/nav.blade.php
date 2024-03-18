@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-3 m-0">
+    <div class="container-fluid d-flex justify-content-between align-items-center p-0 m-0">
         <a class="navbar-brand" href="#">SPC LIBRARY</a>
         <form class="d-flex" role="search">
             <select name="" id="" class="form-select me-2">

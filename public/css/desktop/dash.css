@@ -1,0 +1,193 @@
+/* year selection */
+.dash-selection-row select {
+    width: 100px;
+}
+/* sem buttons */
+.sem-buttons button{
+    background-color: transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    border-radius: 5px;
+}
+.sem-buttons button:hover {
+    background-color: #660809;
+    color: white;
+}
+
+/* total boxess  */
+/* library office boxes */
+.library-title-box {
+    width: 12vmax;
+    height: 2.5vmax;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #b700ff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.library-totalnum-box {
+    width: 12vmax;
+    height: 6.5vmax;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #7500ab;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+/* book total boxes */
+.book-title-box {
+    width: 12vmax;
+    height: 2.5vmax;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #0000FF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.book-totalnum-box {
+    width: 12vmax;
+    height: 6.5vmax;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #0047AB;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+/* members box */
+.member-title-box {
+    width: 12vmax;
+    height: 2.5vmax;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #243C3C;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.member-totalnum-box {
+    width: 12vmax;
+    height: 6.5vmax;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #355B5B;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+/* borrowed box  */
+.borrowed-title-box {
+    width: 12vmax;
+    height: 2.5vmax;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #301934;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.borrowed-totalnum-box {
+    width: 12vmax;
+    height: 6.5vmax;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #702963;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+/* return boxes  */
+.return-title-box {
+    width: 12vmax;
+    height: 2.5vmax;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #18563A;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.return-totalnum-box {
+    width: 12vmax;
+    height: 6.5vmax;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #207B50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+/* overdue boxes */
+.overdue-title-box {
+    width: 12vmax;
+    height: 2.5vmax;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #984704;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.overdue-totalnum-box {
+    width: 12vmax;
+    height: 6.5vmax;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #D56914;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+/* lost boxes */
+.lost-title-box {
+    width: 12vmax;
+    height: 2.5vmax;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #9D1B28;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.lost-totalnum-box {
+    width: 12vmax;
+    height: 6.5vmax;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #EA2637;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
