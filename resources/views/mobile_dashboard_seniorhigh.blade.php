@@ -6,6 +6,7 @@
     <title>Mobile dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="/css/mobilecss/seniorhigh.css">
+    
 
 </head>
 <body>
@@ -45,7 +46,7 @@
      <!--STEM BOOKS-->
     <div class="view1">
         <h4>STEM</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="stem">
         <img src="images/Stem books/practical research.gif" alt="practical research">
@@ -68,7 +69,7 @@
     <!--HUMSS BOOKS-->
     <div class="view2">
         <h4>HUMSS</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="humss">
         <img src="images/Humss books/humanities.jpg" alt="humanities">
@@ -91,7 +92,7 @@
     <!--ABM BOOKS-->
     <div class="view3">
         <h4>ABM</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="abm">
         <img src="images/Abm books/abm.gif" alt="abm">
@@ -114,7 +115,7 @@
     <!--GAS BOOKS-->
     <div class="view4">
         <h4>GAS</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="gas">
         <img src="images/Gas books/gas.jpg" alt="gas">
@@ -137,7 +138,7 @@
     <!--ARTS-->
     <div class="view5">
         <h4>Arts</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="arts">
         <img src="images/Arts books/teaching.png" alt="teaching">
@@ -157,5 +158,6 @@
         <p id="available19">Available</p>
         <p id="available20">Available</p>
     </div>
+    <script src="js/mobilejs/dashboard_shs.js"></script>
 </body>
 </html>

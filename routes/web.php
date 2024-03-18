@@ -36,3 +36,23 @@ Route::get('/seniorhigh', function () {
 Route::get('/elementary', function () {
     return view('/mobile_dashboard_elementary');
 });
+
+// Route for Login Page
+Route::get('/login', function () {
+    return view('desktop/login');
+})->name('login');
+
+// Route for View All Page
+Route::get('/viewAll', function () {
+    return view('mobile/viewAll');
+})->name('viewAll');
+
+// Route for Search Book Page
+Route::get('/searchBook', function () {
+    return view('mobile/searchBook');
+})->name('searchBook');
+
+// Route for Search Page
+Route::get('/search', function () {
+    return view('mobile/search');
+})->name('search');

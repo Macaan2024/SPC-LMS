@@ -6,6 +6,7 @@
         <title>Mobile dashboard</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <link rel="stylesheet" href="css/mobilecss/elementary.css">
+        
     </head>
     <body>
         <div class="login">
@@ -44,7 +45,7 @@
         <!--grade 1 BOOKS-->
         <div class="view1">
             <h4>Grade 1</h4>
-            <button>View All</button>
+            <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
         </div>
         <div class="e-engineering">
             <img src="images/Electrical Books/electrical_engineering_fundamentals.png" alt="electrical_engineering_fundamentals">
@@ -67,7 +68,7 @@
         <!--grade 2 BOOKS-->
         <div class="view2">
             <h4>Grade 2</h4>
-            <button>View All</button>
+            <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
         </div>
         <div class="el-engineering">
             <img src="images/Electronics books/electronics_practical.png" alt="electronics_practical">
@@ -90,7 +91,7 @@
         <!--Grade 3 BOOKS-->
         <div class="view3">
             <h4>Grade 3</h4>
-            <button>View All</button>
+            <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
         </div>
         <div class="m-engineering">
             <img src="images/Mechanical books/mechanical_design.png" alt="mechanical_design">
@@ -113,7 +114,7 @@
         <!--Grade 4 BOOKS-->
         <div class="view4">
             <h4>Grade 4</h4>
-            <button>View All</button>
+            <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
         </div>
         <div class="computer_studies">
             <img src="images/Computer Studies books/computer_studies.png" alt="computer_studies">
@@ -136,7 +137,7 @@
         <!--Grade 5-->
         <div class="view5">
             <h4>Grade 5</h4>
-            <button>View All</button>
+            <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
         </div>
         <div class="arts">
             <img src="images/Arts books/teaching.png" alt="teaching">
@@ -156,5 +157,6 @@
             <p id="available19">Available</p>
             <p id="available20">Available</p>
         </div>
+        <script src="js/mobilejs/dashboard_elementary.js"></script>
     </body>
     </html>

@@ -6,6 +6,7 @@
     <title>Mobile Dashboard High School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="/css/mobilecss/highschool.css">
+    
 </head>
 <body>
     <div class="login">
@@ -44,7 +45,7 @@
      <!--Grade 7 BOOKS-->
     <div class="view1">
         <h4>Grade 7</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="grade7">
         <img src="images/grade 7/arts.jpg" alt="arts">
@@ -67,7 +68,7 @@
     <!--Grade 8 BOOKS-->
     <div class="view2">
         <h4>Grade 8</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="grade8">
         <img src="images/grade 8/language.jpg" alt="language">
@@ -90,7 +91,7 @@
     <!--Grade 9 BOOKS-->
     <div class="view3">
         <h4>Grade 9</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="grade9">
         <img src="images/grade 7/arts.jpg" alt="arts">
@@ -113,7 +114,7 @@
     <!--Grade 10 BOOKS-->
     <div class="view4">
         <h4>Grade 10</h4>
-        <button>View All</button>
+        <button onclick="window.location.href = '{{ route('viewAll') }}'">View All</button>
     </div>
     <div class="grade10">
     <img src="images/grade 8/language.jpg" alt="language">
@@ -133,5 +134,6 @@
         <p id="available15">Available</p>
         <p id="available16">Available</p>
     </div>
+    <script src="js/mobilejs/dashboard_highschool.js"></script>
 </body>
 </html>
