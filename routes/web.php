@@ -25,14 +25,17 @@ Route::get('/dashboard', function () {
     return view('/desktop/dashboard');
 });
 Route::get('/highschool', function () {
-    return view('/mobile_dashboard_highschool');
+    return view('mobile/landing_page_highschool');
 });
 Route::get('/college', function () {
-    return view('/mobile_dashboard_college');
+    return view('mobile/landing_page_college');
 });
 Route::get('/seniorhigh', function () {
-    return view('/mobile_dashboard_seniorhigh');
+    return view('mobile/landing_page_seniorhigh');
 });
 Route::get('/elementary', function () {
-    return view('/mobile_dashboard_elementary');
+    return view('mobile/landing_page_elementary');
+});
+Route::get('/dashboard', function () {
+    return view('mobile/mobile_dashboard');
 });

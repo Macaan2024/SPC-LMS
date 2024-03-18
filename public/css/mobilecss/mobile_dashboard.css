@@ -1,7 +1,7 @@
 body{
     background-color: 	rgb(249, 246, 238);
 }
-.login{
+/* .login{
     display: flex;  
 }
 .login .lms{
@@ -21,6 +21,15 @@ body{
 .login .button:hover{
     background-color: rgb(157, 71, 71);
     cursor: pointer;
+} */
+.header{
+    color: rgb(102, 8, 9);
+}
+.header span{
+    margin-left: 160px;
+}
+.header fa-solid fa-qrcode{
+    margin-left: 50px;
 }
 .line1{
     margin-bottom: 0px;
@@ -45,13 +54,14 @@ body{
     font-size: small;
     border-collapse: collapse;
     width: 415px;
-    background-color: rgb(102, 8, 9);
-    color: white; 
     height: 100px;
+    background-color: rgb(102, 8, 9);
+    color: white;  
 }
 td{
-    border: 1px solid gray;
+    border: rgb(102, 8, 9);
     text-align: center;
+    padding: 5px;
     background-color: white;
     color: black;
 }
@@ -72,7 +82,7 @@ td{
     width: 170px;
     margin-top: 10px;
 }
-/*grade 7 BOOKS*/
+/*ELECTRICAL ENGINEERING BOOKS*/
 .view1{
     display: flex;
 }
@@ -81,7 +91,7 @@ td{
     font-size: medium;
 }
 .view1 button{
-    margin-left: 290px;
+    margin-left: 184px;
     margin-top: 15px;
     height: 30px;
 }
@@ -90,18 +100,18 @@ td{
     background-color: maroon;
     color: white;
 }
-.grade7{
+.e-engineering{
     display: flex;
 }
-.grade7 img{
+.e-engineering img{
     width: 85px;
     margin: 10px;
 }
-.grade7-text{
+.electrical-text{
     display: flex;
     font-size: small;
 }
-.grade7-text p{
+.electrical-text p{
     font-family: sans-serif;
     margin-top: 0px;
 }
@@ -138,7 +148,7 @@ td{
 #available4{
     margin-left: 55px;
 }
-/*grade 8 BOOKS*/
+/*ELECTRONICS BOOKS*/
 .view2{
     display: flex;
 }
@@ -147,7 +157,7 @@ td{
     font-size: medium;
 }
 .view2 button{
-    margin-left: 290px;
+    margin-left: 165px;
     margin-top: 15px;
     height: 30px;
 }
@@ -156,18 +166,18 @@ td{
     background-color: maroon;
     color: white;
 }
-.grade8{
+.el-engineering{
     display: flex;
 }
-.grade8 img{
+.el-engineering img{
     width: 85px;
     margin: 10px;
 }
-.grade8-text{
+.electronic-text{
     display: flex;
     font-size: small;
 }
-.grade8-text p{
+.electronic-text p{
     font-family: sans-serif;
     margin-top: 0px;
 }
@@ -204,7 +214,7 @@ td{
 #available8{
     margin-left: 55px;
 }
-/*grade 9 BOOKS*/
+/*MECHANICAL ENGINEERING BOOKS*/
 .view3{
     display: flex;
 }
@@ -213,7 +223,7 @@ td{
     font-size: medium;
 }
 .view3 button{
-    margin-left: 290px;
+    margin-left: 163px;
     margin-top: 15px;
     height: 30px;
 }
@@ -222,18 +232,18 @@ td{
     background-color: maroon;
     color: white;
 }
-.grade9{
+.m-engineering{
     display: flex;
 }
-.grade9 img{
+.m-engineering img{
     width: 85px;
     margin: 10px;
 }
-.grade9-text{
+.mechanical-text{
     display: flex;
     font-size: small;
 }
-.grade9-text p{
+.mechanical-text p{
     font-family: sans-serif;
     margin-top: 0px;
 }
@@ -270,7 +280,7 @@ td{
 #available12{
     margin-left: 55px;
 }
-/*grade 10 BOOKS*/
+/*COMPUTER STUDIES BOOKS*/
 .view4{
     display: flex;
 }
@@ -279,7 +289,7 @@ td{
     font-size: medium;
 }
 .view4 button{
-    margin-left: 280px;
+    margin-left: 210px;
     margin-top: 15px;
     height: 30px;
 }
@@ -288,18 +298,18 @@ td{
     background-color: maroon;
     color: white;
 }
-.grade10{
+.computer_studies{
     display: flex;
 }
-.grade10 img{
+.computer_studies img{
     width: 85px;
     margin: 10px;
 }
-.grade10-text{
+.computer-text{
     display: flex;
     font-size: small;
 }
-.grade10-text p{
+.computer-text p{
     font-family: sans-serif;
     margin-top: 0px;
 }
@@ -334,5 +344,71 @@ td{
     margin-left: 52px;
 }
 #available16{
+    margin-left: 55px;
+}
+/*ARTS*/
+.view5{
+    display: flex;
+}
+.view5 h4{
+    font-family: arial;
+    font-size: medium;
+}
+.view5 button{
+    margin-left: 315px;
+    margin-top: 15px;
+    height: 30px;
+}
+.view5 button:hover{
+    cursor: pointer;
+    background-color: maroon;
+    color: white;
+}
+.arts{
+    display: flex;
+}
+.arts img{
+    width: 85px;
+    margin: 10px;
+}
+.arts-text{
+    display: flex;
+    font-size: small;
+}
+.arts-text p{
+    font-family: sans-serif;
+    margin-top: 0px;
+}
+#name17{
+    margin-left: 25px;
+}
+#name18{
+    margin-left: 55px;
+}
+#name19{
+    margin-left: 50px;
+}
+#name20{
+    margin-left: 55px;
+}
+.available-text{
+    display: flex;
+    font-size: small;
+}
+.available-text p{
+    font-family: sans-serif;
+    margin-top: -10px;
+    color: rgb(0, 184, 18);
+}
+#available17{
+    margin-left: 25px;
+}
+#available18{
+    margin-left: 55px;
+}
+#available19{
+    margin-left: 52px;
+}
+#available20{
     margin-left: 55px;
 }
