@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/asd', function () {
     return view('desktop/index');
 });
 
@@ -23,4 +23,16 @@ Route::get('/header', function () {
 
 Route::get('/dashboard', function () {
     return view('/desktop/dashboard');
+});
+Route::get('/highschool', function () {
+    return view('/mobile_dashboard_highschool');
+});
+Route::get('/college', function () {
+    return view('/mobile_dashboard_college');
+});
+Route::get('/seniorhigh', function () {
+    return view('/mobile_dashboard_seniorhigh');
+});
+Route::get('/elementary', function () {
+    return view('/mobile_dashboard_elementary');
 });
