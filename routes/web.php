@@ -54,3 +54,6 @@ Route::get('/userProfile', function () {
 Route::get('/viewElectrical', function () {
     return view('mobile/view_all_electrical');
 });
+Route::get('/reservation', function () {
+    return view('mobile/requesst_reservation');
+});
