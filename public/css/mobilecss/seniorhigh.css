@@ -68,25 +68,25 @@ td{
     margin-left: 100px;
     width:90px;
 }
-.books #college{
+.books .seniorhigh{
     height: 30px;
     width: 170px;
     margin-top: 10px;
 }
 /*STEM BOOKS*/
-.view1{
+.seniorhigh-view1{
     display: flex;
 }
-.view1 h4{
+.seniorhigh-view1 h4{
     font-family: arial;
     font-size: medium;
 }
-.view1 button{
+.seniorhigh-view1 button{
     margin-left: 305px;
     margin-top: 15px;
     height: 30px;
 }
-.view1 button:hover{
+.seniorhigh-view1 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -140,19 +140,19 @@ td{
     margin-left: 55px;
 }
 /*HUMSS BOOKS*/
-.view2{
+.seniorhigh-view2{
     display: flex;
 }
-.view2 h4{
+.seniorhigh-view2 h4{
     font-family: arial;
     font-size: medium;
 }
-.view2 button{
+.seniorhigh-view2 button{
     margin-left: 293px;
     margin-top: 15px;
     height: 30px;
 }
-.view2 button:hover{
+.seniorhigh-view2 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -206,19 +206,19 @@ td{
     margin-left: 55px;
 }
 /*ABM BOOKS*/
-.view3{
+.seniorhigh-view3{
     display: flex;
 }
-.view3 h4{
+.seniorhigh-view3 h4{
     font-family: arial;
     font-size: medium;
 }
-.view3 button{
+.seniorhigh-view3 button{
     margin-left: 315px;
     margin-top: 15px;
     height: 30px;
 }
-.view3 button:hover{
+.seniorhigh-view3 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -272,19 +272,19 @@ td{
     margin-left: 55px;
 }
 /*GAS BOOKS*/
-.view4{
+.seniorhigh-view4{
     display: flex;
 }
-.view4 h4{
+.seniorhigh-view4 h4{
     font-family: arial;
     font-size: medium;
 }
-.view4 button{
+.seniorhigh-view4 button{
     margin-left: 315px;
     margin-top: 15px;
     height: 30px;
 }
-.view4 button:hover{
+.seniorhigh-view4 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -338,19 +338,19 @@ td{
     margin-left: 55px;
 }
 /*ARTS*/
-.view5{
+.seniorhigh-view5{
     display: flex;
 }
-.view5 h4{
+.seniorhigh-view5 h4{
     font-family: arial;
     font-size: medium;
 }
-.view5 button{
+.seniorhigh-view5 button{
     margin-left: 315px;
     margin-top: 15px;
     height: 30px;
 }
-.view5 button:hover{
+.seniorhigh-view5 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;

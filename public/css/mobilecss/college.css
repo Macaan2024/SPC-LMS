@@ -68,25 +68,25 @@ td{
     margin-left: 100px;
     width:90px;
 }
-.books #college{
+.books .college{
     height: 30px;
     width: 170px;
     margin-top: 10px;
 }
 /*ELECTRICAL ENGINEERING BOOKS*/
-.view1{
+.college-view1{
     display: flex;
 }
-.view1 h4{
+.college-view1 h4{
     font-family: arial;
     font-size: medium;
 }
-.view1 button{
+.college-view1 button{
     margin-left: 184px;
     margin-top: 15px;
     height: 30px;
 }
-.view1 button:hover{
+.college-view1 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -140,19 +140,19 @@ td{
     margin-left: 55px;
 }
 /*ELECTRONICS BOOKS*/
-.view2{
+.college-view2{
     display: flex;
 }
-.view2 h4{
+.college-view2 h4{
     font-family: arial;
     font-size: medium;
 }
-.view2 button{
+.college-view2 button{
     margin-left: 165px;
     margin-top: 15px;
     height: 30px;
 }
-.view2 button:hover{
+.college-view2 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -206,19 +206,19 @@ td{
     margin-left: 55px;
 }
 /*MECHANICAL ENGINEERING BOOKS*/
-.view3{
+.college-view3{
     display: flex;
 }
-.view3 h4{
+.college-view3 h4{
     font-family: arial;
     font-size: medium;
 }
-.view3 button{
+.college-view3 button{
     margin-left: 163px;
     margin-top: 15px;
     height: 30px;
 }
-.view3 button:hover{
+.college-view3 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -272,19 +272,19 @@ td{
     margin-left: 55px;
 }
 /*COMPUTER STUDIES BOOKS*/
-.view4{
+.college-view4{
     display: flex;
 }
-.view4 h4{
+.college-view4 h4{
     font-family: arial;
     font-size: medium;
 }
-.view4 button{
+.college-view4 button{
     margin-left: 210px;
     margin-top: 15px;
     height: 30px;
 }
-.view4 button:hover{
+.college-view4 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -338,19 +338,19 @@ td{
     margin-left: 55px;
 }
 /*ARTS*/
-.view5{
+.college-view5{
     display: flex;
 }
-.view5 h4{
+.college-view5 h4{
     font-family: arial;
     font-size: medium;
 }
-.view5 button{
+.college-view5 button{
     margin-left: 315px;
     margin-top: 15px;
     height: 30px;
 }
-.view5 button:hover{
+.college-view5 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;

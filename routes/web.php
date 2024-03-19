@@ -24,18 +24,37 @@ Route::get('/header', function () {
 Route::get('/dashboard', function () {
     return view('/desktop/dashboard');
 });
+
+// ROUTES FOR SELECTION YEAR IN LANDING PAGE BELOW
 Route::get('/highschool', function () {
     return view('mobile/landing_page_highschool');
-});
+})->name('highschool');
 Route::get('/college', function () {
     return view('mobile/landing_page_college');
-});
+})->name('college');
 Route::get('/seniorhigh', function () {
     return view('mobile/landing_page_seniorhigh');
-});
+})->name('seniorhigh');
 Route::get('/elementary', function () {
     return view('mobile/landing_page_elementary');
-});
+})->name('elementary');
+// ----------------- END --------------------------
+
+// ROUTES FOR SELECTION YEAR IN DASH BOARD BELOW 
+Route::get('/dashboard-highschool', function () {
+    return view('mobile/dash_page_highschool');
+})->name('dashboard-highschool');
+Route::get('/dashboard-college', function () {
+    return view('mobile/dash_page_college');
+})->name('dashboard-college');
+Route::get('/dashboard-seniorhigh', function () {
+    return view('mobile/dash_page_seniorhigh');
+})->name('dashboard-seniorhigh');
+Route::get('dashboard-elementary', function () {
+    return view('mobile/dash_page_elementary');
+})->name('dashboard-elementary');
+// -------------------- END -----------
+
 Route::get('/dashboard', function () {
     return view('mobile/mobile_dashboard');
 });

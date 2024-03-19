@@ -67,25 +67,25 @@ td{
     margin-left: 100px;
     width:90px;
 }
-.books #college{
+.books .highschool{
     height: 30px;
     width: 170px;
     margin-top: 10px;
 }
 /*grade 7 BOOKS*/
-.view1{
+.highschool-view1{
     display: flex;
 }
-.view1 h4{
+.highschool-view1 h4{
     font-family: arial;
     font-size: medium;
 }
-.view1 button{
+.highschool-view1 button{
     margin-left: 290px;
     margin-top: 15px;
     height: 30px;
 }
-.view1 button:hover{
+.highschool-view1 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -139,19 +139,19 @@ td{
     margin-left: 55px;
 }
 /*grade 8 BOOKS*/
-.view2{
+.highschool-view2{
     display: flex;
 }
-.view2 h4{
+.highschool-view2 h4{
     font-family: arial;
     font-size: medium;
 }
-.view2 button{
+.highschool-view2 button{
     margin-left: 290px;
     margin-top: 15px;
     height: 30px;
 }
-.view2 button:hover{
+.highschool-view2 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -205,19 +205,19 @@ td{
     margin-left: 55px;
 }
 /*grade 9 BOOKS*/
-.view3{
+.highschool-view3{
     display: flex;
 }
-.view3 h4{
+.highschool-view3 h4{
     font-family: arial;
     font-size: medium;
 }
-.view3 button{
+.highschool-view3 button{
     margin-left: 290px;
     margin-top: 15px;
     height: 30px;
 }
-.view3 button:hover{
+.highschool-view3 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;
@@ -271,19 +271,19 @@ td{
     margin-left: 55px;
 }
 /*grade 10 BOOKS*/
-.view4{
+.highschool-view4{
     display: flex;
 }
-.view4 h4{
+.highschool-view4 h4{
     font-family: arial;
     font-size: medium;
 }
-.view4 button{
+.highschool-view4 button{
     margin-left: 280px;
     margin-top: 15px;
     height: 30px;
 }
-.view4 button:hover{
+.highschool-view4 button:hover{
     cursor: pointer;
     background-color: maroon;
     color: white;

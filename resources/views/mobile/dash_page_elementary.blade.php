@@ -1,6 +1,6 @@
-@extends('mobile.layout.landing_page.landing_layout')
+@extends('mobile.layout.dashboard.dash_layout')
 
-@section('landing-elementary')
+@section('dashboard-elementary')
 <!--grade 1 BOOKS-->
 <div class="elementary-view1">
     <h4>Grade 1</h4>

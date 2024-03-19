@@ -1,9 +1,10 @@
-@extends('mobile.layout.landing_page.landing_layout')
+@extends('mobile.layout.dashboard.dash_layout')
 
-@section('landing-elementary')
-<!--grade 1 BOOKS-->
-<div class="elementary-view1">
-    <h4>Grade 1</h4>
+
+@section('dashboard-college')
+<!--ELECTRICAL ENGINEERING BOOKS-->
+<div class="college-view1">
+    <h4>Electrical Engineering</h4>
     <button>View All</button>
 </div>
 <div class="e-engineering">
@@ -24,9 +25,9 @@
     <p id="available3">Available</p>
     <p id="available4">Available</p>
 </div>
-<!--grade 2 BOOKS-->
-<div class="elementary-view2">
-    <h4>Grade 2</h4>
+<!--ELECTRONICS BOOKS-->
+<div class="college-view2">
+    <h4>Electronics Engineering</h4>
     <button>View All</button>
 </div>
 <div class="el-engineering">
@@ -47,9 +48,9 @@
     <p id="available7">Available</p>
     <p id="available8">Available</p>
 </div>
-<!--Grade 3 BOOKS-->
-<div class="elementary-view3">
-    <h4>Grade 3</h4>
+<!--MECHANICAL ENGINEERING BOOKS-->
+<div class="college-view3">
+    <h4>Mechanical Engineering</h4>
     <button>View All</button>
 </div>
 <div class="m-engineering">
@@ -70,9 +71,9 @@
     <p id="available11">Available</p>
     <p id="available12">Available</p>
 </div>
-<!--Grade 4 BOOKS-->
-<div class="elementary-view4">
-    <h4>Grade 4</h4>
+<!--COMPUTER STUDIES BOOKS-->
+<div class="college-view4">
+    <h4>Computer Studies</h4>
     <button>View All</button>
 </div>
 <div class="computer_studies">
@@ -93,9 +94,9 @@
     <p id="available15">Available</p>
     <p id="available16">Available</p>
 </div>
-<!--Grade 5-->
-<div class="elementary-view5">
-    <h4>Grade 5</h4>
+<!--ARTS-->
+<div class="college-view5">
+    <h4>Arts</h4>
     <button>View All</button>
 </div>
 <div class="arts">
@@ -117,4 +118,3 @@
     <p id="available20">Available</p>
 </div>
 @endsection
- 
