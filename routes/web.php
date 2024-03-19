@@ -39,3 +39,18 @@ Route::get('/elementary', function () {
 Route::get('/dashboard', function () {
     return view('mobile/mobile_dashboard');
 });
+Route::get('/borrowTransactions', function () {
+    return view('mobile/borrow_transactions');
+});
+Route::get('/returnTransactions', function () {
+    return view('mobile/return_transactions');
+});
+Route::get('/userFines', function () {
+    return view('mobile/fines');
+});
+Route::get('/userProfile', function () {
+    return view('mobile/user_profile');
+});
+Route::get('/viewElectrical', function () {
+    return view('mobile/view_all_electrical');
+});
