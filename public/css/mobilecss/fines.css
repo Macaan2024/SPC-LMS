@@ -1,0 +1,53 @@
+* {
+    background-color: seashell;
+  }
+  .header {
+    color: maroon;
+  }
+  .header span {
+    font-size: 20px;
+    margin-left: 130px;
+    margin-right: 130px;
+    font-weight: bold;
+  }
+  .header i {
+    font-size: 20px;
+  }
+  .arrow{
+    color: maroon;
+    font-size: 20px;
+    margin-top: 40px;
+  }
+  .fines{
+    margin-top: 30px;
+    font-family: arial;
+  }
+  table{
+    width: 420px;
+  }
+  table td{
+    text-align: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+  table td button{
+    padding: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 50px;
+    background-color: maroon;
+    color: white;
+  }
+  .total-fines{
+    font-family: arial;
+    margin-top: 100px;
+    margin-left: 100px;
+    display: flex;
+    border: 3px solid maroon;
+    width: 200px;
+  }
+  .total-fines h3{
+    margin-left: 10px;
+  }

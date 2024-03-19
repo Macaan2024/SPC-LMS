@@ -21,7 +21,7 @@
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{ route('index') }}">Logout</a></li>
                 </ul>
             </div>
             <div class="btn-group">
@@ -31,7 +31,7 @@
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="{{ route('index') }}">Logout</a></li>    
                 </ul>
             </div>
         </div>

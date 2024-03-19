@@ -21,22 +21,22 @@
 </head>
 <body>
     <div class="row p-0 m-0">
-        <div class="col-12 p-0 m-0">
+        <div class="col-12 p-0 m-0 position-fixed">
             @include('desktop/layout/nav') {{-- including navbar--}}
         </div>
     </div>
-    <div class="row m-0 p-0 min-vh-100">
-        <div class="col-12 m-0 p-0 h-100">
-            <div class="row p-0 m-0 h-100">
-                <div class="col-2 m-0 p-0 bg-primary flex-column bg-success h-100">
-                    <div class="row p-0 m-0 h-100">
-                        <div class="col-12 p-0 m-0 bg-danger h-100 p-5">
+    <div class="row m-0 p-0">
+        <div class="col-12 m-0 p-0 ">
+            <div class="row p-0 m-0 ">
+                <div class="col-2 m-0 p-0 ">
+                    <div class="row p-0 m-0">
+                        <div class="col-12 p-0 m-0 p-0 z-n1 position-fixed">
                             @include('desktop/layout/sidebar')
                         </div>
                     </div>
                 </div>
-                <div class="col-10 m-0 p-0 h-100">
-                    <div class="col-12 p-0 m-0 h-100">
+                <div class="col-10 m-0 p-0 ">
+                    <div class="col-12 p-0 m-0">
                         @yield('content')
                     </div>
                 </div>
