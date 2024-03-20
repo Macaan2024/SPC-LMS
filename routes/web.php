@@ -24,6 +24,39 @@ Route::get('/header', function () {
 Route::get('/dashboard', function () {
     return view('/desktop/dashboard');
 })->name('dashboard');
+Route::get('/bookmanagement', function () {
+    return view('/desktop/bookmanagement');
+})->name('bookmanagement');
+
+Route::get('/bookview', function() {
+    return view('/desktop/bookview');
+})->name('bookview');
+Route::get('/bookedit', function() {
+    return view('/desktop/bookedit');
+})->name('bookedit');
+Route::get('/bookinventory', function() {
+    return view('/desktop/bookinventory');
+})->name('bookinventory');
+Route::get('/accountmanagement', function() {
+    return view('/desktop/accountmanagement');
+})->name('accountmanagement');
+Route::get('/usermanagement', function() {
+    return view('/desktop/usermanagement');
+})->name('usermanagement');
+Route::get('/userview', function() {
+    return view('/desktop/userview');
+})->name('userview');
+Route::get('/transaction', function() {
+    return view('/desktop/transaction');
+})->name('transaction');
+Route::get('/Reservation', function() {
+    return view('/desktop/Reservation');
+})->name('Reservation');
+
+
+
+
+//------------------------------------------
 
 // ROUTES FOR SELECTION YEAR IN LANDING PAGE BELOW
 Route::get('/highschool', function () {
@@ -38,6 +71,8 @@ Route::get('/seniorhigh', function () {
 Route::get('/elementary', function () {
     return view('mobile/landing_page_elementary');
 })->name('elementary');
+
+
 // ----------------- END --------------------------
 
 // ROUTES FOR SELECTION YEAR IN DASH BOARD BELOW 

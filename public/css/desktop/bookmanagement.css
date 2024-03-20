@@ -1,0 +1,12 @@
+.book-button-level a:hover {
+    background-color: #660809;
+    color:white ;
+}
+.book-new a:hover {
+    background-color: #660809;
+    color:white ;
+}
+
+.book-management-table {
+    white-space: nowrap;
+}

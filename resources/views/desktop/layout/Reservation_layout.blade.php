@@ -13,6 +13,7 @@
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             box-sizing: border-box;
             font-size:14px;
+            background-color: #f8f9fa;
         }
         body::-webkit-scrollbar {
             display: none;
@@ -20,7 +21,7 @@
     </style>
 
 </head>
-<body>
+<body claass="bg-light">
     <div class="row p-0 m-0">
         <div class="col-12 p-0 m-0 " style="">
             <div class="">
@@ -29,18 +30,17 @@
         </div>
     </div>
     <div class="row m-0 p-0 d-flex justify-content-center">
-        <div class="col-2 vh-100 bg-light"></div>
-        <div class="col-8 m-0 p-0 ">
-            <div class="row p-0 m-0">
-                <div class="content col-12 m-0 p-0 ">
-                    <div class="col-12 p-0 m-0">
-                        @yield('content')
-                        @yield('bookmanagement-content')
+        <div class="col-1 vh-100 bg-light"></div>
+        <div class="col-10 m-0 p-0 ">
+            <div class="row p-0 m-0 bg-success">
+                <div class="content col-12 m-0 p-0">
+                    <div class="col-12 p-0 m-0 bg-white">
+                        @yield('Reservation-content')
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-2 bg-light"></div>
+        <div class="col-1 bg-light"></div>
     </div>
  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

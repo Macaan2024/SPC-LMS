@@ -1,13 +1,44 @@
+<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+  Open Sidebar
+</a>
 
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="dash-container row p-3 m-0">
+      <div class="col-12 p-0 m-0">
+        <a href="" class="side-dash-icon d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"/></svg>
+          <span>Dashboard</span>
+        </a>
+      </div>
+    </div>
+    <div class="book-icon-container row p-3 m-0">
+      <div class="col-12 p-0 m-0">
+        <a href="" class="book-icon d-flex align-items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 26 26"><rect width="26" height="26" fill="none"/><path fill="currentColor" d="M9.875 0a1 1 0 0 0-.406.156S8.204.952 6.844 1.813c-1.36.86-2.873 1.808-3.219 2a1 1 0 0 0-.063.03C2.306 4.618 2.045 5.884 2 6.594c-.003.033 0 .06 0 .095c-.011.266 0 .437 0 .437v13.063C2 22.087 4.213 23 6.313 23c.7 0 1.4-.113 2-.313c.4-.2.687-.6.687-1v-10.5c0-2.3.5-3.38 2-4.28c.4-.2 4.594-3.095 4.594-3.095c.2-.2.406-.606.406-.906v-.094c0-.4-.2-.706-.5-.906c-.3-.2-.7-.2-1 0c-.1.1-6.2 4.207-7.5 4.907c-1.3.8-2.513.993-2.813.593c-.093-.093-.174-.378-.187-.656v-.063c.001-.272.071-.784.625-1.125c.562-.313 1.957-1.204 3.313-2.062c.573-.363.644-.402 1.093-.688A1 1 0 0 0 11 2.5V1a1 1 0 0 0-1.125-1m8 3.5a1 1 0 0 0-.438.188s-5.034 3.387-5.906 3.968a1 1 0 0 0-.031.032c-.724.543-1.153 1.189-1.344 1.78A3.264 3.264 0 0 0 10 10.5v.313a1 1 0 0 0 0 .093V23c0 1.9 2.188 3 4.188 3c.9 0 1.712-.194 2.312-.594c1.2-.7 7-5.218 7-5.218c.3-.2.5-.482.5-.782v-13c0-.5-.194-.8-.594-1c-.3-.2-.793-.106-1.093.094c-1.6 1.2-5.907 4.588-6.907 5.188c-1.4.8-2.719 1-3.219.5c-.2-.2-.187-.388-.187-.688c.006-.172.025-.32.063-.438c.056-.174.17-.388.593-.718c.02-.016.01-.015.031-.031c.723-.483 2.934-1.99 4.376-2.97A1 1 0 0 0 19 6V4.5a1 1 0 0 0-1.125-1M22 10.813v2l-5 3.874v-2z"/></svg>
+          <span>Book Management</span>
+        </a>
+      </div>
+    </div>
+    <!-- Add remaining menu items here -->
+  </div>
+</div>
+
+
+<!-- <nav class="navbar p-0 m-0 p-0">
 <div class="side-bar row p-0 m-0">
-    <div class="side-bar-col col-12 bg-light d-flex flex-column justify-content-between p-0 m-0">
+    <div class="side-bar-col vh-100 col-12 bg-light d-flex flex-column justify-content-between p-0 m-0">
         <div>
             <div class="row px-3 m-0">
                 <div class="col-12 text-left mt-4 d-flex align-items-center p-0 m-0">
-                    <h6 class="p-0">MENU</h6>
+                    <a class="navbar-brand p-0 m-0">SPC LIBRARY</a>
                 </div>
             </div>
-            <div class="border-bottom"></div>
+            <div class="border-bottom mt-5"></div>
             <div class="dash-container row p-3 m-0">
                 <div class="col-12 p-0 m-0">
                     <a href="" class="side-dash-icon d-flex align-items-center gap-2">
@@ -69,3 +100,4 @@
         </div>
     </div>
 </div>
+</nav> -->
