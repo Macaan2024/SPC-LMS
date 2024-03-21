@@ -7,10 +7,10 @@
     <button>View All</button>
 </div>
 <div class="e-engineering">
-    <img src="images/Electrical Books/electrical_engineering_fundamentals.png" alt="electrical_engineering_fundamentals">
-    <img src="images/Electrical Books/electrical_engineering_principles.png" alt="electrical_engineering_principles">
-    <img src="images/Electrical Books/electrical_engineering_standards.png" alt="electrical_engineering_standards">
-    <img src="images/Electrical Books/electrical_engineering_textbook.png" alt="electrical_engineering_textbook">
+    <img src="images/Stem books/body science.jpg" alt="electrical_engineering_fundamentals">
+    <img src="images/Stem books/home education.jpg" alt="electrical_engineering_principles">
+    <img src="images/Stem books/human body.gif" alt="electrical_engineering_standards">
+    <img src="images/Stem books/practical research.gif" alt="electrical_engineering_textbook">
 </div>
 <div class="electrical-text">
     <p id="name1">Name 1</p>
