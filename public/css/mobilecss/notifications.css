@@ -19,6 +19,9 @@
     font-size: 20px;
     margin-top: 40px;
   }
+  .arrow a{
+    height: 0px;
+  }
   .arrow h2{
     font-weight: lighter;
     font-size: 20px;

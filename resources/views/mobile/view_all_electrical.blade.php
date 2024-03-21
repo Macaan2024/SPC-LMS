@@ -11,12 +11,12 @@
     <div class="header">
         <i class="fa-solid fa-bars"></i>
         <span>SPC LMS</span>
-        <i class="fa-solid fa-bell"></i>
+        <a href="{{ route('notifications') }}"><i class="fa-solid fa-bell" style="color: #660809;"></i></a>
         <i class="fa-solid fa-circle-user"></i>
     </div>
     <hr>
     <div class="view_ee">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{{ route('college') }}"><i class="fa-solid fa-arrow-left"></i></a>
         <h4>Electrical Engineering</h4>
     </div>
     <div class="list">
@@ -29,7 +29,7 @@
         <img class="three"src="images/Electronics books/electronics_practical.png" alt="practical">
     </div>
     <div class="view1">
-        <button id="button1">View</button>
+        <button id="button1"><a href="{{ route('reservation') }}">View</a></button>
         <button id="button2">View</button>
         <button id="button3">View</button>
     </div>

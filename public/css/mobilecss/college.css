@@ -82,9 +82,13 @@ td{
     font-size: medium;
 }
 .college-view1 button{
-    margin-left: 184px;
+    margin-left: 175px;
     margin-top: 15px;
+    width: 65px;
     height: 30px;
+}
+.college-view1 a{
+    color: black;
 }
 .college-view1 button:hover{
     cursor: pointer;

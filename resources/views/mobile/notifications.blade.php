@@ -16,7 +16,7 @@
     </div>
     <hr>
     <div class="arrow">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{{ route('reservation') }}"><i class="fa-solid fa-arrow-left" style="color: #660809;"></i></a>
         <h2>Notifications</h2>
         <i class="fa-solid fa-trash"></i>
     </div>

@@ -11,12 +11,12 @@
     <div class="header">
         <i class="fa-solid fa-bars"></i>
         <span>SPC LMS</span>
-        <i class="fa-solid fa-bell"></i>
+        <a href="{{ route('notifications') }}"><i class="fa-solid fa-bell" style="color: #660809;"></i></a>
         <i class="fa-solid fa-circle-user"></i>
     </div>
     <hr>
     <div class="arrow">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="{{ route('viewElectrical') }}"><i class="fa-solid fa-arrow-left" style="color: #660809;"></i></a>
         <img src="images/Electronics books/electronics_complete.png">
     </div>
     <div class="accession">

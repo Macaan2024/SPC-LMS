@@ -16,6 +16,9 @@
   .view_ee{
     display: flex;
   }
+  .view_ee a{
+    height: 0px;
+  }
   .view_ee i{
     margin-top: 30px;
     color: maroon;
@@ -50,8 +53,12 @@
   .view1{
     margin-top: 10px;
   }
+  .view1 a{
+    background-color: maroon;
+    color: white;
+  }
   .view1 #button1{
-    padding: 3px;
+    padding: 5px;
     width: 130px;
     margin-right: 5px;
     background-color: maroon;

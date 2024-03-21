@@ -5,7 +5,7 @@
 <!--ELECTRICAL ENGINEERING BOOKS-->
 <div class="college-view1">
     <h4>Electrical Engineering</h4>
-    <button>View All</button>
+    <button><a href="{{ route('viewElectrical') }}">View All</a></button>
 </div>
 <div class="e-engineering">
     <img src="images/Electrical Books/electrical_engineering_fundamentals.png" alt="electrical_engineering_fundamentals">

@@ -102,9 +102,18 @@ Route::get('/userFines', function () {
 Route::get('/userProfile', function () {
     return view('mobile/user_profile');
 });
+
+//-------------route for view all--------//
 Route::get('/viewElectrical', function () {
     return view('mobile/view_all_electrical');
-});
+})->name('viewElectrical');
+
+//----------book reservation--------//
 Route::get('/reservation', function () {
     return view('mobile/request_reservation');
-});
+})->name('reservation');
+
+//----------user notifications--------//
+Route::get('/notifications', function () {
+    return view('mobile/notifications');
+})->name('notifications');
