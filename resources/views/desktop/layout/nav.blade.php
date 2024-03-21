@@ -120,6 +120,5 @@
             </div>
         </div>
     </div>
-    <!-- Add remaining menu items here -->
   </div>
 </div>
