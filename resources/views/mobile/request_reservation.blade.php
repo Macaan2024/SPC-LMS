@@ -40,5 +40,6 @@
     <div class="request">
         <button>Request Reservation</button>
     </div>
+    <script src="/js/mobilejs/reservation.js"></script>
 </body>
 </html>

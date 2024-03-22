@@ -117,3 +117,8 @@ Route::get('/reservation', function () {
 Route::get('/notifications', function () {
     return view('mobile/notifications');
 })->name('notifications');
+
+// Route for the reservations page
+Route::get('/reservations', function () {
+    return view('reservations');
+})->name('reservations');
