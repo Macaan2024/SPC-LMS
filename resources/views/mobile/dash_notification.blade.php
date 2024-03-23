@@ -18,7 +18,7 @@
     <p class="text-danger fw-bold">Alert!</p>
     <p class="custom-paragraph">Dear Student, You need to return the book entitled The Computer Book before 9:00am. Otherwise, you will be penalty 10 pesos per hour. Thank you! Godbless.</p>
     <div class="d-flex justify-content-between">
-        <button class="btn btn-success">View</button>
+        <a href="{{ route ('reservation') }}"><button class="btn btn-success">View</button></a>
         <button class="btn btn-danger delete-btn" style="display: none;">Delete</button>
     </div>
 </div>
@@ -26,7 +26,7 @@
     <p class="text-success fw-bold">Book Borrow Approve!</p>
     <p class="custom-paragraph">Dear Student, You may borrow the book today on 5:00pm, please be sure to come don't be late. Otherwise, your request reservation will be decline in 15 minutes</p>
     <div class="d-flex justify-content-between">
-        <button class="btn btn-success">View</button>
+        <a href="{{ route('mob-viewbook') }}"><button class="btn btn-success">View</button></a>
         <button class="btn btn-danger delete-btn" style="display: none;">Delete</button>
     </div>
 </div>

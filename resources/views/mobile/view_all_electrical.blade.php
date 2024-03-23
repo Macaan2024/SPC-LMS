@@ -1,12 +1,16 @@
 @extends('mobile.layout.dashboard.dash_layout')
 @section('dash-viewall-content')
     <div class="view_ee">
-        <a href="{{ route('college') }}"><i class="fa-solid fa-arrow-left"></i></a>
+        <a href="{{ route('dashboard-college') }}"><i class="fa-solid fa-arrow-left"></i></a>
         <h4>Electrical Engineering</h4>
     </div>
     <div class="list">
         <h5>List of Books</h5>
     </div>
+    <div class="my-3">
+    @include('mobile.layout.dashboard.dash_search')
+    </div>
+   
     <!--First layer-->
     <div class="book1">
         <img class="one" src="images/Electronics books/electronics_complete.png" alt="electronics">
@@ -18,6 +22,7 @@
         <button id="button2">View</button>
         <button id="button3">View</button>
     </div>
+
     <!--2nd layer-->
     <div class="book2">
         <img class="four" src="images/Electronics books/electronics_practical.png" alt="electronics">
