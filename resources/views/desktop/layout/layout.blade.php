@@ -36,6 +36,7 @@
                     <div class="col-12 p-0 m-0">
                         @yield('content')
                         @yield('bookmanagement-content')
+                        @yield('desktop-viewtransaction-content')
                     </div>
                 </div>
             </div>

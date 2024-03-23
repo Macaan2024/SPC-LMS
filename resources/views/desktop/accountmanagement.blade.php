@@ -47,13 +47,6 @@
         </div>
         <div class="form-group mt-5" style="width:500px;">
             <form class="d-flex" role="search">
-                <select name="" id="" class="form-select me-2">
-                    <option value="" selected>Select Search Type</option>
-                    <option value="">Book Title</option>
-                    <option value="">Book Author</option>.
-                    <option value="">Book Accession Number</option>
-                    <option value="">Book ISBN</option>
-                </select>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="search-button" type="submit">Search</button>
             </form>
@@ -150,6 +143,35 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- -------------------------- ADD ACCOUNT --- -->
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Account</button>
+
+            <!-- -- MODALITY START -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">ADD BOOK</h1>
+                        </div>
+                        <div class="modal-body modal-body-scroll">
+                            <form action="">
+                                <label for="">Student ID</label>
+                                    <input type="text" class="form-control">
+                                <label for="">Username</label>
+                                    <input type="text" class="form-control">
+                                <label for="">Email Address</label>
+                                    <input type="text" class="form-control">
+                                <label for="">Password</label>
+                                    <input type="text" class="form-control">
+                                <label for="">Repassword</label>
+                                    <input type="text" class="form-control">
+                                <input type="submit" class="btn btn-success mt-3 form-control">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- -- MODALITY END -->
         </div>
     </div>
 </div>

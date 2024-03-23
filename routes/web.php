@@ -52,6 +52,9 @@ Route::get('/transaction', function() {
 Route::get('/Reservation', function() {
     return view('/desktop/Reservation');
 })->name('Reservation');
+Route::get('/desktop-viewtransaction', function() {
+    return view('/desktop/viewtransaction');
+})->name('desktop-viewtransaction');
 
 
 
