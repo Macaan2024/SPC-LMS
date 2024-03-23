@@ -167,6 +167,72 @@
                         </tr>
                     </tbody>
                 </table>
+                <!-- -------------------------- ADD BOOK MODALITY --- -->
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Book</button>
+
+                <!-- -- MODALITY START -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">ADD BOOK</h1>
+                            </div>
+                            <div class="modal-body modal-body-scroll">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3 mb-md-0">
+                                            <img src="images/BSIT/book1.png" class="img-fluid rounded" alt="">
+                                            <input type="file" class="form-control">
+                                        </div>
+                                        <div class="col-md-6 d-flex gap-2">
+                                            <div class="d-flex flex-column gap-2">
+                                                <div>
+                                                    <label for="">Book ID</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div>
+                                                    <label for="">Book Title</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div>
+                                                    <label for="">Book Author</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div>
+                                                    <label for="">Book Publication Year</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+   
+                                                <!-- ... other form fields ... -->
+                                            </div>
+                                            <div class="d-flex flex-column gap-2">
+                                                <div>
+                                                    <label for="">Book Langguage</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div>
+                                                    <label for="">Book Edition</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div>
+                                                    <label for="">Book Quantity</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div>
+                                                    <label for="">Book Publication Address</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <!-- ... other form fields ... -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btn btn-success mt-3 form-control">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- -- MODALITY END -->
             </div>
         </div>
     </div>

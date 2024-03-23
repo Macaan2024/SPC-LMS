@@ -65,9 +65,11 @@
                                     <th>Name</th>
                                     <th>Book ID</th>
                                     <th>Book Title</th>
-                                    <th>Status</th>
                                     <th>Borrow Date</th>
+                                    <th>Borrow Time</th>
                                     <th>Return Date</th>
+                                    <th>Return Time</th>
+                                    <th>Status</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -77,9 +79,11 @@
                                     <td>Casan Macaan</td>
                                     <td>1</td>
                                     <td>Python 1</td>
-                                    <td>On use</td>
                                     <td>3/20/2024</td>
-                                    <td></td>
+                                    <td>5:00 PM</td>
+                                    <td>4/20/2024</td>
+                                    <td>9:00 AM</td>
+                                    <td>On use</td>
                                     <td><a href="" class="btn btn-primary">View</a></td>
                                 </tr>
                             </tbody>
