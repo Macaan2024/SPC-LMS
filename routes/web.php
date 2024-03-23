@@ -141,3 +141,7 @@ Route::get('/mob-viewbook', function () {
 Route::get('/mob-viewbookreturn', function () {
     return view('mobile/viewbook_return');
 })->name('mob-viewbookreturn');
+//----------------------- logbook route
+Route::get('/logbook', function () {
+    return view('desktop/logbook');
+});
