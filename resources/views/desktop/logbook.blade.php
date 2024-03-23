@@ -56,8 +56,21 @@
   <div class="registrations">
     <button class="register">Registration Form</button>
   </div>
-  <div class="qr-code">
-    <img src="images/logbook/qr code.png" alt="spclogo">
-  </div>
-</body>
+  <div class="container">
+     <!-- <center><h1><b>QR Code Scanner</b></h1> -->
+      <video id="qr-video" width="500" height="400" autoplay></video>
+       <div id="qr-result">
+        <button type="s ubmit" class="submit" >Scan Me</button></div>   
+   <script>
+     const video = document.getElementById('qr-video');
+     const resultContainer = document.getElementById('qr-result');
+     // Access the camera and start streaming
+     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+     .then(stream => {
+     video.srcObject = stream;
+     video.play();
+     })
+     .catch(err => console.error('Error accessing the camera:', err));
+   </script>
+</body> 
 </html>

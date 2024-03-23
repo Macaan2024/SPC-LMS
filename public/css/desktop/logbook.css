@@ -140,6 +140,13 @@ body {
     width: 400px;
     height: auto;
   }
-  .qr-code{
-    margin: -350px 0 0 900px;
+  .container{
+    margin: -320px 0 0 900px;
+  }
+  .container button{
+    margin: 450px 0 0 -290px;
+    background-color: maroon;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100px;   
   }
