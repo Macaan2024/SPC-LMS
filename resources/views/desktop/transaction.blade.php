@@ -84,7 +84,7 @@
                                     <td>4/20/2024</td>
                                     <td>9:00 AM</td>
                                     <td>On use</td>
-                                    <td><a href="" class="btn btn-primary">View</a></td>
+                                    <td><a href="{{ route ('desktop-viewtransaction') }}" class="btn btn-primary">View</a></td>
                                 </tr>
                             </tbody>
                         </table>
