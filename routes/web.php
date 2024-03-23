@@ -58,6 +58,8 @@ Route::get('/Reservation', function() {
 
 //------------------------------------------
 
+
+// ->>>>>>>>>>>>> LIST OF ROUTES MOBILE BELOW 
 // ROUTES FOR SELECTION YEAR IN LANDING PAGE BELOW
 Route::get('/highschool', function () {
     return view('mobile/landing_page_highschool');
@@ -95,13 +97,16 @@ Route::get('/borrowTransactions', function () {
 });
 Route::get('/returnTransactions', function () {
     return view('mobile/return_transactions');
-});
+}); 
+//------ FINES BELOW
 Route::get('/userFines', function () {
     return view('mobile/fines');
-});
-Route::get('/userProfile', function () {
+})->name('userFines');
+// ------ PROFILE BELOW
+Route::get('/userprofile', function () {
     return view('mobile/user_profile');
-});
+})->name('userprofile');
+
 
 //-------------route for view all--------//
 Route::get('/viewElectrical', function () {
@@ -114,6 +119,25 @@ Route::get('/reservation', function () {
 })->name('reservation');
 
 //----------user notifications--------//
-Route::get('/notifications', function () {
-    return view('mobile/notifications');
-})->name('notifications');
+Route::get('/mobile-notification', function () {
+    return view('mobile/dash_notification');
+})->name('notification');
+//----------book request---------//
+Route::get('/bookrequest', function () {
+    return view('mobile/book_request');
+})->name('bookrequest');
+//---------- USER TRANSACTION ------
+Route::get('/mob-transaction', function () {
+    return view('mobile/borrow_transaction');
+})->name('borrow-transaction');
+Route::get('/mob-returntransaction', function () {
+    return view('mobile/return_transactions');
+})->name('return-transaction');
+//--------------- VIEW SPECIFIC borrow BOOK -----
+Route::get('/mob-viewbook', function () {
+    return view('mobile/viewbook');
+})->name('mob-viewbook');
+//--------------- VIEW SPECIFIC return BOOK -----
+Route::get('/mob-viewbookreturn', function () {
+    return view('mobile/viewbook_return');
+})->name('mob-viewbookreturn');

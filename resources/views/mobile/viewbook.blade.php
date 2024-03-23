@@ -1,5 +1,6 @@
-@extends('mobile.layout.dashboard.dash_layout')
-@section('dash-reservation-content')
+@extends ('mobile.layout.dashboard.dash_layout')
+
+@section('mob-viewbook')
 <div class="d-flex align-items-center mt-3">
     <a href="{{ route('dashboard-college') }}">
         <svg style="color:#661011;" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 512 512">
@@ -31,5 +32,20 @@
         <p>Book Language:<br> English</p>
     </div>
 </div>
-<a href="{{ route('viewElectrical') }}" class="btn btn-success form-control mt-3">Request Reservation</a>
+<div class="d-flex justify-content-between bg-white mt-3 py-3 px-3 rounded">
+    <div class="d-flex flex-column ">
+        <p>Borrow Day: 3/23/2024</p>
+        <p>Borrow Time: 5:00 PM</p>
+    </div>
+    <div class="d-flex flex-column">
+        <p>Return Day: 4/24/2024</p>
+        <p>Book Level: 9:00 AM</p>
+    </div>
+    <br>
+</div>
+    <div class="d-flex justify-content-between bg-white mt-3 py-3 px-3 rounded">
+        <p>Duration: 17hours</p>
+        <p>Status: Waiting</p>
+    </div>
+
 @endsection

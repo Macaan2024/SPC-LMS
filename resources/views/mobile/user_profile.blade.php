@@ -1,52 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="css/mobilecss/user_profile.css">
-</head>
-<body>
-    <div class="header">
-        <i class="fa-solid fa-bars"></i>
-        <span>SPC LMS</span>
-        <i class="fa-solid fa-bell"></i>
-        <i class="fa-solid fa-circle-user"></i>
-    </div>
-    <hr>
-    <div class="arrow">
-        <i class="fa-solid fa-arrow-left"></i>
-    </div>
-    <h3 class="h3">My Profile</h3>
-    <div class="profile-pic">
-        <i class="fa-solid fa-circle-user"></i>
-    </div>
-    <h2 class="h2">Jesper Ian V. Barila</h2>
-    <hr>
-    <h4>Information</h4>
-        <div class="information">
-            <p class="name">Last Name: Barila <br><br>
-                First Name: Jesper Ian <br><br>
-                MiddleInitial: V <br><br>
-                Gender: Male <br><br>
-                Contact number: 09514696308
-            </p>
-            <p class="course">Course: BSIT<br><br>
-                Year Level: 2nd Year<br><br>
-                Class Level:<br><br>
-                User Type: Student
-            </p>
-        </div>
-        <hr>
-    <div class="total">
-        <p class="total-borrow">Total Borrow Books: 15 <br><br>
-                Total Return Books: 15 <br><br>
-        </p>
-        <p class="total-penalty">Total Penalty: 110<br><br>
-                Total Lost Book: 0<br><br>
-         </p>
-    </div>
+@extends('mobile.layout.dashboard.dash_layout')
+
+@section('userprofile-content')
+<div class="d-flex align-items-center mt-3">
+    <a href="{{ route('dashboard-college') }}">
+        <svg style="color:#661011;" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 512 512">
+            <rect width="512" height="512" fill="none" />
+            <path fill="currentColor" d="M368 64L144 256l224 192z" />
+        </svg>
+    </a>
+    <span class="fw-bold mx-auto">My Profile</span>
+</div>
+<div class="d-block mt-3">
+    <img class="rounded-circle mx-auto d-block" height="200px" width="220px" src="userimage/lee.jpg" alt="">
+</div>
+<div class="mt-5">
+    <h2 class="text-center">Jesper Ian Barilla</h2>
+</div>
     
-</body>
-</html>
+<div>
+<h6 class="text-left mt-5">Information</h6>
+<div class="d-flex justify-content-between bg-white mt-3 py-3 px-3 rounded">
+    <div class="d-flex flex-column ">
+        <p>Lastname : Barilla</p>
+        <p>Firstname : Jesper Ian</p>
+        <p>Middlename : V</p>
+        <p>Gender : Male</p>
+        <p>Contact Number : 09514696308</p>
+    </div>
+    <div class="d-flex flex-column">
+        <p>Level : College</p>
+        <p>Course : BSIT</p>
+        <p>Year Level : 2nd Year</p>
+        <p>Usertype : Student</p>
+    </div>
+</div>
+<h6 class="mt-5 text-left">User Transaction Performance</h6>
+<div class="d-flex justify-content-between bg-white mt-3 py-3 px-3 rounded">
+    <div class="d-flex flex-column ">
+        <p>Number of Borrowed Books : 15</p>
+        <p class="text-success fw-bold">Successfully Return : 11</p>
+        <p class="text-warning fw-bold">Delay Return Return : 2</p>
+        <p class="text-danger fw-bold">Fail to Return (Lostbook) : 2</p>
+    </div>
+    <div class="d-flex flex-column">
+    </div>
+</div>
+<div class="mt-3">
+    <h6 class="text-danger fw-bolder">Total Balance : P20 </h6>
+</div>
+@endsection

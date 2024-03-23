@@ -1,42 +1,8 @@
-* {
-    background-color: seashell;
-  }
-  .header {
-    color: maroon;
-  }
-  .header span {
-    font-size: 20px;
-    margin-left: 130px;
-    margin-right: 130px;
-    font-weight: bold;
-  }
-  .header i {
-    font-size: 20px;
-  }
-  .button {
-    margin-top: 40px;
-    margin-left: 15px;
-  }
-  .button #borrow {
-    color: black;
-    padding: 5px;
-    width: 200px;
-    margin: -5px;
-    border-radius: 20px;
-  }
-  .button #return {
-    padding: 5px;
-    width: 200px;
-    border-radius: 20px;
-  }
-  .button #borrow:hover {
-    background-color: maroon;
-    color: white;
-  }
-  .button #return:hover {
-    background-color: maroon;
-    color: white;
-  }
+
+.borrow-button, .return-button {
+  background-color: white;
+  width:100%;
+}
   /*Borrow book 1*/
   .borrow_books1 {
     margin-top: 30px;

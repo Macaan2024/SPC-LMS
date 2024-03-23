@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View All</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="css/mobilecss/view_electrical.css">    
-</head>
-<body>
-    <div class="header">
-        <i class="fa-solid fa-bars"></i>
-        <span>SPC LMS</span>
-        <a href="{{ route('notifications') }}"><i class="fa-solid fa-bell" style="color: #660809;"></i></a>
-        <i class="fa-solid fa-circle-user"></i>
-    </div>
-    <hr>
+@extends('mobile.layout.dashboard.dash_layout')
+@section('dash-viewall-content')
     <div class="view_ee">
         <a href="{{ route('college') }}"><i class="fa-solid fa-arrow-left"></i></a>
         <h4>Electrical Engineering</h4>
@@ -55,5 +40,4 @@
         <button id="button8">View</button>
         <button id="button9">View</button>
     </div>
-</body>
-</html>
+@endsection

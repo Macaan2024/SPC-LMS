@@ -12,7 +12,7 @@
 
     <style>
         body {
-            padding-top: 49.67px;
+            padding:0;
         }
     </style>
     
@@ -22,13 +22,16 @@
     <div class="sticky-top top-0 w-100">
         @include('mobile.layout.landing_page.landing_nav')
     </div>
+    <div class="m-0 mt-3 px-2 py-3"> 
+        @include('mobile.layout.landing_page.landing_book_search')
+    </div>
     <!-- search -->
-    <div class="px-2 py-3">
-        @include('mobile.layout.landing_page.landing_search')
+    <div class="px-2 py-4">
+        @include('mobile.layout.landing_page.landing_selection_year')
     </div0>
 
     <!-- Yielding Landing Pages -->
-    <div class="py-2 px-2">
+    <div class="py-4 px-0 m-0">
         @yield('landing-college')
         @yield('landing-seniorhighschool')
         @yield('landing-highschool')
@@ -67,7 +70,7 @@
                                         </select>
                                     </div>
                                     <div class="btn-submit">
-                                        <a href="{{ route('dashboard') }}"><input type="button" class="mb-1" value="Submit"></span</a><br>
+                                        <a href="{{ route('dashboard-college') }}"><input type="button" class="mb-1" value="Submit"></span</a><br>
                                         <a href=""><span>Forgot Password?</span></a>
                                     </div>
                                 </form>
@@ -78,6 +81,8 @@
             </div>
         </div>
     </div>
+    <script src="js/mobilejs/land-selection-level.js"></script>
+    <!-- ----------- END OF MODALITYT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

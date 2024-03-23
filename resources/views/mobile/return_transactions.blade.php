@@ -1,60 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="css/mobilescss/return_transactions.css">
-   
-</head>
-<body>
-    <div class="header">
-        <i class="fa-solid fa-bars"></i>
-        <span>SPC LMS</span>
-        <i class="fa-solid fa-bell"></i>
-        <i class="fa-solid fa-circle-user"></i>
+@extends('mobile.layout.dashboard.dash_layout')
+
+@section('dash-return-content')
+<div class="row p-0 m-0">
+    <div class="button col-6 p-0 m-0">
+      <a href="{{ route('borrow-transaction') }}"><button href="" class="borrow-button rounded-start-pill  border-end-0" style="">Borrow</button></a>
     </div>
-        <hr>
-  <div class="button">   
-    <button id="borrow">Borrow</button>
-    <button id="return">Return</button>
-  </div> 
-  <div class="borrow_books1">
-        <img class="book1" src ="mechanical_pocket.png" alt="electronics">
-      <div class="accession1">
-        <p>ACCESSION NUMBER: 13,001 <br><br>
-          ISN: 978358017269 <br><br>
-          DURATION: 9 Hours <br><br>
-          BORROW DAY: March 19 2024 <br><br>
-          BORROW START-TIME: 5:00pm <br><br>
-          RETURN DAY: March 20 2024 <br><br>
-          RETURN TIME: 9am <br><br>
-          PENALTY: <br><br>
-          STATUS: On use
-        </p>
-      </div>
+    <div class="button col-6 p-0 m-0">
+      <a href="{{ route('return-transaction') }}"><button class="return-button rounded-end-pill  border-start-0" style="background-color:#661011;color:white;">Return</button></a>
+    </div>
+</div>
+
+<div class="d-flex gap-3 mt-3 p-0 m-0">
+  <div class="p-0 m-0 bg-primary">
+    <img style="width:170px; height:100%" class="img-fluid" src="images/Electronics books/electronics_complete.png" alt="electronics">
   </div>
-  <div class="view-book1">
-    <button>View Book</button>
-  </div>
-  <div class="borrow_books2">
-    <img class="book2" src ="mechanical_eng_design.png" alt="electronics">
-  <div class="accession2">
-    <p>ACCESSION NUMBER: 13,002 <br><br>
-      ISN: 978358017270 <br><br>
-      DURATION: 9 Hours <br><br>
-      BORROW DAY: March 19 2024 <br><br>
-      BORROW START-TIME: 5:00pm <br><br>
-      RETURN DAY: March 20 2024 <br><br>
-      RETURN TIME: 8am <br><br>
-      PENALTY: P10 = 1 hour <br><br>
-      STATUS: Return Late
-    </p>
+  <div class="d-flex flex-column gap-3 p-0 m-0">
+    <span>ACCESSION NUMBER: 13,001</span>
+    <span>ISN: 978358017269</span>
+    <span>DURATION: 9 Hours</span>
+    <span>BORROW DAY: March 19 2024</span>
+    <span>BORROW TIME: 5:00pm</span>
+    <span>RETURN DAY: March 20 2024</span>
+    <span>RETURN TIME: 9:00 AM</span>
   </div>
 </div>
-<div class="view-book2">
-<button>View Book</button>
+<div>
+  <label for="" class="m-0 p-0 mt-1">Status : </label>
+  <span class="text-success fw-bold">Successfully</span>
 </div>
-</body>
-</html>
+<div class="view-book1 mt-2">
+  <a class="form-control text-center text-white text-decoration-none" href="{{ route('mob-viewbookreturn') }}" style="background-color:#661011;">View Book</a>
+</div>
+
+<div class="d-flex gap-3 mt-3 p-0 m-0">
+  <div class="p-0 m-0 bg-primary">
+    <img style="width:170px; height:100%" class="img-fluid" src="images/Electronics books/electronics_complete.png" alt="electronics">
+  </div>
+  <div class="d-flex flex-column gap-3 p-0 m-0">
+    <span>ACCESSION NUMBER: 13,001</span>
+    <span>ISN: 978358017269</span>
+    <span>DURATION: 9 Hours</span>
+    <span>BORROW DAY: March 19 2024</span>
+    <span>BORROW TIME: 5:00pm</span>
+    <span>RETURN DAY: March 20 2024</span>
+    <span>RETURN TIME: 9:00 AM</span>
+  </div>
+</div>
+<div>
+  <label for="" class="m-0 p-0 mt-1">Status : </label>
+  <span class="text-warning fw-bold">Delay</span>
+</div>
+<div class="view-book1 mt-2">
+  <a class="form-control text-center text-white text-decoration-none" href="{{ route('mob-viewbookreturn') }}" style="background-color:#661011;">View Book</a>
+</div>
+@endsection
