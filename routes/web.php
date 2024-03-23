@@ -93,7 +93,7 @@ Route::get('dashboard-elementary', function () {
 // -------------------- END -----------
 
 Route::get('/borrowTransactions', function () {
-    return view('mobile/borrow_transactions');
+    return view('mobile/borrow_transaction');
 });
 Route::get('/returnTransactions', function () {
     return view('mobile/return_transactions');
