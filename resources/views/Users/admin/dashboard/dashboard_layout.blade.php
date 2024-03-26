@@ -8,15 +8,21 @@
     <link rel="stylesheet" href="/css/desktop/sidebar.css">{{-- CSS for sidebar --}}
     <link rel="stylesheet" href="/css/desktop/dash.css">{{-- CSS for dashboard --}}
     <link rel="stylesheet" href="/css/desktop/bookmanagement.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         body {
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             box-sizing: border-box;
             font-size:14px;
+            
         }
         body::-webkit-scrollbar {
             display: none;
-        } 
+        }
+
+        @media screen (maxheighy) {
+
+        }
     </style>
 
 </head>
@@ -24,7 +30,7 @@
     <div class="row p-0 m-0">
         <div class="col-12 p-0 m-0 " style="">
             <div class="">
-                @include('desktop/layout/nav') {{-- including navbar--}}
+                @include('Users.admin.layout.nav') {{-- including navbar--}}
             </div>
         </div>
     </div>
@@ -34,9 +40,10 @@
             <div class="row p-0 m-0">
                 <div class="content col-12 m-0 p-0 ">
                     <div class="col-12 p-0 m-0">
-                        @yield('content')
+                        <!-- @yield('content')
                         @yield('bookmanagement-content')
-                        @yield('desktop-viewtransaction-content')
+                        @yield('desktop-viewtransaction-content') -->
+                        @yield('dashboard-content')
                     </div>
                 </div>
             </div>
