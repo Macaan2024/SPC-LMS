@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 //--------- ROUTES FOR DESKTOP BELOW -----
 Route::get('/', function () {
-    return view('Users/admin');
+    return view('Users/admin/index');
 })->name('index');
 
 Route::get('/admin/dashboard', function () {

@@ -6,6 +6,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     background-color: #e0dddd;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -136,4 +138,23 @@ body {
     }
     .col-2 img {
         height: 12vmax;
+    }   
+
+
+
+    /* ------------------ Media Queriess  ------------- */
+
+    @media only screen and (max-width: 1090px) {
+        .col-8 {
+            width: 100%; /* Setting width to 100% effectively changes it to col-12 */
+        }
     }
+    @media only screen and (max-width: 460px) {
+        .cards-container {
+            flex-direction: column;
+        }
+        .book-image {
+            width: 100%;
+        }
+    }
+
