@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* importing roboto font from googlefonts */
+
 * {
     margin: 0;
     padding: 0;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     background-color: #e0dddd;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto';
 }
 
 
@@ -60,101 +63,98 @@ body {
     width: 100%;
 }
 /* -------------------------------------------------------- MAIN CONTENT -------------------- */
-/* Display BOoks AREA  */
+
+.topbooks-header {
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+.topbooks-header h6 {
+    font-weight: 450;
+}
+.topbooks-header  a {
+    text-decoration: none;
+    background-color: #661011;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+ .topbooks-body  {
+    margin: 0;
+    padding: 10px;
+    height: 70px;
+    overflow: hidden;
+    text-overflow: "";
+ }
+.topbooks-body  h6 {
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3rem;
+    text-wrap: wrap;
+ }
+ 
+ .topbooks-footer span {
+    font-size: 14px;
+    color: rgb(100, 99, 99);
+    display: block;
+ }
+
+ .card {
+    width: 210px;
+  }
+  
+  .card-img-top {
+    height: 230px;
+    width: 100%;
+    object-fit: fill;
+  }
+  
+  /* @media (max-width: 767px) {
+    .card {
+      width: 100%;
+    }
+  } */
+
+
+
+/* ------------------ Media Queriess  ------------- */
     
-    .book-title {
-        font-size: 14px; /* Adjust the font size as needed */
-        text-align: center;
-        word-spacing: 0.05em; /* Adjust word spacing to your preference */
-        letter-spacing: 0.05em; /* Adjust letter spacing to your preference */
-        line-height: 1.5; /* Increase line height for better readability */
-        hyphens: auto; /* Enable automatic hyphenation to improve text layout */
-    }
-    .custom-row .col-2 img {
-        width: 100%;
-        height: auto;
-    }
-    .custom-row .img-fluid {
-        height: 100%; /* Ensure the image fills the entire height of its container */
-        width: auto; /* Maintain the aspect ratio */
-    }
-    .mid-container {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-       
-    }
-    .mid-content {
-        margin-top: 25px;
-        border-radius: 5px;
-    }
-    .main-container {
-        margin: 0;
-        padding: 0;
-    }
-    .book-image {
-        max-width: 90%; /* Adjust as needed */
-        max-height: 90%; /* Adjust as needed */
-    }
 
-
-    /* ----------------- SEARCH TABLE RESULT -----  */
-    .table thead tr th {
-        background-color: #660809;
-        color: white;
-        font-weight: normal;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 14px;  
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;      
+    @media only screen and (max-width: 1386px) {
+        div.card2 {
+            display: none !important;
+        }
     }
-    .table tbody tr td {
-        font-weight: normal;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;  
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;      
+    @media only screen and (max-width: 1386px) {
+        div.card2 {
+            display: none !important;
+        }
     }
-    .table tbody tr button {
-        background-color: #660809;
-        color: white;
-        padding: 4px 16px;
-        border: none;
-        font-size:14px;
-    }
-    .search-result-box {
-        display: none;
-    }
-    .level-label {
-        white-space: nowrap;
-    }
-
-    /* ---------------------------------------------------------------------- BOOK LIST BELOW --------- */
-
-    .card-body small {
-        color: rgb(31, 189, 31);
-        font-weight: bold;
-    }
-    .col-2 img {
-        height: 12vmax;
-    }   
-
-
-
-    /* ------------------ Media Queriess  ------------- */
-
-    @media only screen and (max-width: 1090px) {
+    @media only screen and (max-width: 320px) {
+        
+        .visibile-topbooks-container {
+            display: none !important;
+        }
+        .slider-topbooks-container {
+            display: block !important;
+        }
         .col-8 {
-            width: 100%; /* Setting width to 100% effectively changes it to col-12 */
+            width: 92.5%;
+            padding: 20px !important;
+           
+        }
+        .topbooks-container {
+            justify-content: center !important;
+        }
+        .icon-container svg {
+            display: none !important;
         }
     }
-    @media only screen and (max-width: 460px) {
-        .cards-container {
-            flex-direction: column;
-        }
-        .book-image {
-            width: 100%;
+    /* @media only screen and (min-width: 1090px) {
+        .col-8 {
+            width: 66.66666667%;
         }
     }
-
+ */
