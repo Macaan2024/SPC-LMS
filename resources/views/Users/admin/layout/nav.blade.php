@@ -6,17 +6,6 @@
             </a>
             <a class="navbar-brand" href="#">SPC LIBRARY</a>
         </div>
-        <form class="d-flex" role="search">
-            <select name="" id="" class="form-select me-2">
-                <option value="" selected>Select Search Type</option>
-                <option value="">Book Title</option>
-                <option value="">Book Author</option>.
-                <option value="">Book Accession Number</option>
-                <option value="">Book ISBN</option>
-            </select>
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="search-button" type="submit">Search</button>
-        </form>
         <div class="d-flex justify-content-between align-items-center gap-4">
             <div class="btn-group">
                 <button type="button" class="" data-bs-toggle="dropdown" aria-expanded="false">

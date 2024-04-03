@@ -14,16 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 //--------- ROUTES FOR DESKTOP BELOW -----
 Route::get('/', function () {
-    return view('desktop/index');
+    return view('Users/admin/index');
 })->name('index');
 
-Route::get('/header', function () {
-    return view('desktop/layout/navhead');
-});
-
-Route::get('/dashboard', function () {
-    return view('/desktop/dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('/Users/admin/dashboard/dashboard');
 })->name('dashboard');
+
+
 Route::get('/bookmanagement', function () {
     return view('/desktop/bookmanagement');
 })->name('bookmanagement');

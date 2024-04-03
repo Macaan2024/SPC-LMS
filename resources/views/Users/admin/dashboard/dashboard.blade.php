@@ -1,6 +1,6 @@
-@extends('desktop.layout.layout')
+@extends('Users.admin.dashboard.dashboard_layout')
 
-@section('content')
+@section('dashboard-content')
 <div class="row m-0 p-0">
     <div class="col-12 p-5 m-0">
         <!-- dash row -->
@@ -15,7 +15,7 @@
         <div class="row p-0 m-0">
             <div class="dash-selection-row col-12 p-0 m-0 d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center gap-4">
-                    <span>Select Year Record</span>
+                    <span>Select Year Recordsssssss</span>
                     <select class="form-select" name="" id="">
                         <option value="" selected>2023</option>
                         <option value="">2024</option>
@@ -54,7 +54,7 @@
                             <h6 class="p-0 m-0">Library Office Logs</h6>
                         </div>
                         <div class="library-totalnum-box">
-                            <p class="fs-1">6</p>
+                            <p class="fs-1"></p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <h6 class="p-0 m-0">Total Books</h6>
                         </div>
                         <div class="book-totalnum-box">
-                            <p class="fs-1">6</p>
+                            <p class="fs-1"></p>
                         </div>
                     </div>
                     <div class="flex-direction-col p-0 m-0">
@@ -77,7 +77,7 @@
                             <h6 class="p-0 m-0">Total Members</h6>
                         </div>
                         <div class="member-totalnum-box">
-                            <p class="fs-1">3</p>
+                            <p class="fs-1"></p>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                             <h6 class="p-0 m-0">Borrowed Books</h6>
                         </div>
                         <div class="borrowed-totalnum-box">
-                            <p class="fs-1">6</p>
+                            <p class="fs-1"></p>
                         </div>
                     </div>
                     <div class="flex-direction-col p-0 m-0">
@@ -100,7 +100,7 @@
                             <h6 class="p-0 m-0">Return Books</h6>
                         </div>
                         <div class="return-totalnum-box">
-                            <p class="fs-1">3</p>
+                            <p class="fs-1"></p>
                         </div>
                     </div>
                     <div class="flex-direction-col p-0 m-0">
@@ -108,7 +108,7 @@
                             <h6 class="p-0 m-0">Overdue Books</h6>
                         </div>
                         <div class="overdue-totalnum-box">
-                            <p class="fs-1">6</p>
+                            <p class="fs-1"></p>
                         </div>
                     </div>
                     <div class="flex-direction-col p-0 m-0">
@@ -116,7 +116,7 @@
                             <h6 class="p-0 m-0">Lost Books</h6>
                         </div>
                         <div class="lost-totalnum-box">
-                            <p class="fs-1">3</p>
+                            <p class="fs-1"></p>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                                         <h6 class="p-0 m-0">Borrowed Books</h6>
                                     </div>
                                     <div class="borrowed-totalnum-box">
-                                        <p class="fs-1">6</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                                 <div class="flex-direction-col p-0 m-0">
@@ -147,7 +147,7 @@
                                         <h6 class="p-0 m-0">Return Books</h6>
                                     </div>
                                     <div class="return-totalnum-box">
-                                        <p class="fs-1">3</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                                 <div class="flex-direction-col p-0 m-0">
@@ -155,7 +155,7 @@
                                         <h6 class="p-0 m-0">Overdue Books</h6>
                                     </div>
                                     <div class="overdue-totalnum-box">
-                                        <p class="fs-1">6</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                                 <div class="flex-direction-col p-0 m-0">
@@ -163,7 +163,7 @@
                                         <h6 class="p-0 m-0">Lost Books</h6>
                                     </div>
                                     <div class="lost-totalnum-box">
-                                        <p class="fs-1">3</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                                         <h6 class="p-0 m-0">Borrowed Books</h6>
                                     </div>
                                     <div class="borrowed-totalnum-box">
-                                        <p class="fs-1">6</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                                 <div class="flex-direction-col p-0 m-0">
@@ -197,7 +197,7 @@
                                         <h6 class="p-0 m-0">Return Books</h6>
                                     </div>
                                     <div class="return-totalnum-box">
-                                        <p class="fs-1">3</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                                 <div class="flex-direction-col p-0 m-0">
@@ -205,7 +205,7 @@
                                         <h6 class="p-0 m-0">Overdue Books</h6>
                                     </div>
                                     <div class="overdue-totalnum-box">
-                                        <p class="fs-1">6</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                                 <div class="flex-direction-col p-0 m-0">
@@ -213,7 +213,7 @@
                                         <h6 class="p-0 m-0">Lost Books</h6>
                                     </div>
                                     <div class="lost-totalnum-box">
-                                        <p class="fs-1">3</p>
+                                        <p class="fs-1"></p>
                                     </div>
                                 </div>
                             </div>
