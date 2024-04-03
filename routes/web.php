@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //--------- ROUTES FOR DESKTOP BELOW -----
+
 Route::get('/', function () {
+    return view('Users/student/pages/index');
+})->name('index');
+
+
+Route::get('/asd', function () {
     return view('desktop/index');
 })->name('index');
 

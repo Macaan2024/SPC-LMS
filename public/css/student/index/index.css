@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.information-nav {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgb(90, 21, 21));
+}   
+
+.container-fluid a {
+    text-decoration: none;
+    color: white;
+}
+.login-button {
+    margin: 0;
+    padding: 0;
+}
+.login-button button {
+    font-size: 14px;
+    border: none;
+    padding: 4px 12px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 2px;
+    color: white;
+    background-color: rgb(163, 48, 48);
+    transition: 0.5s;
+}
+.login-button button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* removing search hover */
+.search:hover {
+background-color: none !important;
+box-shadow: none !important;
+border: 1px solid #ccc !important;
+}
+/* modifying x button on search field */
+input[type="search"]::-webkit-search-cancel-button {
+    /* Styles for the clear button */
+    height: 16px; /* Adjust the height as needed */
+    width: 16px; /* Adjust the width as needed */
+    background-image: url('path/to/your/custom-icon.svg'); /* Replace with your custom icon */
+    background-size: contain; /* Ensure the icon scales properly */
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    background-color: black;
+    cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  }
+
+  .spc-image-container {
+    position: relative;
+  }
+  
+  .spc-image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+  }
+  
+  .spc-image-container img {
+    position: relative;
+    box-shadow: rgba(124, 124, 124, 0.35) 0px 5px 15px;
+    z-index: 2;
+  }
+  .spc-image-container h6 {
+    position: relative;
+    z-index: 2;
+  }
