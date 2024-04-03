@@ -20,14 +20,14 @@
 <body>
     <!-- navbar -->
     <div class="sticky-top top-0 w-100">
-        @include('mobile.layout.landing_page.landing_nav')
+        @include('student.layout.landing_page.landing_nav')
     </div>
     <div class="m-0 mt-3 px-2 py-3"> 
-        @include('mobile.layout.landing_page.landing_book_search')
+        @include('student.layout.landing_page.landing_book_search')
     </div>
     <!-- search -->
     <div class="px-2 py-4">
-        @include('mobile.layout.landing_page.landing_selection_year')
+        @include('student.layout.landing_page.landing_selection_year')
     </div0>
 
     <!-- Yielding Landing Pages -->

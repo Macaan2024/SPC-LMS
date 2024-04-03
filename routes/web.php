@@ -67,8 +67,8 @@ Route::get('/desktop-viewtransaction', function() {
 Route::get('/highschool', function () {
     return view('mobile/landing_page_highschool');
 })->name('highschool');
-Route::get('/college', function () {
-    return view('mobile/landing_page_college');
+Route::get('/spc-lms', function () {
+    return view('student/pages/landing_page');
 })->name('college');
 Route::get('/seniorhigh', function () {
     return view('mobile/landing_page_seniorhigh');

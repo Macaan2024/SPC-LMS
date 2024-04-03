@@ -1,4 +1,4 @@
-@extends('mobile.layout.landing_page.landing_layout')
+@extends('student.layout.landing_page.landing_layout')
 
 
 @section('landing-college')
