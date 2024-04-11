@@ -13,21 +13,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer("unique_id")->unique();
-            $table->string("lastname");
-            $table->string("firstname");
-            $table->string("middlename");
-            $table->string("level");
-            $table->string("section");
-            $table->string("course");
-            $table->string("year");
-            $table->string("gender");
-            $table->integer("cpnumber");
-            $table->string("department");
-            $table->string("password");
-            $table->string("repassword");
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('unique_id')->unique()->nullable(false); // Make the column nullable
+            $table->string('lastname')->nullable(false); // Make the column nullable
+            $table->string('firstname')->nullable(false);
+            $table->string('middlename')->nullable(false);
+            $table->string('level')->nullable(false);
+            $table->string('section')->nullable(false);
+            $table->string('course')->nullable(false);
+            $table->string('year')->nullable(false);
+            $table->string('gender')->nullable(false);
+            $table->integer('cpnumber')->nullable(false);
+            $table->string('department')->nullable(false);
+            $table->string('status')->nullable(false);
+            $table->string('user_image')->nullable(false);
+            $table->string("password")->nullable(false);
+            $table->string('email')->unique()->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

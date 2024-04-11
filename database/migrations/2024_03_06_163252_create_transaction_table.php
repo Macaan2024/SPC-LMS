@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('books_id');
-            $table->foreign('books_id')->references('id')->on('books');
+            $table->foreign('books_id')->references('id')->on('books')->onDelete('cascade');
             $table->date('start_date');
             $table->time('start_time');
             $table->date('end_day');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaction');
+        Schema::dropIfExists('transactions');
     }
 };

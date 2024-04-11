@@ -13,17 +13,19 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->integer('isbn')->unique();
-            $table->string('author');
-            $table->string('publicationyear');
-            $table->string('publicationaddress');
-            $table->string('title');
-            $table->string('category');
+            $table->string('isbn')->unique();
+            $table->string('author', 255);
+            $table->integer('publication_year'); // Changed from string to integer
+            $table->string('publication_address', 255);
+            $table->string('title', 255);
+            $table->string('category', 255);
             $table->integer('quantity');
-            $table->string('level');
-            $table->string('langguage');
-            $table->string('edition');
-            $table->string('availability');
+            $table->string('level', 255);
+            $table->string('language', 255); // Corrected spelling
+            $table->string('edition', 255);
+            $table->string('status', 255);
+            $table->integer('total_borrow');
+            $table->string('image');
             $table->timestamps();
         });
     }

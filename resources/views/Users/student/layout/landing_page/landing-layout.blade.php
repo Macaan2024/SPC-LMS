@@ -8,17 +8,23 @@
 </head>
 <body>
 
+    <!-- including nav -->
     @include('Users.student.layout.landing_page.nav')
 
-    <div class="mt-3">
+        <div class="m-0 p-0 px-3 py-4">
+            <h3 class="m-0 p-0 fw-normal text-center fs-3 text-nowrap">Welcome to SPC Library</h3>
+        </div>
+
+        <!-- including component searchBook -->
         <x-student.index.searchBook/>
-    </div>
 
-    <div></div>
-
+        <!-- index child content -->
         {{ $slot }}
 
+        <!-- bootstrap script -->
+        <x-links.bootstrap.script />
 
-    <x-links.bootstrap.script />
+    <!-- including footer -->
+    @include('Users.student.layout.landing_page.footer')
 </body>
 </html>

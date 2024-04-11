@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 //--------- ROUTES FOR DESKTOP BELOW -----
 
-Route::get('/', function () {
-    return view('Users/student/pages/index');
-})->name('index');
+Route::get('/', [BooksController::class, 'index']); 
 
 
 Route::get('/asd', function () {
