@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Books;
 
-class BooksController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $booksGroupedByCategory = Books::all()->groupBy('level');
-    
-    
-        return view('Users.student.pages.index', ['booksGroupedByCategory' => $booksGroupedByCategory]);
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -31,11 +28,11 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         //
+    }
 
     /**
      * Display the specified resource.
      */
-    }
     public function show(string $id)
     {
         //

@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 //--------- ROUTES FOR DESKTOP BELOW -----
 
-Route::get('/books/{yearLevel}', [BooksController::class, 'index'])->name('books.filterByYear'); 
-
+Route::get('/', [BooksController::class, 'index']); 
 
 Route::get('/asd', function () {
     return view('desktop/index');

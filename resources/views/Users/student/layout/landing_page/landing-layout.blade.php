@@ -33,6 +33,7 @@
         <x-links.bootstrap.script />
 
     <!-- including footer -->
+    @stack('scripts')
     @include('Users.student.layout.landing_page.footer')
 </body>
 </html>

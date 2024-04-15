@@ -15,8 +15,13 @@ class BooksFactory extends Factory
      *
      * @return array<string, mixed>
      */
+   
     public function definition(): array
     {
+        
+        $i = 0;
+
+       
         return [
             'isbn' => fake()->unique()->numerify('###-### -###'),
             'author' => fake()->name(),
@@ -25,11 +30,11 @@ class BooksFactory extends Factory
             'title' => fake()->sentence(6, true),
             'category' => fake()->randomElement(['Computers Studies', 'Networking', 'Electrical']),
             'quantity' => fake()->randomDigit(),
-            'level' => fake()->randomElement(['College' , 'Senior Highschool', 'Highschool', 'Elementary']),
+            'level' => fake()->randomElement(['College']),
             'language' => fake()->randomElement(['English' , 'Filipino', 'Spanish']),
             'edition' => fake()->randomElement(['1st-Edition', '2nd-Edition', '3rd-Edition']),
             'status' => fake()->randomElement(['Not Available' , 'Available']),
-            'image' => fake()->lexify('???'),
+            'image' => fake()->lexify('book' . ($i+1) . '.png'),
             'total_borrow' => fake()->randomDigit(),
         ];
     }
