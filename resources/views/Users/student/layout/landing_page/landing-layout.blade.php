@@ -17,6 +17,8 @@
 
     <!-- including nav -->
     @include('Users.student.layout.landing_page.nav')
+    
+    <x-student.index.modalLogin />
 
         <div class="m-0 p-0 px-3 py-4">
             <h3 class="m-0 p-0 fw-normal text-center fs-3 text-nowrap">Welcome to SPC Library</h3>

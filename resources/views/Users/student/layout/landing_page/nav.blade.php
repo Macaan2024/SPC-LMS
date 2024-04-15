@@ -4,7 +4,7 @@
             <h6 class="p-0 m-0 fw-bolder" style="letter-spacing: 3px; color:#661011;">SPC LIBRARY</h6>
         </div>
         <div class="login-button">
-            <button class="fw-normal">Login</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >Login</button>
         </div>
     </div>
 </nav>
