@@ -10,12 +10,24 @@ class BooksController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, $yearLevel = null)
     {
-        $displayBook = Books::all('category');
-        return view('Users.student.pages.index', ['displaybooks' => $displayBook]);
-    }
+        if ($yearLevel) {
+            $books = Books::where('year_level', $yearLevel)->get();
+        } else {
+            $books = Books::all();
+        }
 
+        $booksGroupedByCategory = $books->groupBy('category');
+
+        if ($request->ajax()) {
+            // If the request is via AJAX, return JSON data
+            return response()->json($booksGroupedByCategory);
+        } else {
+            // Otherwise, return the view
+            return view('Users.student.pages.index', compact('booksGroupedByCategory'));
+        }
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -30,11 +42,11 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         //
-    }
 
     /**
      * Display the specified resource.
      */
+    }
     public function show(string $id)
     {
         //

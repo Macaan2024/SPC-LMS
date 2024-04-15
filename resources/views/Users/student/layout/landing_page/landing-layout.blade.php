@@ -5,7 +5,14 @@
     @include('Users.student.layout.landing_page.headers')
     <!-- importing bootstrap link -->
     <x-links.bootstrap.link />
+    <x-links.jqueryCDN.JqueryCDN />
+    <style>
+        body {
+            background-color:#F5F5F5;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- including nav -->
@@ -20,7 +27,8 @@
 
         <!-- index child content -->
         {{ $slot }}
-
+        
+        <!-- @stack('ajax-BookYear') -->
         <!-- bootstrap script -->
         <x-links.bootstrap.script />
 
