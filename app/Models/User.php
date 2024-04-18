@@ -18,20 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        // 'unique_id',
-        // 'lastname',
-        // 'firstname',
-        // 'middlename',
-        // 'level',
-        // 'section',
-        // 'course',
-        // 'year',
-        // 'gender',
-        // 'cpnumber',
-        // 'department',
-        // 'status',
-        // 'email',
-        // 'password',
+        'unique_id', 'lastname', 'firstname', 'middlename', 'level', 'grade', 'strand', 'section', 'course', 'year', 'department', 'gender', 'cpnumber', 'email', 'password'
     ];
 
     /**
@@ -53,4 +40,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function roles() {
+        return $this->belongsToMany(Role::class);   
+    }
 }

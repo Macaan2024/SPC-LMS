@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// ADMIN 
+
+Route::post('/register', [UserController::class,'store'])->name('store');
+
+// ------- LOGIN PROCESS -----//
+
+Route::post('/student', [UserController::class, 'loginProccess'])->name('process');
+
 //--------- ROUTES FOR DESKTOP BELOW -----
 
 Route::get('/', [BooksController::class, 'index']); 
@@ -45,7 +54,7 @@ Route::get('/accountmanagement', function() {
     return view('/desktop/accountmanagement');
 })->name('accountmanagement');
 Route::get('/usermanagement', function() {
-    return view('/desktop/usermanagement');
+    return view('Users/admin/usermanagement');
 })->name('usermanagement');
 Route::get('/userview', function() {
     return view('/desktop/userview');

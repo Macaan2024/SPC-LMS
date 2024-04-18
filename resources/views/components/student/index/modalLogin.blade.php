@@ -13,24 +13,16 @@
                                 </div> 
                             </div>
                             <h4 class="login-title my-4">LOGIN</h4>
-                            <form>
+                            <form action="{{ route('process') }}" method="POST">
+                                @csrf
                                 <div class="user-field mb-3">
-                                    <label for="recipient-name">Student ID / Unique Code:</label>
-                                        <input class="my-1" type="text" name="stud_id"><br>
+                                    <label for="recipient-name">Unique Code:</label>
+                                        <input class="my-1" type="text" name="unique_id"><br>
                                     <label for="" class="mt-3">Password</label><br>
-                                        <input class="my-1" type="password" name="pass"><br>
-                                </div>
-                                <div class="login-as mt-4 mb-5">
-                                    <span>Login as : </span>
-                                    <select class="p-1">
-                                        <option value="Select Usertype">Select Usertype</option>
-                                        <option value="Faculty">Faculty</option>
-                                        <option value="Student">Student</option>
-                                        <option value="Librarian Staff">Librarian Staff</option>
-                                    </select>
+                                        <input class="my-1" type="password" name="password"><br>
                                 </div>
                                 <div class="btn-submit">
-                                    <a href="{{ route('dashboard') }}"><input type="button" class="mb-1" value="Submit"></span</a><br>
+                                    <input type="submit" class="mb-1" name="submit"><br>
                                     <a href=""><span>Forgot Password?</span></a>
                                 </div>
                             </form>

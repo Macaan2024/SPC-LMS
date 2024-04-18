@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Books;
+use App\Models\Book;
 
 class BooksController extends Controller
 {
@@ -12,7 +12,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $booksGroupedByCategory = Books::all()->groupBy('level');
+        $booksGroupedByCategory = Book::all()->groupBy('level');
     
     
         return view('Users.student.pages.index', ['booksGroupedByCategory' => $booksGroupedByCategory]);

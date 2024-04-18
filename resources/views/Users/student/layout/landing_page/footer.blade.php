@@ -4,5 +4,3 @@
         <img src="library/pic1.jpg" alt="" class="object-fit-fill" style="height:100%;width:100%;">
     </div>
 </div> -->
-
-asdasdasdasdasd

@@ -25,7 +25,7 @@
     <div class="row p-0 m-0">
         <div class="col-12 p-0 m-0 " style="">
             <div class="">
-                @include('desktop/layout/nav') {{-- including navbar--}}
+                @include('Users/admin/layout/nav') {{-- including navbar--}}
             </div>
         </div>
     </div>
