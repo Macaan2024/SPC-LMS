@@ -3,6 +3,7 @@
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // ADMIN 
+Route::middleware(['auth', 'role_id:student'])->group(function () {
+    Route::get("/student/dashboard", [HomeController::class, 'studentHome'])->name('home.student');
+});
 
 Route::post('/register', [UserController::class,'store'])->name('store');
 
 // ------- LOGIN PROCESS -----//
 
-Route::post('/student', [UserController::class, 'loginProccess'])->name('process');
+Route::post('/student', [UserController::class, 'login'])->name('login');
 
 //--------- ROUTES FOR DESKTOP BELOW -----
 
-Route::get('/', [BooksController::class, 'index']); 
+Route::get('/', [BooksController::class, 'index'])->name('index'); 
 
 Route::get('/asd', function () {
     return view('desktop/index');

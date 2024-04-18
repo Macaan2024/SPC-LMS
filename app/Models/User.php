@@ -45,4 +45,11 @@ class User extends Authenticatable
     public function roles() {
         return $this->belongsToMany(Role::class);   
     }
+
+    public function hasRole($role)
+    {
+        // Assuming you have a roles() relationship defined in your User model
+        // and the Role model has a name or id attribute
+        return $this->roles()->where('role_description', $role)->exists();
+    }
 }

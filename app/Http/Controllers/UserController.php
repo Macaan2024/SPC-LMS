@@ -16,27 +16,6 @@ class UserController extends Controller
         //
     }
 
-    public function loginProccess(Request $request) {
-        $validated = $request->validate(
-            [
-                "unique_id"=> "required",
-                "password"=> "required"
-            ]
-        );
-        if (auth()->attempt($request->only('unique_id', 'password'))) {
-            $user = auth()->user();
-            if ($user->hasRole('Student')) {
-                return redirect()->route('student.index'); // Assuming you have a route named 'student.index'
-            } elseif ($user->hasRole('Admin')) {
-                return redirect()->route('admin.index'); // Assuming you have a route named 'admin.index'
-            } else {
-                return 'User role not recognized';
-            }
-        } else {
-            return 'Invalid credentials';
-        }
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -71,14 +50,18 @@ class UserController extends Controller
                 "cpnumber"=> ["required"],
                 "role_description"=> ["required"],
                 "email"=> ["required", "email", Rule::unique("users", "email")],
+                "password" => ["nullable"],
             ]);
 
             // Remove the role_description from the validated data
             $roleDescription = $validated['role_description'];
             unset($validated['role_description']);
 
-            $request->merge(['password' => bcrypt($request->unique_id)]);
             $user = User::create($validated);
+            $user->password = bcrypt($request->unique_id); // Corrected line
+
+            $user->save();
+            
 
             // Check if the role already exists
             $role = \App\Models\Role::where('role_description', $roleDescription)->first();
@@ -99,6 +82,33 @@ class UserController extends Controller
             // Return a response with the error message
             return response()->json(['error' => 'Error creating user: ' . $e->getMessage()], 500);
         }
+    }
+
+    public function login(Request $request) {
+        $input = $request->all();
+        $this->validate($request, 
+            [
+                'unique_id' => 'required',
+                'password' => 'required'
+            ]
+            );
+
+            if (auth()->attempt(['unique_id'=>$input["unique_id"], 'password'=>$input["password"]])) {
+                $user = auth()->user();
+                $role_id = null;
+
+                if ($user->roles->isNotEmpty()) {
+                    $role_id = $user->roles->first()->id;
+                }
+                if ($role_id == 1) {
+                    return redirect()->route('home.student');
+                }
+                else {
+                    return redirect()->route('index');
+                }
+            }else {
+                return back()->withErrors(['message' => 'Invalid Credentials']);
+            }
     }
 
     /**
