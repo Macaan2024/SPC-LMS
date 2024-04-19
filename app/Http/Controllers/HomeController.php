@@ -11,4 +11,5 @@ class HomeController extends Controller
     public function studentHome() {
         return view("Users.student.pages.dashboard");
     }
+
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +25,12 @@ Route::post('/register', [UserController::class,'store'])->name('store');
 
 // ------- LOGIN PROCESS -----//
 
-Route::post('/student', [UserController::class, 'login'])->name('login');
+Route::post('/process', [LoginController::class, 'login'])->name('login.process');
+Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 //--------- ROUTES FOR DESKTOP BELOW -----
 
-Route::get('/', [BooksController::class, 'index'])->name('index'); 
+Route::get('/', [BooksController::class, 'index'])->name('login'); 
 
 Route::get('/asd', function () {
     return view('desktop/index');

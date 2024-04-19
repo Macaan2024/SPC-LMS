@@ -1,3 +1,2 @@
-
-
-    <h1>HELLOW</h1>
+<x-student.dashboard-layout>
+</x-student.dashboard-layout>

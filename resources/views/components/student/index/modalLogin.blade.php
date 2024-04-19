@@ -13,7 +13,7 @@
                                 </div> 
                             </div>
                             <h4 class="login-title my-4">LOGIN</h4>
-                            <form action="{{ route('login') }}" method="POST">
+                            <form action="{{ route('login.process') }}" method="POST">
                                 @csrf
                                 <div class="user-field mb-3">
                                     <label for="recipient-name">Unique Code:</label>
