@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\pagesController;
 
 use Illuminate\Http\Request;
 use App\Models\Books;
+use App\Http\Controllers\Controller;
 
-class BooksController extends Controller
+class IndexController extends Controller
 {
     /**
      * Display a listing of the resource.

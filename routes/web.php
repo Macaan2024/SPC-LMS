@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\BooksController;
+use App\Http\Controllers\pagesController\IndexController;
+use App\Http\Controllers\pagesController\DashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -28,9 +29,10 @@ Route::post('/register', [UserController::class,'store'])->name('store');
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-//--------- ROUTES FOR DESKTOP BELOW -----
+//--------- PAGES ROUTES CONTROLLER -----
 
-Route::get('/', [BooksController::class, 'index'])->name('login'); 
+Route::get('/', [IndexController::class, 'index'])->name('login'); 
+// Route::get('/student/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/asd', function () {
     return view('desktop/index');
