@@ -16,10 +16,5 @@ class DashboardController extends Controller
         return $booksGroupedByCategory;
     }
 
-    public function fetchBooks($yearLevel)
-    {
-        // Assuming you have a Books model and it has a 'level' attribute
-        $booksGroupedByCategory = Books::where('level', $yearLevel)->get()->groupBy('category');
-        return response()->json($booksGroupedByCategory);
-    }
+
 }

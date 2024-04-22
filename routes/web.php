@@ -20,7 +20,8 @@ use App\Http\Controllers\LoginController;
 // ADMIN 
 Route::middleware(['auth', 'role_id:student'])->group(function () {
     Route::get("/student/dashboard", [HomeController::class, 'studentHome'])->name('home.student');
-    Route::get('/student/dashboard/fetch-books/{yearLevel}', [DashboardController::class, 'fetchBooks'])->name('student.dashboard.fetch-books');
+    Route::get('/fetch-data', [HomeController::class, 'fetchData'])->name('fetchData');
+    
 });
 
 Route::post('/register', [UserController::class,'store'])->name('store');
