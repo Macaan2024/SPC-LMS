@@ -20,6 +20,7 @@ use App\Http\Controllers\LoginController;
 // ADMIN 
 Route::middleware(['auth', 'role_id:student'])->group(function () {
     Route::get("/student/dashboard", [HomeController::class, 'studentHome'])->name('home.student');
+    Route::get('/student/dashboard/fetch-books/{yearLevel}', [DashboardController::class, 'fetchBooks'])->name('student.dashboard.fetch-books');
 });
 
 Route::post('/register', [UserController::class,'store'])->name('store');
@@ -30,7 +31,7 @@ Route::post('/process', [LoginController::class, 'login'])->name('login.process'
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 //--------- PAGES ROUTES CONTROLLER -----
-
+Route::get('/displayBook', [DashboardController::class, 'index']);
 Route::get('/', [IndexController::class, 'index'])->name('login'); 
 // Route::get('/student/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 

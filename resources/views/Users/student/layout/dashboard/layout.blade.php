@@ -7,7 +7,7 @@
     <x-links.bootstrap.link />
     <style>
         body {
-            padding-top:53px;
+            padding-top:100px;
         }
     </style>
 </head>
@@ -15,8 +15,10 @@
     
     @include('Users.student.layout.dashboard.nav')
 
-    {{ $slot }}
+    {{ $selectYear }}
 
+    {{ $bookDisplay }}
+    
     <x-links.bootstrap.script />
 </body>
 </html>
