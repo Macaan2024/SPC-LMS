@@ -36,6 +36,4 @@ Route::get('/displayBook', [DashboardController::class, 'index']);
 Route::get('/', [IndexController::class, 'index'])->name('login'); 
 // Route::get('/student/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/usermanagement', function () {
-    return view('Users.admin.pages.usermanagement');
-});
+Route::get('/usermanagement', [UserController::class,'index']);

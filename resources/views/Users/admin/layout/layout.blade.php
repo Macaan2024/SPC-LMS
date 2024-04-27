@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('Users.admin.layout.header')
-<body style="padding-top:60px;">
+<body>
     @include('Users.admin.layout.nav')
+    
     {{ $slot }}
     {{ $user_registration }}
     @stack('user_registration')

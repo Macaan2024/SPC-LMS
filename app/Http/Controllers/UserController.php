@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -13,7 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $data = User::whereHas('role', function($query){
+            $query->where('role_description', 'Student');
+        })->get();
+
+        return view("Users.admin.pages.usermanagement", ["data" => $data]);
     }
 
     /**
@@ -48,37 +53,28 @@ class UserController extends Controller
                 "department"=> ["nullable"],
                 "gender"=> ["required"],
                 "cpnumber"=> ["required"],
-                "role_description"=> ["required"],
                 "email"=> ["required", "email", Rule::unique("users", "email")],
                 "password" => ["nullable"],
             ]);
-
-            // Remove the role_description from the validated data
-            $roleDescription = $validated['role_description'];
-            unset($validated['role_description']);
-
+    
+            // Check if the "Student" role already exists
+            $role = \App\Models\Role::where('role_description', 'Student')->first();
+    
+            // If the "Student" role doesn't exist, create it
+            if (!$role) {
+                $role = \App\Models\Role::create(['role_description' => 'Student', 'status' => 'Activated']);
+            }
+    
             $user = User::create($validated);
             $user->password = bcrypt($request->unique_id); // Corrected line
-
+            $user->role_id = $role->id; // Assign the role_id directly
             $user->save();
-            
-
-            // Check if the role already exists
-            $role = \App\Models\Role::where('role_description', $roleDescription)->first();
-
-            // If the role doesn't exist, create it
-            if (!$role) {
-                $role = \App\Models\Role::create(['role_description' => $roleDescription]);
-            }
-
-            // Attach the role to the user
-            $user->roles()->attach($role->id);
             
             return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
         } catch (\Exception $e) {
             // Log the error message for debugging purposes
             \Log::error('Error creating user: ' . $e->getMessage());
-
+    
             // Return a response with the error message
             return response()->json(['error' => 'Error creating user: ' . $e->getMessage()], 500);
         }

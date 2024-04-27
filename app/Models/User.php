@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'unique_id', 'lastname', 'firstname', 'middlename', 'level', 'grade', 'strand', 'section', 'course', 'year', 'department', 'gender', 'cpnumber', 'email', 'password'
+        'unique_id', 'lastname', 'firstname', 'middlename', 'level', 'strand', 'section', 'course', 'year', 'department', 'gender', 'cpnumber', 'email', 'password', 'role_id'
     ];
 
     /**
@@ -43,8 +43,8 @@ class User extends Authenticatable
     ];
 
 
-    public function roles() {
-        return $this->belongsToMany(Role::class);   
+    public function role() {
+        return $this->belongsTo(Role::class);   
     }
 
     public function hasRole($role)
