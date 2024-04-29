@@ -69,7 +69,7 @@ class UserController extends Controller
             $user->password = bcrypt($request->unique_id); // Corrected line
             $user->role_id = $role->id; // Assign the role_id directly
             $user->save();
-            
+            ...
             return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
         } catch (\Exception $e) {
             // Log the error message for debugging purposes
