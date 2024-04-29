@@ -69,9 +69,14 @@ class UserController extends Controller
             $user->password = bcrypt($request->unique_id); // Corrected line
             $user->role_id = $role->id; // Assign the role_id directly
             $user->save();
+<<<<<<< HEAD
             
             // Return a JSON response with a success flag
             return response()->json(['success' => true, 'message' => 'User created successfully', 'user' => $user], 201);
+=======
+            ...
+            return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
+>>>>>>> ebc69c94132458d605780c05e7a207690e1b9ff1
         } catch (\Exception $e) {
             // Log the error message for debugging purposes
             \Log::error('Error creating user: ' . $e->getMessage());
