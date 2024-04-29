@@ -70,18 +70,19 @@ class UserController extends Controller
             $user->role_id = $role->id; // Assign the role_id directly
             $user->save();
             
-            return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
+            // Return a JSON response with a success flag
+            return response()->json(['success' => true, 'message' => 'User created successfully', 'user' => $user], 201);
         } catch (\Exception $e) {
             // Log the error message for debugging purposes
             \Log::error('Error creating user: ' . $e->getMessage());
     
-            // Return a response with the error message
-            return response()->json(['error' => 'Error creating user: ' . $e->getMessage()], 500);
+            // Return a response with the error message and a success flag set to false
+            return response()->json(['success' => false, 'error' => 'Error creating user: ' . $e->getMessage()], 500);
         }
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource.J
      */
     public function show(string $id)
     {

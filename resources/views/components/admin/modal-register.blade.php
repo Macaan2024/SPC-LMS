@@ -6,7 +6,7 @@
                 <h6 class="text-black p-0 m-0 text-center fw-medium fs-5">ADD Student</h6>
             </div>
             <div class="modal-body modal-body-scroll">
-                <form action="{{ route('store')}}" method="POST">
+                <form action="{{ route('store')}}" method="POST" id="userRegistration">
                     @csrf
                     <div class="d-flex flex-column gap-4">
                         {{-- Student Information --}}
@@ -64,7 +64,7 @@
                                         <option disabled selected>Choose level</option>
                                         <option value="College">College</option>
                                         <option value="Senior Highschool">Senior Highschool</option>
-                                        <option value="Highschool">Highschool</option>
+                                        <option value="Junior Highschool">Junior Highschool</option>
                                         <option value="Elementary">Elementary</option>
                                     </select>
                                 </div>
@@ -145,5 +145,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#userRegistration').on('submit', function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        var formData = new FormData(this); // Use FormData for file uploads if necessary
+
+        $.ajax({
+            url: '/register', // Ensure this matches your route
+            type: 'POST',
+            data: formData,
+            processData: false, // Important for FormData
+            contentType: false, // Important for FormData
+            success: function(response) {
+                if (response.success) {
+                    // Redirect to the desired page after successful registration
+                    window.location.href = '/usermanagement';
+                } else {
+                    // Handle errors (e.g., show an error message)
+                    alert('Registration failed: ' + response.error);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // Handle AJAX errors
+                alert('An error occurred: ' + textStatus);
+            }
+        });
+    });
+</script>
 
 <!-- -- MODALITY END -->

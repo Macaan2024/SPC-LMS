@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::middleware(['auth', 'role_id:student'])->group(function () {
     
 });
 
- Route::post('/register', [UserController::class,'store'])->name('store');
+ 
 
 // ------- LOGIN PROCESS -----//
 
@@ -36,4 +37,8 @@ Route::get('/displayBook', [DashboardController::class, 'index']);
 Route::get('/', [IndexController::class, 'index'])->name('login'); 
 // Route::get('/student/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
+
+Route::post('/register', [UserController::class,'store'])->name('store');
 Route::get('/usermanagement', [UserController::class,'index']);
+Route::get('/fetch-users', [UserManagementController::class, 'fetchUsers'])->name('fetch-users');
+Route::delete('/delete-student/{id}', [UserManagementController::class, 'destroy'])->name('delete-student');

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.style.display = 'block';
             });
             document.getElementById('Section').style.display = 'block';
-        } else if (selectedLevel === 'Highschool') {
+        } else if (selectedLevel === 'Junior Highschool') {
             document.querySelectorAll('.Jhs').forEach(function(element) {
                 element.style.display = 'block';
             });

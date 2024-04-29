@@ -1,6 +1,5 @@
 <x-admin.dashboard-layout>
     <x-slot name="user_registration">
-
         <div class="row">
             <div class="col-lg-1 bg-light"></div>
             <div class="col-lg-10 col-12 vh-100 px-4 px-sm-5 py-5">
@@ -42,7 +41,7 @@
                 <section class="mt-5 p-0 m-0">
                     <div class="row m-0 p-0">
                         <div class="col-12 bg-primary col-sm-3 p-0 m-0 tableHeading-custom-class">
-                            <select class="form-select rounded-end-0" aria-label="Default select example">
+                            <select class="form-select rounded-end-0" aria-label="Default select example" id="AjaxSelect">
                                 <option selected>Choose Grade</option>
                                 <option value="College">College</option>
                                 <option value="Senior Highschool">Senior Highschool</option>
@@ -58,8 +57,7 @@
                         </div>
                         <div class="col-12 col-sm-4 d-flex justify-content-end mt-3 mt-sm-0 m-0 p-0 tableHeading-custom-class">
                             <button type="button" class="btn btn-dark col-12 col-sm-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Users</button>
-                            <x-admin.modal-register />
-                                        {{-- User Registration Scripts--}}
+                            <x-admin.modal-register /> {{-- User Registration Scripts--}}
                             @push('user_registration') 
                                 <script src="{{ asset('js/admin/user_registration.js') }}"></script>
                             @endpush
@@ -67,7 +65,7 @@
                     </div>
                     
                     <div class="table-responsive mt-3">
-                        <table class="table align-middle">
+                        <table class="table align-middle overflow-x-auto">
                             <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
@@ -79,17 +77,8 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
-                            <tbody>
-                                @foreach($data as $datas)
-                                    <tr>
-                                        <td>{{ $datas->id }}</td>
-                                        <td>{{ $datas->unique_id }}</td>
-                                        <td>{{ $datas->role->role_description }}</td>
-                                        <td>{{ $datas->created_at }}</td>
-                                        <td>{{ $datas->updated_at  }}</td>
-                                        <td>{{ $datas->role->status}}</td>
-                                    </tr>
-                                @endforeach
+                            <tbody id="studentData">
+
                             </tbody>
                         </table>
                     </div>
@@ -97,6 +86,61 @@
             </div>
             <div class="col-lg-1 bg-light"></div>
         </div>
+        <script>
+        $(document).ready(function(){
+            $('#AjaxSelect').on('change', function(){
+                var yearLevel = $(this).val();
+                if (yearLevel) {
+                    $.ajax({
+                        url: '/fetch-users',
+                        type: 'GET',
+                        data: {level: yearLevel},
+                        success: function(response) {
+                            var html = '';
+
+                            $.each(response, function(index, student){
+                                // Ensure each row has a data-id attribute
+                                html += '<tr data-id="' + student.id + '">' +
+                                            '<td class="text-nowrap">' + student.id + '</td>' +
+                                            '<td class="text-nowrap">' + student.unique_id + '</td>' +
+                                            '<td class="text-nowrap">' + student.role.role_description + '</td>' +
+                                            '<td class="text-nowrap">' + student.created_at + '</td>' +
+                                            '<td class="text-nowrap">' + student.updated_at + '</td>' +
+                                            '<td class="text-nowrap">' + student.role.status + '</td>' +
+                                            '<td class="d-flex justify-content-rounded gap-1">' +
+                                                '<a class="btn btn-primary">View</a>' +
+                                                '<a class="btn btn-success">Edit</a>' +
+                                                '<button class="btn btn-danger delete-user" data-id="' + student.id + '">Delete</button>'
+                                            '</td>' +
+                                        '</tr>';
+                            });
+
+                            $('#studentData').html(html); // Update the table body
+                        }
+                    });
+                }
+            });
+
+            // Event listener for delete button
+            $(document).on('click', '.delete-user', function() {
+                var userId = $(this).data('id');
+                if (confirm('Are you sure you want to delete this user?')) {
+                    $.ajax({
+                        url: '/delete-student/' + userId,
+                        type: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            // Correctly select the row to remove using the data-id attribute
+                            $('tr[data-id="' + userId + '"]').remove();
+                            alert(response.success);
+                        }
+                    });
+                }
+            });
+        });
+        </script>
     </x-slot>
 <!-- -------------------------- ADD ACCOUNT --- -->
 </x-admin.dashboard-layout>
