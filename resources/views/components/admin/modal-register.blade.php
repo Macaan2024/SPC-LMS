@@ -136,6 +136,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="status" value="Activate">
                         <input type="hidden" name="password">
                         <input type="hidden" name="role_description" value="Student">
                         <input type="submit" name="submit" class="form-control btn btn-success">
@@ -161,7 +162,7 @@
             success: function(response) {
                 if (response.success) {
                     // Redirect to the desired page after successful registration
-                    window.location.href = '/usermanagement';
+                    $('#exampleModal').modal('hide');
                 } else {
                     // Handle errors (e.g., show an error message)
                     alert('Registration failed: ' + response.error);

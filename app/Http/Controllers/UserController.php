@@ -55,36 +55,33 @@ class UserController extends Controller
                 "cpnumber"=> ["required"],
                 "email"=> ["required", "email", Rule::unique("users", "email")],
                 "password" => ["nullable"],
+                "status" => ["nullable"],
             ]);
-    
+
             // Check if the "Student" role already exists
             $role = \App\Models\Role::where('role_description', 'Student')->first();
-    
+
             // If the "Student" role doesn't exist, create it
             if (!$role) {
-                $role = \App\Models\Role::create(['role_description' => 'Student', 'status' => 'Activated']);
+                $role = \App\Models\Role::create(['role_description' => 'Student']);
             }
-    
+
             $user = User::create($validated);
             $user->password = bcrypt($request->unique_id); // Corrected line
             $user->role_id = $role->id; // Assign the role_id directly
             $user->save();
-<<<<<<< HEAD
             
             // Return a JSON response with a success flag
-            return response()->json(['success' => true, 'message' => 'User created successfully', 'user' => $user], 201);
-=======
-            ...
-            return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
->>>>>>> ebc69c94132458d605780c05e7a207690e1b9ff1
+            return response()->json(['success' => true]);
         } catch (\Exception $e) {
             // Log the error message for debugging purposes
             \Log::error('Error creating user: ' . $e->getMessage());
-    
+
             // Return a response with the error message and a success flag set to false
             return response()->json(['success' => false, 'error' => 'Error creating user: ' . $e->getMessage()], 500);
         }
     }
+
 
     /**
      * Display the specified resource.J

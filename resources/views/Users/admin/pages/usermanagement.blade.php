@@ -106,7 +106,7 @@
                                             '<td class="text-nowrap">' + student.role.role_description + '</td>' +
                                             '<td class="text-nowrap">' + student.created_at + '</td>' +
                                             '<td class="text-nowrap">' + student.updated_at + '</td>' +
-                                            '<td class="text-nowrap">' + student.role.status + '</td>' +
+                                            '<td class="text-nowrap">' + student.status + '</td>' +
                                             '<td class="d-flex justify-content-rounded gap-1">' +
                                                 '<a class="btn btn-primary">View</a>' +
                                                 '<a class="btn btn-success">Edit</a>' +
