@@ -5,9 +5,12 @@
     @include('Users.admin.layout.nav')
     
     {{ $slot }}
-    {{ $user_registration }}
+    @if(isset($user_registration))
+        {{ $user_registration }}
+    @endif
+    
     @stack('user_registration')
-
+    
 
     @include('Users.admin.layout.footer')
 </body>

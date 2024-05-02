@@ -9,14 +9,29 @@ class UserManagementController extends Controller
 {
     public function fetchUsers(Request $request) {
         $yearLevel = $request->input('level');
-    
-        // Corrected variable name from $data to $students
-        $students = User::with('role')->whereHas('role', function($query) use ($yearLevel) {
+        $searchQuery = $request->input('query'); // Get the search query from the request
+
+        $query = User::with('role')->whereHas('role', function($query) {
             $query->where('role_description', 'Student');
-            $query->where('level', $yearLevel); // Corrected to use $query instead of $students
-        })->get();
-    
-        // Return a JSON response with the correct variable name
+        });
+
+        // Apply year level filter if year level is not "All"
+        if ($yearLevel !== "All") {
+            $query->where('level', $yearLevel);
+        }
+
+        // Apply search query filter if search query is present
+        if (!empty($searchQuery)) {
+            $query->where(function ($query) use ($searchQuery) {
+                $query->where('unique_id', 'like', '%' . $searchQuery . '%')
+                      ->orWhere('firstname', 'like', '%' . $searchQuery . '%')
+                      ->orWhere('lastname', 'like', '%' . $searchQuery . '%');
+            });
+        }
+
+        $students = $query->get();
+
+        // Return a JSON response
         return response()->json($students);
     }
 
@@ -25,5 +40,10 @@ class UserManagementController extends Controller
         $user->delete();
 
         return response()->json(['success' => 'User deleted successfully.']);
+    }
+
+    public function edit($id) {
+        $student = User::findorFail($id);
+        return view('Users.admin.pages.usermanagement_edit', compact('student'));
     }
 }

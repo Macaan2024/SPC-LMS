@@ -1,4 +1,4 @@
-<x-admin.dashboard-layout>
+<x-admin.usermanagement-layout>
     <x-slot name="user_registration">
         <div class="row">
             <div class="col-lg-1 bg-light"></div>
@@ -42,7 +42,7 @@
                     <div class="row m-0 p-0">
                         <div class="col-12 bg-primary col-sm-3 p-0 m-0 tableHeading-custom-class">
                             <select class="form-select rounded-end-0" aria-label="Default select example" id="AjaxSelect">
-                                <option selected>Choose Grade</option>
+                                <option selected value="All">All</option>
                                 <option value="College">College</option>
                                 <option value="Senior Highschool">Senior Highschool</option>
                                 <option value="Junior Highschool">Junior Highschool</option>
@@ -51,7 +51,9 @@
                         </div>
                         <div class="col-12 col-sm-5 p-0 mt-3 mt-sm-0 tableHeading-custom-class">
                             <form class="d-flex form-group">
-                                <input class="form-control rounded-start-0 rounded-end-0 border-start-1 border-start-sm-0" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control rounded-start-0 rounded-end-0 border-start-1 border-start-sm-0" type="search" placeholder="Search" aria-label="Search" id="searchInput">
+                                {{-- input hidden, set value of select tags --}}
+                                <input type="hidden" id="selectedYearLevel" name="selectedYearLevel">
                                 <button class="btn btn-outline-success rounded-start-0 bg-success text-white" type="submit">Search</button>
                             </form>
                         </div>
@@ -71,14 +73,14 @@
                                 <th>ID</th>
                                 <th>Unique_id</th>
                                 <th>Role</th>
-                                <th>Created At</th>
-                                <th>Updated At</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Class level</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody id="studentData">
-
                             </tbody>
                         </table>
                     </div>
@@ -90,6 +92,10 @@
         $(document).ready(function(){
             $('#AjaxSelect').on('change', function(){
                 var yearLevel = $(this).val();
+                if (yearLevel == "All") {
+                    yearLevel = "All";
+                }
+
                 if (yearLevel) {
                     $.ajax({
                         url: '/fetch-users',
@@ -104,12 +110,13 @@
                                             '<td class="text-nowrap">' + student.id + '</td>' +
                                             '<td class="text-nowrap">' + student.unique_id + '</td>' +
                                             '<td class="text-nowrap">' + student.role.role_description + '</td>' +
-                                            '<td class="text-nowrap">' + student.created_at + '</td>' +
-                                            '<td class="text-nowrap">' + student.updated_at + '</td>' +
+                                            '<td class="text-nowrap">' + student.firstname + '</td>' +
+                                            'td class="text-nowarap">' + student.lastname + '</td>' + 
+                                            '<td class="text-nowrap">'+ student.level + '</td>' +
                                             '<td class="text-nowrap">' + student.status + '</td>' +
                                             '<td class="d-flex justify-content-rounded gap-1">' +
-                                                '<a class="btn btn-primary">View</a>' +
-                                                '<a class="btn btn-success">Edit</a>' +
+                                                '<a class="btn btn-primary" href="/view-student/">View</a>' +
+                                                '<a class="btn btn-success" href="/edit-student/' + student.id + '">Edit</a>' +
                                                 '<button class="btn btn-danger delete-user" data-id="' + student.id + '">Delete</button>'
                                             '</td>' +
                                         '</tr>';
@@ -119,6 +126,41 @@
                         }
                     });
                 }
+            });
+
+            $('form').on('click', function(e) {
+                e.preventDefault();
+
+                var searchQuery = $('input[type="search"]').val();
+                var yearLevel = $('#AjaxSelect').val();
+
+                $.ajax({
+                    url: '/fetch-users',
+                    type: 'GET',
+                    data: {query: searchQuery, level:yearLevel},
+                    success: function(response) {
+                        var html = '';
+
+                        $.each(response, function(index, student){
+                                // Ensure each row has a data-id attribute
+                                html += '<tr data-id="' + student.id + '">' +
+                                            '<td class="text-nowrap">' + student.id + '</td>' +
+                                            '<td class="text-nowrap">' + student.unique_id + '</td>' +
+                                            '<td class="text-nowrap">' + student.role.role_description + '</td>' +
+                                            '<td class="text-nowrap">' + student.firstname + '</td>' +
+                                            'td class="text-nowarap">' + student.lastname + '</td>' + 
+                                            '<td class="text-nowrap">'+ student.level + '</td>' +
+                                            '<td class="text-nowrap">' + student.status + '</td>' +
+                                            '<td class="d-flex justify-content-rounded gap-1">' +
+                                                '<a class="btn btn-primary" href="/view-student/">View</a>' +
+                                                '<a class="btn btn-success" href="/edit-student/' + student.id + '">Edit</a>' +
+                                                '<button class="btn btn-danger delete-user" data-id="' + student.id + '">Delete</button>'
+                                            '</td>' +
+                                        '</tr>';
+                        });
+                        $('#studentData').html(html); // Update the table body
+                    }
+                });
             });
 
             // Event listener for delete button
@@ -143,4 +185,4 @@
         </script>
     </x-slot>
 <!-- -------------------------- ADD ACCOUNT --- -->
-</x-admin.dashboard-layout>
+</x-admin.usermanagement-layout>

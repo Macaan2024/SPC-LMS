@@ -146,13 +146,14 @@
         </div>
     </div>
 </div>
-
+<!-- -- MODALITY END -->
 <script>
     $('#userRegistration').on('submit', function(e) {
         e.preventDefault(); // Prevent the default form submission
 
         var formData = new FormData(this); // Use FormData for file uploads if necessary
-
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        
         $.ajax({
             url: '/register', // Ensure this matches your route
             type: 'POST',
@@ -176,4 +177,3 @@
     });
 </script>
 
-<!-- -- MODALITY END -->

@@ -55,7 +55,6 @@ class UserController extends Controller
                 "cpnumber"=> ["required"],
                 "email"=> ["required", "email", Rule::unique("users", "email")],
                 "password" => ["nullable"],
-                "status" => ["nullable"],
             ]);
 
             // Check if the "Student" role already exists
@@ -82,7 +81,6 @@ class UserController extends Controller
         }
     }
 
-
     /**
      * Display the specified resource.J
      */
@@ -94,10 +92,6 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
