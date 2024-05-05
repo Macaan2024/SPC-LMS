@@ -5,10 +5,10 @@
     @include('Users.admin.layout.nav')
     
     {{ $slot }}
-    @if(isset($user_registration))
+        @if(isset($user_registration))
         {{ $user_registration }}
-    @endif
-    
+        @endif
+
     @stack('user_registration')
     
 

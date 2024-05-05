@@ -1,0 +1,388 @@
+[33mcommit bd216183763a2b0c014830f22a7a4f75d82f67d8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Fri May 3 05:57:54 2024 +0800
+
+    successfully insertion of dynamically flexible search base on the selection year level select by the user
+
+[33mcommit f9ed1329d0a73e92fd99517d33fff4a0f6a9c8eb[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Wed May 1 20:10:26 2024 +0800
+
+    1
+
+[33mcommit 0952110f36e64efa11277f804b9a32951902fa00[m
+Merge: 20e7c30 ebc69c9
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Mon Apr 29 17:27:26 2024 +0800
+
+    latest push
+
+[33mcommit 20e7c308cec7bbd22aa5fb8b407d549c438b0dac[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Mon Apr 29 17:22:41 2024 +0800
+
+    29/04/2024 push
+
+[33mcommit ebc69c94132458d605780c05e7a207690e1b9ff1[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Mon Apr 29 14:19:32 2024 +0800
+
+    Rayan push
+
+[33mcommit 1e3e73d1a0a5ef41c36635dc1c02b153b061c872[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Sat Apr 27 19:06:26 2024 +0800
+
+    successfully insertion displaying table and functional display users list student
+
+[33mcommit dc2287b45d04b44e9f11fd00830849f58424dd0b[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Fri Apr 26 07:14:48 2024 +0800
+
+    admin revisation
+
+[33mcommit d03c33f59beaf5034657386878f2ab44563a2475[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Tue Apr 23 06:07:47 2024 +0800
+
+    Successfully insertion dynamic books using JqueryAjax
+
+[33mcommit c08eeb1cfc381e9ec857af7907cd78b0fab0cb2d[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Mon Apr 22 09:58:59 2024 +0800
+
+    latest push by macaan
+
+[33mcommit a81b1cf31bfded4406f5e90d53a2b7f819e1122b[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Sun Apr 21 01:23:27 2024 +0800
+
+    4/21/2024/ Modified By Macaan
+
+[33mcommit 888d1ebc3930633df8c743681ef119532458df32[m
+Author: casan macaaan <macaancasan1@gmail.com>
+Date:   Sat Apr 20 07:09:14 2024 +0800
+
+    login & logout successfully implement
+
+[33mcommit 7c0583f2a0480b0df560d5f9754ed78eda268645[m
+Author: casan macaaan <macaancasan1@gmail.com>
+Date:   Fri Apr 19 04:51:49 2024 +0800
+
+    Success Inserting Login Aunthentication
+
+[33mcommit 26f36510d934d04a87739840e973dacb0643cd45[m
+Author: casan macaaan <macaancasan1@gmail.com>
+Date:   Thu Apr 18 08:50:48 2024 +0800
+
+    inserting functional user registration
+
+[33mcommit ea5e5c527337a11c7e2b3fe2e3cf1000251c98f8[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Mon Apr 15 19:45:15 2024 +0800
+
+    last update on mster
+
+[33mcommit e276f7d49efc9baebcffd9d45a856a9f05ecd822[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Mon Apr 15 18:19:37 2024 +0800
+
+    new master
+
+[33mcommit 4d12c43774a5f6039ac2055d881acc8d84fe76f0[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Mon Apr 15 16:52:39 2024 +0800
+
+    fixing the book folders
+
+[33mcommit 850c32d2473b7a767147ecff932e57422b12cbba[m
+Author: unknown <macaancasan1@gmail.com>
+Date:   Mon Apr 15 09:03:21 2024 +0800
+
+    impelenting dynamically insertion of books
+
+[33mcommit 89b69482450fc1e2cb5564dbf044c588075edee3[m
+Author: unknown <macaancasan1@gmail.com>
+Date:   Fri Apr 12 04:56:31 2024 +0800
+
+    dynamic book
+
+[33mcommit 9adbe8269cdc167a555287f37325b98aa39fe0c8[m
+Author: unknown <macaancasan1@gmail.com>
+Date:   Thu Apr 4 07:26:09 2024 +0800
+
+    starting to responsive mobile
+
+[33mcommit 2b0da539361ee252d1a8e763c09d7ce62cb08c7a[m
+Merge: a4a2d78 cc08336
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Sat Mar 23 10:48:06 2024 +0800
+
+    pushing qrcode
+
+[33mcommit a4a2d78017616effe91a47bf69c23a312aae20d3[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Sat Mar 23 10:37:28 2024 +0800
+
+    fixed bugs
+
+[33mcommit cc083364aaca231fbd7a1d38d6f520a4dbdbb1c7[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Sat Mar 23 09:54:22 2024 +0800
+
+    added camera
+
+[33mcommit 8f8adbc88d0f4b916e23b68a19e51e662dd666b6[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Sat Mar 23 09:51:17 2024 +0800
+
+    added camera
+
+[33mcommit bdc15864e994ac274ffcedbb5e6e43aa0d1c933c[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Sat Mar 23 09:36:59 2024 +0800
+
+    no choice
+
+[33mcommit 2801a4994403d3f99be27e530ece5864f42e683b[m
+Merge: 71864dd e524c48
+Author: CASAN M. MACAAN <156898839+Macaan2024@users.noreply.github.com>
+Date:   Sat Mar 23 09:33:44 2024 +0800
+
+    Merge pull request #7 from Macaan2024/readytodef
+    
+    Readytodef
+
+[33mcommit e524c480ae48d437ea6ea7649f920d8a544ae16a[m[33m ([m[1;31morigin/readytodef[m[33m)[m
+Merge: 9faadb1 71864dd
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Sat Mar 23 09:30:06 2024 +0800
+
+    merging
+
+[33mcommit 9faadb16f1a8e2a8034eb79418b373341e36c139[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Sat Mar 23 09:28:14 2024 +0800
+
+    fixed
+
+[33mcommit f9578edbe0f3abff3801388a11755cbc6cc436e4[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Sat Mar 23 09:24:51 2024 +0800
+
+    ready to defense
+
+[33mcommit 613831d38a549d2cbaac61d5491f2c22c4fdad24[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Sat Mar 23 09:16:18 2024 +0800
+
+    added logbook file
+
+[33mcommit 71864dd2d75a49fddb2faacb7edeb87ca6f01df3[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Sat Mar 23 09:04:58 2024 +0800
+
+    Fixed routing problem -harley
+
+[33mcommit a253d59511539bb652c9c2b0d6b6e387eff6c5e2[m
+Author: ChoiWong1 <shannon.julesmontebon2022101384@gmail.com>
+Date:   Sat Mar 23 08:54:45 2024 +0800
+
+    Modified gitignore file
+
+[33mcommit 5e7b786f70826da8077974cebadad557a937633d[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Sat Mar 23 08:01:30 2024 +0800
+
+    mobile UI fixed
+
+[33mcommit dd92697a4695f1c5791c609e201eeb890fca121a[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Fri Mar 22 07:36:59 2024 +0800
+
+    fixing routing links separation
+
+[33mcommit 833f984fd6ecbd88e17224beacb5d0b1b3b3fd6b[m
+Author: casanmacaan <macaancasan1@gmail.com>
+Date:   Fri Mar 22 05:50:24 2024 +0800
+
+    impelementing navbar and sidebar and loginbox on landing
+
+[33mcommit 083463d7d72e842ad0c78a651856c382162516e2[m[33m ([m[1;31morigin/jesper-branch[m[33m)[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Fri Mar 22 00:38:10 2024 +0800
+
+    added some routes and fixed the code
+
+[33mcommit 722a2099e84af6678d7639c6c21b826ddf1aab39[m
+Merge: 492e11a da6c74e
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Thu Mar 21 22:59:16 2024 +0800
+
+    Merge branch 'jesper-branch' of https://github.com/Macaan2024/SPC-LMS into jesper-branch
+
+[33mcommit 492e11af383e25fa1525ae2c1dc081bb33a69291[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Thu Mar 21 22:58:17 2024 +0800
+
+    added notifications file and fixing the images
+
+[33mcommit b3834ec09cfd9a6058b45f65eb07741245729ebb[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Wed Mar 20 17:34:29 2024 +0800
+
+    midterm defense
+
+[33mcommit da6c74e232c3563bdb730ace337889131ba746cf[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Wed Mar 20 08:45:06 2024 +0800
+
+    added user notifications file
+
+[33mcommit 87f90faeb9900420134a8e36438203692eefaf5e[m
+Merge: d6f04c3 c344e7c
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Wed Mar 20 05:17:27 2024 +0800
+
+    fix login modality
+
+[33mcommit c344e7cf9388b9838bf55f295aee5a4c9b1e5a21[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Wed Mar 20 03:54:48 2024 +0800
+
+    day of defense update
+
+[33mcommit a174f52083802ab49e224ba9e1dcbf4833dd5d2c[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Tue Mar 19 23:15:32 2024 +0800
+
+    added request_reservation file
+
+[33mcommit bc146cfd59b937ea738d55f4a0da8b544b6acfa0[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Tue Mar 19 22:19:56 2024 +0800
+
+    added fines,user profile, borrow/return transactions,view all
+
+[33mcommit d6f04c38e1f3715cf4db9f527a1f1a38e6ec4951[m
+Author: casan macaan <macaancasan1@gmail>
+Date:   Tue Mar 19 05:35:42 2024 +0800
+
+    repushing dashboard content by macaan
+
+[33mcommit b2d2ffa4310c119c3b58af4c7621c07fe08918f3[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Mon Mar 18 19:09:20 2024 +0800
+
+    last update ian
+
+[33mcommit 7af79676c08d812d4371c199c4ee0b8b57a51876[m
+Author: yansanity1998 <byanyan1998@gmail.com>
+Date:   Mon Mar 18 14:58:14 2024 +0800
+
+    pushing mobile files by ian
+
+[33mcommit 391eef1f09c77426809b44be4259bd92e24e45c2[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Sun Mar 17 22:15:20 2024 +0800
+
+    dashboard nav & sidebar fix grid
+
+[33mcommit 4af268041f0e530d91d6852290b49cc2b30c8eae[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Sun Mar 17 05:33:23 2024 +0800
+
+    dashboard navbar & side bar complete
+
+[33mcommit c384bc13bb4d207022d9287b8e72cc0b3c0f70d1[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Sat Mar 16 05:35:36 2024 +0800
+
+    landing page finish
+
+[33mcommit 6b8645e3ef2a8de65a17540e0bf7a797e21bd112[m
+Author: casan macaan <macaancasan1@gmail.com>
+Date:   Fri Mar 15 05:56:41 2024 +0800
+
+    latest modify index
+
+[33mcommit 098244d22dee2a4ceb043be415e8554a9fedc53c[m
+Author: Rayan Macapa-ar <macaancasan1@gmail.com>
+Date:   Thu Mar 14 22:43:02 2024 +0800
+
+    fix headnavbar
+
+[33mcommit 2476853c5f75c73eb922a9e917afcb32b0763e5e[m
+Author: Casan Macaan <macaancasan1@gmail.com>
+Date:   Thu Mar 14 05:13:09 2024 +0800
+
+    added top books
+
+[33mcommit b6b014b841dd37fdbf46e527b22ff6702fdb954d[m
+Merge: e337f40 2571f8d
+Author: CASAN M. MACAAN <156898839+Macaan2024@users.noreply.github.com>
+Date:   Tue Mar 12 05:13:59 2024 +0800
+
+    Merge pull request #6 from Macaan2024/develop
+    
+    navbar & login modality done
+
+[33mcommit 2571f8d657dc46f574b695113e9842ce8778025e[m
+Author: CASAN MACAAN <macaancasan1@gmail.com>
+Date:   Tue Mar 12 05:07:33 2024 +0800
+
+    navbar & login modality done
+
+[33mcommit e337f40cf33e041bc844f8d48243ec99dc1c397a[m
+Merge: aa217d8 bc92b6d
+Author: CASAN M. MACAAN <156898839+Macaan2024@users.noreply.github.com>
+Date:   Thu Mar 7 05:29:32 2024 +0800
+
+    Merge pull request #4 from Macaan2024/develop
+    
+    Develop
+
+[33mcommit bc92b6d80d477640d2e2b8968862b27d8660792a[m
+Author: Macaan2024 <macaancasan1@gmail.com>
+Date:   Thu Mar 7 05:27:46 2024 +0800
+
+    Finish setup Database
+
+[33mcommit 16910013fdd30603bd8de5bde88dfb1a28ef7936[m
+Author: Rayan Macapa-ar <macaancasan1@gmail.com>
+Date:   Wed Mar 6 16:26:17 2024 +0800
+
+    insertion roles table
+
+[33mcommit aa217d805ce8eb3ae2c1c3203f8889503267f999[m
+Merge: 2fcfd10 f743fd2
+Author: CASAN M. MACAAN <156898839+Macaan2024@users.noreply.github.com>
+Date:   Wed Mar 6 16:09:56 2024 +0800
+
+    Merge pull request #3 from Macaan2024/develop
+    
+    Develop
+
+[33mcommit f743fd2fbcdeb5aee464d92324f3e24315ea8255[m
+Author: Rayan Macapa-ar <macaancasan1@gmail.com>
+Date:   Wed Mar 6 16:08:50 2024 +0800
+
+    insertion tables
+
+[33mcommit 043981c9b2fcd2e4a2402e1ccb5f54c84340294e[m
+Author: Rayan Macapa-ar <macaancasan1@gmail.com>
+Date:   Wed Mar 6 15:46:38 2024 +0800
+
+    insertion books table
+
+[33mcommit 2fcfd1066fcf5e40bddc9999965c70a63d270a3d[m
+Author: Rayan Macapa-ar <macaancasan1@gmail.com>
+Date:   Wed Mar 6 13:25:16 2024 +0800
+
+    first develop (setup database)
+
+[33mcommit 6177b9c9f5a34cdbe097545fe9d4612b44dada10[m
+Author: Casan M. Macaan <macaancasan1@gmail.com>
+Date:   Wed Feb 28 23:17:58 2024 +0800
+
+    first commit
