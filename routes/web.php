@@ -42,4 +42,4 @@ Route::post('/register', [UserController::class,'store'])->name('store');
 Route::get('/usermanagement', [UserController::class,'index']);
 Route::get('/fetch-users', [UserManagementController::class, 'fetchUsers'])->name('fetch-users');
 Route::delete('/delete-student/{id}', [UserManagementController::class, 'destroy'])->name('delete-student');
-Route::get('/edit-student/{id}', [UserManagementController::class, 'edit'])->name('edit-student');
+Route::get('/edit/{id}', [UserManagementController::class, 'edit'])->name('edit-student');
