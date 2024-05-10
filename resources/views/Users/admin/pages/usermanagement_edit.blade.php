@@ -10,141 +10,185 @@
             <hr>
 
             <section>
-                <div class="d-flex justify-content-start gap-3">
-                    {{-- User Image --}}
-                    <div style="width:200px;height:260px;">
-                        <img src="/userimage/{{ $student->user_image }}" class="object-fit-cover" style="height:100%;width:100%;" alt="">
-                    </div>
-                    {{-- User Inforamtion --}}
-                    <div>
-                        <h6 class="p-0 m-0">Personal Information</h6>
-                        <div class="d-flex flex-column gap-4">
-                            <div class="mt-4 d-flex align-items-center gap-4">
-                                <label for="" class="fs-6 p-0 m-0">Role</label>
-                                <select name="role" class="form-select py-1 ms-5" id="">
-                                    <option value="">Student</option>
-                                    <option value="">Student Assistant</option>
-                                    <option value="">Facullty</option>
-                                </select>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <label for="" class="fs-6">Lastname</label>
-                                <input type="text" name="lastname" class="form-control ms-3" value="{{ $student->lastname }}">
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <label for="" class="fs-6">Firstname</label>
-                                <input type="text" name="firstname" class="form-control ms-3" value="{{ $student->firstname }}">
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <label for="" class="fs-6">Middlename</label>
-                                <input type="text" name="middlename" class="form-control ms-3" value="{{ $student->middlename }}">
-                            </div>
+            <form action="/edit/{{$student->id}}" method="POST" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $student->id }}">
+                    <div class="d-flex justify-content-start gap-3">
+                        {{-- User Image --}}
+                        <div style="width:200px;height:260px;">
+                            <img src="/userimage/{{ $student->user_image }}" class="object-fit-cover" style="height:100%;width:100%;" alt="">
+                            <input type="file" class="form-control p-0 mt-2" style="width:100; font-size:14px;" value="{{ $student->user_image }}" name="user_image" id="formFile" placeholder="">
+                            @error('user_image')
+                                {{$message}}
+                            @enderror
                         </div>
-                    </div>
-                    {{-- User Education Information --}}
-                    <div class="ms-2">
-                        <h6>Education</h6>
-                        <div class="mt-4 d-flex flex-column gap-4">
-                            @if ($student->level == "College")
+                        
+                        {{-- User Inforamtion --}}
+                        <div>
+                            <h6 class="p-0 m-0">Personal Information</h6>
+                            <div class="d-flex flex-column gap-4">
+                                <div class="mt-4 d-flex align-items-center gap-4">
+                                    <label for="" class="fs-6 p-0 m-0">Role</label>
+                                    <select name="role" class="form-select py-1 ms-5" id="">
+                                        @foreach ($roles as $role )
+                                            <option value="{{ $role->id }}">{{ $role->role_description }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('role')
+                                        <small>{{ $message }}</small>
+                                    @enderror
+                                </div>
                                 <div class="d-flex align-items-center gap-2">
-                                    <label for="" class="fs-6">Level</label>
-                                    <select class="form-select ms-5" name="course">
-                                        <option value="">College</option>
-                                        <option value="">Senior Highschool</option>
-                                        <option value="">Junior Highschool</option>
-                                        <option value="">Elementary</option>
-                                    </select>
-                                </div>
-                                <div class="d-flex gap-4 align-items-center">
-                                    <label for="">Course</label>
-                                    <input type="text" name="course" class="form-control ms-4" name="course" value="{{ $student->course }}">
-                                </div>
-                                <div class="d-flex gap-5 align-items-center">
-                                    <label for="">Year</label>
-                                    <select name="" id="" class="form-select ms-3" name="year">
-                                        <option value="">4th Year</option>
-                                        <option value="">3rd Year</option>
-                                        <option value="">2nd Year</option>
-                                        <option value="">1st Year</option>
-                                    </select>
-                                </div>
-                                <div class="d-flex gap-3 align-items-center">
-                                    <label for="">Department</label>
-                                    <input type="text" name="department" class="form-control" value="{{ $student->department }}">
-                                </div>
-                            {{-- if user is elementary --}}
-                            @elseif ($student->level == "Senior Highschool")
-                                <div class="d-flex align-items-center gap-2">
-                                    <label for="" class="fs-6">Level</label>
-                                    <select class="form-select ms-4" name="course">
-                                        <option value="">College</option>
-                                        <option value="">Senior Highschool</option>
-                                        <option value="">Junior Highschool</option>
-                                        <option value="">Elementary</option>
-                                    </select>
-                                </div>
-                                <div class="d-flex gap-4 align-items-center">
-                                    <label for="">Grade</label>
-                                    <select name="grade" id="" class="form-select ms-1">
-                                        <option value="Grade 12">Grade 12</option>
-                                        <option value="Grade 11">Grade 11</option>
-                                    </select>
-                                </div>
-                                <div class="d-flex gap-4 align-items-center">
-                                    <label for="">Strand</label>
-                                    <input type="text" name="strand" value="{{ $student->strand }}" class="form-control">
-                                </div>
-                                <div class="d-flex gap-3 align-items-center">
-                                    <label for="">Section</label>
-                                    <input type="text" name="section" value="{{ $student->section }}" class="form-control">
-                                </div>
-                            @elseif ($student->level == "Junior Highschool")
-                                <div class="d-flex align-items-center gap-1">
-                                    <label for="" class="fs-6">Level</label>
-                                    <select class="form-select ms-4" name="course">
-                                        <option value="">College</option>
-                                        <option value="">Senior Highschool</option>
-                                        <option value="">Junior Highschool</option>
-                                        <option value="">Elementary</option>
-                                    </select>
-                                </div>
-                                <div class="d-flex align-items-center gap-4">
-                                    <label for="" class="fs-6">Grade</label>
-                                    <select name="grade" id="" class="form-select">
-                                        <option value="">Grade 10</option>
-                                        <option value="">Grade 9</option>
-                                        <option value="">Grade 8</option>
-                                        <option value="">Grade 7</option>
-                                    </select>
+                                    <label for="" class="text-nowrap fs-6">Unique ID</label>
+                                    <input type="text" name="unique_id" class="form-control ms-4" value="{{ $student->unique_id }}">
+                                    @error('unique_id')
+                                        {{$message}}
+                                    @enderror
                                 </div>
                                 <div class="d-flex align-items-center gap-3">
-                                    <label for="">Section</label>
-                                    <input type="text" name="section" value="{{ $student->section }}" class="form-control">
+                                    <label for="" class="fs-6">Lastname</label>
+                                    <input type="text" name="lastname" class="form-control ms-3" value="{{ $student->lastname }}">
+                                    @error('Lastname')
+                                        {{$message}}
+                                    @enderror
                                 </div>
-                            @else if($student->level == "Elementary" )
-
-                            @endif
+                                <div class="d-flex align-items-center gap-3">
+                                    <label for="" class="fs-6">Firstname</label>
+                                    <input type="text" name="firstname" class="form-control ms-3" value="{{ $student->firstname }}">
+                                    @error('firstname')
+                                        {{$message}}
+                                    @enderror
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <label for="" class="fs-6">Middlename</label>
+                                    <input type="text" name="middlename" class="form-control ms-3" value="{{ $student->middlename }}">
+                                    @error('middlename')
+                                        {{$message}}
+                                    @enderror
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex gap-2">
+                                        <input type="radio" name="gender" class="" value="Male">
+                                        <label for="" class="fs-6">Male</label>
+                                        @error('gender')
+                                            {{$message}}
+                                        @enderror
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <input type="radio" name="gender" class="" value="Female">
+                                        <label for="" class="fs-6">Female</label>
+                                        @error('gender')
+                                            {{$message}}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- User Education Information --}}
+                        <div class="ms-2">
+                            <h6>Education</h6>
+                            <div class="mt-4 d-flex flex-column gap-4">
+                                @if ($student->level == "College")
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label for="" class="fs-6">Level</label>
+                                        <select class="form-select ms-5" name="level">
+                                            <option value="College">College</option>
+                                            <option value="Senior Highschool">Senior Highschool</option>
+                                            <option value="Junior Highschool">Junior Highschool</option>
+                                            <option value="Elementary">Elementary</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <label for="">Course</label>
+                                        <input type="text" name="course" class="form-control ms-4" name="course" value="{{ $student->course }}">
+                                    </div>
+                                    <div class="d-flex gap-5 align-items-center">
+                                        <label for="">Year</label>
+                                        <select id="" class="form-select ms-3" name="year">
+                                            <option value="4th Year">4th Year</option>
+                                            <option value="3rd Year">3rd Year</option>
+                                            <option value="2nd Year">2nd Year</option>
+                                            <option value="1st Year">1st Year</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <label for="">Department</label>
+                                        <input type="text" name="department" class="form-control" value="{{ $student->department }}">
+                                    </div>
+                                {{-- if user is elementary --}}
+                                @elseif ($student->level == "Senior Highschool")
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label for="" class="fs-6">Level</label>
+                                        <select class="form-select ms-4" name="course">
+                                            <option value="College">College</option>
+                                            <option value="Senior Highschool">Senior Highschool</option>
+                                            <option value="Junior Highschool">Junior Highschool</option>
+                                            <option value="Elementary">Elementary</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <label for="">Grade</label>
+                                        <select name="grade" id="" class="form-select ms-1">
+                                            <option value="Grade 12">Grade 12</option>
+                                            <option value="Grade 11">Grade 11</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <label for="">Strand</label>
+                                        <input type="text" name="strand" value="{{ $student->strand }}" class="form-control">
+                                    </div>
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <label for="">Section</label>
+                                        <input type="text" name="section" value="{{ $student->section }}" class="form-control">
+                                    </div>
+                                @elseif ($student->level == "Junior Highschool")
+                                    <div class="d-flex align-items-center gap-1">
+                                        <label for="" class="fs-6">Level</label>
+                                        <select class="form-select ms-4" name="course">
+                                            <option value="College">College</option>
+                                            <option value="Senior Highschool">Senior Highschool</option>
+                                            <option value="Junior Highschool">Junior Highschool</option>
+                                            <option value="Elementary">Elementary</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-4">
+                                        <label for="" class="fs-6">Grade</label>
+                                        <select name="grade" id="" class="form-select">
+                                            <option value="Grade 10">Grade 10</option>
+                                            <option value="Grade 9">Grade 9</option>
+                                            <option value="Grade 8">Grade 8</option>
+                                            <option value="Grade 7">Grade 7</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <label for="">Section</label>
+                                        <input type="text" name="section" value="{{ $student->section }}" class="form-control">
+                                    </div>
+                                @elseif($student->level == "Elementary" )
+                                @endif
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column ">
+                            <h6 class="p-0 m-0">Contact Information</h6>
+                            <div class="d-flex flex-column gap-4 mt-2">
+                                <div class="d-flex align-items-center gap-4 mt-3">
+                                    <label for="" class="fs-6">Email</label>
+                                    <input type="email" name="email" class="form-control ms-4" value="{{ $student->email }}">
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <label for="" class="fs-6">Cellphone</label>
+                                    <input type="text" name="cpnumber" class="form-control" value="{{ $student->cpnumber }}">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-column ">
-                        <h6 class="p-0 m-0">Contact Information</h6>
-                        <div class="d-flex flex-column gap-4 mt-2">
-                            <div class="d-flex align-items-center gap-4 mt-3">
-                                <label for="" class="fs-6">Email</label>
-                                <input type="email" name="email" class="form-control ms-4" value="{{ $student->email }}">
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <label for="" class="fs-6">Cellphone</label>
-                                <input type="text" name="cellphone" class="form-control" value="{{ $student->cpnumber }}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
                     <div>
-                        <input type="file" class="form-control p-0 mt-1" style="width:auto;" name="user_image" id="formFile">
+                        
                     </div>
+                    <button typ="submit" name="submit" class="btn btn-success w-100 mt-3">Submit</button>           
+                    </form>
             </section>
-
         </div>
         <div class="col-lg-1 bg-light"></div>
     </div>

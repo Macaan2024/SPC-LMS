@@ -38,8 +38,9 @@ Route::get('/', [IndexController::class, 'index'])->name('login');
 // Route::get('/student/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
 
-Route::post('/register', [UserController::class,'store'])->name('store');
-Route::get('/usermanagement', [UserController::class,'index']);
+Route::post('/register', [UserManagementController::class,'store'])->name('store');
+Route::get('/usermanagement', [UserManagementController::class,'index'])->name('usermanagement');
 Route::get('/fetch-users', [UserManagementController::class, 'fetchUsers'])->name('fetch-users');
 Route::delete('/delete-student/{id}', [UserManagementController::class, 'destroy'])->name('delete-student');
-Route::get('/edit/{id}', [UserManagementController::class, 'edit'])->name('edit-student');
+Route::get('/edit/{id}', [UserManagementController::class, 'show'])->name('modification');
+Route::put('/edit/{id}', [UserManagementController::class, 'update'])->name('edit');
