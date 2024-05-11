@@ -24,11 +24,11 @@ class UserManagementController extends Controller
     {
 
             $studentValidated = $request->validate([
-                "unique_id" => ["required","regex:/^\d{4}-\d{6}$/"],
-                "lastname" => ["required", "regex:/^[A-Za-z\s]+$/"],
-                "firstname" => ["required", "regex:/^[A-Za-z\s]+$/"],
-                "middlename" => ["required"],
-                "level" => ["required"],
+                "unique_id" => ["nullable","regex:/^\d{4}-\d{6}$/"],
+                "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+                "firstname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+                "middlename" => ["nullable"],
+                "level" => ["nullable"],
                 "grade" => ["nullable"],
                 "strand" => ["nullable"],
                 "status"=> ["nullable"],
@@ -37,9 +37,9 @@ class UserManagementController extends Controller
                 "course" => ["nullable"],
                 "year" => ["nullable"],
                 "department"=> ["nullable"],
-                "gender"=> ["required"],
-                "cpnumber"=> ["required"],
-                "email"=> ["required", "email", Rule::unique("users", "email")],
+                "gender"=> ["nullable"],
+                "cpnumber"=> ["nullable"],
+                "email"=> ["nullable"],
                 "password" => ["nullable"],
             ]);
 
@@ -101,52 +101,74 @@ class UserManagementController extends Controller
     public function show($id) {
         $student = User::findorFail($id);
         $roles = Role::all();
+        $level = User::query()->orderBy('level')->get();
 
-        return view('Users.admin.pages.usermanagement_edit', compact('student', 'roles'));
+        return view('Users.admin.pages.usermanagement_edit', compact('student', 'roles', 'level'));
     }
-    // public function update(Request $request, User $student) {
-
-    // }
-
-    public function update(Request $request, User $student)
+    public function update(Request $request, $id)
     {
         // Validate the request data
         $request->validate([
-            "role_id" => ["required", "exists:roles,id"],
-            "unique_id" => ["required","regex:/^\d{4}-\d{6}$/"],
-            "lastname" => ["required", "regex:/^[A-Za-z\s]+$/"],
-            "firstname" => ["required", "regex:/^[A-Za-z\s]+$/"],
-            "middlename" => ["required"],
-            "level" => ["required"],
-            "grade" => ["nullable"],
-            "strand" => ["nullable"],
-            "status"=> ["nullable"],
-            "user_image"=> ["nullable", "image", "max:2048"], // Adjust the validation for user_image
-            "section" => ["nullable"],
-            "course" => ["nullable"],
-            "year" => ["nullable"],
-            "department"=> ["nullable"],
-            "gender"=> ["required"],
-            "cpnumber"=> ["required"],
-            "email"=> ["required", "email", Rule::unique("users", "email")],
-            "password" => ["nullable"],
+            "role_id" => ["nullable", "exists:roles,id"], //1
+            "unique_id" => ["nullable", "regex:/^\d{4}-\d{6}$/"], //2
+            "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"], //3
+            "firstname" => ["nullable", "regex:/^[A-Za-z\s]+$/"], //4
+            "middlename" => ["nullable"], //5
+            "level" => ["nullable"], //6
+            "grade" => ["nullable"], //7
+            "strand" => ["nullable"], //8
+            "status" => ["nullable"],  //9
+            "section" => ["nullable"], //10
+            "course" => ["nullable"], //11
+            "year" => ["nullable"], //12
+            "department" => ["nullable"], //13
+            "gender" => ["nullable"], //14
+            "cpnumber" => ["nullable"], //15
+            "email" => ["nullable"], //15
+            "password" => ["nullable"], //16
+            "user_image" => ["nullable", "image", "max:2048"], //17
         ]);
+    
+        $user = User::findOrFail($id);
+        $role = Role::find($request->role_id);
 
-        // Handle the user_image upload
-        if($request->hasFile('user_image')) {
-            $image = $request->file('user_image');
-            $filename = time(). '.'. $image->getClientOriginalExtension();
-            $path = $request->user_image->storeAs('public/userimages', $filename);
 
-            // Update the user model with the new image path
-            $student->user_image = $path;
+        if (!$role) {
+            return back()->with('error', 'Role not found');
         }
 
-        // Update the student with the validated data
-        $student->update($request->all());
+        if ($request->hasFile('user_image')) {
+            // Generate a unique name for the image file
+            $imageName = time(). '_'. $request->user_image->getClientOriginalName();
+            // Move the uploaded file to the 'userimages' directory
+            $request->user_image->move(public_path('userimages'), $imageName);
+        } else {
+            // If no new image is uploaded, retain the existing image name
+            $imageName = $user->user_image;
+        }
+    
+
+        $user->update([
+            
+            'role_id' => $request->role_id,
+            'unique_id' => $request->unique_id,
+            'lastname' => $request->lastname,
+            'firstname' => $request->firstname,
+            'middlename' => $request->middlename,
+            'level' => $request->level,
+            'grade' => $request->grade,
+            'strand' => $request->strand,
+            'section' => $request->section,
+            'course' => $request->course,
+            'year' => $request->year,
+            'department' => $request->department,
+            'gender' => $request->gender,
+            'cpnumber' => $request->cpnumber,
+            'email' => $request->email,
+            'password' => $request->password,
+            'user_image' => $imageName,
+        ]);
 
         return back()->with('message', 'Successfully Editing User');
     }
-    // end of edit -------------------
-   
 }

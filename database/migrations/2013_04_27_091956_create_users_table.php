@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->string('unique_id')->unique()->nullable(false); // Make the column nullable
+            $table->string('unique_id')->unique()->nullable(); // Make the column nullable
             $table->string('lastname')->nullable(); // Make the column nullable
             $table->string('firstname')->nullable();
             $table->string('middlename')->nullable();
