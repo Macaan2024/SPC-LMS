@@ -14,31 +14,28 @@ class LoginController extends Controller
                 'password' => 'required'
             ]
             );
-
-            if (auth()->attempt(['unique_id'=>$input["unique_id"], 'password'=>$input["password"]])) {
-                $user = auth()->user();
-                $role_id = null;
-
-                if ($user->roles->isNotEmpty()) {
-                    $role_id = $user->roles->first()->id;
-                }
-                if ($role_id == 1) {
-                    return redirect()->route('home.student');
-                }
-                else {
-                    return redirect()->route('login');
-                }
-            }else {
-                return back()->withErrors(['message' => 'Invalid Credentials']);
+    
+        if (auth()->attempt(['unique_id'=>$input["unique_id"], 'password'=>$input["password"]])) {
+            $user = auth()->user();
+            $role_id = $user->role_id; // Ensure this is correctly fetching the role_id
+            
+            if ($role_id == 2) { // Assuming 1 is the admin role_id
+                return redirect()->route('admin.index');
+            }else if ($role_id == 1) {
+                return redirect()->route('student.index');
             }
+             else {
+                return redirect()->route('home.student');
+            }
+        } else {
+            return back()->withErrors(['message' => 'Invalid Credentials']);
+        }
     }
-
     public function logout(Request $request) {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
+

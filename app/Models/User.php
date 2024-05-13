@@ -51,6 +51,6 @@ class User extends Authenticatable
     {
         // Assuming you have a roles() relationship defined in your User model
         // and the Role model has a name or id attribute
-        return $this->roles()->where('role_description', $role)->exists();
+        return $this->role_id == $role;
     }
 }

@@ -1,4 +1,4 @@
-<x-admin.usermanagement-layout>
+<x-admin.layout>
     <x-slot name="view_user">
     <div class="container-fluid">
         <div class="row">
@@ -97,4 +97,4 @@
         </div>
     </div>  
     </x-slot>
-</x-admin.usermanagement-layout>
+</x-admin.layout>

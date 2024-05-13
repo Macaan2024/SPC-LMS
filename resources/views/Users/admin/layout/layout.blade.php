@@ -6,6 +6,7 @@
     
     {{ $slot }}
 
+        {{-- Admin Usermanagement Pages --}}
         @if(isset($user_registration))
             {{ $user_registration }}
             @stack('user_registration')
@@ -17,6 +18,15 @@
             {{ $view_user}}  
               
         @endif
+        {{-- End of Usermanagement Pages --}}
+
+
+        {{-- Admin Dashnboard Pages --}}
+
+        @if(isset($dashboard))
+            {{ $dashboard }}
+        @endif
+        {{-- --}}
         
 
    

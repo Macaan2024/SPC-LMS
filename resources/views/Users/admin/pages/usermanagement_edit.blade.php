@@ -1,4 +1,4 @@
-<x-admin.usermanagement-layout>
+<x-admin.layout>
     <x-slot name="edit_student">
     <div class="row ">
         <div class="col-lg-1 bg-light"></div>
@@ -239,4 +239,4 @@
     });
     </script>
     </x-slot>
-</x-admin.usermanagement-layout>
+</x-admin.layout>

@@ -14,11 +14,14 @@ class RoleIdMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, $roleId): Response
     {
-        if (Auth::check() && Auth::user()->hasRole($role)) {
+        $user = Auth::user();
+        $userRoleId = $user->role_id; // Assuming role_id is the correct field name
+    
+        if ($userRoleId == $roleId) {
             return $next($request);
         }
-        return redirect('index');;
+        return redirect('index');
     }
 }

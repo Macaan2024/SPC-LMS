@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class UsermanagementLayout extends Component
+class Layout extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class UsermanagementLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('Users.admin.layout.usermanagement_layout');
+        return view('Users.admin.layout.layout');
     }
 }

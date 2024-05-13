@@ -1,4 +1,4 @@
-<x-admin.usermanagement-layout>
+<x-admin.layout>
     <x-slot name="user_registration">
         <div class="row">
             <div class="col-lg-1 bg-light"></div>
@@ -110,8 +110,8 @@
                                 '<td class="text-nowrap">'+ student.level + '</td>' +
                                 '<td class="text-nowrap">' + student.status + '</td>' +
                                 '<td class="d-flex justify-content-rounded gap-1">' +
-                                    '<a class="btn btn-primary" href="/view/' + student.id + '">View</a>' +
-                                    '<a class="btn btn-success" href="/edit/' + student.id + '">Edit</a>' +
+                                    '<a class="btn btn-primary" href="/admin/view/' + student.id + '">View</a>' +
+                                    '<a class="btn btn-success" href="/admin/edit/' + student.id + '">Edit</a>' +
                                     '<button class="btn btn-danger delete-user" data-id="' + student.id + '">Delete</button>'
                                 '</td>' +
                             '</tr>';
@@ -159,4 +159,4 @@
         </script>
     </x-slot>
 <!-- -------------------------- ADD ACCOUNT --- -->
-</x-admin.usermanagement-layout>
+</x-admin.layout>
