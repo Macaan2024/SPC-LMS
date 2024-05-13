@@ -44,3 +44,4 @@ Route::get('/fetch-users', [UserManagementController::class, 'fetchUsers'])->nam
 Route::delete('/delete-student/{id}', [UserManagementController::class, 'destroy'])->name('delete-student');
 Route::get('/edit/{id}', [UserManagementController::class, 'show'])->name('modification');
 Route::put('/edit/{id}', [UserManagementController::class, 'update'])->name('edit');
+Route::get('/view/{id}', [UserManagementController::class, 'view'])->name('view');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
@@ -107,30 +108,31 @@ class UserManagementController extends Controller
     }
     public function update(Request $request, $id)
     {
-        // Validate the request data
-        $request->validate([
-            "role_id" => ["nullable", "exists:roles,id"], //1
-            "unique_id" => ["nullable", "regex:/^\d{4}-\d{6}$/"], //2
-            "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"], //3
-            "firstname" => ["nullable", "regex:/^[A-Za-z\s]+$/"], //4
-            "middlename" => ["nullable"], //5
-            "level" => ["nullable"], //6
-            "grade" => ["nullable"], //7
-            "strand" => ["nullable"], //8
-            "status" => ["nullable"],  //9
-            "section" => ["nullable"], //10
-            "course" => ["nullable"], //11
-            "year" => ["nullable"], //12
-            "department" => ["nullable"], //13
-            "gender" => ["nullable"], //14
-            "cpnumber" => ["nullable"], //15
-            "email" => ["nullable"], //15
-            "password" => ["nullable"], //16
-            "user_image" => ["nullable", "image", "max:2048"], //17
-        ]);
-    
         $user = User::findOrFail($id);
         $role = Role::find($request->role_id);
+        // Validate the request data 
+        $request->validate([
+            "role_id" => ["nullable", "exists:roles,id"],
+            "unique_id" => ["nullable", "regex:/^\d{4}-\d{6}$/", Rule::unique('users')->ignore($user->id)],
+            "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+            "firstname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+            "middlename" => ["nullable"],
+            "level" => ["nullable"],
+            "grade" => ["nullable"],
+            "strand" => ["nullable"],
+            "status" => ["nullable"],
+            "section" => ["nullable"],
+            "course" => ["nullable"],
+            "year" => ["nullable"],
+            "department" => ["nullable"],
+            "gender" => ["nullable"],
+            "cpnumber" => ["nullable"],
+            "email" => ["nullable", "email", Rule::unique('users')->ignore($user->id)],
+            "password" => ["nullable"],
+            "user_image" => ["nullable", "image", "max:2048"],
+        ]);
+    
+   
 
 
         if (!$role) {
@@ -146,10 +148,44 @@ class UserManagementController extends Controller
             // If no new image is uploaded, retain the existing image name
             $imageName = $user->user_image;
         }
-    
+        
+
+        $selectLevel = $request->input('level');
+
+        if($selectLevel == 'College') {
+            $request->strand = '';
+            $request->grade = '';
+            $request->section = '';
+            $selectLevel = '';
+        } 
+        if ($selectLevel == 'Senior Highschool') {
+            $request->course = '';
+            $request->year = '';
+            $request->department = '';
+            $selectLevel = '';
+        } 
+        if ($selectLevel== 'Junior Highschool') {
+            $request->course = '';
+            $request->year = '';
+            $request->strand = '';
+            $selectLevel = '';
+        }
+        if ($selectLevel == 'Elementary') { // Adjusted condition
+            $request->course = '';
+            $request->year = '';
+            $request->strand = '';
+            $selectLevel = '';
+        }
+
+        if ($request->password) {
+            $password = Hash::make($request->password);
+        }
+        else {
+            $password = $user->password;
+        }
 
         $user->update([
-            
+        
             'role_id' => $request->role_id,
             'unique_id' => $request->unique_id,
             'lastname' => $request->lastname,
@@ -165,10 +201,18 @@ class UserManagementController extends Controller
             'gender' => $request->gender,
             'cpnumber' => $request->cpnumber,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => $password,
             'user_image' => $imageName,
         ]);
 
-        return back()->with('message', 'Successfully Editing User');
+        return back()->with('editSuccessfully', 'Successfully updated user');
+    }
+
+    /// End of update Controller 
+
+    public function view ($id) {
+        $student = User::findOrFail($id);
+        $roles = Role::all();
+        return view('Users.admin.pages.usermanagement_view', compact('student', 'roles'));
     }
 }

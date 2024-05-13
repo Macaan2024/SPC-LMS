@@ -9,8 +9,13 @@
         @if(isset($user_registration))
             {{ $user_registration }}
             @stack('user_registration')
+
         @elseif(isset($edit_student))
             {{ $edit_student }}
+
+        @elseif(isset($view_user))
+            {{ $view_user}}  
+              
         @endif
         
 

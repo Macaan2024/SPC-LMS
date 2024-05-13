@@ -110,7 +110,7 @@
                                 '<td class="text-nowrap">'+ student.level + '</td>' +
                                 '<td class="text-nowrap">' + student.status + '</td>' +
                                 '<td class="d-flex justify-content-rounded gap-1">' +
-                                    '<a class="btn btn-primary" href="/view-student/">View</a>' +
+                                    '<a class="btn btn-primary" href="/view/' + student.id + '">View</a>' +
                                     '<a class="btn btn-success" href="/edit/' + student.id + '">Edit</a>' +
                                     '<button class="btn btn-danger delete-user" data-id="' + student.id + '">Delete</button>'
                                 '</td>' +
