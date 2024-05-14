@@ -1,4 +1,4 @@
-<x-student.dashboard-layout>
+<x-student.layout>
     {{-- SELECTION OF YEAR LEVEL --}}
     <x-slot name="selectYear">
         <div class="d-flex justify-content-center gap-2 px-4">
@@ -108,4 +108,4 @@
         });
         </script>
     </x-slot>
-</x-student.dashboard-layout>
+</x-student.layout>

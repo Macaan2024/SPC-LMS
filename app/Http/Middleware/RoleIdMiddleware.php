@@ -22,6 +22,6 @@ class RoleIdMiddleware
         if ($userRoleId == $roleId) {
             return $next($request);
         }
-        return redirect('index');
+        return redirect('/');
     }
 }

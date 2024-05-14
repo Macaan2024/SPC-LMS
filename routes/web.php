@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\pagesController\IndexController;
-use App\Http\Controllers\pagesController\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserManagementController;
-use App\Http\Controllers\adminDashboardController;
+use App\Http\Controllers\AdminIndexController;
+use App\Http\Controllers\Student\StudentIndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,21 +13,20 @@ use App\Http\Controllers\adminDashboardController;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assigned to the "web" middleware group. Make something great! 
 |
 */
 // ADMIN 
 Route::middleware(['auth', 'role_id:1'])->group(function () {
-    Route::get("/student/index", [HomeController::class, 'studentHome'])->name('student.index');
-    Route::get('/fetch-data', [HomeController::class, 'fetchData'])->name('fetchData');
+    Route::get('/student/dashboard', [StudentIndexController::class, 'dashboard'])->name('student.dashboard');
+    Route::get('/fetch-data', [StudentIndexController::class, 'fetchData'])->name('fetch-data');
+    
 });
 
 
 
 
 
-Route::post('/process', [LoginController::class, 'login'])->name('login.process');
-Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 
 
@@ -41,7 +38,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout')
 Route::middleware(['auth', 'role_id:2'])->group(function (){
 
     
-    Route::get('/admin/index', [adminDashboardController::class, 'index'])->name('admin.index');
+    Route::get('/admin/index', [AdminIndexController::class, 'index'])->name('admin.index');
 
             
 
@@ -59,16 +56,9 @@ Route::put('/edit/{id}', [UserManagementController::class, 'update'])->name('edi
 Route::get('/admin/view/{id}', [UserManagementController::class, 'view'])->name('view');
 
 
-
- 
-
-// ------- LOGIN PROCESS -----//
-
-
-//--------- PAGES ROUTES CONTROLLER -----
-Route::get('/displayBook', [DashboardController::class, 'index']);
-Route::get('/', [IndexController::class, 'index'])->name('login'); 
-// Route::get('/student/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
+Route::post('/process', [LoginController::class, 'login'])->name('login.process');
+Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 
 
