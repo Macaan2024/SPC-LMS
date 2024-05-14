@@ -19,7 +19,7 @@ use App\Http\Controllers\Student\StudentIndexController;
 // ADMIN 
 Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/student/dashboard', [StudentIndexController::class, 'dashboard'])->name('student.dashboard');
-    Route::get('/fetch-data', [StudentIndexController::class, 'fetchData'])->name('fetch-data');
+   
     
 });
 
@@ -56,6 +56,7 @@ Route::put('/edit/{id}', [UserManagementController::class, 'update'])->name('edi
 Route::get('/admin/view/{id}', [UserManagementController::class, 'view'])->name('view');
 
 
+Route::get('/fetch-data', [StudentIndexController::class, 'fetchData'])->name('fetch-data');
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');

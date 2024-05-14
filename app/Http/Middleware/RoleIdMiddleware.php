@@ -19,6 +19,10 @@ class RoleIdMiddleware
         $user = Auth::user();
         $userRoleId = $user->role_id; // Assuming role_id is the correct field name
     
+        if ($request->ajax()) {
+            return $next($request);
+        }
+        
         if ($userRoleId == $roleId) {
             return $next($request);
         }

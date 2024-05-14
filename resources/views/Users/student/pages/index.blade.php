@@ -9,7 +9,7 @@
             <button class="text-white border-0 py-2 px-3" style="background-color:#661011;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >LOGIN</button>
         </div>
     </nav>
-///
+
     <x-student.modalLogin />
         <div class="d-flex justify-content-center gap-2 px-4">
             <div class="form-floating w-100">
@@ -64,6 +64,7 @@
 
     $('#floatingSelect').on('change', function() {
         var yearLevel = $(this).val();
+        
         if (yearLevel) {
             $.ajax({
                 url: '/fetch-data',
