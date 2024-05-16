@@ -9,22 +9,9 @@ class StudentIndexController extends Controller
 {
     public function index() {
         
-        $allBooks = Book::all();
+        $data = Book::orderBy('level')->get();
 
-        // Initialize an array to hold books in the desired sequence
-        $bookData = [
-            'College' => [],
-            'Senior Highschool' => [],
-            'Junior Highschool' => [],
-            'Elementary' => [],
-        ];
-    
-        // Iterate over all books and assign them to the correct level
-        foreach ($allBooks as $book) {
-            $bookData[$book->level][] = $book;
-        }
-
-        return view('Users.student.pages.index', ['bookData'  => $bookData]);
+        return view('Users.student.pages.index', ['data'  => $data]);
     }
 
     public function fetchData(Request $request) {

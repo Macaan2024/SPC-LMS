@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('isbn')->unique();
+            $table->string('accesion_number')->unique();
             $table->string('author', 255);
             $table->integer('publication_year'); // Changed from string to integer
             $table->string('publication_address', 255);
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->string('category', 255);
             $table->integer('quantity');
             $table->string('level', 255);
-            $table->string('language', 255); // Corrected spelling
+            $table->string('pages', 255); // Corrected spelling
             $table->string('edition', 255);
             $table->string('status', 255);
             $table->integer('total_borrow');

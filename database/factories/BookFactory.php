@@ -23,6 +23,7 @@ class BookFactory extends Factory
        
         return [
             'isbn' => fake()->unique()->numerify('###-### -###'),
+            'accesion_number' => fake()->unique()->numerify('###-### -###'),
             'author' => fake()->name(),
             'publication_year' => fake()->numberBetween($min = 1980 , $max = 2024),
             'publication_address' => fake()->address(),
@@ -30,7 +31,7 @@ class BookFactory extends Factory
             'category' => fake()->randomElement(['Computers Studies', 'Networking', 'Electrical']),
             'quantity' => fake()->randomDigit(),
             'level' => fake()->randomElement(['College']),
-            'language' => fake()->randomElement(['English' , 'Filipino', 'Spanish']),
+            'pages' => fake()->randomElement(['English' , 'Filipino', 'Spanish']),
             'edition' => fake()->randomElement(['1st-Edition', '2nd-Edition', '3rd-Edition']),
             'status' => fake()->randomElement(['Not Available' , 'Available']),
             'image' => fake()->lexify('book' . ($i+1) . '.png'),

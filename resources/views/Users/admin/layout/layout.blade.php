@@ -29,6 +29,13 @@
         {{-- --}}
         
 
+
+        {{-- Admin Book Management Pages --}}
+
+        @if (isset($book_management))
+            {{ $book_management }}
+        @endif
+
    
     
 

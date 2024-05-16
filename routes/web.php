@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\BookManagement;
 use App\Http\Controllers\AdminIndexController;
 use App\Http\Controllers\Student\StudentIndexController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,13 +50,17 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
 
 
 Route::post('/register', [UserManagementController::class,'store'])->name('store');
-Route::get('/admin/usermanagement', [UserManagementController::class,'index'])->name('usermanagement');
+Route::get('/admin/usersmanagement', [UserManagementController::class,'index'])->name('admin.usermanagement');
 Route::get('/fetch-users', [UserManagementController::class, 'fetchUsers'])->name('fetch-users');
 Route::delete('/delete-student/{id}', [UserManagementController::class, 'destroy'])->name('delete-student');
 Route::get('/admin/edit/{id}', [UserManagementController::class, 'show'])->name('modification');
 Route::put('/edit/{id}', [UserManagementController::class, 'update'])->name('edit');
 Route::get('/admin/view/{id}', [UserManagementController::class, 'view'])->name('view');
 
+Route::get('/admin/booksmanagement', [BookManagement::class, 'index'])->name('admin.bookmanagement');
+Route::get('/fetch-books', [BookManagement::class, 'fetchBooks']);
+Route::post('/admin.store', [BookManagement::class, 'store'])->name('admin.store');
+Route::delete('/delete-book/{id}', [BookManagement::class, 'destroy'])->name('delete-book');
 
 Route::get('/fetch-data', [StudentIndexController::class, 'fetchData'])->name('fetch-data');
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
