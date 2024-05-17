@@ -88,6 +88,33 @@
         </div>
         <script>
             $(document).ready(function () {
+
+                $(document).on('click', '.delete-book', function () {
+                        var bookId = $(this).data('id');
+
+                        if(confirm('Are you sure you want to delete this book? ')) {
+                            $.ajax ({
+                                url: '/delete-book/'+bookId,
+                                type: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function(response) {
+                                    if (response.success) {
+                                        $('tr[data-id="' + bookId + '"]').remove();
+                                        alert(response.success);
+                                    } else {
+                                        alert('Failed to delete the book. Please try again later.');
+                                    }
+                                },
+                                error: function(error) {
+                                    console.error('Error deleting book:', error);
+                                    alert('Failed to delete the book. Please try again later.');
+                                }
+                            })
+                        }
+                    });
+
                 $.ajax({
                     url: '/fetch-books',
                     method: 'GET',
@@ -148,32 +175,6 @@
                         });
 
                         $('#bookData').html(html);
-
-                        $(document).on('click', '.delete-book', function () {
-                            var bookId = $(this).data('id');
-
-                            if(confirm('Are you sure you want to delete this book? ')) {
-                                $.ajax ({
-                                    url: '/delete-book/'+bookId,
-                                    type: 'DELETE',
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function(response) {
-                                        if (response.success) {
-                                            $('tr[data-id="' + bookId + '"]').remove();
-                                            alert(response.success);
-                                        } else {
-                                            alert('Failed to delete the book. Please try again later.');
-                                        }
-                                    },
-                                    error: function(error) {
-                                        console.error('Error deleting book:', error);
-                                        alert('Failed to delete the book. Please try again later.');
-                                    }
-                                })
-                            }
-                        });
                     },
                     error: function (error) {
                         console.error('Error fetching books:', error);

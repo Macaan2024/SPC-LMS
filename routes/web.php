@@ -62,10 +62,7 @@ Route::get('/fetch-books', [BookManagement::class, 'fetchBooks']);
 Route::post('/admin.store', [BookManagement::class, 'store'])->name('admin.store');
 Route::delete('/delete-book/{id}', [BookManagement::class, 'destroy'])->name('delete-book');
 
-Route::get('/fetch-data', [StudentIndexController::class, 'fetchData'])->name('fetch-data');
+Route::get('/fetch-level-books', [StudentIndexController::class, 'fetchLevelBook'])->name('fetch-level-books');
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
-
-
-

@@ -3,6 +3,7 @@
     @include('Users.student.layout.header')
 <body>
     
+    {{-- if the users is on landing page --}}
     @if (!isset($landing_page))
         @include('Users.student.layout.nav') 
     @else
@@ -10,6 +11,16 @@
     @endif
     
     {{ $slot }}
+
+    {{-- Dashboard --}}
+
+
+    @if (isset($dashboard))
+        {{ $dashboard }}       
+
+    @endif 
+
+    
 
 
     @include('Users.student.layout.footer')
