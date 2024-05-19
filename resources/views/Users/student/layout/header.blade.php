@@ -15,12 +15,18 @@
             font-size:14px;
             padding-top:80px;
             letter-spacing:0.8px;
+            margin: 0;
+        
         }
         body::-webkit-scrollbar {
             display: none;
         } 
         .table-dark tr th {
             background-color:#661011 !important;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>

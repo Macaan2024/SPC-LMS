@@ -16,15 +16,16 @@ class StudentIndexController extends Controller
 
     public function fetchLevelBook(Request $request) {
         // Group books by level
-        $bookLevel = Book::orderBy('level')->get();
-        $bookCategory = Book::all();
+        $book = Book::all()->groupBy('level');
+        $groupBooks = $book->map(function ($bookByLevel){
+            return $bookByLevel->groupBy('category');
+        });
 
-
-        return response()->json(['bookLevel' => $bookLevel, 'bookCategory' => $bookCategory]);
+        return response()->json(['groupBooks' => $groupBooks]);
     }
 
     public function dashboard() {
-        $book = Book::all()->all();
+        $book = Book::all()->groupBy('level');
 
         return view('Users.student.pages.dashboard', ['book' => $book]);
     }

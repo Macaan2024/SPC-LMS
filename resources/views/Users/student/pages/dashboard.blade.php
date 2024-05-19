@@ -1,69 +1,93 @@
 <x-student.layout>
     {{-- SELECTION OF YEAR LEVEL --}}
     <x-slot name="dashboard">
-      <div class="container" style="min-width:320px;">
-        <div class="d-flex justify-content-center gap-2 px-4 mt-5" style="min-width:248px;">
-              <div class="w-100">
-                  <select class="form-select"  aria-label="Floating label select example">
-                      <option disabled selected>Choose Year-level</option>
-                      <option value="College">College</option>
-                      <option value="Senior Highschool">Senior Highschool</option>
-                      <option value="Junior Highschool">Junior Highschool</option>
-                      <option value="Elementary">Elementary</option>
-                  </select>
-              
-              </div>
-        </div>
-      </div>
-      <div class="container mt-5 d-flex flex-column gap-5 align-items-center" style="min-width:288px;" id="bookLevelContainer">
-        <div id="bookCategoryContainer"></div>
+        <div class="container border-light-subtle border m-0 p-0 align-items-center" style="min-width:320px;" id="">
+            <div class="d-flex justify-content-center gap-2 px-4 mt-5" style="min-width:248px;">
+                <div class="w-100">
+                    <select class="form-select"  aria-label="Floating label select example">
+                        <option disabled selected>Choose Year-level</option>
+                        <option value="College">College</option>
+                        <option value="Senior Highschool">Senior Highschool</option>
+                        <option value="Junior Highschool">Junior Highschool</option>
+                        <option value="Elementary">Elementary</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container p-0 m-0" id="bookLevelContainer">
+            </div>
       </div>
         <!-- --- -->
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            url: '/fetch-level-books',
-            type: 'GET',
-            success: function (response) {
-                var html1 = '';
-                var html2 = '';
 
-                // Assuming response.bookLevel is an array of objects
-                $.each(response.bookLevel, function(index, OuterlevelObj) {
-                    var OuterlevelName = OuterlevelObj.level;
-                    var OuterCategoryName = OuterlevelObj.category;
-                    var OuterIsbn = OuterlevelObj.isbn
+        <script>
+        $(document).ready(function (){
+
+            var currentYear = new Date().getFullYear();
+
+            $.ajax({
+                url: '/fetch-level-books',
+                type: 'GET',
+                success: function(response) {
+                    var html = '';
                     
-                    html1 += 
-                          `
-                            <div class="w-100">
-                          `;
-                          $('#bokLevelContainer').html(html1);
-                    // Additional logic for handling categories within each level
-                    // This part assumes you want to do something specific with categories
-                    // For demonstration, I'm adding a placeholder for further customization
-                    $.each(response.bookLevel, function(innerIndex, innerLevelObj) {
-  
-                      if (OuterlevelName == innerLevelObj.level && OuterCategoryName == innerLevelObj.category) {
-                            html2 += `
-                                    
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <p class="p-0 m-0 fs-6 fw-medium">${innerLevelObj.category}</p>
-                                            <a class="text-decoration-none py-1 px-2 text-white" style="background-color:#661011;">View All</a>
-                                        </div>
-                                        <div class="border border-1 mt-2" style="height:120px">
-                                        </div>
-                                    </div>
-                                    `;
-                            
-                        }
-                    });
-                });
+                    $.each(response.groupBooks, function(level, levels){
+                        html += `
+                                    <div class="border mt-2 border-1 px-2 py-1">
+                                        <h6 class="text-start p-0 m-0 fw-normal fs-5 mt-5 text-white" style="color:#661011;">${level}<h6>
+                                `;
+                        $.each(levels, function(category, bookCategory){
+                                var previousBookTitle = '';
+                                html += `
+                                            <div class="border border-1 shadow-sm px-2 py-2 mt-3" style="height:auto;">
+                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h6 style="color:#661011;" class="p-0 m-0">${category}</h6>
+                                                    <a href="#" class="py-1 px-2 bg-primary text-white text-decoration-none fw-normal">View All</a>
+                                                </div>
+    
+                                                  
+                                        `;
+                                $.each(bookCategory, function(index, books){
+                                    if (previousBookTitle !== books.title) {
+                                        if ((books.publication_year + 3) >= currentYear) {
+                                            html += `
+                                                        
+                                                    `;
+                                            if (books.status === 'Available') {
+                                            html += `
+                                                        
+                                                    `;
+                                            }
+                                            else if (books.status === 'Not Available') {
+                                            html += `
+                                               
+                                                    `;
+                                            }
+                                        }else {
+            
+                                        }
+                                       
 
-                $('#bookLevelContainer').html(html);
-            }
+                                    }    
+                                    
+                                    previousBookTitle = books.title;        
+
+                                });
+                                
+
+                                html += `           
+                                             
+                                            </div>
+                                        `;
+
+                        });
+                        html += `
+                                    </div>
+                                `;
+                    });
+                    
+                    $('#bookLevelContainer').html(html);
+                }
+            });
         });
-    });
-</script>
+        </script>
     </x-slot>
 </x-student.layout>
