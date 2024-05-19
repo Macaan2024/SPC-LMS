@@ -16,9 +16,9 @@
                     <li><a class="dropdown-item" href="#">My Profile</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
                     <li>
-                        <form action="{{ route('login.logout') }}" method="POST">
+                        <form action="{{ route('login.logout') }}" class="" method="POST">
                             @csrf
-                             <button class="dropdown-item p-0 m-0" type="submit">Logout</button>
+                             <button class="dropdown-item" type="submit">Logout</button>
                         </form>
                     </li>
                 </ul>

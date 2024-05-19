@@ -22,7 +22,7 @@ class LoginController extends Controller
             if ($role_id == 2) { // Assuming 1 is the admin role_id
                 return redirect()->route('admin.index');
             }else if ($role_id == 1) {
-                return redirect()->route('student.dashboard');
+                return redirect()->route('spc-lms.dashboard');
             }
              else {
                 return redirect()->route('home.student');

@@ -18,7 +18,11 @@
     @if (isset($dashboard))
         {{ $dashboard }}       
 
-    @endif 
+    @endif
+    
+    @if (isset($view_category))
+        {{ $view_category}}
+    @endif
 
     
 

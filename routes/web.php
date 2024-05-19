@@ -20,9 +20,9 @@ use App\Http\Controllers\Student\StudentIndexController;
 */
 // ADMIN 
 Route::middleware(['auth', 'role_id:1'])->group(function () {
-    Route::get('/student/dashboard', [StudentIndexController::class, 'dashboard'])->name('student.dashboard');
-   
-    
+    Route::get('/spc-lms/dashboard', [StudentIndexController::class, 'dashboard'])->name('spc-lms.dashboard');
+    Route::get('/spc-lms/category/{category}', [StudentIndexController::class, 'view'])->name('spc-lms.category');
+    Route::get('/spc-lms/category/searchBook', [StudentIndexController::class, 'search'])->name('spc-lms.category.searchBook');
 });
 
 
@@ -61,6 +61,8 @@ Route::get('/admin/booksmanagement', [BookManagement::class, 'index'])->name('ad
 Route::get('/fetch-books', [BookManagement::class, 'fetchBooks']);
 Route::post('/admin.store', [BookManagement::class, 'store'])->name('admin.store');
 Route::delete('/delete-book/{id}', [BookManagement::class, 'destroy'])->name('delete-book');
+
+
 
 Route::get('/fetch-level-books', [StudentIndexController::class, 'fetchLevelBook'])->name('fetch-level-books');
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
