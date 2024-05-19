@@ -22,8 +22,7 @@ use App\Http\Controllers\Student\StudentIndexController;
 Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/spc-lms/dashboard', [StudentIndexController::class, 'dashboard'])->name('spc-lms.dashboard');
     Route::get('/spc-lms/category/{category}', [StudentIndexController::class, 'view'])->name('spc-lms.category');
-    Route::get('/spc-lms/category/searchBook', [StudentIndexController::class, 'search'])->name('spc-lms.category.searchBook');
-});
+    Route::post('/spc-lms/category/searchBook', [StudentIndexController::class, 'search'])->name('spc-lms.category.searchBook');});
 
 
 

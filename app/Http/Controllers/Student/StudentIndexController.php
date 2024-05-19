@@ -16,24 +16,27 @@ class StudentIndexController extends Controller
     }
 
     public function view($category) {
-        // Retrieve all books
-        $books = Book::all();
-    
-        // Filter books by category
-        $bookCategory = $books->where('category', $category);
+        
+        $bookCategory = $category;
+
+        $books = Book::where('category', $category)->orderBy('title')->get();// Adjust the column to order by as needed
     
         $bookAttributes = Schema::getColumnListing('books');
     
         return view('Users.student.pages.Dashboard.viewCategory', [
-            'bookCategory' => $bookCategory,
-            'bookAttributes' => $bookAttributes
+            'books' => $books,
+            'bookAttributes' => $bookAttributes,
+            'bookCategory' => $bookCategory
         ]);
     }
 
-    public function search(Request $request) {
-        $search = $request->input('bookSearch');
-        $results = Book::where('title', 'LIKE', "%{$search}%")->get(); // Changed 'column_name' to 'title'
-    
+    public function search(Request $request)
+    {
+        $search = $request->input('query');
+        $attribute = $request->input('attribute');
+
+        $results = Book::where($attribute, 'LIKE', "%{$search}%")->get();
+
         return response()->json($results);
     }
     public function fetchLevelBook(Request $request) {
