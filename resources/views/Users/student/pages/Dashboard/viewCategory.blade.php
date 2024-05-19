@@ -24,7 +24,7 @@
     </div>
     {{ $bookCategory }}
     @foreach ($books as $book)
-  
+        asdasdasd
         {{ $book->title }}<br>
 
     @endforeach
