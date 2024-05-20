@@ -90,6 +90,7 @@ Route::get('/fetch-level-books', [StudentIndexController::class, 'fetchLevelBook
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
+<<<<<<< HEAD
 =======
 
 //------------------------------------------
@@ -208,3 +209,9 @@ Route::get('/mobile-login', function () {
 
 >>>>>>> 50855653f786d7e69c593876cc15c78d49d68a4c
 >>>>>>> d85f81cfe8af0ab8e2c25e873f7326a89a494978
+=======
+
+Route::get('/scan', function(){
+   return view('layouts.scanner');
+});
+>>>>>>> master
