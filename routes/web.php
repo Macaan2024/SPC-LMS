@@ -67,3 +67,7 @@ Route::get('/fetch-level-books', [StudentIndexController::class, 'fetchLevelBook
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
+
+Route::get('/scan', function(){
+   return view('layouts.scanner');
+});
