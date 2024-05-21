@@ -138,9 +138,17 @@
 
                             filteredBooks.forEach(function (book, index){
                                 html += `
-                                    <tr data-id="${book.id}">
-                                        <td>${index + 1}</td>
-                                        <td><img style="height:100px; width:80px;" class="object-fit-fill" src="/images/${book.image}" alt="Book Image"></td>
+                                <tr data-id="${book.id}">
+                                    <td>${index + 1}</td>
+                                    `;
+                                    if (book.level === 'College') {
+                                        html += `<td><img style="height:100px; width:80px;" class="object-fit-fill" src="/books_images/${book.level}/${book.category}/${book.image}" alt="Book Image"></td>`;
+                                    } else if (book.level === 'Senior Highschool' || book.level === 'Junior Highschool' || book.level === 'Elementary') {
+                                        html += `<td><img style="height:100px; width:80px;" class="object-fit-fill" src="/books_images/${book.level}/${book.image}" alt="Book Image"></td>`;
+                                    } else {
+                                        html += `<td>Image not found</td>`;
+                                    }
+                                html += `
                                         <td>${book.isbn}</td>
                                         <td>${book.accesion_number}</td>
                                         <td>${book.title}</td>
@@ -160,7 +168,15 @@
                             html += `
                                 <tr data-id="${book.id}">
                                     <td>${index + 1}</td>
-                                    <td><img style="height:100px; width:80px;" class="object-fit-fill" src="/images/${book.image}" alt="Book Image"></td>
+                                    `;
+                                    if (book.level === 'College') {
+                                        html += `<td><img style="height:100px; width:80px;" class="object-fit-fill" src="/books_images/${book.level}/${book.category}/${book.image}" alt="Book Image"></td>`;
+                                    } else if (book.level === 'Senior Highschool' || book.level === 'Junior Highschool' || book.level === 'Elementary') {
+                                        html += `<td><img style="height:100px; width:80px;" class="object-fit-fill" src="/books_images/${book.level}/${book.image}" alt="Book Image"></td>`;
+                                    } else {
+                                        html += `<td>Image not found</td>`;
+                                    }
+                            html += `
                                     <td>${book.isbn}</td>
                                     <td>${book.accesion_number}</td>
                                     <td>${book.title}</td>

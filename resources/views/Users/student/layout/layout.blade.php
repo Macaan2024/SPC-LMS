@@ -24,8 +24,9 @@
         {{ $view_category}}
     @endif
 
-    
-
+    @if (isset($request_book))
+        {{ $request_book }}
+    @endif
 
     @include('Users.student.layout.footer')
 </body>

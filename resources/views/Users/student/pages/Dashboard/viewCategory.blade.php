@@ -22,15 +22,56 @@
             </svg>
         </button>
     </div>
-    {{ $bookCategory }}
-    @foreach ($books as $book)
-        asdasdasd
-        {{ $book->title }}<br>
-
-    @endforeach
     <div class="container p-0 mt-5" id="bookLevelContainer">
         <div class="border border-1 shadow-sm mt-5" style="solid #661011;">
-            <h5 class="bg-light shadow-sm text-center p-0 m-0 fw-normal fs-6 py-3" style="color:black;"><h5>
+            <h5 class="shadow-sm text-center p-0 m-0 fw-normal fs-6 py-3" style="color:white;background-color:#661011;">{{ $bookCategory }}<h5>
+            <div class="border border-darksubtle mt-3 mx-2" style="height:auto;width:auto;">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 row-cols-xxl-6 justify-content-start p-0 m-0">
+                    @foreach ($books as $book )
+                        @if  (($book->publication_year + 3) >= date('Y'))
+                            @if ($book->status == 'Available')
+                                <div class="col  mt-3 d-flex flex-column">
+                                    <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
+                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                            <a href="{{ route('spc-lms.request-book', ['id' => $book->id]) }}" class="bg-success w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="height:10%;">Borrow</a>
+                                            <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid #661011;"></div>
+                                            <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">NEW</span>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col  mt-3 d-flex flex-column">
+                                    <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
+                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                            <a class="w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="background-color:gray;height:10%;">Unavailable</a>
+                                            <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid #661011;"></div>
+                                            <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">NEW</span>
+                                    </div>
+                                </div>
+                            @endif
+                        @else 
+                            @if ($book->status == 'Available')
+                                <div class="col  mt-3 d-flex flex-column">
+                                    <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
+                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                            <a href="{{ route('spc-lms.request-book', ['id' => $book->id]) }}" class="bg-success w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="height:10%;">Borrow</a>
+                                            <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid gray;"></div>
+                                            <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">{{$book->publication_year}}</span>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col  mt-3 d-flex flex-column">
+                                    <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
+                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                            <a class="w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="background-color:gray;height:10%;">Unavailable</a>
+                                            <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid gray;"></div>
+                                            <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">{{$book->publication_year}}</span>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 

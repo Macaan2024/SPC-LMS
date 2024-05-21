@@ -30,6 +30,12 @@ class StudentIndexController extends Controller
         ]);
     }
 
+    public function requestBook($id) {
+        $requestBook = Book::findOrFail($id);
+
+        return view('Users.student.pages.dashboard.requestBook', ['requestBook' => $requestBook]);
+    }
+
     public function search(Request $request)
     {
         $search = $request->input('query');

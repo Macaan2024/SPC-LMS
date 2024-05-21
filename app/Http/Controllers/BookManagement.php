@@ -18,8 +18,7 @@ class BookManagement extends Controller
         return response()->json(['books' => $books]);
     }
 
-    public function store (Request $request) {
-
+    public function store(Request $request) {
         $bookValidation = $request->validate([
             'isbn' => ['required'],
             'accesion_number' => ['required'],
@@ -28,7 +27,7 @@ class BookManagement extends Controller
             'publication_year' => ['required'],
             'publication_address' => ['required'],
             'level' => ['required'],
-            'category' => ['required'],
+            'category' => ['nullable'],
             'edition' => ['required'],
             'pages' => ['required'],
             'quantity' => ['required'],
@@ -36,30 +35,42 @@ class BookManagement extends Controller
             'total_borrow' => ['nullable'],
             'image' => ['nullable', 'image'],
         ]);
-
+    
+        // Check if an image file is uploaded
         if ($request->hasFile('image')) {
-            
-            //Capturing filename with extension
+            // Capturing filename with extension
             $extension = $request->file('image')->getClientOriginalExtension();
-            //Renaming image
-            $newFilename = str_replace(' ', '_', $bookValidation['isbn']). '.'. $extension;
-
-            $path = public_path('images/'. $newFilename);
-
-            $request->file('image')->move(public_path('images'), $newFilename);
-
+            // Renaming image
+            $newFilename = str_replace(' ', ' ', $bookValidation['isbn']) . '.' . $extension;
+    
+            // Constructing the dynamic folder path
+            $levelFolder = str_replace(' ', ' ', $bookValidation['level']);
+            if (!empty($bookValidation['category'])) {
+                $categoryFolder = str_replace(' ', '_', $bookValidation['category']);
+                $path = public_path("books_images/{$levelFolder}/{$categoryFolder}");
+            } else {
+                $path = public_path("books_images/{$levelFolder}");
+            }
+    
+            // Create the directories if they do not exist
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+    
+            // Move the uploaded file to the constructed path
+            $request->file('image')->move($path, $newFilename);
+    
+            // Save the image path in the book validation array
             $bookValidation['image'] = $newFilename;
-
-        }else {
+        } else {
+            // Set default image if no image is uploaded
             $bookValidation['image'] = 'default_image.jpg';
         }
-
+    
         $book = Book::create($bookValidation);
         $book->save();
-        
-        
+    
         return back()->with('bookCreated', 'Successfully adding book');
-
     }
 
     public function destroy($id) {

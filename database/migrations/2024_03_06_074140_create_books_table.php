@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('publication_year'); // Changed from string to integer
             $table->string('publication_address', 255);
             $table->string('title', 255);
-            $table->string('category', 255);
+            $table->string('category', 255)->nullable();
             $table->integer('quantity');
             $table->string('level', 255);
             $table->string('pages', 255); // Corrected spelling

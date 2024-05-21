@@ -46,8 +46,12 @@
                                                         <div class="d-flex flex-column align-items-center gap-1 position-relative" style="height:100%; width:120px;min-width:115px;">
                                                             <div class="position-absolute fs-6 top-0 end-0 p-0 m-0" style="border-left: 45px solid transparent; border-top: 45px solid #661011;"></div>
                                                             <span class="text-white position-absolute" style="top:5%;right:1%; transform: rotate(45deg);font-size:12px;">New</span>
-                                                            <img class="bg-primary" src="/images/${books.image}" style="height:115px;width:100%;">
                                                     `;
+                                                        if (books.level == 'College'){
+                                                         html +=   `<img class="bg-primary" src="/books_images/${books.level}/${books.category}/${books.image}" style="height:115px;width:100%;">`;
+                                                        }else if (books.level == 'Senior Highschool' || books.level == 'Junior Highschool' || books.level == 'Elementary') {
+                                                           html +=   `<img class="bg-primary" src="/books_images/${books.level}/${books.image}" style="height:115px;width:100%;">`; 
+                                                        }
                                             if (books.status === 'Available') {
                                             html += `       
                                                             <a href="#" class="border-0 bg-success fs-6 text-white d-flex justify-content-center align-items-center text-decoration-none" style="height:30px;width:100%;"><span>Borrow</span></a>
@@ -66,10 +70,14 @@
                                         }else if ((books.publication_year +3 ) < currentYear){
                                             html += `   
                                                         <div class="d-flex flex-column align-items-center gap-1 position-relative" style="height:100%; width:120px;min-width:115px;">
-                                                            <div class="position-absolute fs-6 top-0 end-0 p-0 m-0" style="border-left: 45px solid transparent; border-top: 45px solid gray;"></div>
-                                                            <span class="text-white position-absolute" style="top:5%;right:1%; transform: rotate(45deg);font-size:12px;">${books.publication_year}</span>
-                                                            <img class="bg-primary" src="/images/${books.image}" style="height:115px;width:100%;">
+                                                            <div class="position-absolute fs-6 top-0 end-0 p-0 m-0" style="border-left: 45px solid transparent; border-top: 45px solid #661011;"></div>
+                                                            <span class="text-white position-absolute" style="top:5%;right:1%; transform: rotate(45deg);font-size:12px;">New</span>
                                                     `;
+                                                        if (books.level == 'College'){
+                                                         html +=   `<img class="bg-primary" src="/books_images/${books.level}/${books.category}/${books.image}" style="height:115px;width:100%;">`;
+                                                        }else if (books.level == 'Senior Highschool' || books.level == 'Junior Highschool' || books.level == 'Elementary') {
+                                                           html +=   `<img class="bg-primary" src="/books_images/${books.level}/${books.image}" style="height:115px;width:100%;">`; 
+                                                        }
 
                                             if (books.status === 'Available') {
                                             html += `       
