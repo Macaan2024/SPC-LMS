@@ -60,3 +60,4 @@
 [33m043981c[m insertion books table
 [33m2fcfd10[m first develop (setup database)
 [33m6177b9c[m first commit
+* [32mmaster[m

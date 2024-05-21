@@ -6,6 +6,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\BookManagement;
 use App\Http\Controllers\AdminIndexController;
 use App\Http\Controllers\Student\StudentIndexController;
+use App\Http\Controllers\Student\StudentController;
 
 
 /*
@@ -67,3 +68,10 @@ Route::get('/fetch-level-books', [StudentIndexController::class, 'fetchLevelBook
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
+
+
+
+Route::get('/scanner', function(){
+    return view('Users/admin/layout/scanner');
+}); 
+
