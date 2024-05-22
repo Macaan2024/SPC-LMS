@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\User;
+use App\Models\Transaction;
+
 class StudentIndexController extends Controller
 {
     public function index() {
@@ -34,6 +37,52 @@ class StudentIndexController extends Controller
         $requestBook = Book::findOrFail($id);
 
         return view('Users.student.pages.dashboard.requestBook', ['requestBook' => $requestBook]);
+    }
+
+    public function processBook(Request $request) {
+        // Validating
+        $validate = $request->validate([
+            'book_id' => 'required|exists:books,id',
+        ]);
+    
+        $book = Book::find($validate['book_id']);
+        $user = auth()->user();
+    
+        // Check if the user has already requested the book
+        $existingTransaction = Transaction::where('user_id', $user->id)
+                                        ->where('book_id', $book->id)
+                                        ->where('status', 'pending')
+                                        ->first();
+    
+        if ($existingTransaction) {
+            // User has already requested the book
+            return redirect()->back()->with('requestAlreadyTaken', 'You have already requested this book.');
+        }
+    
+        if ($book->quantity > 0) {
+            $transaction = new Transaction();
+            $transaction->user_id = $user->id;
+            $transaction->book_id =  $book->id;
+            $transaction->status = 'pending';
+    
+            $transaction->start_date = null;
+            $transaction->start_time = null;
+            $transaction->end_day = null;
+            $transaction->end_time = null;
+            $transaction->duration = null;
+            $transaction->overdue = null;
+            $transaction->penalty = null;
+    
+            $transaction->save();
+    
+            // Deducting quantity
+            $book->quantity--;
+            $book->save();
+    
+            return redirect()->back()->with('success', 'Book requested successfully.');
+        } else {
+            return redirect()->back()->with('error', 'This book is not available.');
+        }
     }
 
     public function search(Request $request)

@@ -12,4 +12,8 @@ class Book extends Model
     public $fillable = [
         'isbn', 'accesion_number', 'author', 'publication_year', 'publication_address', 'title', 'category', 'quantity', 'level', 'pages', 'edition', 'status', 'total_borrow', 'image', 
     ];
+
+    public function transaction() {
+        return $this->hasMany(Transaction::class);
+    }
 }

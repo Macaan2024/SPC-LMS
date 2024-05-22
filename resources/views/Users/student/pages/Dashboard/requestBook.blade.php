@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6 mt-3 nt-lg-0 mt-lg-0 col-md p-0 m-0 p-1">
+                <div class="col-12 col-lg-6 mt-3 mt-md-0 nt-lg-0 mt-lg-0 col-md p-0 m-0 p-1">
                     <div class="d-flex align-items-start" style="height:100%;">
                         <div class="d-flex flex-column  px-1 py-0 justify-content-between align-items-start" style="height:250px;">
                             <h6 class="p-0 m-0 fs-6 text-nowrap">Level</h6>
@@ -44,17 +44,32 @@
                             <h6 class="p-0 m-0 fs-6 text-nowrap">Pages</h6>
                             <h6 class="p-0 m-0 fs-6 text-nowrap">Quantity</h6>
                         </div>
-                        <div class="d-flex flex-column ms-5 px-3 py-0 justify-content-between align-items-start" style="height:250px;">
-                            <h6 class="p-0 m-0 fs-6 text-nowrap ms-5">: {{$requestBook->isbn}}</h6>
-                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->title}}</h6>
-                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->author}}</h6>
-                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->publication_year}}</h6>
-                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->publication_address}}</h6>
+                        <div class="d-flex flex-column px-3 py-0 justify-content-between align-items-start" style="height:250px;margin-left:89px;">
+                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->level}}</h6>
+                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->edition}}</h6>
+                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->category}}</h6>
+                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->pages}}</h6>
+                            @if($requestBook->quantity <= 0) 
+                                <h6 class="p-0 m-0 fs-6 text-nowrap fw-bold" style="color:red;">: {{$requestBook->quantity}}</h6>
+                            @else
+                                <h6 class="p-0 m-0 fs-6 text-nowrap fw-bold" style="color:green;">: {{$requestBook->quantity}}</h6>
+                            @endif
                         </div>
                     </div>
                 </div>
+                <form action="{{ route('spc-lms.process-book')}}" method="POST">
+                    @csrf
+                     <input type="hidden" name="book_id" value="{{ $requestBook->id }}">
+                    <div class="col-12 p-0 m-0 mt-3"><button type="submit" name="submit" value="submit" class="bg-success w-100 fs-6 text-white fs-normal border-0 shadow-md py-1 mb-3 rounded borde-success">Request Book</button></div>
+                </form>
             </div>
-       </div> 
+       </div>
+       
+       @if(Session::has('requestAlreadyTaken')) 
+        <script>
+           swal("Good job!", "You clicked the button!", "success")
+        </script>
+        @endif
     </x-slot>
 </x-student.layout>
 

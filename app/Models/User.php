@@ -28,4 +28,11 @@ class User extends Authenticatable
         // and the Role model has a name or id attribute
         return $this->role_id == $role;
     }
+
+    //books
+    
+    public function transactions() {
+        return $this->hasMany(Transaction::class);
+    }
+    
 }

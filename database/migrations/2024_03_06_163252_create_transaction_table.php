@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('books_id');
-            $table->foreign('books_id')->references('id')->on('books')->onDelete('cascade');
-            $table->date('start_date');
-            $table->time('start_time');
-            $table->date('end_day');
-            $table->time('end_time');
-            $table->time('duration');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('book_id');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->date('start_date')->nullable();
+            $table->time('start_time')->nullable();
+            $table->date('end_day')->nullable();
+            $table->time('end_time')->nullable();
+            $table->time('duration')->nullable();
             $table->string('status');
-            $table->time('overdues');
-            $table->decimal('penalty');
+            $table->time('overdue')->nullable();
+            $table->decimal('penalty')->nullable();
+            $table->timestamps();
         });
     }
 
