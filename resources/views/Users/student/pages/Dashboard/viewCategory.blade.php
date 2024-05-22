@@ -32,7 +32,11 @@
                             @if ($book->status == 'Available')
                                 <div class="col  mt-3 d-flex flex-column">
                                     <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
-                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                        @if ($book->level == 'College')
+                                            <img src="/books_images/{{ $book->level }}/{{ $book->category}}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @else 
+                                            <img src="/books_images/{{ $book->level }}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @endif
                                             <a href="{{ route('spc-lms.request-book', ['id' => $book->id]) }}" class="bg-success w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="height:10%;">Borrow</a>
                                             <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid #661011;"></div>
                                             <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">NEW</span>
@@ -41,7 +45,11 @@
                             @else
                                 <div class="col  mt-3 d-flex flex-column">
                                     <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
-                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                        @if ($book->level == 'College')
+                                            <img src="/books_images/{{ $book->level }}/{{ $book->category}}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @else 
+                                            <img src="/books_images/{{ $book->level }}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @endif
                                             <a class="w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="background-color:gray;height:10%;">Unavailable</a>
                                             <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid #661011;"></div>
                                             <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">NEW</span>
@@ -52,7 +60,11 @@
                             @if ($book->status == 'Available')
                                 <div class="col  mt-3 d-flex flex-column">
                                     <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
-                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                        @if ($book->level == 'College')
+                                            <img src="/books_images/{{ $book->level }}/{{ $book->category}}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @else 
+                                            <img src="/books_images/{{ $book->level }}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @endif
                                             <a href="{{ route('spc-lms.request-book', ['id' => $book->id]) }}" class="bg-success w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="height:10%;">Borrow</a>
                                             <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid gray;"></div>
                                             <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">{{$book->publication_year}}</span>
@@ -61,7 +73,11 @@
                             @else
                                 <div class="col  mt-3 d-flex flex-column">
                                     <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
-                                            <img src="/images/{{ $book->image }}" alt="Library Books" style="height:90%;width:100%;">
+                                        @if ($book->level == 'College')
+                                            <img src="/books_images/{{ $book->level }}/{{ $book->category}}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @else 
+                                            <img src="/books_images/{{ $book->level }}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
+                                        @endif
                                             <a class="w-100 text-decoration-none text-white fs-6 fw-normal d-flex justify-content-center align-items-center" style="background-color:gray;height:10%;">Unavailable</a>
                                             <div class="position-absolute top-0 end-0" style="border-left: 70px solid transparent; border-top: 70px solid gray;"></div>
                                             <span class="position-absolute text-white text-center fs-6" style="top:4%; right:1%; transform: rotate(45deg);">{{$book->publication_year}}</span>
