@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Logbook\LogbookLogsController;
+use App\Http\Controllers\Logbook\LogbooksController;
+use App\Http\Controllers\QrcodeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserManagementController;
@@ -61,6 +64,10 @@ Route::get('/admin/edit/{id}', [UserManagementController::class, 'show'])->name(
 Route::put('/edit/{id}', [UserManagementController::class, 'update'])->name('edit');
 Route::get('/admin/view/{id}', [UserManagementController::class, 'view'])->name('view');
 
+
+//Qr Code Routes
+Route::get('/admin/logbook', [QrcodeController::class, 'Userslist'])->name('admin.logbook');
+
 Route::get('/admin/booksmanagement', [BookManagement::class, 'index'])->name('admin.bookmanagement');
 Route::get('/fetch-books', [BookManagement::class, 'fetchBooks']);
 Route::post('/admin.store', [BookManagement::class, 'store'])->name('admin.store');
@@ -72,3 +79,8 @@ Route::delete('/delete-book/{id}', [BookManagement::class, 'destroy'])->name('de
 Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
+
+
+
+//logbook
+Route::get('/spc-lms/logbook', [LogbookLogsController::class, 'logbookLogs']);

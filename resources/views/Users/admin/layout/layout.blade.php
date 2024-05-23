@@ -27,8 +27,13 @@
             {{ $dashboard }}
         @endif
         {{-- --}}
-        
 
+
+        {{-- Qr Code --}}
+        
+        @if(isset($qr_code))
+            {{ $qr_code }}
+        @endif
 
         {{-- Admin Book Management Pages --}}
 

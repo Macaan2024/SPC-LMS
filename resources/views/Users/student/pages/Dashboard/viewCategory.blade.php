@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="col  mt-3 d-flex flex-column">
+                                <div class="col  mt-3  d-flex flex-column">
                                     <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
                                         @if ($book->level == 'College')
                                             <img src="/books_images/{{ $book->level }}/{{ $book->category}}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">
@@ -58,7 +58,7 @@
                             @endif
                         @else 
                             @if ($book->status == 'Available')
-                                <div class="col  mt-3 d-flex flex-column">
+                                <div class="col  mt-0 d-flex flex-column">
                                     <div class="position-relative p-0 m-0 bg-warning" style="height:100%;">
                                         @if ($book->level == 'College')
                                             <img src="/books_images/{{ $book->level }}/{{ $book->category}}/{{$book->image}}" alt="Library Books" style="height:90%;width:100%;">

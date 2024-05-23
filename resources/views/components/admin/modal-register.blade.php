@@ -77,7 +77,7 @@
                             <div class="d-flex flex-column gap-3">
                                 <div>
                                     <label for="">Unique ID</label>
-                                    <input type="text" name="unique_id" class="form-control" placeholder="Ex: 2022-00317" value="{{old('unique_id')}}">
+                                    <input type="text" name="unique_id" class="form-control" placeholder="Ex: 2022-00317" value="{{old('unique_id')}}" id="unique_id">
                                     @error('unique_id')
                                             <small class="text-danger">{{ $message }}</small>
                                     @enderror
