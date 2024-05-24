@@ -4,13 +4,13 @@
             <div class="row p-0 m-0">
                 <div class="col-12 d-flex justify-content-center justify-content-sm-start p-0 m-0 px-2">
                     @if ($requestBook->level == 'College')
-                        <img src="/books_images/{{ $requestBook->level }}/{{ $requestBook->category }}/{{ $requestBook->image }}" alt="Library Books" style="width:220px; height:250px;">
+                        <img class="object-fit-fill shadow-md" src="/books_images/{{ $requestBook->level }}/{{ $requestBook->category }}/{{ $requestBook->image }}" alt="Library Books" style="width:220px; height:250px;">
                     @else
-                        <img src="/books_images/{{ $requestBook->level }}/{{ $requestBook->image }}" alt="Library Books">
+                        <img class="object-fit-fill shadow-md" src="/books_images/{{ $requestBook->level }}/{{ $requestBook->category }}/{{ $requestBook->image }}" alt="Library Books" style="width:220px; height:250px;">
                     @endif
                 </div>
-                <div class="col-12 d-flex justify-content-between p-0 m-0 mt-2 px-2">
-                    <h6 class="fs-6  text-nowrap">ISBN : {{$requestBook->isbn}}</h6>
+                <div class="col-12 d-flex justify-content-between p-0 m-0 mt-4 px-2">
+                    <h6 class="fs-6  text-nowrap">Accesion Number : {{$requestBook->accesion_number}}</h6>
                     <h6 class="fs-6  text-nowrap">Borrowed Records : {{ $requestBook->total_borrow}}</h6>
                     
                 </div>

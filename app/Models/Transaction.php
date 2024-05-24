@@ -15,10 +15,10 @@ class Transaction extends Model
     ];
     
     public function user() {
-        return $this->belongsT0(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function book() {
-        return $this->belongsTop(Book::class);
+        return $this->belongsTo(Book::class);
     }
 }

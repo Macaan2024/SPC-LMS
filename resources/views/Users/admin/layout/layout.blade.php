@@ -7,6 +7,7 @@
     {{ $slot }}
 
         {{-- Admin Usermanagement Pages --}}
+
         @if(isset($user_registration))
             {{ $user_registration }}
             @stack('user_registration')
@@ -18,10 +19,9 @@
             {{ $view_user}}  
               
         @endif
-        {{-- End of Usermanagement Pages --}}
+        {{-- End of Usermanagement Page -- }}
 
-
-        {{-- Admin Dashnboard Pages --}}
+        {{-- Dashnboard Page --}}
 
         @if(isset($dashboard))
             {{ $dashboard }}
@@ -35,15 +35,21 @@
             {{ $qr_code }}
         @endif
 
-        {{-- Admin Book Management Pages --}}
+        {{-- Book Management Page --}}
 
         @if (isset($book_management))
             {{ $book_management }}
         @endif
 
-   
-    
+        {{-- Book Request Page --}}
+        @if (isset($book_request))
+            {{ $book_request }}
+        @endif
 
+        {{-- Transaction --}}
+        @if (isset($transaction))
+            {{ $transaction }}
+        @endif
     @include('Users.admin.layout.footer')
 </body>
 </html>

@@ -27,7 +27,7 @@
                     $.each(response.groupBooks, function(level, levels){
                         html += `
                                     <div class="border border-1 shadow-sm mt-5" style="solid #661011;">
-                                        <h5 class="bg-light shadow-sm text-center p-0 m-0 fw-normal fs-6 py-3" style="color:black;">${level}<h5>
+                                        <h5 class="shadow-sm text-center p-0 m-0 fw-normal fs-6 py-3" style="color:white;background-color:#661011;">${level}<h5>
                                 `;
                         $.each(levels, function(category, bookCategory){
                                 var previousBookTitle = '';
@@ -76,7 +76,7 @@
                                                         if (books.level == 'College'){
                                                          html +=   `<img class="bg-primary" src="/books_images/${books.level}/${books.category}/${books.image}" style="height:115px;width:100%;">`;
                                                         }else if (books.level == 'Senior Highschool' || books.level == 'Junior Highschool' || books.level == 'Elementary') {
-                                                           html +=   `<img class="bg-primary" src="/books_images/${books.level}/${books.image}" style="height:115px;width:100%;">`; 
+                                                           html +=   `<img class="bg-primary" src="/books_images/${books.level}/${books.category}/${books.image}" style="height:115px;width:100%;">`; 
                                                         }
 
                                             if (books.status === 'Available') {

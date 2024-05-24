@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
-class BookManagement extends Controller
+class BookManagementController extends Controller
 {
     public function index() {
         $book = Book::all();
@@ -79,6 +80,4 @@ class BookManagement extends Controller
 
         return response()->json(['success' => 'Book deleted successfully']);
     }
-
-     
 }

@@ -22,9 +22,11 @@
                         <span>Logbook Logs</span>
                     </a>
                 </li>
-                <li class="list-group-item list-group-item-action bg-transparent border-0 d-flex aling-items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16"><rect width="16" height="16" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M5.967 6.399a2.765 2.765 0 0 0 .88-1.242L8.22 6.53a.75.75 0 1 0 1.06-1.06L8.81 5h.69A1.501 1.501 0 0 1 11 6.5v2.75a.747.747 0 0 0 .75.75a.748.748 0 0 0 .75-.75V6.5a3 3 0 0 0-3-3h-.69l.47-.47a.75.75 0 0 0-1.06-1.06L6.847 3.343A2.755 2.755 0 0 0 4.25 1.5a2.75 2.75 0 0 0-.753 5.396H3.5V7.5a.75.75 0 0 0 1.5 0v-.603c.357-.101.685-.273.967-.498m-.75 3.133a.75.75 0 0 0-.747.188h-.001l-1.75 1.75a.75.75 0 0 0 0 1.06l1.75 1.75a.75.75 0 0 0 1.061-1.06l-.47-.47h7.69a.75.75 0 0 0 0-1.5H5.06l.47-.469a.75.75 0 0 0-.313-1.249m-.43-6.41a1.25 1.25 0 1 1-1.075 2.256a1.25 1.25 0 0 1 1.076-2.257Z" clip-rule="evenodd"/></svg>                    
-                    <a>Borrow Requests</a>
+                <li class="list-group-item list-group-item-action border-0 d-flex aling-items-center gap-2">
+                    <a href="{{ route('admin.bookrequest')}}" class="text-decoration-none text-black d-flex gap-2 w-100 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16"><rect width="16" height="16" fill="none"/><path fill="currentColor" fill-rule="evenodd" d="M5.967 6.399a2.765 2.765 0 0 0 .88-1.242L8.22 6.53a.75.75 0 1 0 1.06-1.06L8.81 5h.69A1.501 1.501 0 0 1 11 6.5v2.75a.747.747 0 0 0 .75.75a.748.748 0 0 0 .75-.75V6.5a3 3 0 0 0-3-3h-.69l.47-.47a.75.75 0 0 0-1.06-1.06L6.847 3.343A2.755 2.755 0 0 0 4.25 1.5a2.75 2.75 0 0 0-.753 5.396H3.5V7.5a.75.75 0 0 0 1.5 0v-.603c.357-.101.685-.273.967-.498m-.75 3.133a.75.75 0 0 0-.747.188h-.001l-1.75 1.75a.75.75 0 0 0 0 1.06l1.75 1.75a.75.75 0 0 0 1.061-1.06l-.47-.47h7.69a.75.75 0 0 0 0-1.5H5.06l.47-.469a.75.75 0 0 0-.313-1.249m-.43-6.41a1.25 1.25 0 1 1-1.075 2.256a1.25 1.25 0 0 1 1.076-2.257Z" clip-rule="evenodd"/></svg>                    
+                        <span>Book Requests</span>
+                    </a>
                 </li>
                 <li class="list-group-item list-group-item-action border-0 d-flex aling-items-center gap-2">
                     <a href="{{ route('admin.usermanagement') }}" class="text-decoration-none d-flex gap-2 align-items-center text-black">
