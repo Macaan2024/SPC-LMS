@@ -10,8 +10,15 @@ class BookManagementController extends Controller
 {
     public function index() {
         $book = Book::all();
+        $college = Book::where('level', 'College')->count();
+        $seniorhigh = Book::where('level', 'Senior Highschool')->count();
+        $juniorhigh = Book::where('level', 'Junior Highschool')->count();
+        $elementary = Book::where('level', 'Elementary')->count();
+        $level = Book::all()->groupBy('level');
 
-        return view('Users.admin.pages.bookmanagement.bookmanagement', ['book' => $book]);
+
+
+        return view('Users.admin.pages.bookmanagement.bookmanagement', ['book' => $book, 'college' => $college, 'seniorhigh' => $seniorhigh, 'juniorhigh' => $juniorhigh, 'elementary' => $elementary, 'level' => $level]);
     }
     public function fetchBooks(Request $request) {
         $books = Book::orderBy('level')->orderBy('category')->get();

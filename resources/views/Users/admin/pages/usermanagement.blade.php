@@ -8,30 +8,66 @@
 
                 {{-- Total Boxes of Student--}}
                 <section class="p-0 m-0">
-                    <h5 class="text-nowrap mt-5 mb-3" style="font-size:18px;">Totals of Students</h5>
-                    <div class="d-flex gap-5 flex-wrap">
-                        <div class="card shadow-sm" style="width: 15rem;min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#660000;">College</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#CC0000;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                    <h5 class="text-nowrap mt-5 mb-3" style="font-size:18px;">Totals of Books</h5>
+                    <div class="row rows-col-4 gap-5 p-0 m-0 align-itesm-center">
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/college.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class=" d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">College</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $college}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
-                        <div class="card shadow-sm" style="width: 15rem; min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#000066;">Senior Highschool</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#0000FF;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/seniorhigh.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class=" d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">Senior Highschool</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $seniorhigh}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
-                        <div class="card shadow-sm" style="width: 15rem; min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#663300;">Junior Highschool</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#CC6600;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/seniorhigh.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class=" d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">Junior Highschool</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $juniorhigh}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
-                        <div class="card shadow-sm" style="width: 15rem; min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#202020;">Elementary</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#606060;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/juniorhigh.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class="d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">Elementary</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $elementary}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
                     </div>

@@ -16,11 +16,18 @@ class UserManagementController extends Controller
 
     public function index()
     {
+
+        $college = User::where('level', 'College')->count();
+        $seniorhigh = User::where('level', 'Senior Highschool')->count();
+        $juniorhigh = User::where('level', 'Junior Highschool')->count();
+        $elementary = User::where('level', 'Elementary')->count();
+        $level = User::all()->groupBy('level');
+
         $data = User::whereHas('role', function($query){
             $query->where('role_description', 'Student');
         })->orderBy('created_at', 'desc')->get();
 
-        return view("Users.admin.pages.usermanagement", ["data" => $data]);
+        return view("Users.admin.pages.usermanagement", ["data" => $data, "college" => $college, "seniorhigh" => $seniorhigh, "juniorhigh" => $juniorhigh, "elementary" => $elementary, 'level' => $level]);
     }
 
     public function store(Request $request)

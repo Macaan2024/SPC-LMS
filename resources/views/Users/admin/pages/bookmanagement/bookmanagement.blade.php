@@ -1,37 +1,73 @@
 <x-admin.layout>
     <x-slot name="book_management">
-    <div class="row">
-            <div class="col-lg-1 bg-light"></div>
-            <div class="col-lg-10 col-12 vh-100 px-4 px-sm-5 py-5">
+    <div class="row" style="height:100%;">
+            <div class="col-lg-1 bg-light h-auto"></div>
+            <div class="col-lg-10 col-12 px-4 px-sm-5 py-5 h-auto">
                 <h5 class="text-nowrap">Books Management</h5>
                 <hr>
 
                 {{-- Total Boxes of Student--}}
                 <section class="p-0 m-0">
                     <h5 class="text-nowrap mt-5 mb-3" style="font-size:18px;">Totals of Students</h5>
-                    <div class="d-flex gap-5 flex-wrap">
-                        <div class="card shadow-sm" style="width: 15rem;min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#660000;">College</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#CC0000;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                    <div class="row rows-col-4 gap-5 p-0 m-0 align-itesm-center">
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="bg-light col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/books/college.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class=" d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">College</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $college}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
-                        <div class="card shadow-sm" style="width: 15rem; min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#000066;">Senior Highschool</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#0000FF;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="bg-light col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/books/senior.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class=" d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">Senior Highschool</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $seniorhigh}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
-                        <div class="card shadow-sm" style="width: 15rem; min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#663300;">Junior Highschool</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#CC6600;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="bg-light col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/books/junior.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class="d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">Junior Highschool</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $juniorhigh}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
-                        <div class="card shadow-sm" style="width: 15rem; min-width:12rem;max-width:15rem;">
-                            <h6 class="card-title text-center py-3 text-white m-0 fw-bold" style="background-color:#202020;">Elementary</h6>
-                            <div class="card-body d-flex justify-content-center align-items-center" style="height: 10rem;background-color:#606060;">
-                                <p class="card-text fs-1 p-0 m-0 text-white">5</p>
+                        <div class="col p-0 m-0">
+                            <div class="row p-0 m-0">
+                                <div class="bg-light col-7 p-0 m-0  border">
+                                    <img src="{{ asset('/library/books/elem.png') }}" style="height:100%;width:100%;" alt="">
+                                </div>
+                                <div class="col-5 p-0 m-0 border d-flex flex-column text-center align-items-center text-white justify-content-center" style="background-color:#661011;">
+                                    <div class="d-flex align-items-end justify-content-center" style="height:50%;width:100%">
+                                        <h5 class="p-0 m-0">Elementary</h5>
+                                    </div>
+                                    <div class="" style="height:50%;width:100%">
+                                        <h2 class="p-0 m-0">{{ $elementary}}</h2>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
@@ -57,7 +93,7 @@
                             </form>
                         </div>
                         <div class="col-12 col-sm-4 d-flex justify-content-end mt-3 mt-sm-0 m-0 p-0 tableHeading-custom-class">
-                            <button type="button" class="btn btn-dark col-12 col-sm-auto" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Add Users</button>
+                            <button type="button" class="btn btn-dark col-12 col-sm-auto" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">Add Book</button>
                             <x-admin.modal-addBook /> {{-- User Registration Scripts--}}
                             @push('user_registration') 
                                 <script src="{{ asset('js/admin/user_registration.js') }}"></script>
@@ -84,7 +120,7 @@
                     </div>
                 </section>
             </div>
-            <div class="col-lg-1 bg-light"></div>
+            <div class="col-lg-1 h-auto bg-light"></div>
         </div>
         <script>
             $(document).ready(function () {

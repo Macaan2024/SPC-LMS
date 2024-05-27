@@ -48,7 +48,7 @@
                                 <input type="number" name="publication_year" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Publication Year</label>
                                 @error('publication_year')
-                                    <small class="text-danger mb-1">{{ $message }}</small>
+                                    <small class="text-danger mb-1">{{ $message }}</`small>
                                 @enderror
                             </div>
                             <div class="form-floating">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="d-flex flex-column gap-4">
                             <div class="form">
-                                <select name="level" class="form-select" id="">
+                                <select name="level" class="form-select" id="" id="classLevel">
                                     <option value="" selected disabled>Choose Class Level</option>
                                     <option value="College">College</option>
                                     <option value="Senior Highschool">Senior Highschool</option>
@@ -72,7 +72,7 @@
                                     <small class="text-danger mb-1">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="">
+                            <div class="" id="classCateogry">
                                 <select name="category" class="form-select" id="">
                                     <option value="" selected disabled >Choose Category</option>
                                     <option value="CCS">CCS</option>
@@ -115,19 +115,19 @@
                 </form>
             </div>
         </div>
-        
     </div>
 </div>
+ 
+
+<script>
+
+        document.addEventListner('onchange', )
+</script>
+
 {{-- Sweet Mesage Alerts --}}
 @if(Session::has('message'))
     <script>
-        var message = "{{ Session::get('message') }}";
-        if (message === 'Student registration successful') {
-            swal("Student Registration", message, 'success', {
-                button:true,
-                button:"OK",
-            });
-        }
+    
     </script>
 @elseif ($errors->any())
     <script>
