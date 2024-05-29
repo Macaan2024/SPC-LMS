@@ -57,10 +57,15 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ route('spc-lms.process-book')}}" method="POST">
-                    @csrf
-                     <input type="hidden" name="book_id" value="{{ $requestBook->id }}">
-                    <div class="col-12 p-0 m-0 mt-3"><button type="submit" name="submit" value="submit" class="bg-success w-100 fs-6 text-white fs-normal border-0 shadow-md py-1 mb-3 rounded borde-success">Request Book</button></div>
+                <form action="{{ route('spc-lms.process-book', ['id' => $requestBook->id])}}" method="POST">
+                    @csrf 
+                    <div class="col-12 p-0 m-0 mt-3">
+                        @if($requestBook->quantity > 0)
+                            <button type="submit" name="submit" value="submit" class="bg-success w-100 fs-6 text-white fs-normal border-0 shadow-md py-1 mb-3 rounded borde-success">Request Book</button>
+                        @else
+                            <button type="submit" name="submit" value="submit" class="w-100 fs-6 text-white fs-normal border-0 shadow-md py-1 mb-3 rounded borde-success" style="background-color:gray;">Unavailable</button>
+                        @endif
+                    </div>
                 </form>
             </div>
        </div>

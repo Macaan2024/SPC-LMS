@@ -28,6 +28,14 @@
         {{ $request_book }}
     @endif
 
+    
+    {{-- RequestBooks  --}}
+    @if (isset($request_books))
+        {{ $request_books }}
+    @elseif (isset($view_requestbook))
+        {{ $view_requestbook }}
+    @endif
+
     @include('Users.student.layout.footer')
 </body>
 </html>

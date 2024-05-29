@@ -5,6 +5,7 @@ use App\Http\Controllers\Logbook\LogbookLogsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Student\StudentIndexController;
+use App\Http\Controllers\Student\RequestBooksController;
 use App\Http\Controllers\Admin\BookManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -25,12 +26,20 @@ use App\Http\Controllers\Admin\TransactionController;
 // STUDENT----------------------->
 Route::middleware(['auth', 'role_id:1'])->group(function () {
 
-    Route::post('spc-lms/process-book', [StudentIndexController::class, 'processBook'])->name('spc-lms.process-book');
-    Route::get('/spc-lms/request-books/{id}', [StudentIndexController::class, 'requestBook'])->name('spc-lms.request-book');
+    //dashboard process
+
+    Route::get('/spc-lms/request-books/{id}', [StudentIndexController::class, 'requestBook'])->name('spc-lms.request-book'); //view book
+    Route::post('spc-lms/process-book/{id}', [StudentIndexController::class, 'processBook'])->name('spc-lms.process-book'); //operate requestbook function
+    
     Route::get('/fetch-level-books', [StudentIndexController::class, 'fetchLevelBook'])->name('fetch-level-books');
     Route::get('/spc-lms/dashboard', [StudentIndexController::class, 'dashboard'])->name('spc-lms.dashboard');
     Route::get('/spc-lms/category/{category}', [StudentIndexController::class, 'view'])->name('spc-lms.category');
     Route::post('/spc-lms/category/searchBook', [StudentIndexController::class, 'search'])->name('spc-lms.category.searchBook');
+
+    //boook Request page
+    Route::get('spc-lms/book-requests', [RequestBooksController::class, 'index'])->name('spc-lms.requestbooks'); //view page
+    Route::post('spc-lms/spc-lms.cancel/{id}', [RequestBooksController::class, 'cancel'])->name('spc-lms.cancel'); //operate cancellation function
+    Route::get('spc-lms/view_requestbook/{id}', [RequestBooksController::class, 'viewRequestBook'])->name('spc-lms.view_requestbook');
 });
 
 

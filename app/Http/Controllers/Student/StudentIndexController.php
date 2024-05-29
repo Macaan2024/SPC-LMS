@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 class StudentIndexController extends Controller
 {
@@ -39,16 +40,13 @@ class StudentIndexController extends Controller
         return view('Users.student.pages.dashboard.requestBook', ['requestBook' => $requestBook]);
     }
 
-    public function processBook(Request $request) {
-        // Validating
-        $validate = $request->validate([
-            'book_id' => 'required|exists:books,id',
-        ]);
+    public function processBook(Request $request, $id) {
     
-        $book = Book::find($validate['book_id']);
-        $user = auth()->user();
+        $book = Book::find($id);
+        $user = Auth::user();
     
-        // Check if the user has already requested the book
+        
+
         $existingTransaction = Transaction::where('user_id', $user->id)
                                         ->where('book_id', $book->id)
                                         ->where('status', 'pending')
@@ -57,31 +55,37 @@ class StudentIndexController extends Controller
         if ($existingTransaction) {
             // User has already requested the book
             return redirect()->back()->with('requestAlreadyTaken', 'You have already requested this book.');
-        }
-    
-        if ($book->quantity > 0) {
-            $transaction = new Transaction();
-            $transaction->user_id = $user->id;
-            $transaction->book_id =  $book->id;
-            $transaction->status = 'pending';
-    
-            $transaction->start_date = null;
-            $transaction->start_time = null;
-            $transaction->end_day = null;
-            $transaction->end_time = null;
-            $transaction->duration = null;
-            $transaction->overdue = null;
-            $transaction->penalty = null;
-    
-            $transaction->save();
-    
-            // Deducting quantity
-            $book->quantity--;
-            $book->save();
-    
-            return redirect()->back()->with('success', 'Book requested successfully.');
-        } else {
-            return redirect()->back()->with('error', 'This book is not available.');
+
+        }else {
+
+            if ($book->quantity > 0) {
+
+                $transaction = Transaction::create([
+                    'user_id' => $user->id,
+                    'book_id' => $book->id,
+                    'status' => 'pending',
+                    'start_day' => null,
+                    'start_time' => null,
+                    'end_day' => null,
+                    'duration' => null,
+                    'overdue' => null,
+                    'penalty' => null,
+                ]);
+
+                $book->decrement('quantity');
+
+                if($book->quantity == 0) {
+                    $book->update([
+                        'status' => 'Unvailable',
+                    ]);
+                }
+
+                $transaction->save();
+
+                return redirect()->back()->with('successRequest', 'Sucessfully book requesting');
+            }else {
+                return redirect()->back()->with('errorRequest', 'Fail book requesting');
+            }
         }
     }
 
