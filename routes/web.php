@@ -77,7 +77,9 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
 
     //Transaction
     Route::get('/admin/transaction', [TransactionController::class, 'index'])->name('admin.transaction');
-    ROute::get('/return.book/{id}', [TransactionController::class, 'returnBook'])->name('return.book');
+    Route::post('/cancel.book/{id}', [TransactionController::class, 'cancel'])->name('cancel.book'); //cancel book
+    Route::post('/start.book/{id}', [TransactionController::class, 'start'])->name('start.book'); //start borrow
+    ROute::post('/return.book/{id}', [TransactionController::class, 'returnBook'])->name('return.book'); //returning borrow
 });
 
 

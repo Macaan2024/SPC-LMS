@@ -1,6 +1,6 @@
 <x-student.layout>
     <x-slot name="view_requestbook">
-    <div class="container p-0 mt-3" style="min-width:420px;">
+    <div class="container p-0 mt-3" style="min-width:320px;">
             <div class="row p-0 m-0">
                 <div class="col-12 d-flex justify-content-center justify-content-sm-start p-0 m-0 px-2">
                     @if ($transaction->book->level == 'College')
@@ -9,9 +9,9 @@
                         <img class="object-fit-fill shadow-md" src="/books_images/{{ $transaction->book->level }}/{{ $transaction->book->category }}/{{ $transaction->book->image }}" alt="Library Books" style="width:220px; height:250px;">
                     @endif
                 </div>
-                <div class="col-12 d-flex justify-content-between p-0 m-0 mt-4 px-2">
-                    <h6 class="fs-6  text-nowrap">Accesion Number : {{ $transaction->book->accesion_number}}</h6>
-                    <h6 class="fs-6  text-nowrap">Borrowed Records : {{ $transaction->book->total_borrow}}</h6>
+                <div class="col-12 d-flex justify-content-between flex-wrap p-0 m-0 mt-4 px-2">
+                    <h6 class="text-nowrap">Accesion Number : {{ $transaction->book->accesion_number}}</h6>
+                    <h6 class="text-nowrap">Borrowed Records : {{ $transaction->book->total_borrow}}</h6>
                     
                 </div>
                 <hr>
@@ -37,8 +37,8 @@
                         </div>
                         <div class="d-flex flex-column px-3 py-0 justify-content-between align-items-start" style="height:250px;">
                             <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$transaction->book->isbn}}</h6>
-                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$transaction->book->title}}</h6>
-                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$transaction->book->author}}</h6>
+                            <h6 class="p-0 m-0 fs-6 ">: {{$transaction->book->title}}</h6>
+                            <h6 class="p-0 m-0 fs-6 ">: {{$transaction->book->author}}</h6>
                             <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$transaction->book->publication_year}}</h6>
                             <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$transaction->book->publication_address}}</h6>
                         </div>
@@ -67,10 +67,30 @@
                     </div>
                 </div>
             </div>
+            @if($transaction->status == 'approved')
+                <table class="table table-responsive mt-5">
+                    <thead class="table table-dark">
+                        <tr>
+                            <th class="fw-normal">Start Date</th>
+                            <th class="">Start time</th>
+                            <th>End Date</th>
+                            <th>End Time</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $transaction->start_date }}</td>
+                            <td>{{ \Carbon\Carbon::parse($transaction->start_time)->format('h:i A') }}</td>
+                            <td>{{ $transaction->end_day }}</td>
+                            <td>{{ \Carbon\Carbon::parse($transaction->end_time)->format('h:i A') }}</td>
+                            <td>{{$transaction->duration}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            @endif
        </div>
 
-        @if($transaction->status == 'approved')
-            <table class="table table-responsive"></table>
-        @endif
+
     </x-slot>
 </x-student.layout>

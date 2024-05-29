@@ -23,7 +23,7 @@ return new class extends Migration
             $table->time('end_time')->nullable();
             $table->time('duration')->nullable();
             $table->string('status');
-            $table->time('overdue')->nullable();
+            $table->integer('overdue')->nullable();
             $table->decimal('penalty')->nullable();
             $table->timestamps();
         });

@@ -61,79 +61,48 @@
                                 <td>{{ \Carbon\Carbon::parse($approved->start_time)->format('g:i A')}}</td>
                                 <td>{{ $approved->end_day }}</td>
                                 <td>{{ \Carbon\Carbon::parse($approved->end_time)->format('g:i A')}}</td>
-                                <td><span id="duration">16:00:00</span</td>
-                                <form action="{{ route('return.book', ['id' => $approved->id])}}" action="POST">
-                                @csrf
-                                    <td>
-                                        <span id="overdue"></span>
-                                        <input type="hidden" name="overdue" id="overdues">
-                                    </td>
-                                    <td>
-                                        <span id="penalty"></span>
-                                        <input type="hidden" name="penalty" id="penalties">
-                                    </td>
-                                    <td><button class="btn btn-success px-2 py-1" style="">Return</button></td>
-                                </form>
+                                <td><span>16:00:00</span</td>
+                                <td>{{ $approved->overdue}}</td>
+                                <td>{{ $approved->penalty}}</td>
+                                <td>
+                                    @if ($approved->status == 'approved')
+                                        <div class="d-flex gap-2">
+                                            <form action="{{ route('start.book', ['id' => $approved->id])}}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success p-0" style="width:60px; height:32px;">Start</button>
+                                            </form>
+                                            <form action="{{ route('cancel.book', ['id' => $approved->id])}}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger p-0" style="width:60px; height:32px;">Cancel</button>
+                                            </form>
+                                        </div>
+                                    @elseif ($approved->status == 'ongoing')
+                                        <form action="{{ route('return.book', ['id' => $approved->id]) }}" method="POST">
+                                            @csrf
+                                                <button type="submit" class="btn btn-dark p-0" style="width:60px; height:32px;" >Return</button>
+                                        </form>
+                                    @endif                   
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-
         </div>
-        <script>
-            function updateCountdown() {
-                var now = new Date();
-                var currentHour = now.getHours();
+        @if (Session::has('overdue'))
+            <script>
+                alert(" {{ Session::get('overdue')}} ");
+            </script>
+        @endif
 
-                if (currentHour >= 6 && currentHour < 21) {
-                    var endTime = new Date();
-                    endTime.setHours(21, 0, 0, 0); // Set the end time to 9 PM
-
-                    var countdown = setInterval(function() {
-                        var duration = endTime - new Date(); // Calculate the duration in milliseconds
-                        if (duration <= 0) {
-                            clearInterval(countdown);
-                            document.getElementById("duration").innerHTML = "Countdown ended";
-                            startOverdueTracking();
-                            return;
-                        }
-                        var hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-                        var minutes = Math.floor((duration / (1000 * 60)) % 60);
-                        var seconds = Math.floor((duration / 1000) % 60);
-                        document.getElementById("duration").innerHTML = hours + " hours " + minutes + " minutes " + seconds + " seconds";
-                    }, 1000);
-                } else {
-                    document.getElementById("duration").innerHTML = "Countdown not active";
-                }
-            }
-
-            function startOverdueTracking() {
-                var overdueHours = 0;
-                var penalty = 0;
-                
-                // Set initial overdue and penalty values
-                document.getElementById("overdue").innerHTML = overdueHours + " hours";
-                document.getElementById("penalty").innerHTML = penalty + " pesos";
-
-                var overdueInterval = setInterval(function() {
-                    overdueHours++;
-                    penalty += 10; // Increase penalty by 10 pesos every hour
-
-                    document.getElementById("overdue").innerHTML = overdueHours + " hours";
-                    document.getElementById("penalty").innerHTML = penalty + " pesos";
-                    document.getElementById("overdues").value = overdueHours;
-                    document.getElementById("penalties").value = penalty;
-
-                    // Optionally, stop the interval after a certain condition
-                    // For example, stop tracking after 24 hours
-                    if (overdueHours >= 24) {
-                        clearInterval(overdueInterval);
-                    }
-                }, 3600000); // Run this every hour (3600000 milliseconds)
-            }
-
-            window.onload = updateCountdown;
-        </script>
+        @if (Session::has('errorStart'))
+            <script>
+                alert("{{ Session::get('errorStart') }}");
+            </script>
+        @elseif (Session::has('successStart'))
+            <script>
+                alert("{{ Session::get('successStart') }}");
+            </script>
+        @endif
     </x-slot>
 </x-admin.layout>
