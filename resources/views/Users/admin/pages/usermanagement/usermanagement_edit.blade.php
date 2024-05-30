@@ -10,13 +10,13 @@
             <hr>
 
             <section>
-            <form action="/edit/{{$student->id}}" method="POST" enctype="multipart/form-data" autocompleteo="off">
+            <form action="{{ route('process.edit', ['id' => $student->id])}}" method="POST" enctype="multipart/form-data" autocompleteo="off">
                     @csrf
                     @method('PUT')
                     <div class="d-flex justify-content-start gap-3">
                         <div style="width:200px;height:260px;">
-                        <img src="{{ asset('userimages/'. $student->user_image) }}" class="object-fit-cover" style="height:100%;width:100%;" alt="">
-                            <input type="file" class="form-control p-0 mt-2" style="width:100; font-size:14px;" value="{{ $student->user_image }}" name="user_image" id="formFile" placeholder="">
+                        <img src="{{ asset($student->role->role_description . '/' . $student->level. '/' .$student->user_image) }}" class="object-fit-cover" style="height:100%;width:100%;" alt="">
+                            <input type="file" class="form-control p-0 mt-2" style="width:100; font-size:14px;" value="{{ $student->user_image }}" name="user_image" placeholder="">
                             @error('user_image')
                                 {{$message}}
                             @enderror

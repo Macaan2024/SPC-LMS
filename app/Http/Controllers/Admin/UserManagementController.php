@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Transaction;
+use App\Models\Book;
 
 
 class UserManagementController extends Controller
@@ -21,16 +23,12 @@ class UserManagementController extends Controller
         $seniorhigh = User::where('level', 'Senior Highschool')->count();
         $juniorhigh = User::where('level', 'Junior Highschool')->count();
         $elementary = User::where('level', 'Elementary')->count();
-        $level = User::all()->groupBy('level');
+        $user = User::all();
 
-        $data = User::whereHas('role', function($query){
-            $query->where('role_description', 'Student');
-        })->orderBy('created_at', 'desc')->get();
-
-        return view("Users.admin.pages.usermanagement", ["data" => $data, "college" => $college, "seniorhigh" => $seniorhigh, "juniorhigh" => $juniorhigh, "elementary" => $elementary, 'level' => $level]);
+        return view("Users.admin.pages.usermanagement.usermanagement", ["college" => $college, "seniorhigh" => $seniorhigh, "juniorhigh" => $juniorhigh, "elementary" => $elementary, 'user' => $user]);
     }
 
-    public function store(Request $request)
+    public function student(Request $request)
     {
 
             $studentValidated = $request->validate([
@@ -42,7 +40,7 @@ class UserManagementController extends Controller
                 "grade" => ["nullable"],
                 "strand" => ["nullable"],
                 "status"=> ["nullable"],
-                "user_image"=> ["nullable"],
+                "user_image"=> ["nullable", "image"],
                 "section" => ["nullable"],
                 "course" => ["nullable"],
                 "year" => ["nullable"],
@@ -50,17 +48,44 @@ class UserManagementController extends Controller
                 "gender"=> ["nullable"],
                 "cpnumber"=> ["nullable"],
                 "email"=> ["nullable"],
-                "password" => ["nullable"],
+                "password" => ["nullable",],
             ]);
 
             // Check if the "Student" role already exists
-            $role = \App\Models\Role::where('role_description', 'Student')->first();
+            $role = Role::where('role_description', 'Student')->first();
 
             // If the "Student" role doesn't exist, create it
             if (!$role) {
-                $role = \App\Models\Role::create(['role_description' => 'Student']);
+                $role = Role::create(['role_description' => 'Student']);
             }
+
+
+            if ($request->hasFile('user_image')) {
+                // Capturing filename with extension
+                $extension = $request->file('user_image')->getClientOriginalExtension();
+                // Renaming image
+                $newFilename = str_replace(' ', ' ', $studentValidated['unique_id']) . '.' . $extension;
+        
+                // Constructing the dynamic folder path
+                $levelFolder = str_replace(' ', ' ', $studentValidated['level']);
     
+                    $path = public_path("student/{$levelFolder}");
+
+        
+                // Create the directories if they do not exist
+                if (!file_exists($path)) {
+                    mkdir($path, 0777, true);
+                }
+        
+                // Move the uploaded file to the constructed path
+                $request->file('user_image')->move($path, $newFilename);
+        
+                // Save the image path in the buser_imageook validation array
+                $studentValidated['user_image'] = $newFilename;
+            } else {
+                // Set default image if no image is uploaded
+                $studentValidated['user_image'] = 'default_image.jpg';
+            }
       
                 $user = User::create($studentValidated);
                 $user->password = bcrypt($request->unique_id); // Corrected line
@@ -72,6 +97,7 @@ class UserManagementController extends Controller
             // Return a JSON response with a success flag
         
     }
+    
     public function fetchUsers(Request $request) {
         $yearLevel = $request->input('level');
         $searchQuery = $request->input('query'); // Get the search query from the request
@@ -100,12 +126,6 @@ class UserManagementController extends Controller
         return response()->json($students);
     }
 
-    public function destroy($id) {
-        $user = User::findOrFail($id);
-        $user->delete();
-
-        return response()->json(['success' => 'User deleted successfully.']);
-    }
 
     // edit function part ----------------
     public function show($id) {
@@ -113,14 +133,15 @@ class UserManagementController extends Controller
         $roles = Role::all();
         $level = User::query()->orderBy('level')->get();
 
-        return view('Users.admin.pages.usermanagement_edit', compact('student', 'roles', 'level'));
+        return view('Users.admin.pages.usermanagement.usermanagement_edit', compact('student', 'roles', 'level'));
     }
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
         $role = Role::find($request->role_id);
+    
         // Validate the request data 
-        $request->validate([
+        $studentValidated = $request->validate([
             "role_id" => ["nullable", "exists:roles,id"],
             "unique_id" => ["nullable", "regex:/^\d{4}-\d{6}$/", Rule::unique('users')->ignore($user->id)],
             "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
@@ -141,87 +162,87 @@ class UserManagementController extends Controller
             "user_image" => ["nullable", "image", "max:2048"],
         ]);
     
-   
-
-
         if (!$role) {
             return back()->with('error', 'Role not found');
         }
-
+    
         if ($request->hasFile('user_image')) {
-            // Generate a unique name for the image file
-            $imageName = time(). '_'. $request->user_image->getClientOriginalName();
-            // Move the uploaded file to the 'userimages' directory
-            $request->user_image->move(public_path('userimages'), $imageName);
+            // Capturing filename with extension
+            $extension = $request->file('user_image')->getClientOriginalExtension();
+            // Renaming image
+            $newFilename = str_replace(' ', '_', $studentValidated['unique_id']) . '.' . $extension;
+    
+            // Constructing the dynamic folder path
+            $levelFolder = str_replace(' ', '_', $studentValidated['level']);
+            $path = public_path("student/{$levelFolder}");
+    
+            // Create the directories if they do not exist
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+    
+            // Move the uploaded file to the constructed path
+            $request->file('user_image')->move($path, $newFilename);
+    
+            // Save the image path in the validation array
+            $studentValidated['user_image'] = $newFilename;
         } else {
-            // If no new image is uploaded, retain the existing image name
-            $imageName = $user->user_image;
+            // Set default image if no image is uploaded
+            $studentValidated['user_image'] = $user->user_image; // keep existing image if no new one is uploaded
         }
-        
-
-        $selectLevel = $request->input('level');
-
-        if($selectLevel == 'College') {
-            $request->strand = '';
-            $request->grade = '';
-            $request->section = '';
-            $selectLevel = '';
-        } 
-        if ($selectLevel == 'Senior Highschool') {
-            $request->course = '';
-            $request->year = '';
-            $request->department = '';
-            $selectLevel = '';
-        } 
-        if ($selectLevel== 'Junior Highschool') {
-            $request->course = '';
-            $request->year = '';
-            $request->strand = '';
-            $selectLevel = '';
+    
+        // Conditional level logic
+        if ($studentValidated['level'] == 'College') {
+            $studentValidated['strand'] = null;
+            $studentValidated['grade'] = null;
+            $studentValidated['section'] = null;
+        } elseif ($studentValidated['level'] == 'Senior Highschool') {
+            $studentValidated['course'] = null;
+            $studentValidated['year'] = null;
+            $studentValidated['department'] = null;
+        } elseif ($studentValidated['level'] == 'Junior Highschool') {
+            $studentValidated['course'] = null;
+            $studentValidated['year'] = null;
+            $studentValidated['strand'] = null;
+        } elseif ($studentValidated['level'] == 'Elementary') {
+            $studentValidated['course'] = null;
+            $studentValidated['year'] = null;
+            $studentValidated['strand'] = null;
         }
-        if ($selectLevel == 'Elementary') { // Adjusted condition
-            $request->course = '';
-            $request->year = '';
-            $request->strand = '';
-            $selectLevel = '';
+    
+        // Handle password hashing
+        if ($request->filled('password')) {
+            $studentValidated['password'] = Hash::make($request->password);
+        } else {
+            $studentValidated['password'] = $user->password;
         }
-
-        if ($request->password) {
-            $password = Hash::make($request->password);
-        }
-        else {
-            $password = $user->password;
-        }
-
-        $user->update([
-        
-            'role_id' => $request->role_id,
-            'unique_id' => $request->unique_id,
-            'lastname' => $request->lastname,
-            'firstname' => $request->firstname,
-            'middlename' => $request->middlename,
-            'level' => $request->level,
-            'grade' => $request->grade,
-            'strand' => $request->strand,
-            'section' => $request->section,
-            'course' => $request->course,
-            'year' => $request->year,
-            'department' => $request->department,
-            'gender' => $request->gender,
-            'cpnumber' => $request->cpnumber,
-            'email' => $request->email,
-            'password' => $password,
-            'user_image' => $imageName,
-        ]);
-
+    
+        // Update user
+        $user->update($studentValidated);
+    
         return back()->with('editSuccessfully', 'Successfully updated user');
     }
-
     /// End of update Controller 
 
-    public function view ($id) {
+    public function view($id) {
         $student = User::findOrFail($id);
         $roles = Role::all();
-        return view('Users.admin.pages.usermanagement_view', compact('student', 'roles'));
+        $previousTransact = Transaction::where('user_id', $id)->first();
+
+        return view('Users.admin.pages.usermanagement.usermanagement_view', compact('student', 'roles', 'previousTransact'));
+    }
+
+    public function archieve($id) {
+        $user = User::findOrFail($id);
+        
+
+        $user->update([
+            'status' => 'Removed',
+        ]);
+
+        $user->save();
+
+        return redirect()->back()->with('removeUser','Sucessfully Remove user');
+        
     }
 }

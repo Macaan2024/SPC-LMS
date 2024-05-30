@@ -1,12 +1,32 @@
 <!-- -- MODALITY START -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalToggleChoice" aria-hidden="true" data-bs-backdrop="false" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-light w-auto"  >
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="modal-title text-center p-0 m-0">Choose User Registration</h6>
+        <div class="d-flex gap-3 mt-3">
+            <button class="btn btn-primary text-nowrap border-0 py-2" data-bs-target="#exampleModalToggleStudent" data-bs-toggle="modal" style="background-color:#661011 !important;">Student Registration</button>
+            <button class="btn btn-primary text-nowrap border-0" data-bs-target="#exampleModalToggleFaculty" data-bs-toggle="modal" style="background-color:#661011 !important;">Faculty Registration</button>
+            <button class="btn btn-primary text-nowrap border-0" data-bs-target="#exampleModalToggleLibraryStaff" data-bs-toggle="modal" style="background-color:#661011 !important;">Library Staff Registration</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalToggleStudent" data-bs-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content py-4 px-3 m-0">
-            <div class="modal-header text-white justify-content-center align-items-center border-0">
-                <h6 class="text-black p-0 m-0 text-center fw-medium fs-5">ADD Student</h6>
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body modal-body-scroll">
-                <form action="{{ route('store')}}" method="POST" id="userRegistration">
+                <h6 class="text-black p-0 m-0 text-center fw-medium fs-5 m-0 p-0">Add Student</h6>
+                <form action="{{ route('student.registration')}}" method="POST" id="userRegistration" class="mt-3" enctype="multipart/form-data">
                     @csrf
                     <div class="d-flex flex-column gap-4">
                         {{-- Student Information --}}
@@ -14,7 +34,15 @@
                             <div style="background-color:#661011;" class="p-2 mb-4 rounded">
                                 <h6 class="p-0 m-0 text-white fw-normal" >Student Information</h6>
                             </div>
-                            <div class="d-flex justify-content-between gap-5 align-items-start"> 
+                            <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+                                <div>
+                                    <div style="height:150px;width:150px;" class="bg-dark"></div>
+                                </div>
+                                <div>
+                                    <input type="file" class="form-control py-0 rounded-0" name="user_image">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between gap-5 mt-3 align-items-start"> 
                                 <div class="d-flex flex-column gap-4">
                                     <div class="m-0 p-0">
                                         <label for="">Lastname</label>
@@ -197,24 +225,132 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+{{--  Facultiessss  --}}
+<div class="modal fade" id="exampleModalToggleFaculty" data-bs-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content py-4 px-3 m-0">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-scroll">
+                <h6 class="text-black p-0 m-0 text-center fw-medium fs-5 p-0 m-0">Add Faculty</h6>
+                <form action="{{ route('faculty.registration')}}" method="POST" id="userRegistration" class="mt-3">
+                    @csrf
+                    <div class="d-flex flex-column gap-4">
+                        {{-- Faculty Information --}}
+                        <div>
+                            <div style="background-color:#661011;" class="p-2 mb-4 rounded">
+                                <h6 class="p-0 m-0 text-white fw-normal" >Faculty Information</h6>
+                            </div>
+                            <h6>Unique ID</h6>
+                            <input type="text" name="unique_id" class="form-control">
+
+                            <div class="d-flex justify-content-between mt-2 gap-5 align-items-start"> 
+                                <div class="d-flex flex-column gap-4">
+                                    <div class="m-0 p-0">
+                                        <label for="">Lastname</label>
+                                            <input type="text" name="lastname" class="form-control" value="{{old('lastname')}}">
+                                            @error('lastname')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                    <div class="m-0 p-0">
+                                        <label for="">Firstname</label>
+                                            <input type="text" name="firstname" class="form-control" value="{{old('firstname')}}">
+                                            @error('firstname')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                    <div class="m-0 p-0">
+                                        <label for="">Middlename</label>
+                                            <input type="text" name="middlename" class="form-control" value="{{old('middlename')}}">
+                                            @error('middlename')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column gap-4 m-0 p-0">
+                                    <div class="m-0 p-0"> 
+                                        <label for=""class="mb-2">Gender</label><br>
+
+                                            <input type="radio" name="gender" class="ms-3 form-check-input" value="Male" {{ old('gender') == 'Male'? 'checked' : '' }}>
+                                            <label class="ms-1 fs-6">Male</label>
+
+                                            <input type="radio" name="gender" class="ms-3 form-check-input" value="Female" {{ old('gender') == 'Female'? 'checked' : '' }}>
+                                            <label class="ms-1 fs-6">Female</label>
+
+                                            @error('gender')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror  
+                                    </div>
+                                    <div>
+                                        <label for="">Cellphone Number</label>
+                                            <input type="text" name="cpnumber" class="form-control" value="{{old('cpnumber')}}">
+                                            @error('cpnumber')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                    <div>
+                                        <label for="">Email</label>
+                                        <input type="email" name="email" class="form-control" value="{{old('email')}}">
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" class="form-control btn btn-success text-white mt-3">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {{-- Sweet Mesage Alerts --}}
-@if(Session::has('message'))
-    <script>
-        var message = "{{ Session::get('message') }}";
-        if (message === 'Student registration successful') {
-            swal("Student Registration", message, 'success', {
-                button:true,
-                button:"OK",
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var classLevelSelect = document.getElementById('classLevelSelect');
+
+    classLevelSelect.addEventListener('change', function() {
+        // Hide all divs initially
+        var elements = document.querySelectorAll('.College, .Shs, .Jhs, .Elem');
+        elements.forEach(function(element) {
+            element.style.display = 'none';
+        });
+
+        // Show the divs corresponding to the selected option
+        var selectedLevel = this.value;
+        if (selectedLevel === 'College') {
+            document.querySelectorAll('.College').forEach(function(element) {
+                element.style.display = 'block';
             });
+        } else if (selectedLevel === 'Senior Highschool') {
+            document.querySelectorAll('.Shs').forEach(function(element) {
+                element.style.display = 'block';
+            });
+            document.getElementById('Section').style.display = 'block';
+        } else if (selectedLevel === 'Junior Highschool') {
+            document.querySelectorAll('.Jhs').forEach(function(element) {
+                element.style.display = 'block';
+            });
+            document.getElementById('Section').style.display = 'block';
+        } else if (selectedLevel === 'Elementary') {
+            document.querySelectorAll('.Elem').forEach(function(element) {
+                element.style.display = 'block';
+            });
+            document.getElementById('Section').style.display = 'block';
         }
-    </script>
-@elseif ($errors->any())
-    <script>
-        var message = "{{ Session::get('message') }}";
-            swal("Student Registration", 'Student Registration fail', 'error', {
-                button:true,
-                button:"OK",
-            });
-    </script>
-@endif
+    });
+});
+</script>
 <!-- -- MODALITY END -->

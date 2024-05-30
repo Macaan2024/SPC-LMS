@@ -52,13 +52,7 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::get('/admin/index', [DashboardController::class, 'index'])->name('admin.index');
 
     //User Management
-    Route::post('/register', [UserManagementController::class,'store'])->name('store'); //add users
-    Route::get('/admin/usersmanagement', [UserManagementController::class,'index'])->name('admin.usermanagement'); //index
-    Route::get('/fetch-users', [UserManagementController::class, 'fetchUsers'])->name('fetch-users'); // ajax fetching user
-    Route::delete('/delete-student/{id}', [UserManagementController::class, 'destroy'])->name('delete-student'); // delete
-    Route::get('/admin/edit/{id}', [UserManagementController::class, 'show'])->name('modification'); // modify
-    Route::put('/edit/{id}', [UserManagementController::class, 'update'])->name('edit'); 
-    Route::get('/admin/view/{id}', [UserManagementController::class, 'view'])->name('view');
+ 
 
     //Book Management         
     Route::get('/admin/booksmanagement', [BookManagementController::class, 'index'])->name('admin.bookmanagement');
@@ -96,8 +90,14 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout')
 
 
 
-
-
+Route::get('/admin/usersmanagement', [UserManagementController::class, 'index'])->name('admin.usermanagement'); //index
+Route::post('/student-registration', [UserManagementController::class, 'student'])->name('student.registration'); //student reg
+Route::post('/faculty-registration', [UserManagementController::class, 'faculty'])->name('faculty.registration'); //faculty reg
+Route::post('/librarystaff-registration', [UserManagementController::class, 'librarystaff'])->name('librarystaff-registration'); //staf reg
+Route::get('/admin/usermanagement-view/{id}', [UserManagementController::class, 'view'])->name('usermanagement-view'); //view
+Route::get('/admin/usermanagement-edit/{id}', [UserManagementController::class, 'show'])->name('usermanagement-edit'); //edit page
+Route::put('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit');
+Route::get('/admin/usermanagement-delete/{id}', [UserManagementController::class, 'archieve'])->name('usermanagement-delete');  
 
 
 

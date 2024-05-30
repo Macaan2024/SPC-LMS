@@ -16,7 +16,7 @@
                         <hr>
                         <div class="container-fluid d-flex flex-column mt-5  align-items-center p-0 m-0">
                             <div style="width:200px;height:210px;" class="">
-                                <img src="{{ asset('userimages/'. $student->user_image)}}" class="object-fit-fill rounded-circle" style="height:100%;width:100%;" alt="">
+                                <img src="{{ asset($student->role->role_description. '/'. $student->level . '/' . $student->user_image)}}" class="object-fit-fill rounded-circle" style="height:100%;width:100%;" alt="">
                             </div>
                             <div class="my-4 d-flex gap-3">
                                 <h4 class="p-0 m-0 fw-normal">{{ $student->firstname}}</h4>
@@ -62,11 +62,15 @@
                             </div>
                             <div class="mx-xl-5 mx-lg-2 mx-md-1 mx-sm-0 my-4">
                                 <h6 class="p-0 m-0 fs-5 fw-normal">Previous Borrowed Books</h6>
-                                <div class="d-flex flex-column gap-3 mt-3">
-                                    <div style="height:300px; width:270px;" class="bg-dark">
-                                        hai
-                                    </div>
+                                <div class="d-flex justify-content-center align-items-center border border-dark-subtle" style="height:300px; width:270px;" class="">
+                                    @if(isset($previousTransact))
+                                        <img src="{{ asset('books_images/' . $previousTransact->book->level . '/' . $previousTransact->book->image) }}" alt="previous_book">
+                                    @else
+                                        <h6>No Previous Book Found</h6>
+                                        {{$previousTransact->user->lastname}}
+                                    @endif
                                 </div>
+                                
                             </div>
                         </div>
                         {{--  User Transcation Records--}}

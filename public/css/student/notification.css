@@ -1,8 +1,0 @@
-.custom-paragraph {
-    text-align: justify;
-    text-justify: inter-word; /* or 'inter-character' for more control */
-    hyphens: auto; /* Enable hyphenation for better word wrapping */
-    word-wrap: break-word; /* Ensure long words break instead of overflowing */
-    max-width: 600px; /* Adjust maximum width as needed */
-    margin: 0 auto; /* Center the paragraph horizontally */
-}
