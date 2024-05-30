@@ -87,7 +87,8 @@
                             </select>
                         </div>
                         <div class="col-12 col-sm-5 p-0 mt-3 mt-sm-0 tableHeading-custom-class">
-                            <form class="d-flex form-group" id="searchStudent">
+                            <form class="d-flex form-group" nethod="GET">
+                                @csrf
                                 <input class="form-control rounded-start-0 rounded-end-0 border-start-1 border-start-sm-0" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success rounded-start-0 bg-success text-white" type="submit">Search</button>
                             </form>

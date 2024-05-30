@@ -6,61 +6,75 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Book;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
-    public function index() {
+    public function index(Request $request)
+    {
 
-        $approvedTransaction = Transaction::whereIn('status', ['approved', 'ongoing'])->get();
+        $ongoing = Transaction::where('status', 'ongoing')->count();
+        $returned = Transaction::where('status', 'returned')->count();
+        $overdue = Transaction::whereNotNull('overdue')->count();
+        $searchTerm = $request->get('search');
 
-        return view('Users.admin.pages.transaction.transaction', ['approvedTransaction' => $approvedTransaction]);
+        $approvedTransaction = Transaction::query()
+            ->whereIn('status', ['approved', 'ongoing', 'returned'])
+            ->when($searchTerm, function ($query, $searchTerm) {
+                return $query->where(function ($query) use ($searchTerm) {
+                    $query->whereHas('user', function ($query) use ($searchTerm) {
+                        $query->where('firstname', 'like', "%{$searchTerm}%")
+                              ->orWhere('lastname', 'like', "%{$searchTerm}%")
+                              ->orWhere('unique_id', 'like', "%{$searchTerm}%");
+                    })
+                    ->orWhereHas('book', function ($query) use ($searchTerm) {
+                        $query->where('title', 'like', "%{$searchTerm}%")
+                              ->orWhere('author', 'like', "%{$searchTerm}%");
+                    });
+                });
+            })
+            ->get();
+
+        return view('Users.admin.pages.transaction.transaction', ['approvedTransaction' => $approvedTransaction, 'ongoing' => $ongoing, 'returned' => $returned, 'overdue' => $overdue]);
     }
 
-    public function returnBook(Request $request, $id) {
+
+    public function returnBook(Request $request, $id)
+    {
         $returnBook = Transaction::findOrFail($id);
-        $currentDate = now();
+        $currentDateTime = Carbon::now('Asia/Manila'); // Set your specific timezone
     
-        // Calculate the total overdue time in hours
+        // Initialize total overdue hours and penalty
         $totalOverdueHours = 0;
-        // Directly compare the current date/time with the book's end date/time
-        if ($currentDate > $returnBook->end_date) {
-            // Calculate the difference in days and convert to hours
-            $daysOverdue = $currentDate->diffInDays($returnBook->end_date);
-            $totalOverdueHours += $daysOverdue * 24; // Convert days to hours
+        $penalty = 0;
     
-            // If the current time is past the end time, add the additional hours
-            if ($currentDate > $returnBook->end_time) {
-                // Calculate the difference in minutes and then convert to hours
-                $minutesOverdue = $currentDate->diffInMinutes($returnBook->end_time);
-                $additionalHours = $minutesOverdue / 60; // Exact calculation without rounding
-                $totalOverdueHours += $additionalHours;
+        // Check if end_datetime is not null
+        if ($returnBook->end_time) {
+            // Parse the end_datetime column as a single Carbon instance
+            $endDateTime = Carbon::parse($returnBook->end_time, 'Asia/Manila');
+    
+            // Calculate the overdue hours if current datetime is past the end datetime
+            if ($currentDateTime > $endDateTime) {
+                $totalOverdueHours = $currentDateTime->diffInHours($endDateTime);
+    
+                // Calculate the penalty based on the total overdue hours
+                $penalty = $totalOverdueHours * 10; // Assuming penalty is $10 per hour
             }
-        } elseif ($currentDate->format('Y-m-d') == $returnBook->end_date && $currentDate > $returnBook->end_time) {
-            // Corrected condition to check if the book is overdue based on the end time but not the end date
-            // Calculate the difference in minutes and then convert to hours
-            $minutesOverdue = $currentDate->diffInMinutes($returnBook->end_time);
-            $totalOverdueHours = $minutesOverdue / 60; // Exact calculation without rounding
         }
-    
-        // Calculate the penalty based on the total overdue hours
-        $penalty = $totalOverdueHours * 10; // Assuming penalty is $10 per hour
     
         // Update the transaction record with the calculated overdue time and penalty
         $returnBook->update([
-            'status' => 'Return Successfully',
-            'overdue' => $totalOverdueHours, // Update the combined overdue time
+            'status' => 'returned',
+            'overdue' => $totalOverdueHours,
             'penalty' => $penalty,
-            'updated_at' => now(),
+            'updated_at' => $currentDateTime,
         ]);
-    
+
         $returnBook->save();
     
         // Redirect back with the calculated overdue time and penalty
-        return redirect()->back()->with('overdue', 'Successfully Return with a total of overdue Time: '. $totalOverdueHours. ' hours, and Penalty Total of: '. $penalty);
-
-        //1problem if the minutes is 130 minutes then the return is 1.1
+        return redirect()->back()->with('overdue', 'Successfully Return with a total of overdue Time: ' . $totalOverdueHours . ' hours, and Penalty Total of: ' . $penalty);
     }
-    
     public function start(Request $request, $id) {
 
         $startbook = Transaction::findOrFail($id);
@@ -94,5 +108,14 @@ class TransactionController extends Controller
         return redirect()->back()->with('successCancel', 'Sucessfully Cancellation');
 
 
+    }
+
+    public function view($id) {
+
+        $transaction = Transaction::find($id);
+
+
+
+        return view('Users.admin.pages.transaction.transactionview', ['transaction' => $transaction]);
     }
 }

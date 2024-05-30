@@ -49,6 +49,13 @@
         {{-- Transaction --}}
         @if (isset($transaction))
             {{ $transaction }}
+        @elseif (isset($transaction_view))
+            {{ $transaction_view }}
+        @endif
+
+        {{-- User fines --}}
+        @if (isset($user_fines))
+            {{ $user_fines }}
         @endif
     @include('Users.admin.layout.footer')
 </body>

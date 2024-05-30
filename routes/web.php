@@ -1,6 +1,6 @@
 <?php
-
 use App\Http\Controllers\Admin\BookRequestController;
+use App\Http\Controllers\admin\UserFinesController;
 use App\Http\Controllers\Logbook\LogbookLogsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -80,6 +80,12 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::post('/cancel.book/{id}', [TransactionController::class, 'cancel'])->name('cancel.book'); //cancel book
     Route::post('/start.book/{id}', [TransactionController::class, 'start'])->name('start.book'); //start borrow
     ROute::post('/return.book/{id}', [TransactionController::class, 'returnBook'])->name('return.book'); //returning borrow
+    Route::get('/admin/transaction-view/{id}', [TransactionController::class, 'view'])->name('admin.transaction-view');
+
+    //Userfines
+    Route::get('/admin/userfines', [UserFinesController::class, 'index'])->name('admin.userfines');
+    Route::post('/admin/finespaid/{id}', [UserFinesController:: class, 'finesPaid'])->name('admin.finespaid');
+
 });
 
 
