@@ -76,7 +76,7 @@ class StudentIndexController extends Controller
 
                 if($book->quantity == 0) {
                     $book->update([
-                        'status' => 'Unvailable',
+                        'status' => 'Unavailable',
                     ]);
                 }
 

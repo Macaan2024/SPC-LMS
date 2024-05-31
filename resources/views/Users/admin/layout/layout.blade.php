@@ -39,6 +39,8 @@
 
         @if (isset($book_management))
             {{ $book_management }}
+        @elseif (isset($book_view))
+            {{ $book_view }}
         @endif
 
         {{-- Book Request Page --}}

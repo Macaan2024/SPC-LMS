@@ -243,18 +243,27 @@
             </div>
             <div class="modal-body modal-body-scroll">
                 <h6 class="text-black p-0 m-0 text-center fw-medium fs-5 p-0 m-0">Add Faculty</h6>
-                <form action="{{ route('faculty.registration')}}" method="POST" id="userRegistration" class="mt-3">
+                <form action="{{ route('faculty.registration')}}" method="POST" id="userRegistration" class="mt-3" enctype="multipart/form-data">
                     @csrf
                     <div class="d-flex flex-column gap-4">
-                        {{-- Faculty Information --}}
+                        {{-- Student Information --}}
                         <div>
                             <div style="background-color:#661011;" class="p-2 mb-4 rounded">
                                 <h6 class="p-0 m-0 text-white fw-normal" >Faculty Information</h6>
                             </div>
-                            <h6>Unique ID</h6>
-                            <input type="text" name="unique_id" class="form-control">
-
-                            <div class="d-flex justify-content-between mt-2 gap-5 align-items-start"> 
+                            <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+                                <div>
+                                    <div style="height:150px;width:150px;" class="bg-dark"></div>
+                                </div>
+                                <div>
+                                    <input type="file" class="form-control py-0 rounded-0" name="user_image">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-1 mt-3">
+                                <h6 class="p-0 m-0 fw-normal">Unique ID</h6>
+                                <input type="text" name="unique_id" class="form-control">
+                            </div>
+                            <div class="d-flex justify-content-between gap-5 mt-3 align-items-start"> 
                                 <div class="d-flex flex-column gap-4">
                                     <div class="m-0 p-0">
                                         <label for="">Lastname</label>
@@ -309,8 +318,107 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="status" value="Activate">
+                        <input type="hidden" name="password">
+                        <input type="hidden" name="role_description" value="Student">
+                        <input type="submit" name="submit" class="form-control btn btn-success">
                     </div>
-                    <input type="submit" name="submit" class="form-control btn btn-success text-white mt-3">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Library Staffs --}}
+
+<div class="modal fade" id="exampleModalToggleLibraryStaff" data-bs-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content py-4 px-3 m-0">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-scroll">
+                <h6 class="text-black p-0 m-0 text-center fw-medium fs-5 p-0 m-0">Add Library Staff</h6>
+                <form action="{{ route('librarystaff.registration')}}" method="POST" id="userRegistration" class="mt-3" enctype="multipart/form-data">
+                    @csrf
+                    <div class="d-flex flex-column gap-4">
+                        {{-- Student Information --}}
+                        <div>
+                            <div style="background-color:#661011;" class="p-2 mb-4 rounded">
+                                <h6 class="p-0 m-0 text-white fw-normal" >Library Staff Information</h6>
+                            </div>
+                            <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+                                <div>
+                                    <div style="height:150px;width:150px;" class="bg-dark"></div>
+                                </div>
+                                <div>
+                                    <input type="file" class="form-control py-0 rounded-0" name="user_image">
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-1 mt-3">
+                                <h6 class="p-0 m-0 fw-normal">Unique ID</h6>
+                                <input type="text" name="unique_id" class="form-control">
+                            </div>
+                            <div class="d-flex justify-content-between gap-5 mt-3 align-items-start"> 
+                                <div class="d-flex flex-column gap-4">
+                                    <div class="m-0 p-0">
+                                        <label for="">Lastname</label>
+                                            <input type="text" name="lastname" class="form-control" value="{{old('lastname')}}">
+                                            @error('lastname')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                    <div class="m-0 p-0">
+                                        <label for="">Firstname</label>
+                                            <input type="text" name="firstname" class="form-control" value="{{old('firstname')}}">
+                                            @error('firstname')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                    <div class="m-0 p-0">
+                                        <label for="">Middlename</label>
+                                            <input type="text" name="middlename" class="form-control" value="{{old('middlename')}}">
+                                            @error('middlename')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column gap-4 m-0 p-0">
+                                    <div class="m-0 p-0"> 
+                                        <label for=""class="mb-2">Gender</label><br>
+
+                                            <input type="radio" name="gender" class="ms-3 form-check-input" value="Male" {{ old('gender') == 'Male'? 'checked' : '' }}>
+                                            <label class="ms-1 fs-6">Male</label>
+
+                                            <input type="radio" name="gender" class="ms-3 form-check-input" value="Female" {{ old('gender') == 'Female'? 'checked' : '' }}>
+                                            <label class="ms-1 fs-6">Female</label>
+
+                                            @error('gender')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror  
+                                    </div>
+                                    <div>
+                                        <label for="">Cellphone Number</label>
+                                            <input type="text" name="cpnumber" class="form-control" value="{{old('cpnumber')}}">
+                                            @error('cpnumber')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                    </div>
+                                    <div>
+                                        <label for="">Email</label>
+                                        <input type="email" name="email" class="form-control" value="{{old('email')}}">
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="status" value="Activate">
+                        <input type="hidden" name="password">
+                        <input type="hidden" name="role_description" value="Student">
+                        <input type="submit" name="submit" class="form-control btn btn-success">
+                    </div>
                 </form>
             </div>
         </div>

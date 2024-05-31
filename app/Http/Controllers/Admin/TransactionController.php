@@ -69,6 +69,7 @@ class TransactionController extends Controller
             'penalty' => $penalty,
             'updated_at' => $currentDateTime,
         ]);
+        $returnBook->decrement('total_borrow');
 
         $returnBook->save();
     
@@ -86,6 +87,7 @@ class TransactionController extends Controller
         if($currentTime >= '10:00:00') {
             
             $startbook->update([ 'status' => 'ongoing']);
+            $startbook->increment('total_borrow');
 
             $startbook->save();
 

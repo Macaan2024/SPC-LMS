@@ -5,7 +5,7 @@
                 <div class="bg-success bg-opacity-50 rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="height:150px;width:100%;">
                     <div class="d-flex flex-column">
                         <h4 class="p-0 m-0 text-white fw-normal">College</h4>
-                        <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                        <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $college }}</h6>
                     </div>
                 </div>
             </div>
@@ -13,7 +13,7 @@
                 <div class="bg-primary bg-opacity-50 rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="height:100%;width:100%;">
                     <div class="d-flex flex-column">
                         <h5 class="p-0 m-0 text-white fw-normal">Senior Highschool</h5>
-                        <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                        <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $seniorhigh}}</h6>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="bg-danger bg-opacity-50 rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="height:100%;width:100%;">
                     <div class="d-flex flex-column">
                         <h5 class="p-0 m-0 text-white fw-normal">Junior Highschool</h5>
-                        <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                        <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $juniorhigh }}</h6>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="bg-dark bg-opacity-50 rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="height:100%;width:100%;">
                     <div class="d-flex flex-column">
                         <h5 class="p-0 m-0 text-white fw-normal">Elementary</h5>
-                        <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                        <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $elementary }}</h6>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="bg-info bg-opacity-50 rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="height:100%;width:100%;">
                     <div class="d-flex flex-column">
                         <h5 class="p-0 m-0 text-white fw-normal">Faculty</h5>
-                        <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                        <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $faculty }}</h6>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="bg-warning bg-opacity-50 rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="height:100%;width:100%;">
                     <div class="d-flex flex-column">
                         <h5 class="p-0 m-0 text-white fw-normal">Library Staff</h5>
-                        <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                        <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $staff }}</h6>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
              
         <div class="row m-0 p-0 mt-5 px-5" style="min-width:1550px;">
             <div class="col-6 p-0 m-0">
-                <form class="d-flex form-group p-0m-0" action="{{ route('admin.transaction')}}" method="GET">
+                <form class="d-flex form-group p-0m-0" action="{{ route('admin.usermanagement')}}" method="GET">
                     <input class="form-control rounded-start-0 rounded-end-0 border-start-1 border-start-sm-0 shadow-lg rounded-start-1 py-2" type="text" placeholder="Search" aria-label="Search" name="search" value="{{ request()->get('search') }}">
                     <button class="btn btn-outline-success rounded-start-0 bg-success text-white" type="submit">Search</button>
                 </form>
@@ -89,7 +89,7 @@
                     <tbody id="studentData">
                         @php $index = 0; @endphp
                         @foreach ( $user as $users )
-                            @if($users->level == 'College' && $users->status == 'Activate')
+                            @if($users->level == 'College' && $users->status == 'Activate' && $users->role_id != 2)
                                 <tr>
                                     <td>{{ ++$index}}</td>
                                     <td><img src="/student/{{$users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
@@ -117,7 +117,7 @@
                             @endif
                         @endforeach
                         @foreach ( $user as $users )
-                            @if($users->level == 'Senior Highschool' && $users->status == 'Activate')
+                            @if($users->level == 'Senior Highschool' && $users->status == 'Activate' && $users->role_id != 2)
                                 <tr>
                                     <td>{{ ++$index}}</td>
                                     <td><img src="/student/{{$users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
@@ -145,7 +145,7 @@
                             @endif
                         @endforeach
                         @foreach ( $user as $users )
-                            @if($users->level == 'Junior Highschool' && $users->status == 'Activate')
+                            @if($users->level == 'Junior Highschool' && $users->status == 'Activate' && $users->role_id != 2)
                                 <tr>
                                     <td>{{ ++$index}}</td>
                                     <td><img src="/student/{{$users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
@@ -173,7 +173,7 @@
                             @endif
                         @endforeach
                         @foreach ( $user as $users )
-                            @if($users->level == 'Elementary' && $users->status == 'Activate')
+                            @if($users->level == 'Elementary' && $users->status == 'Activate' && $users->role_id != 2)
                                 <tr>
                                     <td>{{ ++$index}}</td>
                                     <td><img src="/student/{{$users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
@@ -201,10 +201,10 @@
                             @endif
                         @endforeach
                         @foreach ( $user as $users )
-                            @if($users->level == 'Faculty' && $users->status == 'Activate')
+                            @if($users->role->role_description == 'Faculty' && $users->status == 'Activate' && $users->role_id != 2)
                                 <tr>
                                     <td>{{ ++$index}}</td>
-                                    <td><img src="/student/{{$users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
+                                    <td><img src="{{ asset($users->role->role_description . '/' . $users->user_image) }}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
                                     <td>{{ $users->unique_id }}</td>
                                     <td>{{ $users->role->role_description}}</td>
                                     <td>{{ $users->firstname }}</td>
@@ -229,10 +229,10 @@
                             @endif
                         @endforeach
                         @foreach ( $user as $users )
-                            @if($users->level == 'Library staff' && $users->status == 'Activate')
+                            @if($users->role->role_description == 'Library Staff' && $users->status == 'Activate' && $users->role_id != 2)
                                 <tr>
                                     <td>{{ ++$index}}</td>
-                                    <td><img src="/student/{{$users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
+                                    <td><img src="{{ asset($users->role->role_description . '/' . $users->user_image) }}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
                                     <td>{{ $users->unique_id }}</td>
                                     <td>{{ $users->role->role_description}}</td>
                                     <td>{{ $users->firstname }}</td>

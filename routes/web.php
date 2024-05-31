@@ -52,11 +52,18 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::get('/admin/index', [DashboardController::class, 'index'])->name('admin.index');
 
     //User Management
- 
+    Route::get('/admin/usersmanagement', [UserManagementController::class, 'index'])->name('admin.usermanagement'); //index
+    Route::post('/student-registration', [UserManagementController::class, 'student'])->name('student.registration'); //student reg
+    Route::post('/faculty-registration', [UserManagementController::class, 'faculty'])->name('faculty.registration'); //faculty reg
+    Route::post('/librarystaff-registration', [UserManagementController::class, 'libraryStaff'])->name('librarystaff.registration'); //staf reg
+    Route::get('/admin/usermanagement-view/{id}', [UserManagementController::class, 'view'])->name('usermanagement-view'); //view
+    Route::get('/admin/usermanagement-edit/{id}', [UserManagementController::class, 'show'])->name('usermanagement-edit'); //edit page
+    Route::put('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit'); //process edit
+    Route::get('/admin/usermanagement-delete/{id}', [UserManagementController::class, 'archieve'])->name('usermanagement-delete');  //process delete
 
     //Book Management         
     Route::get('/admin/booksmanagement', [BookManagementController::class, 'index'])->name('admin.bookmanagement');
-    Route::get('/fetch-books', [BookManagementController::class, 'fetchBooks']);
+    Route::get('/admin/bookview/{id}', [BookManagementController::class, 'view'])->name('admin.bookview');
     Route::post('/admin.store', [BookManagementController::class, 'store'])->name('admin.store');
     Route::delete('/delete-book/{id}', [BookManagementController::class, 'destroy'])->name('delete-book');
 
@@ -90,14 +97,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout')
 
 
 
-Route::get('/admin/usersmanagement', [UserManagementController::class, 'index'])->name('admin.usermanagement'); //index
-Route::post('/student-registration', [UserManagementController::class, 'student'])->name('student.registration'); //student reg
-Route::post('/faculty-registration', [UserManagementController::class, 'faculty'])->name('faculty.registration'); //faculty reg
-Route::post('/librarystaff-registration', [UserManagementController::class, 'librarystaff'])->name('librarystaff-registration'); //staf reg
-Route::get('/admin/usermanagement-view/{id}', [UserManagementController::class, 'view'])->name('usermanagement-view'); //view
-Route::get('/admin/usermanagement-edit/{id}', [UserManagementController::class, 'show'])->name('usermanagement-edit'); //edit page
-Route::put('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit');
-Route::get('/admin/usermanagement-delete/{id}', [UserManagementController::class, 'archieve'])->name('usermanagement-delete');  
 
 
 

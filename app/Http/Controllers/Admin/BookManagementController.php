@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Transaction;
 
 class BookManagementController extends Controller
 {
@@ -20,10 +21,15 @@ class BookManagementController extends Controller
 
         return view('Users.admin.pages.bookmanagement.bookmanagement', ['book' => $book, 'college' => $college, 'seniorhigh' => $seniorhigh, 'juniorhigh' => $juniorhigh, 'elementary' => $elementary, 'level' => $level]);
     }
-    public function fetchBooks(Request $request) {
-        $books = Book::orderBy('level')->orderBy('category')->get();
-    
-        return response()->json(['books' => $books]);
+
+    public function view($id) {
+
+        $book = Book::find($id);
+
+        $transaction = Transaction::where('book_id', $id)->get();
+
+
+        return view('Users.admin.pages.bookmanagement.bookview', ['book' => $book, 'transaction' => $transaction]);
     }
 
     public function store(Request $request) {

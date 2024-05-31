@@ -16,23 +16,144 @@ class UserManagementController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
 
         $college = User::where('level', 'College')->count();
         $seniorhigh = User::where('level', 'Senior Highschool')->count();
         $juniorhigh = User::where('level', 'Junior Highschool')->count();
         $elementary = User::where('level', 'Elementary')->count();
-        $user = User::all();
+        $faculty = User::where('role_id', 3)->count();
+        $staff = User::where('role_id', 4)->count();
 
-        return view("Users.admin.pages.usermanagement.usermanagement", ["college" => $college, "seniorhigh" => $seniorhigh, "juniorhigh" => $juniorhigh, "elementary" => $elementary, 'user' => $user]);
+        $userQuery = User::query(); // Initialize the query builder
+
+        // Apply search filter if a search term is provided
+        if ($request->has('search')) {
+            $searchTerm = $request->get('search');
+            $userQuery->where(function ($query) use ($searchTerm) {
+                $query->where('firstname', 'like', "%{$searchTerm}%")
+                    ->orWhere('lastname', 'like', "%{$searchTerm}%")
+                    ->orWhere('unique_id', 'like', "%{$searchTerm}%");
+            });
+        }
+
+
+        // Execute the query to get all users
+        $user = $userQuery->get(); // Fetch all users without pagination
+
+        return view("Users.admin.pages.usermanagement.usermanagement", ["college" => $college, "seniorhigh" => $seniorhigh, "juniorhigh" => $juniorhigh, "elementary" => $elementary, 'user' => $user, 'faculty' => $faculty, 'staff' => $staff]);
+    }
+
+    public function libraryStaff(Request $request) {
+        $facultyValidated = $request->validate([
+            "unique_id" => ["required", "regex:/^\d{4}-\d{6}$/"],
+            "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+            "firstname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+            "middlename" => ["nullable"],
+            "status" => ["nullable"],
+            "user_image" => ["nullable", "image"],
+            "gender" => ["nullable"],
+            "cpnumber"=> ["nullable"],
+            "email" => ["nullable", "email"],
+            "password" => ["nullable"],
+        ]);
+    
+        // Ensure role 'Student' exists
+        $role = Role::firstOrCreate(['role_description' => 'Library Staff']);
+    
+        if ($request->hasFile('user_image')) {
+            // Capture filename with extension
+            $extension = $request->file('user_image')->getClientOriginalExtension();
+            // Rename image
+            $newFilename = str_replace(' ', '', $facultyValidated['unique_id']) . '.' . $extension;
+    
+            // Construct the dynamic folder path
+            $path = public_path("library staff");
+    
+            // Create the directories if they do not exist
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+    
+            // Move the uploaded file to the constructed path
+            $request->file('user_image')->move($path, $newFilename);
+    
+            // Save the image path in the validated array
+            $facultyValidated['user_image'] = $newFilename;
+        } else {
+            // Set default image if no image is uploaded
+            $facultyValidated['user_image'] = 'default_image.jpg';
+        }
+    
+        // Hash the password
+        $facultyValidated['password'] = bcrypt($request->unique_id);
+    
+        // Create the user and assign the role
+        $user = User::create($facultyValidated);
+        $user->role_id = $role->id; // Assign the role_id directly
+        $user->save();
+    
+        return back()->with('message', 'Faculty registration successful');
+    }
+
+    public function faculty(Request $request) {
+        $facultyValidated = $request->validate([
+            "unique_id" => ["required", "regex:/^\d{4}-\d{6}$/"],
+            "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+            "firstname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
+            "middlename" => ["nullable"],
+            "status" => ["nullable"],
+            "user_image" => ["nullable", "image"],
+            "gender" => ["nullable"],
+            "cpnumber"=> ["nullable"],
+            "email" => ["nullable", "email"],
+            "password" => ["nullable"],
+        ]);
+    
+        // Ensure role 'Student' exists
+        $role = Role::firstOrCreate(['role_description' => 'Faculty']);
+    
+        if ($request->hasFile('user_image')) {
+            // Capture filename with extension
+            $extension = $request->file('user_image')->getClientOriginalExtension();
+            // Rename image
+            $newFilename = str_replace(' ', '', $facultyValidated['unique_id']) . '.' . $extension;
+    
+            // Construct the dynamic folder path
+            $path = public_path("faculty");
+    
+            // Create the directories if they do not exist
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+    
+            // Move the uploaded file to the constructed path
+            $request->file('user_image')->move($path, $newFilename);
+    
+            // Save the image path in the validated array
+            $facultyValidated['user_image'] = $newFilename;
+        } else {
+            // Set default image if no image is uploaded
+            $facultyValidated['user_image'] = 'default_image.jpg';
+        }
+    
+        // Hash the password
+        $facultyValidated['password'] = bcrypt($request->unique_id);
+    
+        // Create the user and assign the role
+        $user = User::create($facultyValidated);
+        $user->role_id = $role->id; // Assign the role_id directly
+        $user->save();
+    
+        return back()->with('message', 'Faculty registration successful');
     }
 
     public function student(Request $request)
     {
 
             $studentValidated = $request->validate([
-                "unique_id" => ["nullable","regex:/^\d{4}-\d{6}$/"],
+                "unique_id" => ["required","regex:/^\d{4}-\d{6}$/"],
                 "lastname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
                 "firstname" => ["nullable", "regex:/^[A-Za-z\s]+$/"],
                 "middlename" => ["nullable"],
@@ -227,9 +348,10 @@ class UserManagementController extends Controller
     public function view($id) {
         $student = User::findOrFail($id);
         $roles = Role::all();
-        $previousTransact = Transaction::where('user_id', $id)->first();
-
-        return view('Users.admin.pages.usermanagement.usermanagement_view', compact('student', 'roles', 'previousTransact'));
+        $previousTransact = Transaction::where('user_id', $id)->orderBy('created_at', 'desc')->first();
+        $transaction = Transaction::where('user_id', $id)->get();
+    
+        return view('Users.admin.pages.usermanagement.usermanagement_view', compact('student', 'roles', 'previousTransact', 'transaction'));
     }
 
     public function archieve($id) {

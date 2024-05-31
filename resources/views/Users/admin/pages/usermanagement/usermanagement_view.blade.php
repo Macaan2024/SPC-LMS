@@ -64,10 +64,11 @@
                                 <h6 class="p-0 m-0 fs-5 fw-normal">Previous Borrowed Books</h6>
                                 <div class="d-flex justify-content-center align-items-center border border-dark-subtle" style="height:300px; width:270px;" class="">
                                     @if(isset($previousTransact))
-                                        <img src="{{ asset('books_images/' . $previousTransact->book->level . '/' . $previousTransact->book->image) }}" alt="previous_book">
+                                        @if($previousTransact->status == 'returned')
+                                            <img src="{{ asset('books_images/' . $previousTransact->book->level. '/' . $previousTransact->book->category . '/' . $previousTransact->book->image)}}" alt="book_image">
+                                        @endif
                                     @else
-                                        <h6>No Previous Book Found</h6>
-                                        {{$previousTransact->user->lastname}}
+                                        <h6>No books Found</h6>
                                     @endif
                                 </div>
                                 
@@ -76,23 +77,47 @@
                         {{--  User Transcation Records--}}
                         <div class="mt-3">
                             <h6 class="p-0 m-0 fs-6">Transaction</h6>
-                            <table class="table-responsive table align-middle mt-3">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Book</th>
-                                    <th>Title</th>
-                                    <th>Start Day</th>
-                                    <th>Start Time</th>
-                                    <th>End Day</th>
-                                    <th>End Time</th>
-                                    <th>Duration</th>
-                                    <th>Overdue</th>
-                                    <th>Penalty</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        </table>
+                            <table class="table-responsive table align-middle mt-3 table-striped border border">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Accesion Number</th>
+                                        <th>Title</th>
+                                        <th>Start Day</th>
+                                        <th>Start Time</th>
+                                        <th>End Day</th>
+                                        <th>End Time</th>
+                                        <th>Duration</th>
+                                        <th>Overdue</th>
+                                        <th>Penalty</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php $index = 0; @endphp
+                                    @foreach ($transaction as $transactions)
+                                        @if($transactions->status == 'returned')
+                                            <tr>
+                                                <td>{{ $index++ }}</td>
+                                                <td>{{ $transactions->book->accesion_number}}</td>
+                                                <td>{{ $transactions->book->title}}</td>
+                                                <td>{{ $transactions->start_date}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($transactions->start_time)->format('g:i A')}}</td>
+                                                <td>{{ $transactions->end_day}}</td>
+                                                <td>{{ \Carbon\Carbon::parse($transactions->end_day)->format('g:i A')}}</td>
+                                                <td>8 Hours</td>
+                                                <td>{{ $transactions->overdue}}</td>
+                                                <td>{{ $transactions->penalty}}</td>
+                                                <td>
+                                                    <a href="">
+                                                        <button class="btn bg-primary text-white bg-opacity-75 py-1">View</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </section>
                 </div>
