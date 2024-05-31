@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Admin\BookRequestController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\admin\UserFinesController;
 use App\Http\Controllers\Logbook\LogbookLogsController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,9 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
 Route::middleware(['auth', 'role_id:2'])->group(function (){
 
 
+    //profile
+    Route::get('/admin/profile/{id}', [ProfileController::class, 'show'])->name('admin.profile');
+    ROute::get('/admin/changepassword/{id}', [ProfileController::class, 'changePassword'])->name('admin.changepassword');
 
     //Dashboard
     Route::get('/admin/index', [DashboardController::class, 'index'])->name('admin.index');
@@ -58,14 +62,16 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::post('/librarystaff-registration', [UserManagementController::class, 'libraryStaff'])->name('librarystaff.registration'); //staf reg
     Route::get('/admin/usermanagement-view/{id}', [UserManagementController::class, 'view'])->name('usermanagement-view'); //view
     Route::get('/admin/usermanagement-edit/{id}', [UserManagementController::class, 'show'])->name('usermanagement-edit'); //edit page
-    Route::put('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit'); //process edit
+    Route::get('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit'); //process edit
     Route::get('/admin/usermanagement-delete/{id}', [UserManagementController::class, 'archieve'])->name('usermanagement-delete');  //process delete
 
     //Book Management         
     Route::get('/admin/booksmanagement', [BookManagementController::class, 'index'])->name('admin.bookmanagement');
     Route::get('/admin/bookview/{id}', [BookManagementController::class, 'view'])->name('admin.bookview');
     Route::post('/admin.store', [BookManagementController::class, 'store'])->name('admin.store');
-    Route::delete('/delete-book/{id}', [BookManagementController::class, 'destroy'])->name('delete-book');
+    Route::get('/admin.edit/{id}', [BookManagementController::class, 'edit'])->name('admin.edit');
+    Route::put('/update.book/{id}', [BookManagementController::class, 'update'])->name('update.book');
+    Route::get('/delete-book/{id}', [BookManagementController::class, 'destroy'])->name('admin.delete.book');
 
     //Book Request
     Route::get('/admin/bookrequest/', [BookRequestController::class, 'index'])->name('admin.bookrequest');

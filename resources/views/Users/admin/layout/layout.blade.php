@@ -41,6 +41,8 @@
             {{ $book_management }}
         @elseif (isset($book_view))
             {{ $book_view }}
+        @elseif (isset($book_edit))
+            {{ $book_edit }}
         @endif
 
         {{-- Book Request Page --}}
@@ -58,6 +60,13 @@
         {{-- User fines --}}
         @if (isset($user_fines))
             {{ $user_fines }}
+        @endif
+
+        {{-- User Profile --}}
+        @if (isset($profile))
+            {{ $profile }}
+        @elseif (isset($changepassword))
+            {{ $changepassword }}
         @endif
     @include('Users.admin.layout.footer')
 </body>

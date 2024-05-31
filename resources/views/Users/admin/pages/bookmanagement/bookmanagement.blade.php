@@ -86,34 +86,61 @@
                 @php $index = 0; @endphp
                 @foreach ($level as $levels)
                     @foreach ($levels as $book )
+                        @if($book->status == 'Available')
                         <tr>
-                            <td>{{ ++$index }}</td>
-                            <td><img src="{{ asset('books_images/'. $book->level . '/' . $book->category . '/' . $book->image)}}" style="height:100px;width:75px;" alt=""></td>
-                            <td>{{ $book->title }}</td>
-                            <td>{{ $book->author }}</td>
-                            <td>{{ $book->level }}</td>
-                            <td>{{ $book->publication_year }}</td>
-                            <td>{{ $book->edition }}</td>
-                            <td>{{ $book->quantity }}</td>
-                            <td>{{ $book->total_borrow }}</td>
-                            @if($book->status == 'Available')
-                                <td class="text-success fw-bold">{{ $book->status }}</td>
-                            @elseif ($book->status == 'Unavailable')
-                                <td class="text-danger fw-bold">{{ $book->status }}</td>
-                            @endif
-                            
-                            <td>
-                                <a href="{{ route('admin.bookview', ['id' => $book->id]) }}" class="text-decoration-none">
-                                    <button class="btn bg-primary bg-opacity-75 text-white ">View</button>
-                                </a>
-                                <a href="" class="text-decoration-none">
-                                    <button class="btn bg-success bg-opacity-75 text-white ">Edit</button>
-                                </a>
-                                <a href="" class="text-decoration-none">
-                                    <button class="btn bg-danger bg-opacity-75 text-white">Delete</button>
-                                </a>
+                            <td class="align-middle">{{ ++$index }}</td>
+                            <td class="align-middle"><img src="{{ asset('books_images/'. $book->level . '/' . $book->category . '/' . $book->image)}}" style="height:100px;width:75px;" alt=""></td>
+                            <td class="align-middle">{{ $book->title }}</td>
+                            <td class="align-middle">{{ $book->author }}</td>
+                            <td class="align-middle">{{ $book->level }}</td>
+                            <td class="align-middle">{{ $book->publication_year }}</td>
+                            <td class="align-middle">{{ $book->edition }}</td>
+                            <td class="align-middle">{{ $book->quantity }}</td>
+                            <td class="align-middle"></td>{{ $book->total_borrow }}</td>
+                            <td class="text-success fw-bold align-middle">{{ $book->status }}</td>
+                            <td class="align-middle">
+                                <div class="d-flex gap-1">
+                                    <a href="{{ route('admin.bookview', ['id' => $book->id]) }}" class="text-decoration-none">
+                                        <button class="btn bg-primary bg-opacity-75 text-white ">View</button>
+                                    </a>
+                                    <a href="{{ route('admin.edit', ['id' => $book->id]) }}" class="text-decoration-none">
+                                        <button class="btn bg-success bg-opacity-75 text-white ">Edit</button>
+                                    </a>
+                                    <form action="{{ route('admin.delete.book', ['id' =>  $book->id]) }}">
+                                        @csrf
+                                        <button type="submit" class="btn bg-danger bg-opacity-75 text-white">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
+                        @elseif ($book->status == 'Unavailable')
+                        <tr>
+                            <td class="align-middle">{{ ++$index }}</td>
+                            <td class="align-middle"><img src="{{ asset('books_images/'. $book->level . '/' . $book->category . '/' . $book->image)}}" style="height:100px;width:75px;" alt=""></td>
+                            <td class="align-middle">{{ $book->title }}</td>
+                            <td class="align-middle">{{ $book->author }}</td>
+                            <td class="align-middle">{{ $book->level }}</td>
+                            <td class="align-middle">{{ $book->publication_year }}</td>
+                            <td class="align-middle">{{ $book->edition }}</td>
+                            <td class="align-middle">{{ $book->quantity }}</td>
+                            <td class="align-middle"></td>{{ $book->total_borrow }}</td>
+                            <td class="text-danger fw-bold align-middle">{{ $book->status }}</td>     
+                            <td class="align-middle">
+                                <div class="d-flex gap-1">
+                                    <a href="{{ route('admin.bookview', ['id' => $book->id]) }}" class="text-decoration-none">
+                                        <button class="btn bg-primary bg-opacity-75 text-white ">View</button>
+                                    </a>
+                                    <a href="{{ route('admin.edit', ['id' => $book->id]) }}" class="text-decoration-none">
+                                        <button class="btn bg-success bg-opacity-75 text-white ">Edit</button>
+                                    </a>
+                                    <form action="{{ route('admin.delete.book', ['id' =>  $book->id]) }}">
+                                        @csrf
+                                        <button type="submit" class="btn bg-danger bg-opacity-75 text-white">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
                     @endforeach
                 @endforeach
             </tbody>
