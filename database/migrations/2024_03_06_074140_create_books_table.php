@@ -25,8 +25,9 @@ return new class extends Migration
             $table->string('pages', 255); // Corrected spelling
             $table->string('edition', 255);
             $table->string('status', 255);
-            $table->integer('total_borrow');
+            $table->integer('total_borrow')->nullable();
             $table->string('image');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

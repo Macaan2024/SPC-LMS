@@ -31,6 +31,12 @@ class User extends Authenticatable
 
     //books
     
+
+    public function payment() {
+        return $this->belongsTo(Payment::class);
+    }
+
+
     public function transactions() {
         return $this->hasMany(Transaction::class);
     }

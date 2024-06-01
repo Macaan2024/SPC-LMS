@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Models\User;
 use App\Models\Book;
 use Carbon\Carbon;
 
@@ -69,6 +70,11 @@ class TransactionController extends Controller
             'penalty' => $penalty,
             'updated_at' => $currentDateTime,
         ]);
+        
+        $returnBook->user->update([
+            'total_fines' => $returnBook->user->total_fines + $penalty,
+        ]);
+        
         $returnBook->book->decrement('total_borrow');
 
         $returnBook->save();

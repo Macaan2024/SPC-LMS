@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('strand')->nullable();
             $table->string('section')->nullable();
             $table->string('user_image')->nullable();
+            $table->integer('total_fines')->nullable();
             $table->string("password")->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
