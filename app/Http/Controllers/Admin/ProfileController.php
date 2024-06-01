@@ -23,5 +23,7 @@ class ProfileController extends Controller
     public function changePassword($id) {
 
         $user = User::find($id);
+
+        
     }
 }

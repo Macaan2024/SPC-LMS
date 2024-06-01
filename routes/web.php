@@ -54,6 +54,7 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
 
     //Dashboard
     Route::get('/admin/index', [DashboardController::class, 'index'])->name('admin.index');
+    Route::get('/admin/fetch-users', [DashboardController::class, 'getUserStats']);
 
     //User Management
     Route::get('/admin/usersmanagement', [UserManagementController::class, 'index'])->name('admin.usermanagement'); //index

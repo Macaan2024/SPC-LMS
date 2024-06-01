@@ -31,7 +31,7 @@
                                     <td style="text-align: left; vertical-align: middle;">{{ $user->role->role_description}} </td>
                                     <td></td>
                                     <td><img src="https://api.qrserver.com/v1/create-qr-code/?size=75x75&data={{$user->unique_id}}" alt=""></td>
-                                    <td style="vertical-align: middle;"><a href="{{ route('view', ['id' => $user->id]) }}"><button class="btn btn-primary">View</button></a></td>
+                                    <td style="vertical-align: middle;"><a href="{{ route('usermanagement-view', ['id' => $user->id]) }}"><button class="btn btn-primary">View</button></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
