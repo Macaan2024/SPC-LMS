@@ -14,7 +14,7 @@ class User extends Authenticatable
     use HasFactory;
 
     protected $fillable = [
-        'unique_id', 'lastname', 'firstname', 'middlename', 'grade', 'level', 'strand', 'section', 'course', 'year', 'department', 'gender', 'cpnumber', 'email', 'password', 'role_id', 'status', 'user_image',
+        'unique_id', 'lastname', 'firstname', 'middlename', 'grade', 'level', 'strand', 'section', 'course', 'year', 'department', 'gender', 'cpnumber', 'email', 'password', 'role_id', 'status', 'user_image', 'total_fines',
     ];
 
 
@@ -33,7 +33,7 @@ class User extends Authenticatable
     
 
     public function payment() {
-        return $this->belongsTo(Payment::class);
+        return $this->hasMany(Payment::class);
     }
 
 

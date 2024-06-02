@@ -4,14 +4,20 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Transaction;
+use App\Models\Payment;
+use Carbon\Carbon;
 
 class UserFinesController extends Controller
 {
     public function index(Request $request)
     {
         $userQuery = User::query(); // Initialize the query builder
+        
+
+        $userPayment = Payment::all();
 
         // Apply search filter if a search term is provided
         if ($request->has('search')) {
@@ -23,7 +29,7 @@ class UserFinesController extends Controller
         }
 
         // Execute the query to get all users
-        $user = $userQuery->get(); // Fetch all users without pagination
+        $user = $userQuery->orderBy('level')->get(); // Fetch all users without pagination
 
         // Counting users by level and role remains unchanged
         $College = User::where('level', 'College')->whereHas('transactions', function($query){
@@ -58,22 +64,41 @@ class UserFinesController extends Controller
             'JuniorHighschool'=> $JuniorHighschool,
             'Elementary' => $Elementary,
             'Faculty' => $Faculty,
-            'LibraryStaff' => $LibraryStaff
+            'LibraryStaff' => $LibraryStaff,
+            'userPayment' => $userPayment,
         ]);
     }
+    public function history(Request $request) {
+        $searchTerm = $request->get('search');
+        $selectedDate = $request->get('date');
+    
+        $query = Payment::query();
 
-
-    public function finesPaid (Request $request, $id) {
-
-        $transactions = Transaction::where('user_id', $id)->get();
-
-
-        foreach ($transactions as $transaction) {
-            // Mark each transaction as 'Paid'
-            $transaction->update(['penalty' =>  0]);
+    
+        if (!empty($searchTerm)) {
+            $query->whereHas('user', function ($query) use ($searchTerm) {
+                $query->where('lastname', 'like', "%{$searchTerm}%")
+                      ->orWhere('firstname', 'like', "%{$searchTerm}%");
+            })
+            ->orWhere('amount', 'like', "%{$searchTerm}%");
         }
+    
+        if (!empty($selectedDate)) {
+            $startDate = Carbon::parse($selectedDate)->startOfDay();
+            $endDate = Carbon::parse($selectedDate)->endOfDay();
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+    
+        $paymentList = $query->orderBy('created_at', 'asc')->get();
+    
+        return view('Users.admin.pages.userfines.fineshistory', compact('paymentList'));
+    }
 
-        return redirect()->back()->with('paidSuccess', 'Successfully fines paid');
+    public function view($id) {
 
+        $userPayment = Payment::where('user_id', $id)->get();
+
+
+        return view('Users.admin.pages.userfines.viewfines', compact('userPayment'));
     }
 }

@@ -60,6 +60,10 @@
         {{-- User fines --}}
         @if (isset($user_fines))
             {{ $user_fines }}
+        @elseif (isset($fineshistory))
+            {{ $fineshistory }}
+        @elseif (isset($viewfines))
+            {{ $viewfines }}
         @endif
 
         {{-- User Profile --}}

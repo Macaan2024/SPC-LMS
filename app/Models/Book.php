@@ -10,7 +10,7 @@ class Book extends Model
     use HasFactory;
 
     public $fillable = [
-        'isbn', 'accesion_number', 'author', 'publication_year', 'publication_address', 'title', 'category', 'quantity', 'level', 'pages', 'edition', 'status', 'total_borrow', 'image', 
+        'isbn', 'accesion_number', 'author', 'publication_year', 'publication_address', 'title', 'category', 'quantity', 'level', 'pages', 'edition', 'status', 'total_borrow', 'image', 'desciption', 
     ];
 
     public function transaction() {

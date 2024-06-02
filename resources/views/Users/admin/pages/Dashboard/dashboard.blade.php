@@ -37,7 +37,7 @@
                         <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#4d0000;">{{ $transactionDeclined }}</p>
                         <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#330000;">View More</button></a>
                     </div>
-                </div>
+                </div>  
             </div>
             {{-- User Stats --}}
             <h5 class="fw-normal p-0 m-0 mt-5">Users</h5>
@@ -151,38 +151,28 @@
                         <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#330000;">View More</button></a>
                     </div>
                 </div>
-            </div>
-            <h5 class="fw-normal p-0 m-0 mt-5">User Fines</h5>
-            <div class="row row-cols-2 mt-3 row-cols-xl-6 row-cols-lg-3 row-cols-md-3 row-cols-sm-3 w-100 p-0 m-0">
-                <div class="col mt-2" style="">
-                    <div class="card" style="width:100%; height:160px;">
-                        <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#006600;">Overdue</p>
-                        <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#004d00;"></p>
-                        <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#003300;">View More</button></a>
-                    </div>
-                </div>
-            
                 <div class="col mt-2">
                     <div class="card" style="width:100%; height:160px;">
-                        <p class="card-title 0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#004466;">User have balance</p>
-                        <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#00334d;"></p>
-                        <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#002233;">View More</button></a>
+                        <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#333333;">Return with Overdues</p>
+                        <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#262626;">{{ $transactionWithOverdue }}</p>
+                        <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#1a1a1a;">View More</button></a>
                     </div>
                 </div>
-            
+            </div>
+            <h5 class="fw-normal p-0 m-0 mt-5">User Fines</h5>
+            <div class="row row-cols-2 mt-3 row-cols-xl-6 mb-5 row-cols-lg-3 row-cols-md-3 row-cols-sm-3 w-100 p-0 m-0">
+                <div class="col mt-2" style="">
+                    <div class="card" style="width:100%; height:160px;">
+                        <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#006600;">Collected Payment</p>
+                        <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#004d00;">{{ $totalPayment }}</p>
+                        <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#003300;">View More</button></a>
+                    </div>
+                </div>   
                 <div class="col mt-2" >
                     <div class="card" style="width:100%; height:160px;">
-                        <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#660000;"></p>
-                        <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#4d0000;"></p>
+                        <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#660000;">User with balance</p>
+                        <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#4d0000;">{{ $userWithFines }}</p>
                         <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#330000;">View More</button></a>
-                    </div>
-                </div>
-            
-                <div class="col mt-2 mb-5">
-                    <div class="card" style="width:100%; height:160px;">
-                        <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#333333;"></p>
-                        <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#262626;"></p>
-                        <a href=""><button class="w-100 border-0 py-1 text-white fs-normal bg-light-hover" style="background-color:#1a1a1a;">View More</button></a>
                     </div>
                 </div>
             </div>

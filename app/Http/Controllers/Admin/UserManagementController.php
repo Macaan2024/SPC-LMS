@@ -18,7 +18,6 @@ class UserManagementController extends Controller
 
     public function index(Request $request)
     {
-
         $college = User::where('level', 'College')->count();
         $seniorhigh = User::where('level', 'Senior Highschool')->count();
         $juniorhigh = User::where('level', 'Junior Highschool')->count();

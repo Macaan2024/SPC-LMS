@@ -33,7 +33,7 @@ class BookRequestController extends Controller
 
         $endDate = Carbon::tomorrow()->toDateString();
 
-        $endTime24hr = '2:00:00';
+        $endTime24hr = '9:00:00';
 
 
         $duration = 16;

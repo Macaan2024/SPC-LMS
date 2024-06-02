@@ -63,7 +63,7 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::post('/librarystaff-registration', [UserManagementController::class, 'libraryStaff'])->name('librarystaff.registration'); //staf reg
     Route::get('/admin/usermanagement-view/{id}', [UserManagementController::class, 'view'])->name('usermanagement-view'); //view
     Route::get('/admin/usermanagement-edit/{id}', [UserManagementController::class, 'show'])->name('usermanagement-edit'); //edit page
-    Route::get('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit'); //process edit
+    Route::put('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit'); //process edit
     Route::get('/admin/usermanagement-delete/{id}', [UserManagementController::class, 'archieve'])->name('usermanagement-delete');  //process delete
 
     //Book Management         
@@ -92,8 +92,9 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
 
     //Userfines
     Route::get('/admin/userfines', [UserFinesController::class, 'index'])->name('admin.userfines');
-    Route::post('/admin/finespaid/{id}', [UserFinesController:: class, 'finesPaid'])->name('admin.finespaid');
-
+    Route::post('/process.payment/{id}', [UserFinesController::class, 'processPayment'])->name('process.payment');
+    Route::get('/admin/fines-history', [UserFinesController::class, 'history'])->name('fines-history');
+    Route::get('/admin/view-fines/{id}', [UserFinesController::class, 'view'])->name('view-fines');
 });
 
 

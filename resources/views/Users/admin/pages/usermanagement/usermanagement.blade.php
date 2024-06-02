@@ -186,13 +186,13 @@
                                     <td class="text-success fw-bolder">{{ $users->status }}</td>
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <a href="#">
+                                            <a href="{{ route('usermanagement-view', ['id' => $users->id]) }}">
                                                 <button class="btn bg-primary bg-opacity-75 text-white">View</button>
                                             </a>
-                                            <a href="#">
+                                            <a href="{{ route('usermanagement-edit', ['id' => $users->id])}}">
                                                 <button class="btn bg-success bg-opacity-75 text-white">Edit</button>
                                             </a>
-                                            <a href="#">
+                                            <a href="{{ route('usermanagement-delete', ['id' => $users->id])}}">
                                                 <button class="btn bg-danger bg-opacity-75 text-white">Delete</button>
                                             </a>
                                         </div>
