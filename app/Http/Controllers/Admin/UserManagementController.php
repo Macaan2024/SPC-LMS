@@ -346,11 +346,10 @@ class UserManagementController extends Controller
 
     public function view($id) {
         $student = User::findOrFail($id);
-        $roles = Role::all();
-        $previousTransact = Transaction::where('user_id', $id)->orderBy('created_at', 'desc')->first();
+        $previousBorrow = Transaction::where('user_id', $id)->with('book', 'user')->first();
         $transaction = Transaction::where('user_id', $id)->get();
     
-        return view('Users.admin.pages.usermanagement.usermanagement_view', compact('student', 'roles', 'previousTransact', 'transaction'));
+        return view('Users.admin.pages.usermanagement.usermanagement_view', compact('student', 'previousBorrow', 'transaction'));
     }
 
     public function archieve($id) {

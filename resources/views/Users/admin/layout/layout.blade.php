@@ -64,6 +64,8 @@
             {{ $fineshistory }}
         @elseif (isset($viewfines))
             {{ $viewfines }}
+        @elseif (isset($Tester))
+            {{ $Tester}}
         @endif
 
         {{-- User Profile --}}

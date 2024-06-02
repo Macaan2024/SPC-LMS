@@ -65,7 +65,6 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::get('/admin/usermanagement-edit/{id}', [UserManagementController::class, 'show'])->name('usermanagement-edit'); //edit page
     Route::put('edit/{id}', [UserManagementController::class, 'update'])->name('process.edit'); //process edit
     Route::get('/admin/usermanagement-delete/{id}', [UserManagementController::class, 'archieve'])->name('usermanagement-delete');  //process delete
-
     //Book Management         
     Route::get('/admin/booksmanagement', [BookManagementController::class, 'index'])->name('admin.bookmanagement');
     Route::get('/admin/bookview/{id}', [BookManagementController::class, 'view'])->name('admin.bookview');

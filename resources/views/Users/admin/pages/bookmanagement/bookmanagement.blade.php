@@ -1,5 +1,41 @@
 <x-admin.layout>
     <x-slot name="book_management">
+
+    <div class="row row-cols-6 px-5 mt-5 m-0" style="min-width:1550px;">
+        <div class="col p-2 m-0">
+            <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#003300;height:150px;width:100%;">
+                <div class="d-flex flex-column">
+                    <h4 class="p-0 m-0 text-white fw-normal">College</h4>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col p-2 m-0">
+            <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#002233;height:100%;width:100%;">
+                <div class="d-flex flex-column">
+                    <h5 class="p-0 m-0 text-white fw-normal">Senior Highschool</h5>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col p-2 m-0">
+            <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#660000;height:100%;width:100%;">
+                <div class="d-flex flex-column">
+                    <h5 class="p-0 m-0 text-white fw-normal">Junior Highschool</h5>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                </div>
+            </div>
+        </div>
+        <div class="col p-2 m-0">
+            <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#333333;height:100%;width:100%;">
+                <div class="d-flex flex-column">
+                    <h5 class="p-0 m-0 text-white fw-normal">Elementary</h5>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <table class="table table-responsive table-striped mt-5" style="min-width:1550px;">
             <thead class="table-dark">
                 <tr>
