@@ -38,7 +38,7 @@
                             <th>No</th>
                             <th>Name</th>
                             <th>Book Title</th>
-                            <th>Pending</th>
+                            <th>Status</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>

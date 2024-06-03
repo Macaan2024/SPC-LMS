@@ -34,7 +34,7 @@ class DashboardController extends Controller
         $transactionOngoing = Transaction::where('status', 'ongoing')->count();
         $transactionReturned = Transaction::where('status', 'returned')->count();
         $transactionCancel = Transaction::where('status', 'cancel')->count();
-        $transactionApproved = Transaction::where('status', 'approvedd')->count();
+        $transactionApproved = Transaction::where('status', 'approved')->count();
         $transactionPending = Transaction::where('status', 'pending')->count();
         $transactionDeclined = Transaction::where('status', 'declined')->count();
         $transactionWithOverdue = Transaction::where('overdue', '>', 1)->count();

@@ -25,6 +25,8 @@
 
         @if(isset($dashboard))
             {{ $dashboard }}
+        @elseif (isset($approved_list))
+            {{ $approved_list }}
         @endif
         {{-- --}}
 
