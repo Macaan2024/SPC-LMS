@@ -25,8 +25,34 @@
 
         @if(isset($dashboard))
             {{ $dashboard }}
-        @elseif (isset($approved_list))
-            {{ $approved_list }}
+        @elseif (isset( $bookavailable_list ))
+            {{ $bookavailable_list }}
+        @elseif (isset( $bookunavailable_list))
+            {{ $bookunavailable_list }}
+        @elseif (isset( $bookelementary_list))
+            {{ $bookelementary_list }}
+        @elseif (isset( $bookjuniorhigh_list))
+            {{ $bookjuniorhigh_list }}
+        @elseif (isset( $bookseniorhigh_list))
+            {{ $bookseniorhigh_list}}
+        @elseif (isset( $bookcollege_list))
+            {{ $bookcollege_list }}
+        @elseif (isset( $usercollege_list))
+            {{ $usercollege_list }}
+        @elseif (isset( $userseniorhigh_list))
+            {{ $userseniorhigh_list }}
+        @elseif (isset( $userjuniorhigh_list))
+            {{ $userjuniorhigh_list }}
+        @elseif (isset( $userelementary_list))
+            {{ $userelementary_list }}
+        @elseif (isset( $userfaculty_list ))
+            {{ $userfaculty_list }}
+        @elseif (isset( $userstaff_list))
+            {{ $userstaff_list}}
+        @elseif (isset( $transactionongoing_list))
+            {{ $transactionongoing_list}}
+        @elseif (isset( $transactionreturned_list))
+            {{ $transactionreturned_list}}
         @endif
         {{-- --}}
 

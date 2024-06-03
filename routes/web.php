@@ -55,7 +55,28 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     //Dashboard
     Route::get('/admin/index', [DashboardController::class, 'index'])->name('admin.index');
     Route::get('/admin/fetch-users', [DashboardController::class, 'getUserStats']);
-    Route::get('admin/approved/list', [DashboardController::class, 'approvedList'])->name('approved-list');
+
+    Route::get('/admin/bookavailable_list', [DashboardController::class, 'bookAvailable'])->name('admin.bookavailable.list'); //stats for available books
+    Route::get('/admin/bookunavailable_list', [DashboardController::class, 'bookUnavailable'])->name('admin.bookunavailable.list'); //stats for unavailable books
+    Route::get('/admin/bookelementary_list', [DashboardController::class, 'bookElementary'])->name('admin.bookelementary.list'); //stats for elementary
+    Route::get('/admin/bookjuniorhigh_list', [DashboardController::class, 'bookJuniorHigh'])->name('admin.bookjuniorhigh.list'); //stats for juniorhigh
+    Route::get('/admin/bookseniorhigh_list', [DashboardController::class, 'bookSeniorHigh'])->name('admin.bookseniorhigh.list'); //stats for seniorhigh
+    Route::get('/admin/bookcollege_list', [DashboardController::class, 'bookCollege'])->name('admin.bookcollege.list'); //stats for college
+
+    Route::get('/admin/usercollege_list', [DashboardController::class, 'userCollege'])->name('admin.usercollege.list'); //stats for college
+    Route::get('/admin/userseniorhigh_list', [DashboardController::class, 'userSeniorHigh'])->name('admin.userseniorhigh.list'); //stats for seniorhigh
+    Route::get('/admin/userjuniorhigh_list', [DashboardController::class, 'userJuniorHigh'])->name('admin.userjuniorhigh.list'); //stats for juniorhigh
+    Route::get('/admin/userelementary_list', [DashboardController::class, 'userElementary'])->name('admin.userelementary.list'); //stats for elementary
+    Route::get('/admin/userfaculty_list', [DashboardController::class, 'userFaculty'])->name('admin.userfaculty.list'); //stats for faculty
+    Route::get('/admin/userlibrarystaff_list', [DashboardController::class, 'userStaff'])->name('admin.userstaff.list'); //stats for library staff
+    Route::get('/admin/transactionongoing', [DashboardController::class, 'transactionOngoing'])->name('admin.transactionongoing.list'); //stats for transaction ongoing
+    Route::get('/admin/transactionreturned', [DashboardController::class, 'transactionReturned'])->name('admin.transactionreturned.list'); //stats for transaction returned
+
+
+
+
+
+
 
     //User Management
     Route::get('/admin/usersmanagement', [UserManagementController::class, 'index'])->name('admin.usermanagement'); //index

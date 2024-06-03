@@ -1,6 +1,5 @@
 <x-admin.layout>
-    <x-slot name="transaction">
-        
+    <x-slot name="transaction"> 
         <div class="container-fluid">
             <div class="d-flex gap-5 mt-5 justify-content-center" style="min-width:720px;">
                 <div class="bg-primary bg-opacity-50 rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="width:250px;height:110px;min-width:220px;">
@@ -66,7 +65,26 @@
                                 <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->start_time)->format('g:i A')}}</td>
                                 <td class="align-middle fs-6">{{ $approved->end_day }}</td>
                                 <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->end_time)->format('g:i A')}}</td>
-                                <td class="align-middle fs-6">16 Hours</td>
+                                @if($approved->status == 'ongoing')
+                                    @php
+                                        $endDateTime = \Carbon\Carbon::parse($approved->end_day . ' ' . $approved->end_time);
+                                        $now = \Carbon\Carbon::now();
+                                    @endphp
+                                    
+                                    @if ($now < $endDateTime)
+                                        @php
+                                            $hoursDifference = $now->diffInHours($endDateTime);
+                                        @endphp
+                                        <td class="align-middle fs-6 text-success">{{ $hoursDifference }} Hours</td>
+                                    @elseif ($now > $endDateTime)
+                                        @php
+                                            $hoursDifference = $endDateTime->diffInHours($now);
+                                        @endphp
+                                        <td class="align-middle fs-6 text-danger">Overdue by {{ $hoursDifference }} Hours</td>
+                                    @endif
+                                @elseif ($approved->status == 'approved')
+                                    <td class="align-middle">16 Hours</td>
+                                @endif
                                 <td class="align-middle fs-6">{{ $approved->status }}</td>
                                 <td class="align-middle fs-6">{{ $approved->overdue}}</td>
                                 <td class="align-middle fs-6">{{ $approved->penalty}}</td>
@@ -103,7 +121,22 @@
                                 <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->start_time)->format('g:i A')}}</td>
                                 <td class="align-middle fs-6">{{ $approved->end_day }}</td>
                                 <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->end_time)->format('g:i A')}}</td>
-                                <td class="align-middle fs-6">16 Hours</td>
+                                @php
+                                    $endDateTime = \Carbon\Carbon::parse($approved->end_day . ' ' . $approved->end_time);
+                                    $now = \Carbon\Carbon::now();
+                                @endphp
+                                
+                                @if ($now < $endDateTime)
+                                    @php
+                                        $hoursDifference = $now->diffInHours($endDateTime);
+                                    @endphp
+                                    <td class="align-middle fs-6 text-success">{{ $hoursDifference }} Hours</td>
+                                @elseif ($now > $endDateTime)
+                                    @php
+                                        $hoursDifference = $endDateTime->diffInHours($now);
+                                    @endphp
+                                    <td class="align-middle fs-6 text-danger">Overdue by {{ $hoursDifference }} Hours</td>
+                                @endif
                                 <td class="align-middle fs-6">{{ $approved->status }}</td>
                                 <td class="align-middle fs-6">{{ $approved->overdue}}</td>
                                 <td class="align-middle fs-6">{{ $approved->penalty}}</td>

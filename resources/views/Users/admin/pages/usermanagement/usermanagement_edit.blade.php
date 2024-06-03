@@ -15,7 +15,13 @@
                     @method('PUT')
                     <div class="d-flex justify-content-start gap-3">
                         <div style="width:200px;height:260px;">
-                        <img src="{{ asset($student->role->role_description . '/' . $student->level. '/' .$student->user_image) }}" class="object-fit-cover" style="height:100%;width:100%;" alt="">
+                        @if ($student->role_id == 1)
+                        <img src="{{ asset($student->role->role_description . '/' . $student->level. '/' .$student->user_image) }}" class="object-fit-cover" style="height:100%;width:100%;" alt="user_image">
+                        @elseif ($student->role_id == 3)
+                        <img src="{{ asset($student->role->role_description . '/' .$student->user_image) }}" class="object-fit-cover" style="height:100%;width:100%;" alt="user_image">
+                        @elseif ($student->role_id == 4)
+                        <img src="{{ asset($student->role->role_description . '/' .$student->user_image) }}" class="object-fit-cover" style="height:100%;width:100%;" alt="user_image">
+                        @endif
                             <input type="file" class="form-control p-0 mt-2" style="width:100; font-size:14px;" value="{{ $student->user_image }}" name="user_image" placeholder="">
                             @error('user_image')
                                 {{$message}}
@@ -31,7 +37,7 @@
                                     <label for="" class="fs-6 p-0 m-0">Role</label>
                                     <select name="role_id" class="form-select py-1 ms-5" id="" autocompleteo="off">
                                         @foreach ($roles as $role )
-                                            <option value="{{ $role->id }}">{{ $role->role_description }}</option>
+                                        <option value="{{ $role->id }}" {{ $student->role_id == $role->id ? 'selected' : '' }}>{{ $role->role_description }}</option>
                                         @endforeach
                                     </select>
                                     @error('role_description')

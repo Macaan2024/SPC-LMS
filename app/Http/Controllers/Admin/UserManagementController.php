@@ -294,7 +294,13 @@ class UserManagementController extends Controller
     
             // Constructing the dynamic folder path
             $levelFolder = str_replace(' ', '_', $studentValidated['level']);
-            $path = public_path("student/{$levelFolder}");
+            if ($user->role_id == 1) {
+                $path = public_path("student/{$levelFolder}");
+            }
+               
+            if ($user->role_id != 1) {
+                $path = public_path("{$user->role->role_description}");
+            }
     
             // Create the directories if they do not exist
             if (!file_exists($path)) {

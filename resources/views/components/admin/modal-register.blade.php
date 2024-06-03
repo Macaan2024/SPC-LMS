@@ -185,13 +185,13 @@
                                 
                                 {{-- Year for Junior Highschool --}}
                                 <div class="Jhs" style="display:none;">
-                                    <label for="" class="mb-1">Year</label>
+                                    <label for="" class="mb-1">Grade</label>
                                     <select name="year" class="form-select" aria-label="Default select example">
                                         <option disabled selected>Choose Year</option>
-                                        <option value="1st-Year">1st-Year</option>
-                                        <option value="2nd-Year">2nd-Year</option>
-                                        <option value="3rd-Year">3rd-Year</option>
-                                        <option value="4th-Year">4th-Year</option>
+                                        <option value="Grade 7">Grade 7</option>
+                                        <option value="Grade 8">Grade 8</option>
+                                        <option value="Grade 9">Grade 9</option>
+                                        <option value="Grade 10">Grade 10</option>
                                     </select>
                                     @error('year')
                                             <small class="text-danger">{{ $message }}</small>
