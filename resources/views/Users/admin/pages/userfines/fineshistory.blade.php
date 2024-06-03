@@ -1,6 +1,16 @@
 <x-admin.layout>
     <x-slot name="fineshistory">   
     <div class="container-xxl">
+        <div class="d-flex gap-5 mt-5 justify-content-start" style="width:100%;">
+            <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#002233;width:250px;height:110px;min-width:220px;">
+                <div class="d-flex flex-column">
+                    <small class="p-0 m-0 text-white">Total Collect Payment</small>
+                    <h6 class="p-0 m-0 fw-bold fs-4 text-white">{{ $totalCollectPayment }}</h6>
+                </div>
+            </div>
+        </div>
+
+
         <div class="d-flex justify-content-between mt-5 align-items-center">
             <form class="d-flex form-group mt-0 align-items-center" action="{{ route('fines-history') }}" method="GET" style="min-width:847px;">
                 <input class="form-control rounded-start-0 rounded-end-0 border-start-1 border-start-sm-0 shadow-lg rounded-start-1 py-2" type="text" placeholder="Search" aria-label="Search" name="search" value="{{ request()->get('search') }}">

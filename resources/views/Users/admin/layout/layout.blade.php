@@ -53,6 +53,10 @@
             {{ $transactionongoing_list}}
         @elseif (isset( $transactionreturned_list))
             {{ $transactionreturned_list}}
+        @elseif (isset( $transactioncancel_list))
+            {{ $transactioncancel_list}}
+        @elseif (isset( $transactionwithoverdue_list))
+            {{ $transactionwithoverdue_list }}
         @endif
         {{-- --}}
 

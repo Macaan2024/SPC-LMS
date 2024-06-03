@@ -14,7 +14,7 @@ class UserFinesController extends Controller
 {
     public function index(Request $request)
     {
-        $userQuery = User::query(); // Initialize the query builder
+        $userQuery = User::query()->where('total_fines', '>', 0); // Initialize the query builder
         
 
         $userPayment = Payment::all();
@@ -56,6 +56,10 @@ class UserFinesController extends Controller
             $query->whereNotNull('penalty');
         })->count();
 
+
+        $userwithFines = User::where('total_fines', '>', 0)->count();
+
+
         return view('Users.admin.pages.userfines.userfines', [
             'user' => $user, // Pass all users to the view
             'transaction' => Transaction::all(),
@@ -66,6 +70,7 @@ class UserFinesController extends Controller
             'Faculty' => $Faculty,
             'LibraryStaff' => $LibraryStaff,
             'userPayment' => $userPayment,
+            'userwithFines' => $userwithFines,
         ]);
     }
     public function history(Request $request) {
@@ -90,8 +95,14 @@ class UserFinesController extends Controller
         }
     
         $paymentList = $query->orderBy('created_at', 'asc')->get();
+        
+        $totalCollectPayment = 0;
+        $captureAllPayment = Payment::all();
+        foreach ($captureAllPayment as $payment) {
+            $totalCollectPayment += $payment->amount;
+        }
     
-        return view('Users.admin.pages.userfines.fineshistory', compact('paymentList'));
+        return view('Users.admin.pages.userfines.fineshistory', compact('paymentList', 'totalCollectPayment'));
     }
 
     public function view($id) {

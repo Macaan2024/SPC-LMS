@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Transaction;
 use App\Models\Book;
 use App\Models\Payment;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -349,5 +350,65 @@ class DashboardController extends Controller
     
         return view('Users.admin.pages.dashboard.transactionreturned_list', ['transactions' => $transactions, 'returned' => $returned]); // Pass transactions to the view
     }
+
+    public function transactionCancel(Request $request) {
+
+
+        $search = $request->input('search');
+    
+        $userQuery = Transaction::where('status', 'cancel');
+    
+        if ($search) {
+            $userQuery->where(function($query) use ($search) {
+                $query->whereHas('user', function($query) use ($search){ // Corrected typo here
+                    $query->where("firstname", "like", "%{$search}%")
+                        ->orWhere("lastname", "like", "%{$search}%")
+                        ->orWhere("unique_id", "like", "%{$search}%");
+                })
+    
+                ->orWhereHas('book', function($query) use ($search){
+                    $query->where("isbn", "like", "%{$search}%")
+                        ->orWhere("accesion_number", "like", "%{$search}%") // Typo in word "accession"
+                        ->orWhere("title", "like", "%{$search}%")
+                        ->orWhere("author", "like", "%{$search}%");
+                });
+            });
+        }
+    
+        $cancel = Transaction::where('status', 'cancel')->count();
+        $transactions = $userQuery->get(); // Renamed variable for clarity
+    
+        return view('Users.admin.pages.dashboard.transactioncancel_list', ['transactions' => $transactions, 'cancel' => $cancel]); // Pass transactions to the view
+    }
+    public function transactionWithOverdue(Request $request) {
+
+
+        $search = $request->input('search');
+    
+        $userQuery = Transaction::where('status', 'returned')->where('overdue', '>', 0);
+    
+        if ($search) {
+            $userQuery->where(function($query) use ($search) {
+                $query->whereHas('user', function($query) use ($search){ // Corrected typo here
+                    $query->where("firstname", "like", "%{$search}%")
+                        ->orWhere("lastname", "like", "%{$search}%")
+                        ->orWhere("unique_id", "like", "%{$search}%");
+                })
+    
+                ->orWhereHas('book', function($query) use ($search){
+                    $query->where("isbn", "like", "%{$search}%")
+                        ->orWhere("accesion_number", "like", "%{$search}%") // Typo in word "accession"
+                        ->orWhere("title", "like", "%{$search}%")
+                        ->orWhere("author", "like", "%{$search}%");
+                });
+            });
+        }
+    
+        $overdue = Transaction::where('status', 'return')->where('overdue', '>', 0)->count();
+        $transactions = $userQuery->get(); // Renamed variable for clarity
+    
+        return view('Users.admin.pages.dashboard.transactionwithoverdue', ['transactions' => $transactions, 'overdue' => $overdue]); // Pass transactions to the view
+    }
+
 
 }

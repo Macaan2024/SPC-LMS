@@ -71,6 +71,11 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::get('/admin/userlibrarystaff_list', [DashboardController::class, 'userStaff'])->name('admin.userstaff.list'); //stats for library staff
     Route::get('/admin/transactionongoing', [DashboardController::class, 'transactionOngoing'])->name('admin.transactionongoing.list'); //stats for transaction ongoing
     Route::get('/admin/transactionreturned', [DashboardController::class, 'transactionReturned'])->name('admin.transactionreturned.list'); //stats for transaction returned
+    Route::get('/admin/transactioncancel', [DashboardController::class, 'transactionCancel'])->name('admin.transactioncancel.list'); //stats for transaction returned
+    Route::get('/admin/transactionwithoverdue', [DashboardController::class, 'transactionWithOverdue'])->name('admin.transactionwithoverdue.list'); //stats for transaction with overdue
+
+
+
 
 
 

@@ -1,6 +1,14 @@
 <x-admin.layout>
     <x-slot name="user_fines">
         <div class="container-fluid">
+        <div class="d-flex gap-5 mt-5 justify-content-between" style="width:100%;">
+            <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#002233;width:250px;height:110px;min-width:220px;">
+                <div class="d-flex flex-column">
+                    <small class="p-0 m-0 text-white">User with Fines</small>
+                    <h6 class="p-0 m-0 fw-bold fs-4 text-white">{{ $userwithFines }}</h6>
+                </div>
+            </div>
+        </div>
 
         <div class="d-flex justify-content-between align-items-center">
             <form class="d-flex form-group mt-5 " action="{{ route('admin.userfines')}}" method="GET" style="min-width:847px;">

@@ -144,12 +144,16 @@
                     <div class="card" style="width:100%; height:160px;">
                         <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#660000;">Cancel</p>
                         <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#4d0000;">{{ $transactionCancel }}</p>
+                        <a href="{{ route('admin.transactioncancel.list') }}"><button class="w-100 border-0 text-white py-1" style="background-color:#330000;">View</button></a>
+
                     </div>
                 </div>
                 <div class="col mt-2">
                     <div class="card" style="width:100%; height:160px;">
                         <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#333333;">Return with Overdues</p>
                         <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#262626;">{{ $transactionWithOverdue }}</p>
+                        <a href="{{ route('admin.transactionwithoverdue.list') }}"><button class="w-100 border-0 text-white py-1" style="background-color:#1a1a1a;">View</button></a>
+
                     </div>
                 </div>
             </div>
@@ -159,12 +163,15 @@
                     <div class="card" style="width:100%; height:160px;">
                         <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#006600;">Collected Payment</p>
                         <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#004d00;">{{ $totalPayment }}</p>
+                        <a href="{{ route('fines-history') }}"><button class="w-100 border-0 text-white py-1" style="background-color:#003300;">View</button></a>
+
                     </div>
                 </div>   
                 <div class="col mt-2" >
                     <div class="card" style="width:100%; height:160px;">
                         <p class="card-title p-0 m-0 bg-opacity-75 py-2 text-white fw-normal fs-6 px-3 text-nowrap" style="background-color:#660000;">User with balance</p>
                         <p class="flex-grow-1 d-flex justify-content-center align-items-center fs-4 p-0 m-0 text-white" style="background-color:#4d0000;">{{ $userWithFines }}</p>
+                        <a href="{{ route('admin.userfines') }}"><button class="w-100 border-0 text-white py-1" style="background-color:#330000;">View</button></a>
                     </div>
                 </div>
             </div>
