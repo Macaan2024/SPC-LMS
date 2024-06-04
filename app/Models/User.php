@@ -41,4 +41,8 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
     
+
+    public function qrlogbook() {
+        return $this->hasMany(Qrlogbook::class);
+    }
 }

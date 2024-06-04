@@ -2,7 +2,6 @@
 use App\Http\Controllers\Admin\BookRequestController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\admin\UserFinesController;
-use App\Http\Controllers\Logbook\LogbookLogsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Student\StudentIndexController;
@@ -12,7 +11,11 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LogBookController;
 use App\Http\Controllers\Admin\TransactionController;
+<<<<<<< HEAD
 USE App\Http\Controllers\Admin\NotificationController;
+=======
+use App\Http\Controllers\Logbook\Logbook;
+>>>>>>> 695de8817abb048024d5731566c1bece88e6b9c6
 
 /*
 |--------------------------------------------------------------------------
@@ -144,4 +147,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout')
 
 
 //logbook
-Route::get('/spc-lms/logbook', [LogbookLogsController::class, 'logbookLogs']);
+Route::get('/spc-lms/logbook', [Logbook::class, 'logbookLogs'])->name('spc-lms.logbook');
