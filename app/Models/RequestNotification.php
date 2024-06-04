@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class RequestNotification extends Model
 {
     use HasFactory;
+
+
+    public function transaction() {
+
+        return $this->belongsTo(Transaction::class);
+    }
 }

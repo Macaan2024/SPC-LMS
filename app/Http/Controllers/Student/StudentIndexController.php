@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Transaction;
+use App\Models\RequestNotification;
 use Illuminate\Support\Facades\Auth;
 
 class StudentIndexController extends Controller
@@ -71,6 +72,12 @@ class StudentIndexController extends Controller
                     'overdue' => null,
                     'penalty' => null,
                 ]);
+
+                $requestNotification = new RequestNotification();
+                $requestNotification->transaction_id = $transaction->id;
+                $requestNotification->save();
+
+
 
                 $book->decrement('quantity');
 

@@ -21,4 +21,10 @@ class Transaction extends Model
     public function book() {
         return $this->belongsTo(Book::class);
     }
+
+    public function requestnotification() {
+
+        return $this->hasMany(RequestNotification::class);
+        
+    }
 }

@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LogBookController;
 use App\Http\Controllers\Admin\TransactionController;
-
+USE App\Http\Controllers\Admin\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +46,10 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
 
 //ADMiN------------------------->
 Route::middleware(['auth', 'role_id:2'])->group(function (){
+
+    //notifiaction retrieving 
+
+    Route::get('/fetching-notification', [NotificationController::class, 'collectNotification'])->name('fetching-notifiaction');
 
 
     //profile
