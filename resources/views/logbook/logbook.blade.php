@@ -1,5 +1,7 @@
 <x-logbook.layout>
     <x-slot name="logbook">
-        <h1>hai</h1>
+        <div class="container-xxl m-0 p-0">
+            
+        </div>
     </x-slot>
 </x-logbook.layout>
