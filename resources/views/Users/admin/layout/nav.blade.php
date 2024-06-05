@@ -48,7 +48,8 @@
 
                 $.each(data, function(index, notification){
                     if (notification.user.role.role_description === 'Student') {
-                        dropdownContent += `<li class="dropdown-item">
+                        dropdownContent += `<a href="{{ route('admin.bookrequest')}}" class="text-decoration-none">
+                        <li class="dropdown-item">
                             <div class="d-flex gap-3 align-items-start">
                                 <div>
                                     <img src="/${notification.user.role.role_description}/${notification.user.level}/${notification.user.user_image}" alt="user_image" style="height:40px;width:40px;" class="object-fit-fill rounded-circle" />
@@ -57,7 +58,8 @@
                                     <p class="p-0 m-0"><span class="fw-bold">${notification.user.lastname}</span> requesting Book <span class="fw-bold">${notification.book.title}</span></p>
                                 </div>
                             </div> 
-                        </li>`;
+                        </li>
+                        </a>`;
                     }
                 });
                 if (totalnotification <= 0) {

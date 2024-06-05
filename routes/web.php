@@ -145,4 +145,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout')
 
 
 //logbook
-Route::get('/spc-lms/logbook', [Logbook::class, 'logbookLogs'])->name('spc-lms.logbook');
+Route::get('/spc-lms/logbook', [Logbook::class, 'store'])->name('spc-lms.logbook');

@@ -17,7 +17,7 @@ class StudentIndexController extends Controller
         
         $data = Book::orderBy('level')->get();
 
-        return view('Users.student.pages.index', ['data'  => $data]);
+        return view('index', ['data'  => $data]);
     }
 
     public function view($category) {
