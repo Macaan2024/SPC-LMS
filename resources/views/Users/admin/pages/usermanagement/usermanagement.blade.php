@@ -92,7 +92,7 @@
                             @if($users->level == 'College' && $users->status == 'Activate' && $users->role_id != 2)
                                 <tr>
                                     <td>{{ ++$index}}</td>
-                                    <td><img src="/student/{{$users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
+                                    <td><img src="{{'/' . $users->role->role_description . '/' . $users->level . '/' . $users->user_image}}" alt="user_image" style="height:100px;width:85px;" class="object-fit-fill"></td>
                                     <td>{{ $users->unique_id }}</td>
                                     <td>{{ $users->role->role_description}}</td>
                                     <td>{{ $users->firstname }}</td>

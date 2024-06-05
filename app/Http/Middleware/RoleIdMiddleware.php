@@ -14,18 +14,19 @@ class RoleIdMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $roleId): Response
+    public function handle(Request $request, Closure $next, ...$roleIds): Response
     {
         $user = Auth::user();
         $userRoleId = $user->role_id; // Assuming role_id is the correct field name
-    
+        
         if ($request->ajax()) {
             return $next($request);
         }
         
-        if ($userRoleId == $roleId) {
+        if (in_array($userRoleId, $roleIds)) {
             return $next($request);
         }
+        
         return redirect('/');
     }
 }

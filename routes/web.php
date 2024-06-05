@@ -26,23 +26,26 @@ use App\Http\Controllers\Logbook\Logbook;
 |
 */
 // STUDENT----------------------->
-Route::middleware(['auth', 'role_id:1'])->group(function () {
 
     //dashboard process
+    Route::middleware(['auth', 'role_id:2,1,3,4'])->group(function (){
 
-    Route::get('/spc-lms/request-books/{id}', [StudentIndexController::class, 'requestBook'])->name('spc-lms.request-book'); //view book
-    Route::post('spc-lms/process-book/{id}', [StudentIndexController::class, 'processBook'])->name('spc-lms.process-book'); //operate requestbook function
+        Route::get('/spc-lms/request-books/{id}', [StudentIndexController::class, 'requestBook'])->name('spc-lms.request-book'); //view book
+        Route::post('spc-lms/process-book/{id}', [StudentIndexController::class, 'processBook'])->name('spc-lms.process-book'); //operate requestbook function
+        
+        Route::get('/spc-lms/index', [StudentIndexController::class, 'index'])->name('spc-lms.index'); //index
     
-    Route::get('/fetch-level-books', [StudentIndexController::class, 'fetchLevelBook'])->name('fetch-level-books');
-    Route::get('/spc-lms/dashboard', [StudentIndexController::class, 'dashboard'])->name('spc-lms.dashboard');
-    Route::get('/spc-lms/category/{category}', [StudentIndexController::class, 'view'])->name('spc-lms.category');
-    Route::post('/spc-lms/category/searchBook', [StudentIndexController::class, 'search'])->name('spc-lms.category.searchBook');
+        Route::get('/spc-lms/category/{category}', [StudentIndexController::class, 'view'])->name('spc-lms.category');//viewing category books
+        Route::post('/spc-lms/category/searchBook', [StudentIndexController::class, 'search'])->name('spc-lms.category.searchBook'); //search function
+    
+        //boook Request page
+        Route::get('spc-lms/book-requests', [RequestBooksController::class, 'index'])->name('spc-lms.requestbooks'); //view page
+        Route::post('spc-lms/spc-lms.cancel/{id}', [RequestBooksController::class, 'cancel'])->name('spc-lms.cancel'); //operate cancellation function
+        Route::get('spc-lms/view_requestbook/{id}', [RequestBooksController::class, 'viewRequestBook'])->name('spc-lms.view_requestbook');
 
-    //boook Request page
-    Route::get('spc-lms/book-requests', [RequestBooksController::class, 'index'])->name('spc-lms.requestbooks'); //view page
-    Route::post('spc-lms/spc-lms.cancel/{id}', [RequestBooksController::class, 'cancel'])->name('spc-lms.cancel'); //operate cancellation function
-    Route::get('spc-lms/view_requestbook/{id}', [RequestBooksController::class, 'viewRequestBook'])->name('spc-lms.view_requestbook');
-});
+    });
+
+
 
 
 //ADMiN------------------------->
@@ -57,8 +60,8 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
     Route::get('/admin/profile/{id}', [ProfileController::class, 'show'])->name('admin.profile');
     ROute::get('/admin/changepassword/{id}', [ProfileController::class, 'changePassword'])->name('admin.changepassword');
 
-    //Dashboard
-    Route::get('/admin/index', [DashboardController::class, 'index'])->name('admin.index');
+    //index
+    Route::get('/admin/index', [DashboardController::class, 'index'])->name('admin.index'); 
     Route::get('/admin/fetch-users', [DashboardController::class, 'getUserStats']);
 
     Route::get('/admin/bookavailable_list', [DashboardController::class, 'bookAvailable'])->name('admin.bookavailable.list'); //stats for available books
@@ -130,7 +133,10 @@ Route::middleware(['auth', 'role_id:2'])->group(function (){
 
 
 //Login Process
-Route::get('/', [StudentIndexController::class, 'index'])->name('login'); 
+Route::get('/', function(){
+    return view('index');
+})->name('login'); 
+
 Route::post('/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 

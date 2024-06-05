@@ -11,7 +11,7 @@
         <div class="d-flex flex-column gap-0 align-items-between justify-content-between h-100">
             <ul class="list-group gap-2" style="color:#661011;">
                 <li class="list-group-item list-group-item-action border-0 d-flex aling-items-center gap-2">
-                    <a href="{{ route('spc-lms.dashboard')}}" class="text-decoration-none text-black d-flex gap-2 w-100 ">
+                    <a href="{{ route('spc-lms.index')}}" class="text-decoration-none text-black d-flex gap-2 w-100 ">
                         <svg xmlns="http://www.w3.org/2000/svg" style="color:black;" width="1.5em" height="1.5em" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M13 9V3h8v6zM3 13V3h8v10zm10 8V11h8v10zM3 21v-6h8v6zm2-10h4V5H5zm10 8h4v-6h-4zm0-12h4V5h-4zM5 19h4v-2H5zm4-2"/></svg>
                         <span>Dashboard</span>
                     </a>

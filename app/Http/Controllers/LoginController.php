@@ -21,11 +21,11 @@ class LoginController extends Controller
             
             if ($role_id == 2) { // Assuming 1 is the admin role_id
                 return redirect()->route('admin.index');
-            }else if ($role_id == 1) {
-                return redirect()->route('spc-lms.dashboard');
+            }else if ($role_id == 1 || $role_id == 4) {
+                return redirect()->route('spc-lms.index');
             }
              else {
-                return redirect()->route('home.student');
+                return redirect()->route('login');
             }
         } else {
             return back()->withErrors(['message' => 'Invalid Credentials']);

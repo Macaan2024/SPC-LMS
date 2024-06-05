@@ -17,10 +17,10 @@ class StudentIndexController extends Controller
         
         $data = Book::orderBy('level')->get();
 
-        return view('index', ['data'  => $data]);
+        return view('Users.student.pages.dashboard.dashboard', ['data'  => $data]);
     }
 
-    public function view($category) {
+    public function view($category) { 
         
         $bookCategory = $category;
 
@@ -104,23 +104,5 @@ class StudentIndexController extends Controller
         $results = Book::where($attribute, 'LIKE', "%{$search}%")->get();
 
         return response()->json($results);
-    }
-    public function fetchLevelBook(Request $request) {
-
-        
-
-        // Group books by level
-        $book = Book::all()->groupBy('level');
-        $groupBooks = $book->map(function ($bookByLevel){
-            return $bookByLevel->groupBy('category');
-        });
-
-        return response()->json(['groupBooks' => $groupBooks]);
-    }
-
-    public function dashboard() {
-        $book = Book::all()->groupBy('level');
-
-        return view('Users.student.pages.dashboard.dashboard', ['book' => $book]);
     }
 }
