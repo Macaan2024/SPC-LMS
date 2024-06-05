@@ -168,6 +168,80 @@
                 </div>
             </div>
         </div>
+
+        {{-- Personeel --}}
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-sm-2 mt-0">
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/School-librarian.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">Sittie Jalalia P. Samo, RL</h6>
+                <h6 class="fw-bold">School Librarian</h6>
+                </div>
+            </div>
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/librarian.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">Johainah A. Ampuan, RL</h6>
+                <h6 class="fw-bold">Librarian</h6>
+                </div>
+            </div>
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/assistant.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">Charito R. Abapo</h6>
+                <h6 class="fw-bold">Assistant</h6>
+                </div>
+            </div>
+        </div>
+        {{-- Student Assistants --}}
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 mt-5">
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/student-assitant1.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">Noela M. Angcos</h6>
+                <h6 class="fw-bold">Student Assistant</h6>
+                </div>
+            </div>
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/student-assistant2.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">JC Niel King S. Peje</h6>
+                <h6 class="fw-bold">Student Assistant</h6>
+                </div>
+            </div>
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/student-assistant3.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">Danette A. Sumabal</h6>
+                <h6 class="fw-bold">Student Assistant</h6>
+                </div>
+            </div>
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/student-assistant4.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">Estiben A. Meca</h6>
+                <h6 class="fw-bold">Student Assistant</h6>
+                </div>
+            </div>
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/student-assistant5.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">Jenalyn M. Lumambas</h6>
+                <h6 class="fw-bold">Student Assistant</h6>
+                </div>
+            </div>
+            <div class="col mt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img src="{{ asset('library/student-assistant6.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
+                <h6 class="mt-3">John Michael N. Pugales</h6>
+                <h6 class="fw-bold">Student Assistant</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 d-flex justify-content-between align-items-center px-5 py-2 mt-5" style="background-color:#661011;">
+        <h6 class="p-0 m-0 text-white fw-normal" style="font-size:12px;">© 2023 St. Peter's College Iligan. All Rights Reserved.</h6>
+        <h6 class="p-0 m-0 text-white fw-normal" style="font-size:12px;">Designed And Developed By: CCS 2nd Year Students</h6>
     </div>
     <script>
         let slideIndex = 0;
