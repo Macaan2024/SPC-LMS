@@ -11,11 +11,9 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LogBookController;
 use App\Http\Controllers\Admin\TransactionController;
-<<<<<<< HEAD
-USE App\Http\Controllers\Admin\NotificationController;
-=======
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Logbook\Logbook;
->>>>>>> 695de8817abb048024d5731566c1bece88e6b9c6
+
 
 /*
 |--------------------------------------------------------------------------

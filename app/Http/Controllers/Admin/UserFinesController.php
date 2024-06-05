@@ -73,6 +73,37 @@ class UserFinesController extends Controller
             'userwithFines' => $userwithFines,
         ]);
     }
+
+    public function processPayment(Request $request, $id) {
+
+        $user = User::find($id);
+
+        $payAmount = $request->input('pay');
+
+        if ($payAmount && is_numeric($payAmount)) {
+            if ($payAmount <= $user->total_fines) {
+                $user->update([
+                    'total_fines' => $user->total_fines - $payAmount,
+                ]);
+                $Payment = new Payment();
+                $Payment->user_id = $user->id;
+                $Payment->reciever = Auth::user()->role->role_description;
+                $Payment->amount = $payAmount;
+                $Payment->save();
+                
+                return redirect()->back()->with('successPay', 'Successfully Payment');
+            }else {
+                return redirect()->back()->with('exceedPay', 'The amount pay is exceed to the current balance of the user'. $payAmount);
+            }
+        }else {
+            return redirect()->back()->with('errorPayment', 'Invalid Payment');
+        }
+
+    }
+
+
+
+
     public function history(Request $request) {
         $searchTerm = $request->get('search');
         $selectedDate = $request->get('date');
