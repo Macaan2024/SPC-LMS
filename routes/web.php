@@ -33,7 +33,7 @@ use App\Http\Controllers\Logbook\Logbook;
         Route::get('/spc-lms/request-books/{id}', [StudentIndexController::class, 'requestBook'])->name('spc-lms.request-book'); //view book
         Route::post('spc-lms/process-book/{id}', [StudentIndexController::class, 'processBook'])->name('spc-lms.process-book'); //operate requestbook function
         
-        Route::get('/spc-lms/index', [StudentIndexController::class, 'index'])->name('spc-lms.index'); //index
+        Route::get('/spc-lms/index', [StudentIndexController::class, 'index'])->name('spc-lms.index'); //index or dashboard
     
         Route::get('/spc-lms/category/{category}', [StudentIndexController::class, 'view'])->name('spc-lms.category');//viewing category books
         Route::post('/spc-lms/category/searchBook', [StudentIndexController::class, 'search'])->name('spc-lms.category.searchBook'); //search function

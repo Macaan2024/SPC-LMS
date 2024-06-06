@@ -13,11 +13,18 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentIndexController extends Controller
 {
-    public function index() {
-        
-        $data = Book::orderBy('level')->get();
+    public function index()
+    {
+    
+        // Group the books by the 'level' field.
+        $groupedBooks = Book::all()->groupBy('level');
 
-        return view('Users.student.pages.dashboard.dashboard', ['data'  => $data]);
+        $college = Book::where('level', 'College')
+        ->where('status', '!=', 'removed')
+        ->get();
+    
+        // Pass the grouped books data to the view.
+        return view('Users.student.pages.dashboard.dashboard', compact('groupedBooks', 'college'));
     }
 
     public function view($category) { 
@@ -105,4 +112,11 @@ class StudentIndexController extends Controller
 
         return response()->json($results);
     }
+
+
+
+    /// BOOOOOKS LEVEL PER PAGE 
+
+
+
 }

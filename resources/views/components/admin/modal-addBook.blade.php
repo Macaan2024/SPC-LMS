@@ -1,4 +1,4 @@
-<!-- -- MODALITY START -->
+<!-- MODALITY START -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content py-4 px-3 m-0">
@@ -9,11 +9,14 @@
                 <form action="{{ route('admin.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="d-flex justify-content-center flex-wrap gap-4 align-items-start">
-                        <div class="d-flex flex-column gap-1 bg-primary" style="height:250px; width:240px;">
+                        <div class="d-flex flex-column gap-1" style="height:250px; width:240px;">
                             <div class="bg-dark d-flex justify-content-center align-items-center" style="height:100%;width:100%;">
                                 <span class="text-white fs-5 fw-bolder">Upload Picture</span>
                             </div>
                             <input type="file" name="image" class="form-control rounded-0">
+                            @error('image')
+                                <small class="text-danger mb-1">{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="d-flex flex-column gap-4">
                             <div class="form-floating">
@@ -61,7 +64,7 @@
                         </div>
                         <div class="d-flex flex-column gap-4">
                             <div class="form">
-                                <select name="level" class="form-select" id="" id="classLevel">
+                                <select name="level" class="form-select" id="classLevel">
                                     <option value="" selected disabled>Choose Class Level</option>
                                     <option value="College">College</option>
                                     <option value="Senior Highschool">Senior Highschool</option>
@@ -73,14 +76,31 @@
                                 @enderror
                             </div>
                             <div class="" id="classCateogry">
-                                <select name="category" class="form-select" id="">
-                                    <option value="" selected disabled >Choose Category</option>
+                                <select name="category" class="form-select" id="collegeCourses" style="display: none;">
+                                    <option value="" selected disabled>Choose Course</option>
                                     <option value="CCS">CCS</option>
                                     <option value="CAS">CAS</option>
                                     <option value="CBA">CBA</option>
                                     <option value="COC">COC</option>
                                     <option value="COE">COE</option>
-                                    <option value="COED">COED</option>
+                                </select>
+                                <select id="seniorHighGrades" class="form-select" style="display: none;">
+                                    <option value="Grade 12">Grade 12</option>
+                                    <option value="Grade 11">Grade 11</option>
+                                </select>
+                                <select id="juniorHighGrades" class="form-select" style="display: none;">
+                                    <option value="Grade 10">Grade 10</option>
+                                    <option value="Grade 9">Grade 9</option>
+                                    <option value="Grade 8">Grade 8</option>
+                                    <option value="Grade 7">Grade 7</option>
+                                </select>
+                                <select id="elementaryGrades" class="form-select" style="display: none;">
+                                    <option value="Grade 6">Grade 6</option>
+                                    <option value="Grade 5">Grade 5</option>
+                                    <option value="Grade 4">Grade 4</option>
+                                    <option value="Grade 3">Grade 3</option>
+                                    <option value="Grade 2">Grade 2</option>
+                                    <option value="Grade 1">Grade 1</option>
                                 </select>
                                 @error('category')
                                     <small class="text-danger mb-1">{{ $message }}</small>
@@ -117,25 +137,49 @@
         </div>
     </div>
 </div>
- 
 
-<script>
-
-        document.addEventListner('onchange', )
-</script>
-
-{{-- Sweet Mesage Alerts --}}
+<!-- Sweet Message Alerts -->
 @if(Session::has('message'))
     <script>
-    
+        swal("Student Registration", "{{ Session::get('message') }}", 'success', {
+            button: true,
+            button: "OK",
+        });
     </script>
 @elseif ($errors->any())
     <script>
-        var message = "{{ Session::get('message') }}";
-            swal("Student Registration", 'Student Registration fail', 'error', {
-                button:true,
-                button:"OK",
-            });
+        swal("Student Registration", 'Student Registration fail', 'error', {
+            button: true,
+            button: "OK",
+        });
     </script>
 @endif
+
+<!-- JavaScript to handle showing/hiding selects based on level -->
+<script>
+document.getElementById('classLevel').addEventListener('change', function() {
+    var selectedLevel = this.value;
+    var collegeCourses = document.getElementById('collegeCourses');
+    var seniorHighGrades = document.getElementById('seniorHighGrades');
+    var juniorHighGrades = document.getElementById('juniorHighGrades');
+    var elementaryGrades = document.getElementById('elementaryGrades');
+
+    // Hide all selects by default
+    collegeCourses.style.display = 'none';
+    seniorHighGrades.style.display = 'none';
+    juniorHighGrades.style.display = 'none';
+    elementaryGrades.style.display = 'none';
+
+    // Show the relevant select based on the selected level
+    if (selectedLevel === 'College') {
+        collegeCourses.style.display = 'block';
+    } else if (selectedLevel === 'Senior Highschool') {
+        seniorHighGrades.style.display = 'block';
+    } else if (selectedLevel === 'Junior Highschool') {
+        juniorHighGrades.style.display = 'block';
+    } else if (selectedLevel === 'Elementary') {
+        elementaryGrades.style.display = 'block';
+    }
+});
+</script>
 <!-- -- MODALITY END -->
