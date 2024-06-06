@@ -13,18 +13,23 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentIndexController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $level = $request->input('level', 'College'); // Default to College if not set
+        $search = $request->input('search', '');
     
-        // Group the books by the 'level' field.
-        $groupedBooks = Book::all()->groupBy('level');
-
-        $college = Book::where('level', 'College')
-        ->where('status', '!=', 'removed')
-        ->get();
+        // Fetch books based on level and search term
+        $booksQuery = Book::where('level', $level)
+            ->where('status', '!=', 'removed');
+    
+        if ($search) {
+            $booksQuery->where('title', 'LIKE', "%{$search}%");
+        }
+    
+        $books = $booksQuery->get()->groupBy('category');
     
         // Pass the grouped books data to the view.
-        return view('Users.student.pages.dashboard.dashboard', compact('groupedBooks', 'college'));
+        return view('Users.student.pages.dashboard.dashboard', compact('books', 'level', 'search'));
     }
 
     public function view($category) { 

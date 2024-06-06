@@ -1,6 +1,6 @@
 <x-student.layout>
     <x-slot name="request_book">
-       <div class="container p-0 mt-3" style="min-width:420px;">
+       <div class="container p-0 mt-3" style="min-width:320px;">
             <div class="row p-0 m-0">
                 <div class="col-12 d-flex justify-content-center justify-content-sm-start p-0 m-0 px-2">
                     @if ($requestBook->level == 'College')
@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-12 d-flex justify-content-between p-0 m-0 mt-4 px-2">
                     <h6 class="fs-6  text-nowrap">Accesion Number : {{$requestBook->accesion_number}}</h6>
-                    <h6 class="fs-6  text-nowrap">Borrowed Records : {{ $requestBook->total_borrow}}</h6>
+                    <h6 class="fs-6  text-nowrap">Records : {{ $requestBook->total_borrow}}</h6>
                     
                 </div>
                 <hr>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="d-flex flex-column px-3 py-0 justify-content-between align-items-start" style="height:250px;">
                             <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->isbn}}</h6>
-                            <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->title}}</h6>
+                            <h6 class="p-0 m-0 fs-6">: {{$requestBook->title}}</h6>
                             <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->author}}</h6>
                             <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->publication_year}}</h6>
                             <h6 class="p-0 m-0 fs-6 text-nowrap">: {{$requestBook->publication_address}}</h6>

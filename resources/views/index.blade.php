@@ -147,22 +147,22 @@
         </div>
     </div>
     
-    <div class="container-xxl p-0 mt-5">
-        <div class="row bg-light-subtle shadow-sm p-3 gap-5 justify-content-center">
-            <div class="col-3 shadow-sm bg-white  p-3">
-                <div class="d-flex flex-column">
+    <div class="container-md p-0 mt-5">
+        <div class="row row-cols-1 row-cols-sm-3 bg-light-subtle shadow-sm py-3 px-3">
+            <div class="col mt-3">
+                <div class="d-flex flex-column shadow-sm bg-white p-3">
                     <h6>Vision</h6>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus itaque minima laudantium repudiandae consequatur sint fuga iusto vero, minus necessitatibus velit saepe inventore. Autem temporibus explicabo provident hic corporis doloribus!</p>
                 </div>
             </div>
-            <div class="col-3 shadow-sm bg-white p-3">
-                <div class="d-flex flex-column">
+            <div class="col mt-3">
+                <div class="d-flex flex-column shadow-sm bg-white p-3">
                     <h6>Mission</h6>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus itaque minima laudantium repudiandae consequatur sint fuga iusto vero, minus necessitatibus velit saepe inventore. Autem temporibus explicabo provident hic corporis doloribus!</p>
                 </div>
             </div>
-            <div class="col-3 shadow-sm bg-white p-3">
-                <div class="d-flex flex-column">
+            <div class="col mt-3">
+                <div class="d-flex flex-column shadow-sm bg-white p-3">
                     <h6>Objective</h6>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus itaque minima laudantium repudiandae consequatur sint fuga iusto vero, minus necessitatibus velit saepe inventore. Autem temporibus explicabo provident hic corporis doloribus!</p>
                 </div>
@@ -170,7 +170,7 @@
         </div>
 
         {{-- Personeel --}}
-        <div class="row row-cols-1 row-cols-lg-3 row-cols-sm-2 mt-0">
+        <div class="row row-cols-sm-1 row-cols-md-3 mt-0">
             <div class="col mt-5">
                 <div class="d-flex flex-column align-items-center">
                 <img src="{{ asset('library/School-librarian.jpg') }}" alt="schoolLibrarian Image" style="height:250px;width:250px;" class="rounded-circle shadow-sm">
@@ -239,9 +239,9 @@
             </div>
         </div>
     </div>
-    <div class="w-100 d-flex justify-content-between align-items-center px-5 py-2 mt-5" style="background-color:#661011;">
-        <h6 class="p-0 m-0 text-white fw-normal" style="font-size:12px;">© 2023 St. Peter's College Iligan. All Rights Reserved.</h6>
-        <h6 class="p-0 m-0 text-white fw-normal" style="font-size:12px;">Designed And Developed By: CCS 2nd Year Students</h6>
+    <div class="w-100 d-flex justify-content-between align-items-center py-2 px-2 mt-5" style="background-color:#661011;">
+        <h6 class="p-0 m-0 text-white fw-normal text-wrap" style="font-size:11px;">© 2023 St. Peter's College Iligan. All Rights Reserved.</h6>
+        <h6 class="p-0 m-0 text-white fw-normal text-wrap" style="font-size:11px;">Designed And Developed By: CCS 2nd Year Students</h6>
     </div>
     <script>
         let slideIndex = 0;

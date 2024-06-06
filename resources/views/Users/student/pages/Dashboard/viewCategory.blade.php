@@ -22,12 +22,13 @@
             </svg>
         </button>
     </div>
-    <div class="container p-0 mt-5" id="bookLevelContainer">
+    <div class="container p-0 mt-5" id="bookLevelContainer" style="min-width:320px;">
         <div class="border border-1 shadow-sm mt-5" style="solid #661011;">
             <h5 class="shadow-sm text-center p-0 m-0 fw-normal fs-6 py-3" style="color:white;background-color:#661011;">{{ $bookCategory }}<h5>
             <div class="border border-darksubtle mt-3 mx-2" style="height:auto;width:auto;">
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 py-2 row-cols-xxl-6 justify-content-start p-0 m-0">
-                @foreach ($college as $book )
+                    @foreach ($books as $book )
+                        <h6></h6>
                         @if  (($book->publication_year + 3) >= date('Y'))
                             @if ($book->status == 'Available')
                                 <div class="col d-flex flex-column mt-3 py-0">
