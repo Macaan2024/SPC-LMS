@@ -28,5 +28,7 @@
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
+        
     </style>
 </head>

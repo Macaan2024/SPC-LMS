@@ -1,17 +1,29 @@
 <?php
-use App\Http\Controllers\Admin\BookRequestController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\admin\UserFinesController;
+
+
+use App\Http\Controllers\Student\StudentProfileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\LoginController;
+
+//Student / Faculty Controller ----
 use App\Http\Controllers\Student\StudentIndexController;
 use App\Http\Controllers\Student\RequestBooksController;
+use App\Http\Controllers\Student\StudentTransactionController;
+use App\Http\Controllers\Student\FinesController;
+
+//Admin Controller
 use App\Http\Controllers\Admin\BookManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LogBookController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\BookRequestController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserFinesController;
+
+//Logbook
 use App\Http\Controllers\Logbook\Logbook;
 
 
@@ -42,6 +54,24 @@ use App\Http\Controllers\Logbook\Logbook;
         Route::get('spc-lms/book-requests', [RequestBooksController::class, 'index'])->name('spc-lms.requestbooks'); //view page
         Route::post('spc-lms/spc-lms.cancel/{id}', [RequestBooksController::class, 'cancel'])->name('spc-lms.cancel'); //operate cancellation function
         Route::get('spc-lms/view_requestbook/{id}', [RequestBooksController::class, 'viewRequestBook'])->name('spc-lms.view_requestbook');
+
+        //Transaction
+        Route::get('spc-lms/transaction', [StudentTransactionController::class, 'index'])->name('spc-lms.transaction');
+        Route::get('spc-lms/transaction-view/{id}', [StudentTransactionController::class, 'view'])->name('spc-lms.transactionview');
+
+        //Fines 
+        Route::get('spc-lms/fines', [FinesController::class, 'index'])->name('spc-lms.fines');
+
+        //Profile 
+        Route::get('/spc-lms/profile/{id}', [StudentProfileController::class, 'index'])->name('spc-lms.profile');
+        //Changepassword
+        Route::get('/spc-lms/changepassowrd/{id}', [StudentProfileController::class, 'change'])->name('spc-lms.changepassword');
+        Route::post('spc-lms/process-passowrd/{id}', [StudentProfileController::class, 'proccess'])->name('spc-lms.process-password');
+
+        //Notification
+
+        Route::get('/student-notification', [NotificationController::class, 'UserNotification'])->name('student-notifiaction');
+
 
     });
 

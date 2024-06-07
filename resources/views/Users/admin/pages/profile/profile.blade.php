@@ -6,14 +6,6 @@
             <div class="col-lg-1 bg-light " style="height:100%"></div>
                 <div class="col-lg-10 col-12 bg-white px-4 px-sm-5 py-5" style="height:auto;">
                     <section>
-                        <div class="d-flex justify-content-start align-items-center gap-2 flex-nowrap   ">
-                            <a href="/usermanagement">
-                                <svg xmlns="http://www.w3.org/2000/svg" style="color:#661011;" width="1.5em" height="1.5em" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M21 11H6.414l5.293-5.293l-1.414-1.414L2.586 12l7.707 7.707l1.414-1.414L6.414 13H21z"/>
-                                </svg>
-                            </a>               
-                            <h5 class="text-nowrap p-0 m-0" style="color:#661011;">View User</h5>
-                            </div>
-                        <hr>
                         <div class="container-fluid d-flex flex-column mt-5  align-items-center p-0 m-0">
                             <div style="width:200px;height:210px;" class="">
                                 <img src="{{ asset($user->role->role_description. '/'. $user->user_image)}}" alt="" class="object-fit-fill" style="height100%;width:100%;">

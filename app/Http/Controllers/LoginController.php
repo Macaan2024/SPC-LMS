@@ -21,7 +21,7 @@ class LoginController extends Controller
             
             if ($role_id == 2) { // Assuming 1 is the admin role_id
                 return redirect()->route('admin.index');
-            }else if ($role_id == 1 || $role_id == 4) {
+            }else if ($role_id == 1 || $role_id == 4 || $role_id == 3 || $role_id == 2) {
                 return redirect()->route('spc-lms.index');
             }
              else {

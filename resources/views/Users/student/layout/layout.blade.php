@@ -36,6 +36,27 @@
         {{ $view_requestbook }}
     @endif
 
+    {{-- Transaction --}}
+    @if (isset($transaction))
+        {{ $transaction }}
+    @elseif (isset($transactionview))
+        {{ $transactionview }}
+    @endif
+
+    {{-- fines --}}
+    @if (isset($fines))
+        {{ $fines }}
+    @endif
+
+    {{-- Profile --}}
+
+    @if (isset($profile))
+        {{ $profile }}
+    @elseif (isset($changepassword))
+        {{ $changepassword }}
+    @endif
+
+
     @include('Users.student.layout.footer')
 </body>
 </html>
