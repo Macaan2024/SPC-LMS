@@ -9,19 +9,35 @@ use App\Models\Transaction;
 
 class BookManagementController extends Controller
 {
-    public function index() {
-        $book = Book::all();
-        $college = Book::where('level', 'College')->where('status', 'Available')->count();
-        $seniorhigh = Book::where('level', 'Senior Highschool')->where('status', 'Available')->count();
-        $juniorhigh = Book::where('level', 'Junior Highschool')->where('status', 'Available')->count();
-        $elementary = Book::where('level', 'Elementary')->where('status', 'Available')->count();
-        $level = Book::all()->groupBy('level');
-
-
-
-        return view('Users.admin.pages.bookmanagement.bookmanagement', ['book' => $book, 'college' => $college, 'seniorhigh' => $seniorhigh, 'juniorhigh' => $juniorhigh, 'elementary' => $elementary, 'level' => $level]);
+    public function index(Request $request) {
+        $search = $request->input('search');
+    
+        // If a search query is provided, filter the books
+        if ($search) {
+            $books = Book::where('title', 'LIKE', "%{$search}%")
+                        ->orWhere('isbn', 'LIKE', "%s{$search}%")
+                        ->orWhere('author', 'LIKE', "%{$search}%")
+                        ->orWhere('level', 'LIKE', "%{$search}%")
+                        ->get();
+        } else {
+            $books = Book::all();
+        }
+    
+        $college = $books->where('level', 'College')->where('status', 'Available')->count();
+        $seniorhigh = $books->where('level', 'Senior Highschool')->where('status', 'Available')->count();
+        $juniorhigh = $books->where('level', 'Junior Highschool')->where('status', 'Available')->count();
+        $elementary = $books->where('level', 'Elementary')->where('status', 'Available')->count();
+        $level = $books->groupBy('level');
+    
+        return view('Users.admin.pages.bookmanagement.bookmanagement', [
+            'books' => $books,
+            'college' => $college,
+            'seniorhigh' => $seniorhigh,
+            'juniorhigh' => $juniorhigh,
+            'elementary' => $elementary,
+            'level' => $level
+        ]);
     }
-
     public function view($id) {
 
         $book = Book::find($id);

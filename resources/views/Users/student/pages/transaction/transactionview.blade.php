@@ -154,7 +154,7 @@
                     <p class="p-0 m-0">End Time : <span>{{ $transaction->end_time }}</span></p>
                     <p class="p-0 m-0">Return Date & Time :
                         @if ($transaction->status == 'returned') 
-                            <span>{{ $transaction->updated_at ? Carbon\Carbon::parse($transaction->updated_at)->setTimezone('Asia/Kolkata')->format('Y-m-d h:i A') : '' }}</span>
+                        <span>{{ $transaction->updated_at ? \Carbon\Carbon::parse($transaction->updated_at)->timezone('Asia/Manila')->format('Y-m-d h:i A') : '' }}</span>
                         @endif
                     </p>
                     <p class="p-0 m-0">Overdue : <span>{{ $transaction->overdue }}</span></p>

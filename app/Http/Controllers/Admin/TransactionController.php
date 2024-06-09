@@ -16,7 +16,7 @@ class TransactionController extends Controller
 
         $ongoing = Transaction::where('status', 'ongoing')->count();
         $returned = Transaction::where('status', 'returned')->count();
-        $overdue = Transaction::whereNotNull('overdue')->count();
+        $overdue = Transaction::where('overdue', '>', 0)->count();
         $searchTerm = $request->get('search');
 
         $approvedTransaction = Transaction::query()
@@ -76,6 +76,7 @@ class TransactionController extends Controller
         ]);
         
         $returnBook->book->decrement('total_borrow');
+        $returnBook->book->increment('quantity');
 
         $returnBook->save();
     

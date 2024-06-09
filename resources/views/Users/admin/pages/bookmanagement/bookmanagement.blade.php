@@ -6,7 +6,7 @@
             <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#003300;height:150px;width:100%;">
                 <div class="d-flex flex-column">
                     <h4 class="p-0 m-0 text-white fw-normal">College</h4>
-                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $college }}</h6>
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
             <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#002233;height:100%;width:100%;">
                 <div class="d-flex flex-column">
                     <h5 class="p-0 m-0 text-white fw-normal">Senior Highschool</h5>
-                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $seniorhigh }}</h6>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#660000;height:100%;width:100%;">
                 <div class="d-flex flex-column">
                     <h5 class="p-0 m-0 text-white fw-normal">Junior Highschool</h5>
-                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $juniorhigh }}</h6>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="rounded shadow-lg bg-opacity-75 d-flex align-items-center px-4 justify-content-between" style="background-color:#333333;height:100%;width:100%;">
                 <div class="d-flex flex-column">
                     <h5 class="p-0 m-0 text-white fw-normal">Elementary</h5>
-                    <h6 class="p-0 m-0 fs-4 text-white fw-normal"></h6>
+                    <h6 class="p-0 m-0 fs-4 text-white fw-normal">{{ $elementary }}</h6>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
 
     <div class="row m-0 p-0 mt-5 px-5" style="min-width:1550px;">
         <div class="col-6 p-0 m-0">
-            <form class="d-flex form-group p-0m-0" action="{{ route('admin.usermanagement')}}" method="GET">
+            <form class="d-flex form-group p-0m-0" action="{{ route('admin.bookmanagement')}}" method="GET">
                 <input class="form-control rounded-start-0 rounded-end-0 border-start-1 border-start-sm-0 shadow-lg rounded-start-1 py-2" type="text" placeholder="Search" aria-label="Search" name="search" value="{{ request()->get('search') }}">
                 <button class="btn btn-outline-success rounded-start-0 bg-success text-white" type="submit">Search</button>
             </form>

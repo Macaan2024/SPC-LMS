@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
-    public function collectNotification() {
+    public function UserNotification() {
         // Get the current date and time
         $currentDateTime = Carbon::now();
     
@@ -38,19 +38,17 @@ class NotificationController extends Controller
             'totalnotification' => $totalnotification
         ]);
     }
-
-    public function UserNotification() {
-
-
+    public function collectNotification() {
+        // Get the current date and time
         $currentDateTime = Carbon::now();
-
-        $user = Auth::user();
     
         // Calculate the date and time for 3 days ago
         $threeDaysAgo = $currentDateTime->copy()->subDays(3);
     
         // Retrieve the transactions created within the last 3 days and with status 'pending'
-        $data = Transaction::where('end')
+        $data = Transaction::with(['user.role', 'book'])
+                    ->where('created_at', '>=', $threeDaysAgo)
+                    ->where('status', 'pending')
                     ->get();
     
         // Count the total number of notifications
@@ -61,7 +59,5 @@ class NotificationController extends Controller
             'data' => $data,
             'totalnotification' => $totalnotification
         ]);
-
-
     }
 }

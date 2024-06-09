@@ -67,16 +67,16 @@
                                 <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->end_time)->format('g:i A')}}</td>
                                 @if($approved->status == 'ongoing')
                                     @php
-                                        $endDateTime = \Carbon\Carbon::parse($approved->end_day . ' ' . $approved->end_time);
-                                        $now = \Carbon\Carbon::now();
+                                        $endDateTime = \Carbon\Carbon::parse($approved->end_day . ' ' . $approved->end_time)->setTimezone('Asia/Manila');
+                                        $now = \Carbon\Carbon::now('Asia/Manila');
                                     @endphp
-                                    
-                                    @if ($now < $endDateTime)
+
+                                    @if ($now->lessThan($endDateTime))
                                         @php
                                             $hoursDifference = $now->diffInHours($endDateTime);
                                         @endphp
                                         <td class="align-middle fs-6 text-success">{{ $hoursDifference }} Hours</td>
-                                    @elseif ($now > $endDateTime)
+                                    @else
                                         @php
                                             $hoursDifference = $endDateTime->diffInHours($now);
                                         @endphp
@@ -110,38 +110,57 @@
                             @endif
                         </tr>
                     @endforeach
-                    @foreach ($approvedTransaction as $approved )
+                    @foreach ($approvedTransaction as $approved)
                         <tr>
                             @if($approved->status == 'returned')
                                 <td class="align-middle fs-6">{{ ++$index }}</td>
-                                <td><img src="/books_images/{{ $approved->book->level.'/'.$approved->book->category.'/'.$approved->book->image }}" style="height:100px;width:75px;" alt="book image" class="object-fit-fill"></td>
+                                <td>
+                                    <img src="/books_images/{{ $approved->book->level.'/'.$approved->book->category.'/'.$approved->book->image }}" style="height:100px;width:75px;" alt="book image" class="object-fit-fill">
+                                </td>
                                 <td class="align-middle fs-6">{{ $approved->user->firstname . ' ' . $approved->user->lastname }}</td>
                                 <td class="align-middle fs-6">{{ $approved->book->title }}</td>
                                 <td class="align-middle fs-6">{{ $approved->start_date }}</td>
-                                <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->start_time)->format('g:i A')}}</td>
+                                <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->start_time)->format('g:i A') }}</td>
                                 <td class="align-middle fs-6">{{ $approved->end_day }}</td>
-                                <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->end_time)->format('g:i A')}}</td>
+                                <td class="align-middle fs-6">{{ \Carbon\Carbon::parse($approved->end_time)->format('g:i A') }}</td>
+
                                 @php
-                                    $endDateTime = \Carbon\Carbon::parse($approved->end_day . ' ' . $approved->end_time);
-                                    $now = \Carbon\Carbon::now();
+                                    // Convert the end_day and end_time to a DateTime object
+                                    $endDateTime = \Carbon\Carbon::parse($approved->end_day . ' ' . $approved->end_time, 'Asia/Manila');
+
+                                    // Convert the updated_at timestamp to a DateTime object
+                                    $updatedAt = \Carbon\Carbon::parse($approved->updated_at, 'Asia/Manila');
+
+                                    // Get the current time
+                                    $currentTime = now('Asia/Manila');
+
+                                    // Check if the current time is between the start_time (5 PM) and end_time (9 AM the next day)
+                                    $startTime = \Carbon\Carbon::parse($approved->start_time, 'Asia/Manila');
+                                    $isWithinAllowedRange = ($currentTime->gt($startTime) && $currentTime->lt($endDateTime)) || ($currentTime->lt($startTime) && $currentTime->lt($endDateTime->addDay()));
+
+                                    // Set the status message and class based on the conditions
+                                    if ($isWithinAllowedRange) {
+                                        $status = "On Time";
+                                        $statusClass = "text-primary";
+                                    } elseif ($updatedAt->gt($endDateTime)) {
+                                        $diffInHours = $updatedAt->diffInHours($endDateTime, false);
+                                        $status = "Overdue by {$diffInHours} Hours";
+                                        $statusClass = "text-danger";
+                                    } else {
+                                        $diffInHours = $endDateTime->diffInHours($updatedAt, false);
+                                        $status = abs($diffInHours) . " Hours Remaining";
+                                        $statusClass = "text-success";
+                                    }
                                 @endphp
-                                
-                                @if ($now < $endDateTime)
-                                    @php
-                                        $hoursDifference = $now->diffInHours($endDateTime);
-                                    @endphp
-                                    <td class="align-middle fs-6 text-success">{{ $hoursDifference }} Hours</td>
-                                @elseif ($now > $endDateTime)
-                                    @php
-                                        $hoursDifference = $endDateTime->diffInHours($now);
-                                    @endphp
-                                    <td class="align-middle fs-6 text-danger">Overdue by {{ $hoursDifference }} Hours</td>
-                                @endif
+
+                                <td class="align-middle fs-6 {{ $statusClass }}">{{ $status }}</td>
                                 <td class="align-middle fs-6">{{ $approved->status }}</td>
-                                <td class="align-middle fs-6">{{ $approved->overdue}}</td>
-                                <td class="align-middle fs-6">{{ $approved->penalty}}</td>
+                                <td class="align-middle fs-6">{{ $approved->overdue }}</td>
+                                <td class="align-middle fs-6">{{ $approved->penalty }}</td>
                                 <td class="align-middle fs-6">
-                                    <a href="{{ route('admin.transaction-view', ['id' => $approved->id]) }}"><button style="height:32px;width:60px;" class="bg-primary text-white border-0 rounded">View</button></a>
+                                    <a href="{{ route('admin.transaction-view', ['id' => $approved->id]) }}">
+                                        <button style="height:32px;width:60px;" class="bg-primary text-white border-0 rounded">View</button>
+                                    </a>
                                 </td>
                             @endif
                         </tr>

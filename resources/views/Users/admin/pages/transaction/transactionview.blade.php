@@ -12,7 +12,11 @@
                             </div>
                         </div>
                         <div class="d-flex flex-column">
-                            <img src="/books_images/{{ $transaction->book->level . '/' . $transaction->book->category . '/' . $transaction->book->image}}" alt="book_image" style="height:250px;width:auto;">
+                            @if ($transaction->user->user_id == 1)
+                                <img src="{{ asset($transaction->user->role->role_description . '/' . $transaction->user->level . '/' . $transaction->user->user_image)}}" alt="user_image" style="height:250px;width:auto;">
+                            @else
+                                <img src="{{ asset($transaction->user->role->role_description . '/' . $transaction->user->user_image)}}" alt="user_image" style="height:250px;width:auto;">
+                            @endif
                             <div class="mt-2">
                                 <label for="" class="fs-6">Unique ID:</label>
                                 <span class="fs-6">{{ $transaction->user->unique_id}}</span>
@@ -180,6 +184,10 @@
                         <div>
                             <label for="" class="fs-6">Penalty : </label>
                             <span class="fs-6">{{ $transaction->penalty }}</span>
+                        </div>
+                        <div>
+                            <label for="" class="fs-6">Return Date & Time : </label>
+                            <span>{{ $transaction->updated_at ? \Carbon\Carbon::parse($transaction->updated_at)->timezone('Asia/Manila')->format('Y-m-d h:i A') : '' }}</span>
                         </div>
                     </div>
                 </div>
