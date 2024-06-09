@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('qrlogbooks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }
