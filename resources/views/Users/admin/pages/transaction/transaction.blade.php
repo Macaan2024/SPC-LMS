@@ -131,24 +131,15 @@
                                     // Convert the updated_at timestamp to a DateTime object
                                     $updatedAt = \Carbon\Carbon::parse($approved->updated_at, 'Asia/Manila');
 
-                                    // Get the current time
-                                    $currentTime = now('Asia/Manila');
+                                    // Calculate the difference in hours between end_time and updated_at
+                                    $diffInHours = $updatedAt->diffInHours($endDateTime, false);
 
-                                    // Check if the current time is between the start_time (5 PM) and end_time (9 AM the next day)
-                                    $startTime = \Carbon\Carbon::parse($approved->start_time, 'Asia/Manila');
-                                    $isWithinAllowedRange = ($currentTime->gt($startTime) && $currentTime->lt($endDateTime)) || ($currentTime->lt($startTime) && $currentTime->lt($endDateTime->addDay()));
-
-                                    // Set the status message and class based on the conditions
-                                    if ($isWithinAllowedRange) {
-                                        $status = "On Time";
-                                        $statusClass = "text-primary";
-                                    } elseif ($updatedAt->gt($endDateTime)) {
-                                        $diffInHours = $updatedAt->diffInHours($endDateTime, false);
-                                        $status = "Overdue by {$diffInHours} Hours";
+                                    // Determine the status and class based on the difference in hours
+                                    if ($diffInHours < 0) {
+                                        $status = "Overdue by " . abs($diffInHours) . " Hours";
                                         $statusClass = "text-danger";
                                     } else {
-                                        $diffInHours = $endDateTime->diffInHours($updatedAt, false);
-                                        $status = abs($diffInHours) . " Hours Remaining";
+                                        $status = $diffInHours . " Hours Remaining";
                                         $statusClass = "text-success";
                                     }
                                 @endphp

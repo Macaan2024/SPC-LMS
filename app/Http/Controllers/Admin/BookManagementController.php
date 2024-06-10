@@ -65,6 +65,24 @@ class BookManagementController extends Controller
             'total_borrow' => ['nullable'],
             'image' => ['required', 'image'],
         ]);
+
+        switch ($request->input('level')) {
+            case 'College':
+                $bookValidation['category'] = $request->input('collegeCategory');
+                break;
+            case 'Senior Highschool':
+                $bookValidation['category'] = $request->input('seniorCategory');
+                break;
+            case 'Junior Highschool':
+                $bookValidation['category'] = $request->input('juniorCategory');
+                break;
+            case 'Elementary':
+                $bookValidation['category'] = $request->input('elementaryCategory');
+                break;
+            default:
+                $bookValidation['category'] = null; // Or any other default value you see fit
+        }
+    
     
         // Check if an image file is uploaded
         if ($request->hasFile('image')) {

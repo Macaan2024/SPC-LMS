@@ -7,7 +7,7 @@
                         <div class="d-flex flex-column">
                             <img src="/books_images/{{ $transaction->book->level . '/' . $transaction->book->category . '/' . $transaction->book->image}}" alt="book_image" style="height:250px;width:auto;">
                             <div class="mt-2">
-                                <label for="" class="fs-6">Accesion Number:</label>
+                                <label for="" class="fs-6">Accession Number:</label>
                                 <span class="fs-6">{{ $transaction->book->accesion_number}}</span>
                             </div>
                         </div>
@@ -44,16 +44,12 @@
                             <span class="fs-6">{{$transaction->book->publication_year}}</span>
                         </div>
                         <div>
-                            <label for="" class="fs-6">Book Publication Year : </label>
+                            <label for="" class="fs-6">Book Publication Address : </label>
                             <span class="fs-6">{{$transaction->book->publication_address}}</span>
                         </div>
                         <div>
                             <label for="" class="fs-6">Class Level : </label>
                             <span class="fs-6">{{$transaction->book->level}}</span>
-                        </div>
-                        <div>
-                            <label for="" class="fs-6">Book Edition : </label>
-                            <span class="fs-6">{{$transaction->book->edition}}</span>
                         </div>
                         <div>
                             <label for="" class="fs-6">Book Edition : </label>
@@ -84,7 +80,7 @@
                             <span class="fs-6">{{$transaction->user->lastname}}</span>
                         </div>
                         <div>
-                            <label for="" class="fs-6">Firsntame : </label>
+                            <label for="" class="fs-6">Firstname : </label>
                             <span class="fs-6">{{$transaction->user->firstname}}</span>
                         </div>
                         <div>
@@ -134,7 +130,7 @@
                                 <label for="" class="fs-6">Section : </label>
                                 <span class="fs-6">{{ $transaction->user->section }}</span>
                             </div>
-                            @elseif($transaction->user->level == 'Junior Highschool')
+                        @elseif($transaction->user->level == 'Junior Highschool')
                             <div>
                                 <label for="" class="fs-6">Grade : </label>
                                 <span class="fs-6">{{ $transaction->user->grade }}</span>
@@ -170,12 +166,32 @@
                             <span class="fs-6">{{ $transaction->end_day }}</span>
                         </div>
                         <div>
-                            <label for="" class="fs-6">Transaction End Date : </label>
+                            <label for="" class="fs-6">Transaction End Time : </label>
                             <span class="fs-6">{{ \Carbon\Carbon::parse($transaction->end_time)->format('g:i A')}}</span>
                         </div>
+                        @php
+                            // Calculate the consumed hours
+                            $startDateTime = \Carbon\Carbon::parse($transaction->start_date . ' ' . $transaction->start_time, 'Asia/Manila');
+                            $endDateTime = \Carbon\Carbon::parse($transaction->updated_at, 'Asia/Manila');
+                            $consumedHours = $startDateTime->diffInHours($endDateTime);
+
+                            // Default duration in hours
+                            $defaultDurationHours = 16;
+
+                            // Calculate remaining hours and check for overdue
+                            $remainingHours = max(0, $defaultDurationHours - $consumedHours);
+                        @endphp
                         <div>
-                            <label for="" class="fs-6">Duration : </label>
-                            <span class="fs-6">8 Hours</span>
+                            <label for="" class="fs-6">Default Duration Countdown : </label>
+                            <span class="fs-6">16 Hours</span>
+                        </div>
+                        <div>
+                            <label for="" class="fs-6">Time Used : </label>
+                            <span class="fs-6">{{ $consumedHours }} Hours</span>
+                        </div>
+                        <div>
+                            <label for="" class="fs-6">Remaining Hours Left : </label>
+                            <span class="fs-6">{{ $remainingHours }} Hours</span>
                         </div>
                         <div>
                             <label for="" class="fs-6">Overdue : </label>

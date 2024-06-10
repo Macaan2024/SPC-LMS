@@ -76,7 +76,7 @@
                                 @enderror
                             </div>
                             <div class="" id="classCateogry">
-                                <select name="category" class="form-select" id="collegeCourses" style="display: none;">
+                                <select name="collegeCategory" class="form-select" id="collegeCourses" style="display: none;">
                                     <option value="" selected disabled>Choose Course</option>
                                     <option value="CCS">CCS</option>
                                     <option value="CAS">CAS</option>
@@ -84,17 +84,17 @@
                                     <option value="COC">COC</option>
                                     <option value="COE">COE</option>
                                 </select>
-                                <select id="seniorHighGrades" class="form-select" style="display: none;">
+                                <select id="seniorHighGrades" name="seniorCategory" class="form-select" style="display: none;">
                                     <option value="Grade 12">Grade 12</option>
                                     <option value="Grade 11">Grade 11</option>
                                 </select>
-                                <select id="juniorHighGrades" class="form-select" style="display: none;">
+                                <select id="juniorHighGrades" class="form-select" name="juniorCategory" style="display: none;">
                                     <option value="Grade 10">Grade 10</option>
                                     <option value="Grade 9">Grade 9</option>
                                     <option value="Grade 8">Grade 8</option>
                                     <option value="Grade 7">Grade 7</option>
                                 </select>
-                                <select id="elementaryGrades" class="form-select" style="display: none;">
+                                <select id="elementaryGrades"  name="elementaryCategory" class="form-select" style="display: none;">
                                     <option value="Grade 6">Grade 6</option>
                                     <option value="Grade 5">Grade 5</option>
                                     <option value="Grade 4">Grade 4</option>
@@ -171,14 +171,21 @@ document.getElementById('classLevel').addEventListener('change', function() {
     elementaryGrades.style.display = 'none';
 
     // Show the relevant select based on the selected level
-    if (selectedLevel === 'College') {
-        collegeCourses.style.display = 'block';
-    } else if (selectedLevel === 'Senior Highschool') {
-        seniorHighGrades.style.display = 'block';
-    } else if (selectedLevel === 'Junior Highschool') {
-        juniorHighGrades.style.display = 'block';
-    } else if (selectedLevel === 'Elementary') {
-        elementaryGrades.style.display = 'block';
+    switch (selectedLevel) {
+        case 'College':
+            collegeCourses.style.display = 'block';
+            break;
+        case 'Senior Highschool':
+            seniorHighGrades.style.display = 'block';
+            break;
+        case 'Junior Highschool':
+            juniorHighGrades.style.display = 'block';
+            break;
+        case 'Elementary':
+            elementaryGrades.style.display = 'block';
+            break;
+        default:
+            break;
     }
 });
 </script>
