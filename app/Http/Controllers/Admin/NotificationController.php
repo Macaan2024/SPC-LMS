@@ -19,19 +19,18 @@ class NotificationController extends Controller
         // Calculate the date and time for 3 days ago
         $threeDaysAgo = $currentDateTime->copy()->subDays(3);
 
-
+        $user = Auth::user();
         $thirtyMinutesBefore = $currentDateTime->copy()->addMinutes(30);
     
         // Retrieve the transactions created within the last 3 days and with status 'pending'
-        $data = Transaction::where('end_time', '<=', $thirtyMinutesBefore)
-                    ->where('end_time', '>', $currentDateTime)
-                    ->where('created_at', '>=', $threeDaysAgo)
-                    ->where('status', 'ongoing')
-                    ->get();
-    
+        $data = Transaction::with(['user.role', 'book'])
+            ->where('created_at', '>=', $threeDaysAgo)
+            ->where('status', 'approved')
+            ->get();
+
         // Count the total number of notifications
         $totalnotification = $data->count();
-    
+        
         // Return the data as a JSON response
         return response()->json([
             'data' => $data,

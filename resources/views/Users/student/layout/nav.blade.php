@@ -70,14 +70,14 @@
 
                 $.each(data, function(index, notification){
                     if (notification.user.role.role_description === 'Student') {
-                        dropdownContent += `<a href="{{ route('admin.bookrequest')}}" class="text-decoration-none">
+                        dropdownContent += `<a href="{{ route('spc-lms.requestbooks')}}" class="text-decoration-none">
                         <li class="dropdown-item">
                             <div class="d-flex gap-3 align-items-start">
                                 <div>
                                     <img src="/${notification.user.role.role_description}/${notification.user.level}/${notification.user.user_image}" alt="user_image" style="height:40px;width:40px;" class="object-fit-fill rounded-circle" />
                                 </div>
                                 <div class="text-wrap">
-                                    <p class="p-0 m-0"><span class="fw-bold">Reminder!</span>You need to return the book before 30 minutes, otherwise you will be penalty to 10 pesos per hour :). <span class="fw-bold">${notification.book.title}</span></p>
+                                    <p class="p-0 m-0"><span class="fw-bold">${notification.user.lastname}</span> requesting Book <span class="fw-bold">${notification.book.title}</span>has been approved</p>
                                 </div>
                             </div> 
                         </li>
